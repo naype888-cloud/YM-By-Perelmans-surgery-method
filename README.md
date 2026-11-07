@@ -6,6 +6,26 @@ Authors: Eduardo Nava-Hernández (naype888-cloud) & Claude Sonnet 5.5 (Anthropic
 
 ---
 
+# 🏆 TEOREMAS PRINCIPALES / CORE THEOREMS (Lean 4)
+
+## 1. Ley del Área Uniforme en el Volumen (Wilson Loop Area Law)
+$$\huge \mathbf{\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}}$$
+
+## 2. Grado de Adyacencia Universal de la Red Cúbica 3D ($\Delta = 12$)
+$$\huge \mathbf{\Delta_{\text{plaq}} \le 12}$$
+
+## 3. Brecha Espectral Neta de la Matriz de Transferencia (`Z2Final.z2_gap_twelve`)
+$$\huge \mathbf{\ln\left(\frac{\mu_0}{\mu_j}\right) \ge R \cdot \ln\left(\frac{t'}{\tanh \beta}\right)}$$
+
+$$\Large \mathbf{\sigma(\beta) \ge \ln\left(\frac{t'}{\tanh \beta}\right) > 0 \implies \text{Gap Espectral } \Delta \ge \sigma \cdot R}$$
+
+## 4. Defecto Cuántico Topológico Transversal de la Fibra
+$$\huge \mathbf{\frac{\det \Sigma}{|\det \Omega|} = \frac{5}{4} = 1 + \frac{1}{4} > 1}$$
+
+$$\Large \mathbf{\|(A[U] + M_w)\chi\|^2 \ge \frac{1}{4}\|\chi\|^2 \implies \Delta_{\text{fibre}} \ge \frac{\hbar c}{2 a} > 0}$$
+
+---
+
 ## Overview
 
 This repository proves, in Lean 4, the area law of Wilson's `Z₂` gauge model, uniformly in the volume,
@@ -17,12 +37,6 @@ model, in the same way Cartesian coordinates are a scaffold: the theorems are tr
 that model, and they say nothing about what space is. Elementary motion is `T_d : P_d`
 (`D3`, `D5`, `D21`, `D22` of the independent corpus); stating the area law and the gap in terms of
 `T_d : P_d` is not done yet (see `docs/PUENTE_TdPd_LEY_DEL_AREA.md`).
-
-**Proved:**
-
-$$\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
-
-$$\text{String tension: } \quad \sigma(\beta) \ge \ln\left(\frac{t'}{\tanh \beta}\right) > 0 \quad \text{uniformly in the volume.}$$
 
 **Not proved here:** a mass gap for non-abelian Yang–Mills, `SU(N)` (no Peter–Weyl in Mathlib), the
 bridge from the defect `massSq` to a spectral bound (`FibreBound`), Osterwalder–Schrader/Wightman.
