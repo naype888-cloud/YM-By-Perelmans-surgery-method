@@ -1,6 +1,6 @@
 # Reparto de trabajo en `lattice-gauge-gap` (2026-11-07)
 
-Participan dos Claude ("Estado de Huanhai" y "Cambios de Antigravity y pipeline", más la sesión de docs) y dos Antigravity. Los hashes son commits locales; la columna de estado salió del reporte de Huanhai y yo comprobé que los archivos y los commits existen y que no contienen `sorry`.
+Participan dos Claude ("Estado de Huanhai" y "Cambios de Antigravity y pipeline", más la sesión de docs) y dos Antigravity. Los hashes son commits (los de `df215fb`, `e763d22`, `c0c833d` y `beb69f2` ya están en `origin/main`); la columna de estado salió del reporte de Huanhai y yo comprobé que los archivos y los commits existen y que no contienen `sorry`.
 
 | Pieza | Archivo | Responsable | Estado |
 |---|---|---|---|
@@ -15,6 +15,8 @@ Participan dos Claude ("Estado de Huanhai" y "Cambios de Antigravity y pipeline"
 | Reindexado a `Fin n` | `SlabFin.lean` | Cambios de Antigravity y pipeline | hecha (0e75ac7) |
 | Frontera del rectángulo axial = lazo | `AxialLoop.lean` (`boundary ainc (rectAx …) = cLoop …`) | Cambios de Antigravity y pipeline | hecha (fe3c0ae) |
 | D ensamblaje | `Z2Wilson.lean` | Estado de Huanhai | hecha (df215fb): `Z2Final.z2_gap` |
+| Descarga de `hdeg` (grado de adyacencia ≤ 12) | `AdjDegree.lean` (`adj_degree_le_twelve`) | Cambios de Antigravity y pipeline | hecha (c0c833d) |
+| `z2_gap_twelve` (sin la hipótesis `hdeg`) | `Z2Final.lean` | Estado de Huanhai | hecha (beb69f2) |
 | Docs | `docs/*.md` | sesión de docs | al día |
 
 Notas:
