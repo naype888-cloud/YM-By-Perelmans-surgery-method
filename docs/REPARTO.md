@@ -14,9 +14,9 @@ Participan dos Claude ("Estado de Huanhai" y "Cambios de Antigravity y pipeline"
 | A2 cadena con dos inserciones | `SlabInsert.lean` (`chain_two_insertions`) | Cambios de Antigravity y pipeline | hecha (6d06807) |
 | Reindexado a `Fin n` | `SlabFin.lean` | Cambios de Antigravity y pipeline | hecha (0e75ac7) |
 | Frontera del rectángulo axial = lazo | `AxialLoop.lean` (`boundary ainc (rectAx …) = cLoop …`) | Cambios de Antigravity y pipeline | en curso, sin commit |
-| D ensamblaje | `Z2Wilson.lean` | Estado de Huanhai | en curso, el archivo aún no existe |
+| D ensamblaje | `Z2Wilson.lean` | Estado de Huanhai | en curso, sin commit |
 | Docs | `docs/*.md` | sesión de docs | al día |
 
 Notas:
-- `TransferChain.lean` sigue sin seguimiento en el árbol (solo definiciones duplicadas de `SlabChain.lean`). Huanhai pidió su borrado a Antigravity; reapareció o no se borró.
+- `TransferChain.lean` (sin seguimiento, no importado por nadie) probaba el mismo enunciado que `SlabChain.chainSum_eq_transfer` con otro nombre (`chainSum_eq_transfer_quad`). Ya no está en el árbol; lo borró otra sesión antes de que lo hiciera la de docs. No hay copia de respaldo.
 - Quien no es responsable de un archivo no lo edita. Los commits son locales y el push lo decide el usuario.
