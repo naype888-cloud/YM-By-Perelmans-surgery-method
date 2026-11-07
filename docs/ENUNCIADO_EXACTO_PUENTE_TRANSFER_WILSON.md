@@ -138,12 +138,15 @@ Piezas, de menor a mayor:
 
 | Pieza | Contenido | Tamaño estimado |
 |---|---|---|
-| A. Cadena | `Σ_{s : Fin (m+1) → ι} ∏ u(s_j) ∏ M(s_j, s_{j+1}) = ⟨√u, T^m √u⟩` con `T = D^{1/2} M D^{1/2}` (ya es `Z2Transfer.transfer`) | ~100 líneas |
-| B. Límite | Perron (vector positivo y `T` de entradas positivas ⇒ solapamiento con el máximo) y paso `a,b → ∞`: da `h_decay` con `x = Xw`, `μ₀ = μ_max` | ~200 líneas |
-| C1. `ainc` | incidencia axial, grado de adyacencia ≤ 12 | ~80 líneas |
-| C2. Área axial | `|S| ≥ R·k` para superficies con frontera `x`-líneas en `j = 0` y `j = k` (cada plaqueta `xy` mueve un enlace `x` un paso en `j`) | ~150 líneas |
-| C3. Rebanado | `weight(ainc) = ∏_j u(σ_j) · ∏_j K(σ_j, σ_{j+1})` y reindexar `Σ_σ` por `Fin (B+1) → L_s` | ~150 líneas |
-| D. Ensamblaje | `h_decay` ⇒ `Z2Gap.z2_spectral_gap` | ~50 líneas |
+| A. Cadena (`SlabChain.lean`) — **hecha** | `Σ_{s : Fin (m+1) → ι} ∏ u(s_j) ∏ M(s_j, s_{j+1}) = ⟨√u, T^m √u⟩` con `T = D^{1/2} M D^{1/2}` (ya es `Z2Transfer.transfer`) | ~100 líneas |
+| B. Límite (`SlabLimit.lean`) y B2 solapamiento (`PerronOverlap.lean`) — **hechas** | Perron (vector positivo y `T` de entradas positivas ⇒ solapamiento con el máximo) y paso `a,b → ∞`: da `h_decay` con `x = Xw`, `μ₀ = μ_max` | ~200 líneas |
+| C1. `ainc` (`AxialBox.lean`) — **hecha** | incidencia axial, grado de adyacencia ≤ 12 | ~80 líneas |
+| C2. Área axial — pendiente | `|S| ≥ R·k` para superficies con frontera `x`-líneas en `j = 0` y `j = k` (cada plaqueta `xy` mueve un enlace `x` un paso en `j`) | ~150 líneas |
+| C3. Rebanado — pendiente | `weight(ainc) = ∏_j u(σ_j) · ∏_j K(σ_j, σ_{j+1})` y reindexar `Σ_σ` por `Fin (B+1) → L_s` | ~150 líneas |
+| D. Ensamblaje (`Z2Wilson`) — pendiente | `h_decay` ⇒ `Z2Gap.z2_spectral_gap` | ~50 líneas |
 
-Total estimado: unas 700 líneas de Lean con varias iteraciones de compilación. Es trabajo de varias
-sesiones; ninguna pieza está escrita todavía salvo lo de las secciones 5 y 6.
+Total estimado: unas 700 líneas de Lean con varias iteraciones de compilación.
+
+**Estado (2026-11-07):** A, B, B2 y C1 están escritas y commiteadas (0 sorry según el reporte de la sesión que las escribió; no recompilé aquí); C2, C3 y D siguen pendientes.
+
+**Nota sobre la tasa.** Cada x-enlace de `cinc` (`AreaBound.lean`) pertenece a ≤ 4 plaquetas (2 `xy`, con `j` o `j-1`, y 2 `xz`, con `k` o `k-1`; ninguna `yz`). En gauge axial se espera que el número de semillas sea ≤ 8R independiente de k, así que la tasa sería σ·R = R·ln(t'/t) y no σ·R − 8·ln(1+a): el factor (1+a)^8 por paso de las secciones 5 y 6 correspondía al gauge no fijado. Esto último es lo que deben probar C2 y C3; no está probado todavía.
