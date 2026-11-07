@@ -17,6 +17,7 @@ Participan dos Claude ("Estado de Huanhai" y "Cambios de Antigravity y pipeline"
 | D ensamblaje | `Z2Wilson.lean` | Estado de Huanhai | hecha (df215fb): `Z2Final.z2_gap` |
 | Descarga de `hdeg` (grado de adyacencia ≤ 12) | `AdjDegree.lean` (`adj_degree_le_twelve`) | Cambios de Antigravity y pipeline | hecha (c0c833d) |
 | `z2_gap_twelve` (sin la hipótesis `hdeg`) | `Z2Final.lean` | Estado de Huanhai | hecha (beb69f2) |
+| `hj` descargada: `K` definida positiva por Kronecker, `z2_gap_free` | `Z2Hj.lean` | sesión de docs, a pedido del usuario | hecha (0 sorry, comprobado con `#print axioms`) |
 | Docs | `docs/*.md` | sesión de docs | al día |
 
 Notas:
@@ -31,7 +32,7 @@ Enunciado (según Huanhai, 0 sorry, axiomas `propext`, `Classical.choice`, `Quot
 
 Hipótesis que el teorema no descarga:
 1. `hdeg`: descargada en `z2_gap_twelve` (Δ = 12, `AdjDegree.lean`). `z2_gap` la conserva como hipótesis.
-2. `hj`: que `x` tenga componente en algún autovector de autovalor positivo (no derivada).
+2. `hj`: descargada en `Z2Hj.z2_gap_free` (`Z2Hj.lean`): `K` es definida positiva por Kronecker, todos los autovalores de `T` son positivos y `x = F·w ≠ 0`.
 3. `t'` y `a` con `t'(1+a)^Δ ≤ a` y `tanh β < t'` (solo acoplamiento fuerte); además `R ≤ A`.
 
 No queda condición `j₀ + k ≤ B`: se descarga con `B = 2N + k` en `Z2WilsonGap.hlaw`.
