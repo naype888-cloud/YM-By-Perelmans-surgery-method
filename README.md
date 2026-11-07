@@ -8,11 +8,24 @@ Authors: Eduardo Nava-Hernández (naype888-cloud) & Claude Sonnet 5.5 (Anthropic
 
 ## Overview
 
-This repository establishes the non-perturbative mass gap and uniform-in-volume area law in lattice gauge theory via **topological surgery on the fiber** ($\mathbb{R}^3 \times S^1$), avoiding the continuum Gaussian saturation defect and bypassing the conventional cluster expansion complexity:
+This repository proves, in Lean 4, the area law of Wilson's `Z₂` gauge model, uniformly in the volume,
+and a family of tools around it (Kotecký–Preiss for non-negative weights, the decomposition of the
+partition function into polymers, a spectral bridge from a gap to decay of correlations).
+
+**Scope.** The plaquettes, links and boxes in these files are the *computational scaffold* of Wilson's
+model, in the same way Cartesian coordinates are a scaffold: the theorems are true statements about
+that model, and they say nothing about what space is. Elementary motion is `T_d : P_d`
+(`D3`, `D5`, `D21`, `D22` of the independent corpus); stating the area law and the gap in terms of
+`T_d : P_d` is not done yet (see `docs/PUENTE_TdPd_LEY_DEL_AREA.md`).
+
+**Proved:**
 
 $$\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
 
-$$\text{String tension: } \quad \sigma(\beta) \ge \ln\left(\frac{t'}{\tanh \beta}\right) > 0 \quad \text{uniformly as } V \to \infty.$$
+$$\text{String tension: } \quad \sigma(\beta) \ge \ln\left(\frac{t'}{\tanh \beta}\right) > 0 \quad \text{uniformly in the volume.}$$
+
+**Not proved here:** a mass gap for non-abelian Yang–Mills, `SU(N)` (no Peter–Weyl in Mathlib), the
+bridge from the defect `massSq` to a spectral bound (`FibreBound`), Osterwalder–Schrader/Wightman.
 
 ---
 
