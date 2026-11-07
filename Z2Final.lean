@@ -6,6 +6,7 @@ import Z2WilsonGap
 import Z2Spectral
 import AxialLoop
 import TransferBridge
+import AdjDegree
 
 /-!
 # A spectral gap of the `Z₂` transfer matrix from the area law
@@ -179,4 +180,18 @@ theorem z2_gap (β : ℝ) (hβ : 0 < β) {Δ : ℕ}
       simpa using this)
   simpa using h
 
+
+/-- **`z2_gap` without the degree hypothesis**: the adjacency degree of the plaquettes of the box
+is at most `12` (`AreaBound.adj_degree_le_twelve`). -/
+theorem z2_gap_twelve (β : ℝ) (hβ : 0 < β)
+    {t' a : ℝ} (htt' : Real.tanh β < t') (ha : 0 ≤ a)
+    (hta : t' * (1 + a) ^ 12 ≤ a) (R : ℕ) (hR : R ≤ A) (k₀ : Fin (C + 1))
+    (j : Fin (Fintype.card (Z2WilsonGap.Idx A C)))
+    (hj : coeff (hPSDf A C β hβ.le).1 j (xvec A C β hβ.le R k₀) ≠ 0)
+    (hμj : 0 < (hPSDf A C β hβ.le).1.eigenvalues j) :
+    (R : ℝ) * Real.log (t' / Real.tanh β) ≤
+      Real.log (lam0 A C β hβ.le / (hPSDf A C β hβ.le).1.eigenvalues j) :=
+  z2_gap A C β hβ (fun B p => AreaBound.adj_degree_le_twelve A B C p) htt' ha hta R hR k₀ j hj hμj
+
 end Z2Final
+
