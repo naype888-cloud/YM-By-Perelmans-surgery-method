@@ -143,11 +143,11 @@ Piezas, de menor a mayor:
 | C1. `ainc` (`AxialBox.lean`) — **hecha** | incidencia axial, grado de adyacencia ≤ 12 | ~80 líneas |
 | C2. Área axial (`AxialArea.lean`) — **hecha** | `|S| ≥ R·k` para superficies con frontera `x`-líneas en `j = 0` y `j = k` (cada plaqueta `xy` mueve un enlace `x` un paso en `j`) | ~150 líneas |
 | C3. Rebanado (`AxialSlab.lean`, más `AxialSeeds.lean`, `SlabInsert.lean`, `SlabFin.lean`) — **hecha** | `weight(ainc) = ∏_j u(σ_j) · ∏_j K(σ_j, σ_{j+1})` y reindexar `Σ_σ` por `Fin (B+1) → L_s` | ~150 líneas |
-| D. Ensamblaje (`Z2Wilson`) — pendiente | `h_decay` ⇒ `Z2Gap.z2_spectral_gap` | ~50 líneas |
+| D. Ensamblaje (`Z2Wilson`, `Z2WilsonGap`, `Z2Spectral`, `Z2Final.z2_gap`) — **hecha** | `h_decay` ⇒ `Z2Gap.z2_spectral_gap` | ~50 líneas |
 
 Total estimado: unas 700 líneas de Lean con varias iteraciones de compilación.
 
-**Estado (2026-11-07):** A, B, B2, C1, C2 y C3 (con semillas, A2 y reindexado) están escritas y commiteadas (0 sorry según el reporte de la sesión que las escribió; no recompilé aquí); D (`Z2Wilson`) sigue pendiente y `AxialLoop.lean` está en curso.
+**Estado (2026-11-07):** A, B, B2, C1, C2 y C3 (con semillas, A2 y reindexado) están escritas y commiteadas (0 sorry según el reporte de la sesión que las escribió; no recompilé aquí); D está hecha (`Z2Final.z2_gap`, df215fb). Falta descargar la hipótesis `hdeg` (`AdjDegree.lean`, Δ = 12) y escribir `z2_gap_twelve`. Es un modelo abeliano Z2, no la brecha de masa de Yang–Mills.
 
 **Nota sobre la tasa.** Cada x-enlace de `cinc` (`AreaBound.lean`) pertenece a ≤ 4 plaquetas (2 `xy`, con `j` o `j-1`, y 2 `xz`, con `k` o `k-1`; ninguna `yz`). En gauge axial el número de semillas es ≤ 8R independiente de k (`AxialSeeds.seeds_rectAx_card_le`, con `j₀ + k ≤ B`), así que la tasa sería σ·R = R·ln(t'/t) y no σ·R − 8·ln(1+a): el factor (1+a)^8 por paso de las secciones 5 y 6 correspondía al gauge no fijado. Falta el ensamblaje D para que esta tasa llegue a `z2_spectral_gap`.
 
