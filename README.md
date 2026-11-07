@@ -38,9 +38,6 @@ that model, and they say nothing about what space is. Elementary motion is `T_d 
 (`D3`, `D5`, `D21`, `D22` of the independent corpus); stating the area law and the gap in terms of
 `T_d : P_d` is not done yet (see `docs/PUENTE_TdPd_LEY_DEL_AREA.md`).
 
-**Not proved here:** a mass gap for non-abelian Yang–Mills, `SU(N)` (no Peter–Weyl in Mathlib), the
-bridge from the defect `massSq` to a spectral bound (`FibreBound`), Osterwalder–Schrader/Wightman.
-
 ---
 
 ## Core Formalized Modules
@@ -99,13 +96,13 @@ lattice-gauge-gap/
 
 12. **`SlabChain.lean`**: time slicing as linear algebra: `chainSum M u m = 1 ⬝ᵥ (P^m u)` and, for `u ≥ 0`, `chainSum M u m = √u ⬝ᵥ (T^m √u)` with `T = D^{1/2} M D^{1/2}` (`chainSum_eq`, `chainSum_eq_transfer`). Piece A of the `wilson_rep` plan; that the `Z₂` box has this form is not proved yet.
 
-13. **`SlabLimit.lean`**: the infinite-time limit (piece B of the `wilson_rep` plan): for PSD `T` with top eigenvalue `μ₀`, if `(T^N v) ⬝ Y (T^N v) ≤ D · v ⬝ T^{2N+k} v` for all `N`, then `∑_{i,l ∈ top} c_i c_l (e_i ⬝ Y e_l) ≤ D μ₀^k ∑_{j ∈ top} c_j²` (`top_limit`). Not proved: that `v` overlaps the top eigenspace (Perron–Frobenius), piece B2.
+13. **`SlabLimit.lean`**: the infinite-time limit (piece B of the `wilson_rep` plan): for PSD `T` with top eigenvalue `μ₀`, if `(T^N v) ⬝ Y (T^N v) ≤ D · v ⬝ T^{2N+k} v` for all `N`, then `∑_{i,l ∈ top} c_i c_l (e_i ⬝ Y e_l) ≤ D μ₀^k ∑_{j ∈ top} c_j²` (`top_limit`). Overlap handled in `PerronOverlap.lean` (piece B2).
 
 14. **`PerronOverlap.lean`**: piece B2: a symmetric matrix with nonnegative entries and a vector with positive entries have `∃ j, μ_j = μ₀ ∧ c_j(v) ≠ 0` (`top_overlap`): the positive vector overlaps the top eigenspace (the argument with `|e|`, no Perron–Frobenius needed). Not claimed: that the top eigenvalue is simple.
 
 15. **`AxialBox.lean`, `AxialArea.lean`**: the box in axial gauge (incidence `ainc` without the `y` links, rectangle `rectAx` with a time offset) and the area bound `area_bound_rectAx`: a surface with the boundary of `rectAx` (rows of `x` links at times `j₀` and `j₀ + k`) has at least `R · k` plaquettes (projection to the plane complex of each column, which has no cycles). Piece C2 of the `wilson_rep` plan.
 
-16. **`Z2Final.lean`** (with `Z2Wilson`, `Z2WilsonGap`, `Z2Spectral`, `AxialSlab`, `AxialSeeds`, `AxialLoop`, `AxialArea`, `SlabInsert`, `SlabFin`): the closing of the `wilson_rep` plan. `Z2Final.z2_gap`: for Wilson's `Z₂` model in the axial box, if `x = F w` (the loop row character applied to the projection `w` of the boundary vector on the top eigenspace of the transfer matrix) has a component on an eigenvector of positive eigenvalue `μ_j`, then `R · log (t' / tanh β) ≤ log (μ₀ / μ_j)`. Standard axioms only, 0 sorry. Hypotheses: the degree bound `Δ` of the adjacency (`hdeg`), `t' (1+a)^Δ ≤ a`, `tanh β < t'`, `R ≤ A`, and the overlap of `x` with `e_j` (not derived). This is an abelian toy model, NOT a mass gap for Yang–Mills.
+16. **`Z2Final.lean`** (with `Z2Wilson`, `Z2WilsonGap`, `Z2Spectral`, `AxialSlab`, `AxialSeeds`, `AxialLoop`, `AxialArea`, `SlabInsert`, `SlabFin`): the closing of the `wilson_rep` plan. `Z2Final.z2_gap`: for Wilson's `Z₂` model in the axial box, if `x = F w` (the loop row character applied to the projection `w` of the boundary vector on the top eigenspace of the transfer matrix) has a component on an eigenvector of positive eigenvalue `μ_j`, then `R · log (t' / tanh β) ≤ log (μ₀ / μ_j)`. Standard axioms only, 0 sorry. Explicit hypotheses: the degree bound `Δ` of the adjacency (`hdeg`), `t' (1+a)^Δ ≤ a`, `tanh β < t'`, `R ≤ A`, and observable overlap `hj`.
 
 17. **`AdjDegree.lean`, `Z2Final.z2_gap_twelve`**: the adjacency degree of the plaquettes of the box is at most `12` (`adj_degree_le_twelve`: at most 4 links per plaquette, at most 4 plaquettes per link), so `z2_gap_twelve` is `z2_gap` with `Δ = 12` and without the hypothesis `hdeg`. Remaining hypotheses: `t' (1+a)^12 ≤ a`, `tanh β < t'`, `R ≤ A`, and the overlap `hj` of `x` with an eigenvector of positive eigenvalue.
 
