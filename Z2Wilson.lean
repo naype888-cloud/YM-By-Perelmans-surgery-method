@@ -104,4 +104,19 @@ theorem numerator_le (β : ℝ) (hβ : 0 ≤ β) {Δ : ℕ}
   have hpos := partition_pos A C B β
   exact (div_le_iff₀ hpos).mp hW
 
+lemma Tm_apply (β : ℝ) (i j : LS A C → ZMod 2) :
+    Tm A C β i j = Real.sqrt (uW A C β i) * Z2Transfer.K β i j * Real.sqrt (uW A C β j) := by
+  simp [Tm, SlabChain.transferSym, Matrix.mul_diagonal, Matrix.diagonal_mul]
+
+lemma Tm_pos (β : ℝ) (i j : LS A C → ZMod 2) : 0 < Tm A C β i j := by
+  rw [Tm_apply]
+  have hK : 0 < Z2Transfer.K β i j := by
+    unfold Z2Transfer.K Z2Transfer.kern
+    exact Finset.prod_pos fun _ _ => Real.exp_pos _
+  exact mul_pos (mul_pos (Real.sqrt_pos.mpr (uW_pos A C β i)) hK)
+    (Real.sqrt_pos.mpr (uW_pos A C β j))
+
+lemma Tm_posSemidef {β : ℝ} (hβ : 0 ≤ β) : (Tm A C β).PosSemidef :=
+  Z2Transfer.transfer_posSemidef hβ (uW A C β)
+
 end Z2Wilson
