@@ -10,14 +10,14 @@
 
 1. **Lo probado formalmente en el corpus:**
    En [`HopfYangMills.lean`](file:///home/nava/lean-math/nrs3-hopf/NRS3Hopf/HopfYangMills.lean#L70-L87):
-   * `ham_gauge`: La conmutación de la ley de Gauss en los 4 ejes con transformaciones de norma locales está formalizada para **cualquier grupo compacto $G$** (incluyendo $SU(2)$ y $SU(3)$):
+   * `ham_gauge`: La conmutación de la ley de Gauss en los 4 ejes con transformaciones de norma locales está formalizada para **cualquier grupo finito $G$** (el archivo declara `[Group G] [Fintype G] [DecidableEq G]`; no se aplica a $SU(2)$ ni a $SU(3)$, que son continuos):
      ```lean
      theorem ham_gauge {n : ℕ} (ρ : G →* Matrix.unitaryGroup (Fin n) ℂ) (lE lB : ℝ)
          (g : Site Z → G) (ψ : State (Site Z) (Fin 4) G) :
          ham ρ (step Z) (planes Z) lE lB (gaugeState (step Z) g ψ)
            = gaugeState (step Z) g (ham ρ (step Z) (planes Z) lE lB ψ)
      ```
-   * `gap_ham`: Cota espectral a volumen finito bajo el hamiltoniano formal para cualquier grupo compacto $G$:
+   * `gap_ham`: Cota espectral a volumen finito bajo el hamiltoniano formal para cualquier grupo finito $G$ (mismas hipótesis `[Fintype G]`):
      ```lean
      theorem gap_ham {n : ℕ} (ρ : G →* Matrix.unitaryGroup (Fin n) ℂ) {lE lB : ℝ}
          (hE : 0 ≤ lE) (hB : 0 ≤ lB) (ψ : State (Site Z) (Fin 4) G) (h0 : ∑ U, ψ U = 0) :
@@ -29,6 +29,7 @@
    * La integración de Haar sobre grupos de Lie continuos compactos $SU(N)$, el teorema de Peter–Weyl y la ortogonalidad analítica de caracteres:
      $$\int_{SU(N)} dU_l \, \chi_j(U_l) \overline{\chi_k(U_l)} = \delta_{jk}$$
      no forman parte de la formalización actual en Mathlib ni de las pruebas compiladas en `lattice-gauge-gap`.
+   * **Pista, por probar:** para $SU(2)$ los coeficientes de caracteres del peso de Wilson serían positivos; eso daría pesos no negativos para una expansión tipo Kotecký–Preiss, pero no está escrito en Lean.
    * **Conclusión honesta:** Que la ley del área y el gap se extiendan de $\mathbb{Z}_2$ a $SU(N)$ mediante la medida de Haar completa en 4D es una **hipótesis física y matemática abierta**, respaldada conceptualmente por el andamiaje formal, pero no un teorema formalmente cerrado en el kernel.
 
 ---
