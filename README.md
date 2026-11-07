@@ -88,3 +88,5 @@ lattice-gauge-gap/
 13. **`SlabLimit.lean`**: the infinite-time limit (piece B of the `wilson_rep` plan): for PSD `T` with top eigenvalue `μ₀`, if `(T^N v) ⬝ Y (T^N v) ≤ D · v ⬝ T^{2N+k} v` for all `N`, then `∑_{i,l ∈ top} c_i c_l (e_i ⬝ Y e_l) ≤ D μ₀^k ∑_{j ∈ top} c_j²` (`top_limit`). Not proved: that `v` overlaps the top eigenspace (Perron–Frobenius), piece B2.
 
 14. **`PerronOverlap.lean`**: piece B2: a symmetric matrix with nonnegative entries and a vector with positive entries have `∃ j, μ_j = μ₀ ∧ c_j(v) ≠ 0` (`top_overlap`): the positive vector overlaps the top eigenspace (the argument with `|e|`, no Perron–Frobenius needed). Not claimed: that the top eigenvalue is simple.
+
+15. **`AxialBox.lean`, `AxialArea.lean`**: the box in axial gauge (incidence `ainc` without the `y` links, rectangle `rectAx` with a time offset) and the area bound `area_bound_rectAx`: a surface with the boundary of `rectAx` (rows of `x` links at times `j₀` and `j₀ + k`) has at least `R · k` plaquettes (projection to the plane complex of each column, which has no cycles). Piece C2 of the `wilson_rep` plan.
