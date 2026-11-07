@@ -150,3 +150,20 @@ Total estimado: unas 700 líneas de Lean con varias iteraciones de compilación.
 **Estado (2026-11-07):** A, B, B2, C1, C2 y C3 (con semillas, A2 y reindexado) están escritas y commiteadas (0 sorry según el reporte de la sesión que las escribió; no recompilé aquí); D (`Z2Wilson`) sigue pendiente y `AxialLoop.lean` está en curso.
 
 **Nota sobre la tasa.** Cada x-enlace de `cinc` (`AreaBound.lean`) pertenece a ≤ 4 plaquetas (2 `xy`, con `j` o `j-1`, y 2 `xz`, con `k` o `k-1`; ninguna `yz`). En gauge axial el número de semillas es ≤ 8R independiente de k (`AxialSeeds.seeds_rectAx_card_le`, con `j₀ + k ≤ B`), así que la tasa sería σ·R = R·ln(t'/t) y no σ·R − 8·ln(1+a): el factor (1+a)^8 por paso de las secciones 5 y 6 correspondía al gauge no fijado. Falta el ensamblaje D para que esta tasa llegue a `z2_spectral_gap`.
+
+## 8. Cierre del plan (Claude, 2026-11-07)
+
+Todas las piezas están probadas (0 sorry, axiomas estándar): A `SlabChain`, A2 `SlabInsert`, B
+`SlabLimit`, B2 `PerronOverlap`, C1 `AxialBox`, C2 `AxialArea`, C3 `AxialSlab`, semillas `AxialSeeds`,
+borde = lazo `AxialLoop`, reindexado `SlabFin`, y el ensamblaje D en `Z2Wilson`, `Z2WilsonGap`,
+`Z2Spectral` y `Z2Final`.
+
+`Z2Final.z2_gap`: para el modelo `Z₂` de Wilson en la caja axial, si `x = F w` tiene componente en un
+autovector de autovalor positivo `μ_j`, entonces `R · log (t'/tanh β) ≤ log (μ₀/μ_j)`. En gauge axial
+el número de semillas es `≤ 8R` independiente de `k`, así que la tasa es `σR` con `σ = log(t'/tanh β)`
+y no `σR − 8·ln(1+a)` como en las secciones 5 y 6.
+
+Lo que NO se probó: la cota `Δ` del grado de adyacencia (hipótesis `hdeg`); que `x` tenga solapamiento
+con algún `e_j` de autovalor positivo (hipótesis `hj`); y nada de esto es un gap de masa de Yang–Mills
+(modelo abeliano `Z₂`).
+
