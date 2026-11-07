@@ -84,3 +84,5 @@ lattice-gauge-gap/
 11. **`Z2Transfer.lean`, `Z2Gap.lean`**: the transfer matrix `T = D^{1/2} K D^{1/2}` of Wilson's `Z₂` model (time-like plaquette kernel `K`, any positive space-like weight `D`) is positive semidefinite (`transfer_posSemidef`); combined with `TransferBridge` this discharges `hPSD` (`z2_spectral_gap`). Still a hypothesis: the decay of `x ⬝ T^k x`, i.e. that the Euclidean Wilson loop of the box is `⟨x, T^k x⟩ / (μ₀^k ‖x‖²)` (gauge fixing of the time-like links).
 
 12. **`SlabChain.lean`**: time slicing as linear algebra: `chainSum M u m = 1 ⬝ᵥ (P^m u)` and, for `u ≥ 0`, `chainSum M u m = √u ⬝ᵥ (T^m √u)` with `T = D^{1/2} M D^{1/2}` (`chainSum_eq`, `chainSum_eq_transfer`). Piece A of the `wilson_rep` plan; that the `Z₂` box has this form is not proved yet.
+
+13. **`SlabLimit.lean`**: the infinite-time limit (piece B of the `wilson_rep` plan): for PSD `T` with top eigenvalue `μ₀`, if `(T^N v) ⬝ Y (T^N v) ≤ D · v ⬝ T^{2N+k} v` for all `N`, then `∑_{i,l ∈ top} c_i c_l (e_i ⬝ Y e_l) ≤ D μ₀^k ∑_{j ∈ top} c_j²` (`top_limit`). Not proved: that `v` overlaps the top eigenspace (Perron–Frobenius), piece B2.
