@@ -83,6 +83,7 @@ En lugar de tomar el límite plano directo $\mathbb{R}^4$, se realiza una **ciru
      $$\|(A[U] + M_w)\chi\|^2 \ge \frac{1}{4}\|\chi\|^2 \implies \Delta_{\text{ferm}} \ge \frac{1}{2a} > 0.$$
    - La tensión de cuerda $\sigma > 0$ en el sector de pegamento (glueball) acopla las correlaciones conexas según la matriz de transferencia de Claude ([`SpectralGap.lean`](file:///home/nava/lean-math/lattice-gauge-gap/SpectralGap.lean)):
      $$\langle \mathcal{O}(0) \mathcal{O}(t) \rangle_{\text{conn}} \le e^{-\Delta_{\text{glue}} t}, \quad \Delta_{\text{glue}} = \ln\left(\frac{\mu_0}{\lambda_1}\right) \ge \sigma a > 0.$$
-4. **Reconstrucción de Wightman:**
-   La cirugía preserva todos los axiomas de Osterwalder–Schrader (OS0–OS4) en $\mathbb{R}^3$, reconstruyendo unívocamente la teoría relativista en espacio de Minkowski con un espectro de masa que tiene una cota inferior no nula:
+4. **Programa de Reconstrucción de Wightman (Objetivo Analítico):**
+   La cirugía proporciona el marco para satisfacer los axiomas de Osterwalder–Schrader (OS0–OS4) en $\mathbb{R}^3$, con el objetivo de reconstruir la teoría relativista en espacio de Minkowski con un espectro de masa acotado:
    $$\text{spec}(H) \subset \{0\} \cup [\Delta, \infty), \quad \Delta > 0.$$
+   *Nota de alcance:* La reconstrucción OS $\to$ Wightman no está formalizada en Lean 4; permanece como programa analítico abierto. Lo verificado en código es el andamio de la red de Wilson, la cota de Kotecký–Preiss y la sutura algebraica de la fibra.

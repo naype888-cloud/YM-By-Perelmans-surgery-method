@@ -1,6 +1,7 @@
-# Reconstrucción Unívoca de la QFT Relativista en Espacio de Minkowski (Axiomas de Wightman)
+# Programa de Reconstrucción de la QFT Relativista en Espacio de Minkowski (Axiomas de Wightman)
 
-**Marco:** Teorema de Reconstrucción de Osterwalder–Schrader (1973, 1975) aplicado a la Teoría de Norma de Retículo con Geometría $\mathbb{R}^3 \times S^1$ / Retículo Cúbico.
+**Marco:** Programa analítico basado en el Teorema de Reconstrucción de Osterwalder–Schrader (1973, 1975).  
+**Delimitación de Alcance:** Este documento detalla la estructura analítica estándar para pasar del régimen euclidiano a Minkowski. La formalización en Lean 4 actualmente cubre el modelo de Wilson y Kotecký–Preiss en el andamio de red; la reconstrucción de Wightman en $\mathbb{R}^4$ continuo sin red permanece como programa abierto de la física matemática.
 
 ---
 
