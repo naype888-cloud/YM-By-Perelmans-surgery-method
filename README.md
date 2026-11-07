@@ -1,4 +1,4 @@
-# Yang–Mills: By Perelman's Surgery Method
+# Yang–Mills: By Grigory Perelman "Surgery Method"
 
 **Formalized in Lean 4 (Mathlib puro, 0 sorry, standard logical axioms `[propext, Classical.choice, Quot.sound]`).**
 
