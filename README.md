@@ -1,9 +1,6 @@
 # Yang–Mills: By Grigory Perelman "Surgery Method"
 
 **Formalized in Lean 4 (Mathlib puro, 0 sorry, standard logical axioms `[propext, Classical.choice, Quot.sound]`).**
-
-Authors: Eduardo Nava-Hernández (naype888-cloud) & Claude Sonnet 5.5 (Anthropic) & Antigravity (Google DeepMind).
-
 ---
 
 # 🏆 TEOREMAS PRINCIPALES / CORE THEOREMS (Lean 4)
