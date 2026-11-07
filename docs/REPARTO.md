@@ -28,7 +28,7 @@ Es un modelo **abeliano Z2** de Wilson en la caja axial. No es una brecha de mas
 Enunciado (según Huanhai, 0 sorry, axiomas `propext`, `Classical.choice`, `Quot.sound`): si `x = F·w` (carácter de fila del lazo aplicado a la proyección `w` del vector de frontera sobre el espacio del máximo de `T`) tiene componente en un autovector de autovalor positivo `μ_j`, entonces `R·log(t'/tanh β) ≤ log(μ₀/μ_j)`.
 
 Hipótesis que el teorema no descarga:
-1. `hdeg`: grado de adyacencia ≤ Δ para todas las cajas (se descarga con Δ = 12 en `AdjDegree.lean`, en curso).
+1. `hdeg`: descargada en `z2_gap_twelve` (Δ = 12, `AdjDegree.lean`). `z2_gap` la conserva como hipótesis.
 2. `hj`: que `x` tenga componente en algún autovector de autovalor positivo (no derivada).
 3. `t'` y `a` con `t'(1+a)^Δ ≤ a` y `tanh β < t'` (solo acoplamiento fuerte); además `R ≤ A`.
 

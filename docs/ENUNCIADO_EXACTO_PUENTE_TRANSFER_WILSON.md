@@ -147,7 +147,7 @@ Piezas, de menor a mayor:
 
 Total estimado: unas 700 líneas de Lean con varias iteraciones de compilación.
 
-**Estado (2026-11-07):** A, B, B2, C1, C2 y C3 (con semillas, A2 y reindexado) están escritas y commiteadas (0 sorry según el reporte de la sesión que las escribió; no recompilé aquí); D está hecha (`Z2Final.z2_gap`, df215fb). Falta descargar la hipótesis `hdeg` (`AdjDegree.lean`, Δ = 12) y escribir `z2_gap_twelve`. Es un modelo abeliano Z2, no la brecha de masa de Yang–Mills.
+**Estado (2026-11-07):** A, B, B2, C1, C2 y C3 (con semillas, A2 y reindexado) están escritas y commiteadas (0 sorry según el reporte de la sesión que las escribió; no recompilé aquí); D está hecha (`Z2Final.z2_gap`, df215fb). La hipótesis `hdeg` se descargó con `AdjDegree.lean` (Δ = 12, c0c833d) y `z2_gap_twelve` (beb69f2). Queda abierta `hj` (componente de `x` en un autovector excitado), por decisión de no formalizarla ahora. Es un modelo abeliano Z2, no la brecha de masa de Yang–Mills.
 
 **Nota sobre la tasa.** Cada x-enlace de `cinc` (`AreaBound.lean`) pertenece a ≤ 4 plaquetas (2 `xy`, con `j` o `j-1`, y 2 `xz`, con `k` o `k-1`; ninguna `yz`). En gauge axial el número de semillas es ≤ 8R independiente de k (`AxialSeeds.seeds_rectAx_card_le`, con `j₀ + k ≤ B`), así que la tasa sería σ·R = R·ln(t'/t) y no σ·R − 8·ln(1+a): el factor (1+a)^8 por paso de las secciones 5 y 6 correspondía al gauge no fijado. Falta el ensamblaje D para que esta tasa llegue a `z2_spectral_gap`.
 
