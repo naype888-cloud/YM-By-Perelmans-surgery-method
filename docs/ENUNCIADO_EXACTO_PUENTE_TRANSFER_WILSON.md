@@ -120,3 +120,30 @@ El enunciado de la sección 3 **no se puede probar tal como está**. Hay que cam
   Plan: gauge axial (enlaces en la dirección del tiempo = +1) por una biyección de configuraciones
   que preserva el peso y el lazo; luego rebanar la caja por tiempo. Hoy no está escrito.
 
+
+## 7. Plan de `wilson_rep` (Claude, 2026-11-07) — tamaño estimado
+
+Se revisó la geometría de `AreaBound.lean` (`cinc`, enlaces `x`, `y`, `z`, caja con frontera libre).
+Dos hechos cambian lo que hay que probar:
+
+1. **En volumen finito la representación no es exacta.** La caja tiene frontera libre en el tiempo, así
+   que `⟨W(R×k)⟩ = ⟨v, T^a X T^k X T^b v⟩ / ⟨v, T^{a+k+b} v⟩` con un vector de frontera `v`; la forma
+   `⟨x, T^k x⟩ / (μ₀^k ‖x‖²)` (con `Ω` el vacío) es el límite `a, b → ∞`. La cota del área es uniforme
+   en el volumen, así que el límite es legítimo, pero hay que probarlo.
+2. **El gauge axial se puede tomar como modelo, sin biyección de gauge.** Quitar las columnas de los
+   enlaces `y` de `cinc` da otra incidencia `ainc` (enlaces `x` y `z`); `area_law_uniform` es para
+   incidencia general y el grado de adyacencia solo baja. Hace falta una cota de área nueva para `ainc`.
+
+Piezas, de menor a mayor:
+
+| Pieza | Contenido | Tamaño estimado |
+|---|---|---|
+| A. Cadena | `Σ_{s : Fin (m+1) → ι} ∏ u(s_j) ∏ M(s_j, s_{j+1}) = ⟨√u, T^m √u⟩` con `T = D^{1/2} M D^{1/2}` (ya es `Z2Transfer.transfer`) | ~100 líneas |
+| B. Límite | Perron (vector positivo y `T` de entradas positivas ⇒ solapamiento con el máximo) y paso `a,b → ∞`: da `h_decay` con `x = Xw`, `μ₀ = μ_max` | ~200 líneas |
+| C1. `ainc` | incidencia axial, grado de adyacencia ≤ 12 | ~80 líneas |
+| C2. Área axial | `|S| ≥ R·k` para superficies con frontera `x`-líneas en `j = 0` y `j = k` (cada plaqueta `xy` mueve un enlace `x` un paso en `j`) | ~150 líneas |
+| C3. Rebanado | `weight(ainc) = ∏_j u(σ_j) · ∏_j K(σ_j, σ_{j+1})` y reindexar `Σ_σ` por `Fin (B+1) → L_s` | ~150 líneas |
+| D. Ensamblaje | `h_decay` ⇒ `Z2Gap.z2_spectral_gap` | ~50 líneas |
+
+Total estimado: unas 700 líneas de Lean con varias iteraciones de compilación. Es trabajo de varias
+sesiones; ninguna pieza está escrita todavía salvo lo de las secciones 5 y 6.
