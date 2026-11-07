@@ -1,4 +1,5 @@
-# Yang–Mills: By Grigory Perelman "Surgery Method"
+Naype888-cloud: presentando:  # Yang–Mills: By Eduardo Nava Hdz-0 
+feat: Grigory Perelman "Surgery Method-Spectral Gap"
 
 **Formalized in Lean 4 (Mathlib puro, 0 sorry, standard logical axioms `[propext, Classical.choice, Quot.sound]`).**
 ---
