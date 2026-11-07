@@ -63,3 +63,5 @@ lattice-gauge-gap/
 ├── build/                       # Compiled .olean bytecode for Lean 4 v4.34.0
 └── docs/                        # Theoretical foundations & Kotecký–Preiss formal statement
 ```
+
+9. **`KoteckyPreiss.lean`**: Kotecký–Preiss for non-negative weights, proved (`ratio_le_exp_of_kp`: Z(Λ) ≤ Z(Λ_γ₀)·e^{a γ₀}, uniform in the volume; `exp_neg_le_ratio`; `log_polymerZ_le`). Standard axioms only, 0 sorry. Not covered: complex weights, extraction of the decay `d`.

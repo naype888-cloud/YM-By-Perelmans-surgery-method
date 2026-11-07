@@ -81,17 +81,19 @@ def SatisfiesKoteckyPreiss (compat : Γ → Γ → Prop) [DecidableRel compat] (
   ∀ γ : Γ, (∑ γ' ∈ (Finset.univ.filter fun x => ¬ compat γ x),
     w γ' * Real.exp (a γ' + d γ')) ≤ a γ
 
-/-- **The Uniform Ratio Bound (Kotecký–Preiss Theorem statement)**:
-If the Kotecký–Preiss condition holds, the ratio of partition functions with a polymer
-`γ₀` removed is exponentially bounded by `exp(-d(γ₀))`, independently of the volume `Λ`. -/
-def PolymerRatioBound (compat : Γ → Γ → Prop) [DecidableRel compat] (w d : Γ → ℝ) : Prop :=
+/-- **The Uniform Ratio Bound** (correct form): the cost of removing the polymers incompatible
+with `γ₀` from a volume `Λ` is at most `exp (a γ₀)`, independently of `Λ`:
+`exp (-a γ₀) ≤ Z(Λ_{γ₀}) / Z(Λ)`.  (The upper bound `≤ exp (-d γ₀)` is false in general,
+e.g. `Λ = {γ₀}` forces `d γ₀ ≤ log (1 + w γ₀)`.)
+Proved from `SatisfiesKoteckyPreiss`, for non-negative weights, in
+`KoteckyPreiss.lean` (`PolymerModel.exp_neg_le_ratio`). -/
+def PolymerRatioBound (compat : Γ → Γ → Prop) [DecidableRel compat] (w a : Γ → ℝ) : Prop :=
   ∀ (Λ : Finset Γ) (γ₀ : Γ),
-    polymerZ compat w (Λ.filter fun γ => compat γ₀ γ) / polymerZ compat w Λ ≤
-      Real.exp (- d γ₀)
+    Real.exp (- a γ₀) ≤
+      polymerZ compat w (Λ.filter fun γ => compat γ₀ γ) / polymerZ compat w Λ
 
-/-- In gauge theory, if the high-temperature expansion admits a polymer representation
-satisfying Kotecký–Preiss with `d(S) = σ * S.card`, the Wilson loop satisfies the area law
-uniformly in volume. -/
+/-- Positivity of `exp (-σ A)` only.  This is NOT the area law: the area law (a decaying
+bound on Wilson loops) is in `AreaLawBound.lean` / `CubeAreaLaw.lean`. -/
 theorem uniform_area_law_pos (σ : ℝ) (A : ℕ) :
     0 < Real.exp (- σ * (A : ℝ)) :=
   Real.exp_pos _
