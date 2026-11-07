@@ -80,3 +80,5 @@ lattice-gauge-gap/
 9. **`KoteckyPreiss.lean`**: Kotecký–Preiss for non-negative weights, proved (`ratio_le_exp_of_kp`: Z(Λ) ≤ Z(Λ_γ₀)·e^{a γ₀}, uniform in the volume; `exp_neg_le_ratio`; `log_polymerZ_le`). Standard axioms only, 0 sorry. Not covered: complex weights, extraction of the decay `d`.
 
 10. **`PolymerDecomposition.lean`**: `highTempSum inc t 0 = polymerZ (Compat inc) (polyWeight inc t) univ` (closed surface = unique family of connected closed components sharing no link), plus `z2_ratio_le_exp` and `z2_log_le`: Kotecký–Preiss now applies to the Z2 partition function for `t ≥ 0`. Standard axioms, 0 sorry.
+
+11. **`Z2Transfer.lean`, `Z2Gap.lean`**: the transfer matrix `T = D^{1/2} K D^{1/2}` of Wilson's `Z₂` model (time-like plaquette kernel `K`, any positive space-like weight `D`) is positive semidefinite (`transfer_posSemidef`); combined with `TransferBridge` this discharges `hPSD` (`z2_spectral_gap`). Still a hypothesis: the decay of `x ⬝ T^k x`, i.e. that the Euclidean Wilson loop of the box is `⟨x, T^k x⟩ / (μ₀^k ‖x‖²)` (gauge fixing of the time-like links).

@@ -109,3 +109,14 @@ El enunciado de la sección 3 **no se puede probar tal como está**. Hay que cam
 5. **Alcance.** Lo que se obtendría es la brecha del sector con traslape con `ψ_R`, no spec(H) completo.
    La hipótesis `wilson_rep` (el lazo como `⟨ψ_R, Tᵏψ_R⟩ / (μ₀ᵏ‖ψ_R‖²)`) y `hpsi_ortho` son lo que
    falta probar para el modelo de Wilson; hoy son supuestos de la estructura.
+
+## 6. Estado después de `Z2Transfer.lean` y `Z2Gap.lean` (Claude, 2026-11-07)
+
+- **Probado:** (i) `T = D^{1/2} K D^{1/2}` es semidefinida positiva para `β ≥ 0` y todo peso
+  espacial `w` (`Z2Transfer.transfer_posSemidef`, vía `K = Σ_S c_S χ_S χ_S`, `c_S = sinh^{|S|}cosh^{|L|-|S|} ≥ 0`).
+  `Z2Gap.z2_spectral_gap` cierra `hPSD` para el modelo.
+- **Falta (ii):** `wilson_rep`. Hay que probar que la esperanza euclidiana del lazo `R×k` en la caja,
+  `highTempSum inc t (∂S₀) / highTempSum inc t 0`, es `⟨x, T^k x⟩ / (μ₀^k ‖x‖²)` con este `T`.
+  Plan: gauge axial (enlaces en la dirección del tiempo = +1) por una biyección de configuraciones
+  que preserva el peso y el lazo; luego rebanar la caja por tiempo. Hoy no está escrito.
+
