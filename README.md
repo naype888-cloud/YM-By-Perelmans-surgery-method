@@ -82,3 +82,5 @@ lattice-gauge-gap/
 10. **`PolymerDecomposition.lean`**: `highTempSum inc t 0 = polymerZ (Compat inc) (polyWeight inc t) univ` (closed surface = unique family of connected closed components sharing no link), plus `z2_ratio_le_exp` and `z2_log_le`: Kotecký–Preiss now applies to the Z2 partition function for `t ≥ 0`. Standard axioms, 0 sorry.
 
 11. **`Z2Transfer.lean`, `Z2Gap.lean`**: the transfer matrix `T = D^{1/2} K D^{1/2}` of Wilson's `Z₂` model (time-like plaquette kernel `K`, any positive space-like weight `D`) is positive semidefinite (`transfer_posSemidef`); combined with `TransferBridge` this discharges `hPSD` (`z2_spectral_gap`). Still a hypothesis: the decay of `x ⬝ T^k x`, i.e. that the Euclidean Wilson loop of the box is `⟨x, T^k x⟩ / (μ₀^k ‖x‖²)` (gauge fixing of the time-like links).
+
+12. **`SlabChain.lean`**: time slicing as linear algebra: `chainSum M u m = 1 ⬝ᵥ (P^m u)` and, for `u ≥ 0`, `chainSum M u m = √u ⬝ᵥ (T^m √u)` with `T = D^{1/2} M D^{1/2}` (`chainSum_eq`, `chainSum_eq_transfer`). Piece A of the `wilson_rep` plan; that the `Z₂` box has this form is not proved yet.
