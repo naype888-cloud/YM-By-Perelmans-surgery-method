@@ -13,8 +13,8 @@ Participan dos Claude ("Estado de Huanhai" y "Cambios de Antigravity y pipeline"
 | Conteo de semillas ≤ 8R | `AxialSeeds.lean` (`seeds_rectAx_card_le`, con `hjk : j₀ + k ≤ B`) | Cambios de Antigravity y pipeline | hecha (56c6646) |
 | A2 cadena con dos inserciones | `SlabInsert.lean` (`chain_two_insertions`) | Cambios de Antigravity y pipeline | hecha (6d06807) |
 | Reindexado a `Fin n` | `SlabFin.lean` | Cambios de Antigravity y pipeline | hecha (0e75ac7) |
-| Frontera del rectángulo axial = lazo | `AxialLoop.lean` (`boundary ainc (rectAx …) = cLoop …`) | Cambios de Antigravity y pipeline | en curso, sin commit |
-| D ensamblaje | `Z2Wilson.lean` | Estado de Huanhai | en curso, sin commit |
+| Frontera del rectángulo axial = lazo | `AxialLoop.lean` (`boundary ainc (rectAx …) = cLoop …`) | Cambios de Antigravity y pipeline | hecha (fe3c0ae) |
+| D ensamblaje | `Z2Wilson.lean` | Estado de Huanhai | partes 1 y 2 hechas (6f39cdb, c0d4651); `Z2Final.lean` y `Z2Spectral.lean` en curso, sin commit |
 | Docs | `docs/*.md` | sesión de docs | al día |
 
 Notas:
