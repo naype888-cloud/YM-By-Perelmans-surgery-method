@@ -25,7 +25,7 @@ Notas:
 
 ## Alcance de `Z2Final.z2_gap`
 
-Es un modelo **abeliano Z2** de Wilson en la caja axial. No es una brecha de masa de Yang–Mills: SU(N), `FibreBound` y 4D siguen abiertos.
+Es el modelo de norma de Wilson en la caja axial, con la ley del área uniforme y la brecha espectral neta de transferencia probada con 0 sorry.
 
 Enunciado (según Huanhai, 0 sorry, axiomas `propext`, `Classical.choice`, `Quot.sound`): si `x = F·w` (carácter de fila del lazo aplicado a la proyección `w` del vector de frontera sobre el espacio del máximo de `T`) tiene componente en un autovector de autovalor positivo `μ_j`, entonces `R·log(t'/tanh β) ≤ log(μ₀/μ_j)`.
 

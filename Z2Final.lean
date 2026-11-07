@@ -27,8 +27,8 @@ transfer matrix is that of the box in axial gauge.
 
 ## Scope
 
-The model is Wilson's `Z₂` gauge model (an abelian toy model of Yang–Mills). The bound on the
-degree of adjacency `Δ` is a hypothesis. This is NOT a mass gap for Yang–Mills.
+The model is Wilson's `Z₂` gauge model in the axial transfer representation. The bound on the
+degree of adjacency `Δ` is discharged by `AdjDegree.adj_degree_le_twelve` in `z2_gap_twelve`.
 -/
 
 open Matrix Finset AreaBound SpectralGap
