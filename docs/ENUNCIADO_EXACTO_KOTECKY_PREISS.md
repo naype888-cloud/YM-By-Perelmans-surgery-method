@@ -68,7 +68,7 @@ Para aterrizar el teorema abstracto de Kotecký–Preiss a la red gauge de Wilso
 5. **Cotas de Adyacencia y Semillas (Revisadas y Aprobadas en Doc):**  
    * **Grado de adyacencia:** Cada plaqueta comparte enlaces con a lo más $\Delta = 12$ vecinas (4 enlaces $\times$ 3 plaquetas ajenas).
    * **Semillas del lazo $R \times T$:** El lazo plano tiene perímetro $2(R + T)$; cada enlace toca a lo más 4 plaquetas en la red:
-     $$\#\text{Seeds} \le 8(R + T).$$
+     $$|\text{Seeds}| \le 8(R + T).$$
 6. **Verificación de la Condición KP en la Red:**  
    Eligiendo $a(\gamma) = c_1 |\gamma|$ y $d(\gamma) = c_2 |\gamma|$, la suma $\sum_{\gamma' \sim \gamma} t^{|\gamma'|} e^{(c_1 + c_2)|\gamma'|}$ converge y satisface la condición KP para todo $\tanh \beta \le t_c$ suficientemente pequeño (acoplamiento fuerte), lo que garantiza el desacoplamiento de las burbujas de vacío con factor $\le e^{-c_2 |\text{Seeds}|}$.
 

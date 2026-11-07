@@ -57,7 +57,7 @@ that model, and they say nothing about what space is. Elementary motion is `T_d 
    - Minimal area bound for any surface spanning the flat Wilson loop in the 3D cubic box: $|S| \ge R \times T$ (`area_bound_rect`).
 5. **`AreaLawBound.lean`**:
    - Uniform-in-volume area law under general local incidence hypotheses (`area_law_uniform`):
-     $$\langle W(\partial S_0) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^m (1 + a)^{\#\text{seeds}}$$
+     $$\langle W(\partial S_0) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^m (1 + a)^{|\text{seeds}|}$$
 6. **`CubeAreaLaw.lean`**:
    - The concrete area law for the 3D cubic lattice box, connecting `area_bound_rect` with `area_law_uniform`:
      `Z2Gauge.cube_wilson_area_law`.
