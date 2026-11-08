@@ -14,7 +14,7 @@
 ## 🏆 Ecuaciones y Teoremas Maestros / Master Theorems
 
 ### 1. Ley del Área Uniforme en el Volumen (Wilson Loop Area Law)
-Para cualquier contorno rectangular cerrado $C = R \times T$ en el retículo cúbico 3D con grado de adyacencia $\Delta = 12$ y semillas $\#\mathrm{Seeds} \le 8(R + T)$, el valor esperado del lazo de Wilson satisface:
+Para cualquier contorno rectangular cerrado $C = R \times T$ en el retículo cúbico 3D con grado de adyacencia $\Delta = 12$ y semillas $|\mathrm{Seeds}| \le 8(R + T)$, el valor esperado del lazo de Wilson satisface:
 
 $$\mathbf{\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}}$$
 
@@ -97,7 +97,7 @@ $$\mathbf{\inf \big( \mathrm{spec}(\hat{H}) \setminus \{0\} \big) \ge \Delta_{\m
 | Módulo Fuente | Teorema Principal en Lean 4 | Significado Físico / Matemático | Estado |
 | :--- | :--- | :--- | :---: |
 | [`AdjDegree.lean`](AdjDegree.lean) | `adj_degree_le_twelve` | Grado de adyacencia universal de plaquetas en red cúbica $\Delta \le 12$ | 0 `sorry` |
-| [`AxialSeeds.lean`](AxialSeeds.lean) | `seeds_rectAx_card_le` | Cota de semillas perimetrales $\#\mathrm{Seeds} \le 8(R + T)$ en gauge axial | 0 `sorry` |
+| [`AxialSeeds.lean`](AxialSeeds.lean) | `seeds_rectAx_card_le` | Cota de semillas perimetrales $|\mathrm{Seeds}| \le 8(R + T)$ en gauge axial | 0 `sorry` |
 | [`AreaBound.lean`](AreaBound.lean) | `area_bound_rect` | Área mínima $|S| \ge R \times T$ para superficies que apoyan en el lazo plano | 0 `sorry` |
 | [`AreaLawBound.lean`](AreaLawBound.lean) | `area_law_uniform` | Ley del área de Wilson uniforme e independiente del volumen del retículo | 0 `sorry` |
 | [`CubeAreaLaw.lean`](CubeAreaLaw.lean) | `cube_wilson_area_law` | Cota analítica completa del lazo de Wilson en la red cúbica 3D | 0 `sorry` |
