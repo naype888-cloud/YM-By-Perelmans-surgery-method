@@ -1,4 +1,5 @@
-Naype888-cloud: presentando:  # Yang–Mills: By Eduardo Nava Hdz-0 
+# Yang–Mills: 
+By Eduardo Nava Hdz-0 Jose Arturo Nava Hernández. 
 feat: Grigory Perelman "Surgery Method-Spectral Gap"
 
 **Formalized in Lean 4 (Mathlib puro, 0 sorry, standard logical axioms `[propext, Classical.choice, Quot.sound]`).**
