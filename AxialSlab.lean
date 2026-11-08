@@ -21,11 +21,6 @@ kernel `Z2Transfer.kern` between consecutive slices, so the partition function i
 - `AreaBound.partition_slice` : `partition ainc β = chainSum (K β) (uW β) B`.
 - `AreaBound.spin_loop_slice` : the Wilson loop of two rows of `x` links is a product of two
   characters of slices.
-
-## Scope
-
-The slicing of the model of Wilson in axial gauge, as a computation. Nothing is said here on the
-transfer matrix spectrum.
 -/
 
 open Finset

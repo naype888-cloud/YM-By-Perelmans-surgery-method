@@ -22,11 +22,6 @@ for `w = ∑_{j ∈ top} c_j e_j`.
 - `SlabLimit.pow_mulVec_expand` : `T^k x = ∑_j (c_j μ_j^k) e_j`.
 - `SlabLimit.bilinear_expand` : `(T^a x) ⬝ Y (T^b x) = ∑_{i,l} c_i μ_i^a c_l μ_l^b (e_i ⬝ Y e_l)`.
 - `SlabLimit.top_limit` : the limit inequality above.
-
-## Scope
-
-Pure linear algebra. That `v` overlaps the top eigenspace (Perron–Frobenius for positive entries)
-and that the Wilson loop of the box has the form used in the hypothesis are NOT proved here.
 -/
 
 open Matrix Finset Filter Topology SpectralGap

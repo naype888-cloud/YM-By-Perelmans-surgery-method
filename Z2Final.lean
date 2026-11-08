@@ -24,11 +24,6 @@ transfer matrix is that of the box in axial gauge.
 ## Main results
 
 - `Z2Final.z2_gap` : the inequality above.
-
-## Scope
-
-The model is Wilson's `Z₂` gauge model in the axial transfer representation. The bound on the
-degree of adjacency `Δ` is discharged by `AdjDegree.adj_degree_le_twelve` in `z2_gap_twelve`.
 -/
 
 open Matrix Finset AreaBound SpectralGap

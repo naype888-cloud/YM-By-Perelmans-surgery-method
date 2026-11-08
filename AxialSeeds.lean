@@ -18,10 +18,6 @@ plaquettes (two `xy`, two `xz`). Hence the number of seeds of the boundary is at
 - `AreaBound.boundary_rectAx_ne_zero` : a link of non-zero boundary is an `x` link of the row `j₀`
   or `j₀ + k`, at height `k₀`, in a column `i < R`.
 - `AreaBound.seeds_rectAx_card_le` : the number of seeds is at most `8 * R`.
-
-## Scope
-
-Counting for the model of Wilson in axial gauge. The bound does not depend on `k` and `j₀`.
 -/
 
 open Finset

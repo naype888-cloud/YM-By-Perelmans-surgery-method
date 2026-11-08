@@ -78,7 +78,7 @@ $$\huge \displaystyle \mathbf{\mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{
 
 $$\huge \displaystyle \mathbf{\lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi^2}{3} - 3 > 0}$$
 
-*Formalizado en:* [`D8_Szego.lean`](D8_Szego.lean), [`D9_Monotonicity.lean`](D9_Monotonicity.lean), [`YMdemoNuevaClaude_limite.lean`](SurgeryGapClosure.lean).
+*Formalizado en:* [`D8_Szego.lean`](D8_Szego.lean), [`D9_Monotonicity.lean`](D9_Monotonicity.lean), [`FibreSurgery.lean`](FibreSurgery.lean).
 
 ---
 

@@ -19,10 +19,6 @@ which has no cycles.
 - `AreaBound.ax_proj` : the projection property of `ainc`.
 - `AreaBound.ax_no_cycles` : the plane complex of a column has no cycles.
 - `AreaBound.area_bound_rectAx` : `R * k ≤ |S|` for every `S` with the boundary of `rectAx`.
-
-## Scope
-
-The area bound for the incidence in axial gauge; it does not use the time slicing.
 -/
 
 open Finset

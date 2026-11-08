@@ -19,11 +19,6 @@ strong-coupling Wilson case).
   uniformly in the volume `Λ`.
 * `exp_neg_le_ratio`: `exp (-a γ₀) ≤ Z(Λ_γ₀) / Z(Λ) ≤ 1`.
 * `log_polymerZ_le`: `0 ≤ log Z(Λ) ≤ ∑_{γ ∈ Λ} w γ`.
-
-## Scope (what is NOT here)
-
-Only non-negative weights (no complex-weight cluster expansion).  The decay `d` (area law)
-is not extracted here.
 -/
 
 open Finset

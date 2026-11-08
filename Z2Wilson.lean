@@ -23,10 +23,6 @@ area law (`Z2Gauge.area_law_uniform`, with the area bound `AreaBound.area_bound_
 ## Main results
 
 - `Z2Wilson.numerator_matrix` : the numerator is `v ⬝ (T^N F T^k F T^N) v`, `F = diag (rowChar)`.
-
-## Scope
-
-The boundary of `rectAx` is identified with the two-row loop `cLoop` by a hypothesis `hloop`.
 -/
 
 open Matrix Finset AreaBound

@@ -18,10 +18,6 @@ component outside the top eigenspace. Then `0 < v ⬝ a = ∑_j c_j(v) c_j(a)` f
 ## Main results
 
 - `PerronOverlap.top_overlap` : `∃ j, μ_j = μ₀ ∧ c_j(v) ≠ 0`.
-
-## Scope
-
-Overlap only; it does not say the top eigenvalue is simple.
 -/
 
 open Matrix Finset SpectralGap

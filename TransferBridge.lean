@@ -21,11 +21,6 @@ This file proves the transfer matrix spectral bound derived from the Wilson loop
   `- log α`.
 - `transfer_spectral_gap_wilson`: for the area law bound with perimeter factor
   `α = (t/t')^R · (1+a)^8`, the gap is at least `R · log(t'/t) - 8 · log(1+a)`.
-
-**Scope.** These are statements about a PSD Hermitian matrix `T` and a vector `x`, with the decay
-`h_decay` of `x ⬝ T^k x` as a *hypothesis*. That the transfer matrix of Wilson's model is PSD and
-that its Wilson loop has the form `⟨x, T^k x⟩ / (μ_0^k ‖x‖²)` with the proved area-law bound is
-NOT proved here (see `docs/ENUNCIADO_EXACTO_PUENTE_TRANSFER_WILSON.md`, section 5).
 -/
 
 open Matrix Finset SpectralGap SurgeryGapClosure

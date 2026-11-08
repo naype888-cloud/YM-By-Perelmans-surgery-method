@@ -18,11 +18,6 @@ configurations `σ : L → ℤ/2` of the spatial links is `T = D^{1/2} K D^{1/2}
 - `Z2Transfer.quad_K` : `x ⬝ K x = ∑_S c_S (∑_σ χ_S(σ) x_σ)²`, `c_S = sinh^{|S|} cosh^{|L|-|S|}`.
 - `Z2Transfer.K_posSemidef` : `K` is positive semidefinite for `β ≥ 0`.
 - `Z2Transfer.transfer_posSemidef` : `T = D^{1/2} K D^{1/2}` is positive semidefinite.
-
-## Scope
-
-This proves positivity only. That the Euclidean Wilson loop equals `⟨x, T^k x⟩ / (μ₀^k ‖x‖²)`
-in this transfer matrix (gauge fixing of the time-like links) is NOT proved here.
 -/
 
 open Finset Matrix

@@ -18,11 +18,6 @@ rectangle of `R` columns and `k` time steps starting at time `j₀`, at height `
 - `AreaBound.ALink`, `AreaBound.aemb`, `AreaBound.ainc`, `AreaBound.rectAx` : the definitions.
 - `AreaBound.adj_ainc` : adjacency for `ainc` implies adjacency for `cinc` (so the degree bound
   `Δ` for the box also bounds the degree for `ainc`).
-
-## Scope
-
-Definitions and one trivial lemma. The area bound for `ainc` and the factorization of the weight
-in time slices are NOT proved here.
 -/
 
 open Finset

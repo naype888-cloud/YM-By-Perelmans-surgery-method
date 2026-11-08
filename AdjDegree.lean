@@ -16,11 +16,6 @@ a plaquette is adjacent to the other plaquettes of its links, so to at most `4 Â
 - `AreaBound.card_links_le` : a plaquette lies on at most `4` links.
 - `AreaBound.card_plaqs_le` : a link lies on at most `4` plaquettes.
 - `AreaBound.adj_degree_le_twelve` : at most `12` plaquettes are adjacent to a given one.
-
-## Scope
-
-Counting for the incidence `cinc` of the box. The degree bound is used for the uniform area law
-at strong coupling.
 -/
 
 open Finset

@@ -18,11 +18,6 @@ discharged, so the only hypothesis left is the decay of `x ⬝ T^k x`.
   `Z2Transfer` indexed by `Fin n`, if `x ⬝ T^k x ≤ C ((t/t')^R (1+a)^8)^k μ₀^k ‖x‖²` and `x` has
   overlap with an eigenvector of positive eigenvalue `μ_j`, then
   `R log (t'/t) - 8 log (1+a) ≤ log (μ₀ / μ_j)`.
-
-## Scope
-
-The decay of `x ⬝ T^k x` is a hypothesis. That the Euclidean Wilson loop of the box equals
-`⟨x, T^k x⟩ / (μ₀^k ‖x‖²)` (gauge fixing of the time-like links) is NOT proved here.
 -/
 
 open Matrix

@@ -11,10 +11,6 @@ import AreaLawBound
 
 This file glues the minimal area bound from `AreaBound.lean`
 with the uniform-in-volume decay from `AreaLawBound.lean`.
-
-**Scope.** The box, links and plaquettes are the computational scaffold of Wilson's `Z₂` model (like a
-choice of coordinates). The theorem is a true statement about that model; it is not a description of
-space. See `docs/PUENTE_TdPd_LEY_DEL_AREA.md`.
 -/
 
 namespace Z2Gauge

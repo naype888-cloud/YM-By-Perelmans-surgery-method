@@ -16,10 +16,6 @@ positive semidefinite and entrywise nonnegativity.
 - `SlabFin.reindex_pow` : `(T.submatrix e.symm e.symm)^m = (T^m).submatrix e.symm e.symm`.
 - `SlabFin.dotProduct_reindex` : `v ∘ e.symm ⬝ᵥ (Y' *ᵥ (w ∘ e.symm)) = v ⬝ᵥ (Y *ᵥ w)`.
 - `SlabFin.reindex_isHermitian`, `SlabFin.reindex_posSemidef`, `SlabFin.reindex_nonneg`.
-
-## Scope
-
-Pure linear algebra, to apply results stated for matrices indexed by `Fin n`.
 -/
 
 open Matrix

@@ -15,10 +15,6 @@ columns `i < R`. For `k = 0` both sides vanish.
 ## Main results
 
 - `AreaBound.boundary_rectAx_eq_cLoop` : the identity of the two functions on the axial links.
-
-## Scope
-
-A computation mod 2 for the model of Wilson in axial gauge.
 -/
 
 open Finset

@@ -16,10 +16,6 @@ A chain of `m + 1` slices with a weight `f` on the slice `a` and a weight `g` on
 - `SlabInsert.insert_one` : one insertion, in terms of `P = diag u * M`.
 - `SlabInsert.insert_two` : two insertions, in terms of `P`.
 - `SlabInsert.chain_two_insertions` : two insertions, in terms of the symmetric `T`.
-
-## Scope
-
-Pure linear algebra, same method as `SlabChain` (peeling the first slice).
 -/
 
 open Finset Matrix

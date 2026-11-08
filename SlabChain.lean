@@ -15,11 +15,6 @@ partition function `√u ⬝ T^m √u` with `T = D^{1/2} M D^{1/2}`, `D = diag u
 
 - `SlabChain.headSum_eq` : `headSum M u m f = f ⬝ᵥ (P^m *ᵥ u)`, with `P = diag u * M`.
 - `SlabChain.chainSum_eq` : `chainSum M u m = 1 ⬝ᵥ (P^m *ᵥ u)`.
-
-## Scope
-
-Pure linear algebra. That the box of the `Z₂` model, in axial gauge, has this form (`u` the weight
-of the space-like plaquettes, `M = K_β`) is NOT proved here.
 -/
 
 open Finset Matrix
