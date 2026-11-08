@@ -54,7 +54,7 @@ $$\huge \displaystyle \mathbf{\Delta_{\mathrm{glue}} = E_1 - E_0 = -\frac{1}{a} 
 
 $$\huge \displaystyle \mathbf{\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{massSq}(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1}$$
 
-$$\huge \displaystyle \mathbf{\{A[U], M_w\} = 0 \implies \|(A[U] + M_w)\chi\|^2 \ge \left(\frac{1}{2a}\right)^2 \|\chi\|^2 \implies \sqrt{\mathrm{piso}} \ge \frac{1}{2a} > 0}$$
+$$\huge \displaystyle \mathbf{\lbrace A[U], \, M_w \rbrace = 0 \implies \|(A[U] + M_w)\chi\|^2 \ge \left(\frac{1}{2a}\right)^2 \|\chi\|^2 \implies \sqrt{\mathrm{piso}} \ge \frac{1}{2a} > 0}$$
 
 *Formalizado en:* [`FibreSurgery.lean`](FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](FibreBand.lean) (`surplus_ge`), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).
 
@@ -63,9 +63,9 @@ $$\huge \displaystyle \mathbf{\{A[U], M_w\} = 0 \implies \|(A[U] + M_w)\chi\|^2 
 ### 🔬 Paso 4: Operador de Dirac–Kähler / Hodge–de Rham para Bosones
 > Álgebra de Clifford sobre el álgebra exterior de formas diferenciales $\Omega^*(\mathcal{M})$ (gluones):
 
-$$\huge \displaystyle \mathbf{\mathcal{D}_A = d_A + d_A^*, \qquad \mathcal{D}_A^2 = \Delta_{\mathrm{Hodge}} = d_A d_A^* + d_A^* d_A}$$
+$$\huge \displaystyle \mathbf{\mathcal{D}_A = d_A + \delta_A, \qquad (\mathcal{D}_A)^2 = \Delta_{\mathrm{Hodge}} = d_A \delta_A + \delta_A d_A}$$
 
-$$\huge \displaystyle \mathbf{\{\mathcal{D}_{\mathbb{R}^3}, \mathcal{D}_{S^1}\} = 0 \implies \langle \omega, \Delta_{\mathrm{Hodge}} \omega \rangle \ge \left(\frac{2}{\pi} \frac{\mathrm{holGap}(\theta)}{L}\right)^2 \|\omega\|^2 > 0}$$
+$$\huge \displaystyle \mathbf{\lbrace \mathcal{D}_{\mathbb{R}^3}, \, \mathcal{D}_{S^1} \rbrace = 0 \implies \langle \omega, \Delta_{\mathrm{Hodge}} \omega \rangle \ge \left(\frac{2}{\pi} \frac{\mathrm{holGap}(\theta)}{L}\right)^2 \|\omega\|^2 > 0}$$
 
 *Formalizado en:* [`DiracGapGaugeInvariant.lean`](DiracGapGaugeInvariant.lean), [`PureYangMillsMassGap`](SurgeryGapClosure.lean).
 
