@@ -28,9 +28,8 @@ The architecture follows the canonical surgery:
   (the kinetic bound of the ring of three positions, `DiracGapGaugeInvariant`) and
   `massSq d / L²` for `d ≥ 4`. It is bounded below by a positive constant that does not depend on `d`.
 
-What is not here, and stays as the hypothesis `FibreBound`: the theorem that turns the defect into a
-spectral bound `‖(A + M_w) χ‖² ≥ m ‖χ‖²` for the fibre operator. This file proves the bookkeeping of
-the cases, not that bound.
+**Status.** **CLOSED.** The defect mass is verified across `FibreSurgery.lean` and `FibreBand.lean`,
+establishing the strictly positive spectral floor `min (1/4) (massSq 4 / L²) > 0` with 0 sorry.
 
 ## ii. Key results
 

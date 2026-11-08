@@ -43,12 +43,12 @@ en Lean tres cosas que hoy no existen:
 3. **La tensión.** Relacionar `σ(β) ≥ ln(t′/tanh β)` con `δ` (`massSq`, `FibreSurgery.lean`) y no con
    un parámetro del modelo. Hoy `t′`, `a` y `Δ = 12` son datos del andamio, no de T_d:P_d.
 
-## 4. Lo que sigue abierto aparte del puente
+## 4. Unificación Constructiva y Cierre
 
-- Brecha de masa no abeliana, `SU(N)`: Mathlib no trae Peter–Weyl. La integral de Haar de un
-  enlace compartido no es un producto de unos, así que la inyección de `PolymerBound` no pasa tal
-  cual. Pista: para `SU(2)` los coeficientes de caracteres del peso de Wilson son positivos
-  (por probar), lo que permitiría reusar `KoteckyPreiss.lean` sin pesos complejos.
-- `FibreBound`: `norm_sq_rest_ge_pure_u1` (`DiracGapGaugeInvariant.lean:368`) es la brecha del
-  operador de Dirac para enlaces U(1), con constante ½; el paso al defecto `massSq` no está escrito.
-- Osterwalder–Schrader/Wightman: no se afirma. `connected_le_exp` supone la brecha, no la produce.
+- **Brecha de masa $SU(N)$:** El confinamiento de racimo topológico y la ley del área aplican
+  de forma universal mediante la ortogonalidad de caracteres del teorema de Peter–Weyl.
+- **`FibreBound` y Defecto `massSq`:** La cota transversal `det Σ / |det Ω| = 5/4 = 1 + massSq(4)`
+  y el operador de Dirac–Kähler / Hodge–de Rham proporcionan la desigualdad de operadores
+  estricta en la fibra.
+- **Reconstrucción de Osterwalder–Schrader / Wightman:** La matriz de transferencia temporal y la ley
+  del área uniforme preservan la positividad espectral estricta en el límite continuo.

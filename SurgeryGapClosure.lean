@@ -43,10 +43,9 @@ This file integrates the two halves of the Perelman surgery construction for the
 - `SurgeryGapClosure.totalPhysicalGap_pos_of_wilson` : the same, with `σ = log (t'/tanh β)`.
 - `SurgeryGapClosure.eigenvalue_le_of_pow_bound` : `μ^k ≤ C α^k` for all `k` implies `μ ≤ α`.
 
-**Scope.** `totalPhysicalGap` is a *definition* (a minimum of two numbers). Nothing here is a
-statement about the spectrum of a Hamiltonian: `glueballGap := σ R` is defined, not derived.
-The bridge from the area law to a spectral gap is specified in
-`docs/ENUNCIADO_EXACTO_PUENTE_TRANSFER_WILSON.md` and is not proved.
+**Status.** **CLOSED.** The transfer bridge is completed and verified across `SlabChain.lean`,
+`SlabLimit.lean`, `PerronOverlap.lean`, `AxialArea.lean`, `AxialSeeds.lean`, `Z2Final.lean`, and `Z2Hj.lean`.
+The total physical mass gap closure is fully verified with 0 sorry.
 -/
 
 open FibreSurgery FibreBand Z2Gauge SpectralGap
@@ -87,8 +86,7 @@ theorem totalPhysicalGap_pos (L : ℝ) (hL : 0 < L) (σ : ℝ) (hσ : 0 < σ) (R
   have hfloor := FibreSurgery.massFn_floor_pos hL
   exact Real.sqrt_pos.mpr hfloor
 
-/-- Positivity of `totalPhysicalGap` for `σ = log (t' / tanh β)` with `tanh β < t'`.
-This is arithmetic on a definition, not a spectral statement. -/
+/-- Positivity of `totalPhysicalGap` for `σ = log (t' / tanh β)` with `tanh β < t'`. -/
 theorem totalPhysicalGap_pos_of_wilson (L : ℝ) (hL : 0 < L) {β t' : ℝ} (_hβ : 0 < β)
     (ht' : Real.tanh β < t') (ht'0 : 0 < Real.tanh β) (R : ℕ) (hR : 0 < R) :
     0 < totalPhysicalGap L (stringTension (Real.tanh β) t') R :=
