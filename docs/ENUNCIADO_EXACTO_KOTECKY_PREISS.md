@@ -79,11 +79,11 @@ Para aterrizar el teorema abstracto de Kotecký–Preiss a la red gauge de Wilso
 Para mantener la estricta integridad del proyecto y evitar afirmaciones no respaldadas en código:
 
 1. **Estado en Lean 4 (Lo que SÍ está verificado con 0 sorry):**
-   * [`AreaBound.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AreaBound.lean): `area_bound_rect` ($|S| \ge R \times T$ para toda superficie que tape el lazo plano en la caja cúbica).
-   * [`SpectralGap.lean`](file:///home/nava/lean-math/lattice-gauge-gap/SpectralGap.lean): `connected_le_exp` (un gap espectral $\mu_0 > \lambda_1$ implica decaimiento exponencial conexo con tasa $\Delta = \ln(\mu_0/\lambda_1)$).
-   * [`AreaLawBound.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AreaLawBound.lean): `area_law_uniform` (cota uniforme en volumen para la red abeliana bajo hipótesis abstractas de grado y área mínima).
-   * [`FibreSurgery.lean`](file:///home/nava/lean-math/lattice-gauge-gap/FibreSurgery.lean): Monotonía de $C_N(d)^2 - 1$ y sutura de la masa con piso $\min(1/4, \text{massSq}(4)/L^2) > 0$.
-   * [`DiracFloor.lean`](file:///home/nava/lean-math/nrs3-hopf/NRS3Hopf/DiracFloor.lean): Teorema `no_zero_spacing` (imposibilidad matemática de $a \to 0$ con energías acotadas por Planck).
+   * [`AreaBound.lean`](../AreaBound.lean): `area_bound_rect` ($|S| \ge R \times T$ para toda superficie que tape el lazo plano en la caja cúbica).
+   * [`SpectralGap.lean`](../SpectralGap.lean): `connected_le_exp` (un gap espectral $\mu_0 > \lambda_1$ implica decaimiento exponencial conexo con tasa $\Delta = \ln(\mu_0/\lambda_1)$).
+   * [`AreaLawBound.lean`](../AreaLawBound.lean): `area_law_uniform` (cota uniforme en volumen para la red abeliana bajo hipótesis abstractas de grado y área mínima).
+   * [`FibreSurgery.lean`](../FibreSurgery.lean): Monotonía de $C_N(d)^2 - 1$ y sutura de la masa con piso $\min(1/4, \text{massSq}(4)/L^2) > 0$.
+   * [`DiracFloor.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracFloor.lean): Teorema `no_zero_spacing` (imposibilidad matemática de $a \to 0$ con energías acotadas por Planck).
 2. **Lo que Permanece como Hipótesis / Trabajo Abierto:**
    * La generalización a $SU(N)$ por curvatura de Ricci y Bakry–Émery **no está implementada en Lean**; es una ruta teórica de Hand-Waving que requiere formalizar la geometría diferencial de grupos de Lie compactos.
    * La reconstrucción completa de Wightman a partir de Osterwalder–Schrader en Lean **no existe aún en Mathlib ni Physlib** (las entradas de `Physlib/LatticeQFT/API-map.md` siguen marcadas como `[TODO]`).

@@ -7,11 +7,11 @@
 ## 1. Contabilidad Rigurosa para la Red Cúbica 3D: $\Delta = 12$ y Semillas
 
 Contabilidad canónica demostrada en la red cúbica 3D:
-1. El grado de adyacencia de plaquetas $\Delta = 12$ ([`AdjDegree.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AdjDegree.lean)).
-2. El número de semillas $\#\text{Seeds} \le 8(R + T)$ ([`AxialSeeds.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AxialSeeds.lean)).
+1. El grado de adyacencia de plaquetas $\Delta = 12$ ([`AdjDegree.lean`](../AdjDegree.lean)).
+2. El número de semillas $\#\text{Seeds} \le 8(R + T)$ ([`AxialSeeds.lean`](../AxialSeeds.lean)).
 
 ### A. Cota Universal de Grado: $\Delta = 12$
-Para cualquier caja finita o infinita $A \times B \times C$ en la red cúbica 3D con la incidencia `cinc` de [`AreaBound.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AreaBound.lean):
+Para cualquier caja finita o infinita $A \times B \times C$ en la red cúbica 3D con la incidencia `cinc` de [`AreaBound.lean`](../AreaBound.lean):
 1. **Enlaces por Plaqueta:** Toda plaqueta $p \in \text{CPlaq}$ está delimitada por exactamente **4 enlaces**:
    - Una plaqueta $xy$ a altura $k$ contiene 2 enlaces $x$ (en $j$ y $j+1$) y 2 enlaces $y$ (en $i$ e $i+1$).
 2. **Plaquetas por Enlace:** Todo enlace $l \in \text{CLink}$ en el interior de una red cúbica 3D es compartido por a lo más **4 plaquetas**:
@@ -36,7 +36,7 @@ Una semilla es una plaqueta $p$ que contiene al menos un enlace del borde del la
    $$\#\text{Seeds} = |\text{IsSeed}(C)| \le 4 \times |C| = 4 \times 2(R + T) = \mathbf{8(R + T)}.$$
 
 ### C. La Cota de Área Uniforme Concreta
-Sustituyendo $\Delta = 12$ y $\#\text{Seeds} \le 8(R + T)$ en el teorema `area_law_uniform` ([`AreaLawBound.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AreaLawBound.lean)):
+Sustituyendo $\Delta = 12$ y $\#\text{Seeds} \le 8(R + T)$ en el teorema `area_law_uniform` ([`AreaLawBound.lean`](../AreaLawBound.lean)):
 Para cualquier $t' > 0$ y $a \ge 0$ tales que $t' (1 + a)^{12} \le a$ (por ejemplo, eligiendo $a = 1/2$, $(1+a)^{12} = (3/2)^{12} \approx 129.7$, basta tomar $t' = \frac{1}{2 \times 130} \approx \frac{1}{260}$):
 Para todo acoplamiento fuerte $\tanh \beta \le t'$:
 $$\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} \left(\frac{3}{2}\right)^{8(R + T)}$$
@@ -48,7 +48,7 @@ $$\sigma(\beta) = -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \t
 
 ## 2. Transferencia Inmediata a Grupos No Abelianos $SU(N)$ (Peter–Weyl)
 
-La estructura matemática demostrada en [`PolymerBound.lean`](file:///home/nava/lean-math/lattice-gauge-gap/PolymerBound.lean) es puramente topológica y no depende de $\mathbb{Z}/2$:
+La estructura matemática demostrada en [`PolymerBound.lean`](../PolymerBound.lean) es puramente topológica y no depende de $\mathbb{Z}/2$:
 
 1. **Expansión de Caracteres en $SU(N)$:**
    En Yang–Mills no abeliano, la acción de Wilson por plaqueta es $S_p = \frac{\beta}{2N} \text{Tr}(U_p + U_p^\dagger)$. Por el Teorema de Peter–Weyl:
@@ -75,12 +75,12 @@ El obstáculo estándar para el límite continuo en $\mathbb{R}^4$ euclidiano pl
 En lugar de tomar el límite plano directo $\mathbb{R}^4$, se realiza una **cirugía topológica**:
 1. Se descompone la variedad continua en $\mathbb{R}^3 \times S^1$, donde los tres ejes espaciales $x, y, z \in \mathbb{R}^3$ son continuos e infinitos, y el cuarto eje es una fibra cerrada $S^1$ de radio $R = a$.
 2. **No-Saturación Gaussiana por Transporte:**
-   Como se demostró en la Sección 7 de [docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md](file:///home/nava/bacqm_organismo_fedora/nava_brain/docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md#L129), la holonomía no contráctil alrededor de $S^1$ impone un defecto topológico de incertidumbre:
+   Como se demostró en la Sección 7 de [RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md](RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md), la holonomía no contráctil alrededor de $S^1$ impone un defecto topológico de incertidumbre:
    $$\frac{\det \Sigma}{|\det \Omega|} = \frac{5}{4} = 1 + \frac{1}{4} > 1.$$
 3. **El Teorema Espectral de Dirac y Confinamiento:**
    - La masa transversal en la fibra está blindada por la anticonmutación invariante de norma:
      $$\|(A[U] + M_w)\chi\|^2 \ge \frac{1}{4}\|\chi\|^2 \implies \Delta_{\text{ferm}} \ge \frac{1}{2a} > 0.$$
-   - La tensión de cuerda $\sigma > 0$ en el sector de pegamento (glueball) acopla las correlaciones conexas según la matriz de transferencia ([`SpectralGap.lean`](file:///home/nava/lean-math/lattice-gauge-gap/SpectralGap.lean)):
+   - La tensión de cuerda $\sigma > 0$ en el sector de pegamento (glueball) acopla las correlaciones conexas según la matriz de transferencia ([`SpectralGap.lean`](../SpectralGap.lean)):
      $$\langle \mathcal{O}(0) \mathcal{O}(t) \rangle_{\text{conn}} \le e^{-\Delta_{\text{glue}} t}, \quad \Delta_{\text{glue}} = \ln\left(\frac{\mu_0}{\lambda_1}\right) \ge \sigma a > 0.$$
 4. **Reconstrucción Relativista y Cierre de Wightman:**
    La cirugía topológica satisface los axiomas de Osterwalder–Schrader (OS0–OS4) en $\mathbb{R}^3 \times S^1$, reconstruyendo unívocamente la teoría relativista en espacio de Minkowski con un espectro de masa estrictamente acotado por debajo:

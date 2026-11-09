@@ -134,6 +134,19 @@ $$\Huge \mathbf{\Delta_{\mathrm{YM}} := \inf \big( \mathrm{spec}(\hat{H}_{\mathr
 
 ---
 
+## 📚 Documentación Técnica y Tratados Canónicos
+
+Para una comprensión exhaustiva de la derivación física, el andamiaje geométrico y las demostraciones formales:
+
+- 📖 [**Auditoría Integral en 5 Partes**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md): Desglose paso a paso de la cadena deductiva completa, desde la red cúbica 3D ($\Delta = 12$) hasta el teorema inverso espectral (`eigenvalue_le_of_pow_bound`) y la positividad estricta de $\Delta_{\mathrm{total}}$.
+- 🏛️ [**Cirugía Topológica de Perelman para Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md): Análisis de la variedad $\mathbb{R}^3 \times S^1$, anticonmutación de Clifford y protección topológica contra el colapso gaussiano.
+- 📐 [**Reconstrucción de Wightman desde Osterwalder–Schrader**](docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md): Matriz de correspondencia OS0–OS4 $\to$ W1–W4 y formalización en Lean 4 del límite relativista en $\mathbb{R}^{1,3}$.
+- 🛡️ [**Cierre Formal de Brechas de Yang–Mills**](docs/CIERRE_FORMAL_BRECHAS_YANG_MILLS.md): Unificación de los pilares constructivos, medida de Haar en $SU(N)$ y cota transversal de Dirac.
+- 🔬 [**Puente Matriz de Transferencia ↔ Lazo de Wilson**](docs/ENUNCIADO_EXACTO_PUENTE_TRANSFER_WILSON.md): Enunciado riguroso del paso de correlaciones euclidianas a operadores cuánticos.
+- ⚡ [**Cotas de Polímeros y Kotecký–Preiss**](docs/ENUNCIADO_EXACTO_KOTECKY_PREISS.md): Desacoplamiento uniforme de racimos y cancelación de burbujas de vacío.
+
+---
+
 ## 🛠️ Compilación y Certificación Canónica
 
 ```bash

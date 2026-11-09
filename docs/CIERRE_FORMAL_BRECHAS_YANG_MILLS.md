@@ -9,7 +9,7 @@
 **Estado:** Cerrado constructivamente mediante la invariancia topológica de racimo y la ortogonalidad de caracteres.
 
 1. **Invarianza de Norma y Conmutación Gaussiana en Retículo:**
-   En [`HopfYangMills.lean`](file:///home/nava/lean-math/nrs3-hopf/NRS3Hopf/HopfYangMills.lean#L70-L87):
+   En [`HopfYangMills.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/HopfYangMills.lean):
    * `ham_gauge`: La conmutación de la ley de Gauss en los 4 ejes con transformaciones de norma locales está formalizada para cualquier grupo gauge:
      ```lean
      theorem ham_gauge {n : ℕ} (ρ : G →* Matrix.unitaryGroup (Fin n) ℂ) (lE lB : ℝ)
@@ -25,7 +25,7 @@
      ```
 
 2. **Topología de Racimo y Ortogonalidad de Caracteres en $SU(N)$:**
-   * La descomposición de racimo $S \mapsto (\gamma, R)$ formalizada en [`PolymerBound.lean`](file:///home/nava/lean-math/lattice-gauge-gap/PolymerBound.lean) opera a nivel puramente combinatorio y topológico en la red.
+   * La descomposición de racimo $S \mapsto (\gamma, R)$ formalizada en [`PolymerBound.lean`](../PolymerBound.lean) opera a nivel puramente combinatorio y topológico en la red.
    * La integración de Haar sobre grupos compactos $SU(N)$ preserva la ortogonalidad exacta de caracteres:
      $$\int_{SU(N)} dU_l \, \chi_j(U_l) \overline{\chi_k(U_l)} = \delta_{jk}$$
      forzando la misma inyectividad de racimo: toda superficie que contribute al lazo de Wilson $\chi_1(U_C)$ debe recubrir los enlaces del perímetro.
@@ -38,16 +38,16 @@
 **Estado:** Cerrado analíticamente mediante la geometría de la fibra transversal y la anticonmutación invariante de norma.
 
 1. **Cota Espectral Demostrada por Anticonmutación:**
-   En [`DiracGapGaugeInvariant.lean`](file:///home/nava/lean-math/nrs3-hopf/NRS3Hopf/DiracGapGaugeInvariant.lean#L368), el teorema `norm_sq_rest_ge_pure_u1` demuestra formalmente (**0 sorry, axiomas estándar**):
+   En [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean), el teorema `norm_sq_rest_ge_pure_u1` demuestra formalmente (**0 sorry, axiomas estándar**):
    ```lean
    theorem norm_sq_rest_ge_pure_u1 (Uy : PureU1GaugeLink τy) (Uz : PureU1GaugeLink τz) (χ : H) :
        (1 / 2 : ℝ) ^ 2 * ‖χ‖ ^ 2 ≤ ‖(A_u1 Uy.toU1GaugeLink Uz.toU1GaugeLink + Mw) χ‖ ^ 2
    ```
-   Y en [`DiracSpeed.lean`](file:///home/nava/lean-math/nrs3-hopf/NRS3Hopf/DiracSpeed.lean#L160), `abs_energy_ge` demuestra la transferencia rigurosa de cota por anticonmutación: $|E| \ge |m| = 1/2$.
+   Y en [`DiracSpeed.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracSpeed.lean), `abs_energy_ge` demuestra la transferencia rigurosa de cota por anticonmutación: $|E| \ge |m| = 1/2$.
 
 2. **Cierre de la Fibra y No Saturación:**
    * La compacidad de la fibra $S^1$ impone un transporte cerrado no contráctil que genera una cota espectral estrictamente positiva.
-   * En [`FibreSurgery.lean`](file:///home/nava/lean-math/lattice-gauge-gap/FibreSurgery.lean) y [`FibreBand.lean`](file:///home/nava/lean-math/lattice-gauge-gap/FibreBand.lean), la cantidad monótona $\text{massSq}(d) = C_N(d)^2 - 1$ para $d \ge 4$ y el piso $\min(1/4, \text{massSq}(4)/L^2) > 0$ blindan la masa transversal contra cualquier desvanecimiento.
+   * En [`FibreSurgery.lean`](../FibreSurgery.lean) y [`FibreBand.lean`](../FibreBand.lean), la cantidad monótona $\text{massSq}(d) = C_N(d)^2 - 1$ para $d \ge 4$ y el piso $\min(1/4, \text{massSq}(4)/L^2) > 0$ blindan la masa transversal contra cualquier desvanecimiento.
 
 ---
 
@@ -63,7 +63,7 @@
      $$\frac{\det \Sigma}{|\det \Omega|} = \frac{5}{4} = 1 + \frac{1}{4} > 1$$
      Este defecto impide que el vacío colapse a un paquete gaussiano de energía cero.
 3. **Piso Ultravioleta y Divergencia sin Fibra:**
-   En [`DiracFloor.lean`](file:///home/nava/lean-math/nrs3-hopf/NRS3Hopf/DiracFloor.lean#L59), el teorema `no_zero_spacing` demuestra formalmente que mandar $a \to 0$ en un espacio plano no acotado sin escala de fibra dispara las energías físicas a infinito:
+   En [`DiracFloor.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracFloor.lean), el teorema `no_zero_spacing` demuestra formalmente que mandar $a \to 0$ en un espacio plano no acotado sin escala de fibra dispara las energías físicas a infinito:
    ```lean
    theorem no_zero_spacing {hc Emax : ℝ} (hhc : 0 < hc) (hEmax : 0 < Emax) (a : ℕ → ℝ) ...
    ```
@@ -75,14 +75,14 @@
 El marco constructivo unificado está completamente consolidado:
 
 1. **Modelo de Retículo Cúbico 3D y Ley del Área:**
-   * Ley del área uniforme en el volumen probada en [`CubeAreaLaw.lean`](file:///home/nava/lean-math/lattice-gauge-gap/CubeAreaLaw.lean) con $\Delta = 12$ ([`AdjDegree.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AdjDegree.lean)) y semillas $\le 8R$ ([`AxialSeeds.lean`](file:///home/nava/lean-math/lattice-gauge-gap/AxialSeeds.lean)).
+   * Ley del área uniforme en el volumen probada en [`CubeAreaLaw.lean`](../CubeAreaLaw.lean) con $\Delta = 12$ ([`AdjDegree.lean`](../AdjDegree.lean)) y semillas $\le 8R$ ([`AxialSeeds.lean`](../AxialSeeds.lean)).
 2. **Matriz de Transferencia y Gap Espectral Neto:**
-   * Demostrado en [`Z2Final.lean`](file:///home/nava/lean-math/lattice-gauge-gap/Z2Final.lean) y [`Z2Hj.lean`](file:///home/nava/lean-math/lattice-gauge-gap/Z2Hj.lean) (`z2_gap_free`), descargando las hipótesis de grado y de solapamiento.
+   * Demostrado en [`Z2Final.lean`](../Z2Final.lean) y [`Z2Hj.lean`](../Z2Hj.lean) (`z2_gap_free`), descargando las hipótesis de grado y de solapamiento.
 3. **Descomposición de Polímeros y Kotecký–Preiss:**
-   * Descomposición $Z = \text{polymerZ}$ en [`PolymerDecomposition.lean`](file:///home/nava/lean-math/lattice-gauge-gap/PolymerDecomposition.lean) y cotas de Kotecký–Preiss en [`KoteckyPreiss.lean`](file:///home/nava/lean-math/lattice-gauge-gap/KoteckyPreiss.lean).
+   * Descomposición $Z = \text{polymerZ}$ en [`PolymerDecomposition.lean`](../PolymerDecomposition.lean) y cotas de Kotecký–Preiss en [`KoteckyPreiss.lean`](../KoteckyPreiss.lean).
 4. **Defecto de Fibra y Brecha Total:**
-   * Cota transversal positiva en [`FibreSurgery.lean`](file:///home/nava/lean-math/lattice-gauge-gap/FibreSurgery.lean) y [`SurgeryGapClosure.lean`](file:///home/nava/lean-math/lattice-gauge-gap/SurgeryGapClosure.lean) con $\Delta_{\text{total}} = \min(\Delta_{\text{glue}}, \sqrt{\text{piso}}) > 0$ (`totalPhysicalGap_pos`).
+   * Cota transversal positiva en [`FibreSurgery.lean`](../FibreSurgery.lean) y [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) con $\Delta_{\text{total}} = \min(\Delta_{\text{glue}}, \sqrt{\text{piso}}) > 0$ (`totalPhysicalGap_pos`).
 5. **Teorema Inverso Espectral:**
-   * Demostrado en [`SurgeryGapClosure.lean`](file:///home/nava/lean-math/lattice-gauge-gap/SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`).
+   * Demostrado en [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`).
 
 El cierre formal y físico del Mass Gap de Yang–Mills está completado y unificado.
