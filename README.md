@@ -67,7 +67,7 @@ $$\huge \displaystyle \mathbf{\mathcal{D}_A = d_A + \delta_A, \qquad (\mathcal{D
 
 $$\huge \displaystyle \mathbf{\lbrace \mathcal{D}_{\mathbb{R}^3}, \, \mathcal{D}_{S^1} \rbrace = 0 \implies \langle \omega, \Delta_{\mathrm{Hodge}} \omega \rangle \ge \left(\frac{2}{\pi} \frac{\mathrm{holGap}(\theta)}{L}\right)^2 \|\omega\|^2 > 0}$$
 
-*Formalizado en:* [`DiracGapGaugeInvariant.lean`](DiracGapGaugeInvariant.lean), [`PureYangMillsMassGap`](SurgeryGapClosure.lean).
+*Formalizado en:* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) (repo [`nrs3-hopf`](https://github.com/naype888-cloud/nrs3-hopf)), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean).
 
 ---
 
@@ -78,7 +78,7 @@ $$\huge \displaystyle \mathbf{\mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{
 
 $$\huge \displaystyle \mathbf{\lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi^2}{3} - 3 > 0}$$
 
-*Formalizado en:* [`D8_Szego.lean`](D8_Szego.lean), [`D9_Monotonicity.lean`](D9_Monotonicity.lean), [`FibreSurgery.lean`](FibreSurgery.lean).
+*Formalizado en:* [`FibreSurgery.lean`](FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](FibreBand.lean).
 
 ---
 
