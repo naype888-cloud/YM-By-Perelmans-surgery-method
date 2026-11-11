@@ -86,7 +86,7 @@ $$\huge \displaystyle \mathbf{\lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi
 ### 🌐 Step 6: Wightman Continuum Closure and Clay Infimum ($\mathbb{R}^4$)
 > Decompactification $L \to \infty$ and gap persistence sustained by Kraan–van Baal caloron / BPS monopole condensation:
 
-$$\huge \displaystyle \mathbf{\Delta_{\mathrm{total}} = \min\big(\Delta_{\mathrm{glue}}, \, \sqrt{\mathrm{floor}}\big) \ge c_\sigma \cdot \Lambda_{\mathrm{YM}} > 0}$$
+$$\huge \displaystyle \Delta_{\mathrm{total}} = \min\left(\Delta_{\mathrm{glue}}, \, \sqrt{\mathrm{floor}}\right) \ge c_\sigma \cdot \Lambda_{\mathrm{YM}} > 0$$
 
 $$\huge \displaystyle \lim_{L \to \infty} \Delta_{\mathrm{total}} = \Delta_{\mathrm{glue}} = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
 
@@ -165,7 +165,7 @@ From this official corpus, **38 kernel-certified theorems** support the 6 constr
 | [`SpectralGap.lean`](SpectralGap.lean) | `connected_le_exp` | Spectral gap $\Delta > 0$ forces connected exponential decay | `0 sorry` |
 | [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound` | Inverse analytical lemma: exponential loop decay implies eigenvalue bound | `0 sorry` |
 | [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `totalPhysicalGap_pos` | Strict positivity of the unified total physical mass gap $\Delta_{\mathrm{total}} > 0$ | `0 sorry` |
-| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unification bridge to OpenAI Wightman Hamiltonian: $\operatorname{spec}(\hat{H}) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}, \infty)$ | `0 sorry` |
+| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unification bridge to OpenAI Wightman Hamiltonian: $\mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty)$ | `0 sorry` |
 
 ---
 

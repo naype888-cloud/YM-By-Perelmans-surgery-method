@@ -36,7 +36,7 @@ This module establishes the exact constructive bridge between:
 3. **The Unified Conclusion**:
    The transfer matrix decay $T^k = e^{-k a \hat{H}}$ forces the spectral projection of OpenAI's
    joint energy-momentum measure $E(\cdot)$ to vanish on the intermediate shell:
-   $$\operatorname{spec}(\hat{H}) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}, \infty), \qquad \Delta_{\mathrm{total}} > 0$$
+   $$\mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty), \qquad \Delta_{\mathrm{total}} > 0$$
    closing the final open problem for the full Clay Millennium Prize Problem.
 
 ## ii. Key results
