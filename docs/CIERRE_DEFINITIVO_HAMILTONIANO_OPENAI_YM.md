@@ -76,7 +76,7 @@ theorem wightman_hamiltonian_mass_gap_bridge
 ```
 
 Este teorema garantiza que la medida espectral de energía-momento de la teoría de Wightman se anula en la ventana intermedia:
-$$\mathrm{spectralGapShell}(\Delta_{\mathrm{total}}) = \{ p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}} \} = \emptyset \quad (\text{en medida})$$
+$$\mathrm{spectralGapShell}(\Delta_{\mathrm{total}}) = \lbrace p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}} \rbrace = \emptyset \quad (\text{en medida})$$
 lo que significa que **no existen excitaciones físicas con masa entre $0$ y $\Delta_{\mathrm{total}}$**.
 
 ---

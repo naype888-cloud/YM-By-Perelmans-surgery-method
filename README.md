@@ -88,9 +88,9 @@ $$\huge \displaystyle \mathbf{\lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi
 
 $$\huge \displaystyle \mathbf{\Delta_{\mathrm{total}} = \min\big(\Delta_{\mathrm{glue}}, \, \sqrt{\mathrm{floor}}\big) \ge c_\sigma \cdot \Lambda_{\mathrm{YM}} > 0}$$
 
-$$\huge \displaystyle \mathbf{\lim_{L \to \infty} \Delta_{\mathrm{total}} = \Delta_{\mathrm{glue}} = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7 \;\mathrm{GeV} > 0}$$
+$$\huge \displaystyle \lim_{L \to \infty} \Delta_{\mathrm{total}} = \Delta_{\mathrm{glue}} = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
 
-$$\Huge \displaystyle \mathbf{\inf \big( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \big) \ge \Delta_{\mathrm{total}} > 0}$$
+$$\Huge \displaystyle \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \lbrace 0 \rbrace \right) \ge \Delta_{\mathrm{total}} > 0$$
 
 *Formalized in:* [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`totalPhysicalGap_pos`), Osterwalder–Schrader $\to$ Wightman Reconstruction.
 
@@ -99,9 +99,9 @@ $$\Huge \displaystyle \mathbf{\inf \big( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) 
 ### 🏛️ Step 7: Master Hamiltonian Bridge (Unification with OpenAI Wightman QFT)
 > Direct resolution of **Open Questions #3 and #4** from the Yang–Mills Group Assessment (`assessment-1.pdf`, Nov 10, 2026) on OpenAI's `PublicTheory.lean`:
 
-$$\huge \displaystyle \mathbf{\mathrm{spec}(\hat{H}) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}, \, \infty), \qquad \Delta_{\mathrm{total}} > 0}$$
+$$\huge \displaystyle \mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty), \qquad \Delta_{\mathrm{total}} > 0$$
 
-$$\huge \displaystyle \mathbf{E\Big(\big\{ p \in \overline{V_+} \;\big|\; 0 < p_0 < \Delta_{\mathrm{total}} \big\}\Big) = 0}$$
+$$\huge \displaystyle E\left( \lbrace p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}} \rbrace \right) = 0$$
 
 The transfer matrix temporal decay from the 3D Wilson area law coupled to the $d \ge 4$ transverse Sturm–Liouville / Perelman surgery floor forces the spectral projection of OpenAI's continuous energy-momentum measure to vanish identically on the intermediate gap shell.
 
@@ -113,7 +113,7 @@ The transfer matrix temporal decay from the 3D Wilson area law coupled to the $d
 
 ## 👑 Clay Millennium Master Theorem
 
-$$\Huge \mathbf{\Delta_{\mathrm{YM}} := \inf \big( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \big) = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7 \;\mathrm{GeV} > 0}$$
+$$\Huge \Delta_{\mathrm{YM}} := \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \lbrace 0 \rbrace \right) = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
 
 <p align="center">
   <i>Quantum Yang–Mills theory on continuous spacetime $\mathbb{R}^4$ for compact gauge groups $SU(N)$ ($N \ge 2$)<br>
