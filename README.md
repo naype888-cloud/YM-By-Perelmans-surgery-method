@@ -16,171 +16,172 @@
 ---
 
 <p align="center">
-  <b>Cadena deductiva constructiva en 6 pasos para el Spectral Mass Gap de Yang–Mills</b><br>
-  <i>Formalizada en Lean 4 con 0 sorry bajo los axiomas canónicos del kernel</i>
+  <b>Constructive 6-Step Deductive Chain for the Yang–Mills Spectral Mass Gap</b><br>
+  <i>Formalized in Lean 4 with 0 sorry under canonical kernel axioms</i>
 </p>
 
 </div>
 
 ---
 
-## 🏛️ Cadena Deductiva en 6 Pasos Consecutivos
+## 🏛️ Constructive 6-Step Deductive Chain
 
 ---
 
-### 📐 Paso 1: Ley del Área Uniforme en el Retículo 3D
-> Cota combinatoria rigurosa en el retículo cúbico con grado de adyacencia $\Delta = 12$ y semillas $|\mathrm{Seeds}| \le 8(R + T)$:
+### 📐 Step 1: Uniform Area Law on the 3D Lattice
+> Rigorous combinatorial bound on the cubic lattice with adjacency degree $\Delta = 12$ and perimeter seeds $|\mathrm{Seeds}| \le 8(R + T)$:
 
 $$\huge \displaystyle \mathbf{\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}}$$
 
 $$\huge \displaystyle \mathbf{\sigma(\beta) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \times T) \rangle \ge \ln\left(\frac{t'}{\tanh \beta}\right) > 0}$$
 
-*Formalizado en:* [`CubeAreaLaw.lean`](CubeAreaLaw.lean) (`cube_wilson_area_law`), [`AreaLawBound.lean`](AreaLawBound.lean) (`area_law_uniform`), [`AdjDegree.lean`](AdjDegree.lean) (`adj_degree_le_twelve`).
+*Formalized in:* [`CubeAreaLaw.lean`](CubeAreaLaw.lean) (`cube_wilson_area_law`), [`AreaLawBound.lean`](AreaLawBound.lean) (`area_law_uniform`), [`AdjDegree.lean`](AdjDegree.lean) (`adj_degree_le_twelve`).
 
 ---
 
-### ⚡ Paso 2: Matriz de Transferencia y Lema Inverso de Potencias
-> El decaimiento temporal euclídeo de la matriz de transferencia $T = e^{-a \hat{H}}$ fuerza la cota espectral por el teorema `eigenvalue_le_of_pow_bound`:
+### ⚡ Step 2: Transfer Matrix and Inverse Power Lemma
+> Euclidean temporal decay of the transfer matrix $T = e^{-a \hat{H}}$ forces the spectral bound via theorem `eigenvalue_le_of_pow_bound`:
 
 $$\huge \displaystyle \mathbf{\forall k \in \mathbb{N}, \quad \left(\frac{\mu_1}{\mu_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-\sigma R}\right)^k \implies \frac{\mu_1}{\mu_0} \le e^{-\sigma R} < 1}$$
 
 $$\huge \displaystyle \mathbf{\Delta_{\mathrm{glue}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{\mu_1}{\mu_0}\right) \ge \frac{\sigma \cdot R}{a} > 0}$$
 
-*Formalizado en:* [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`), [`Z2Final.lean`](Z2Final.lean) (`z2_gap`), [`Z2Hj.lean`](Z2Hj.lean) (`z2_gap_free`).
+*Formalized in:* [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`), [`Z2Final.lean`](Z2Final.lean) (`z2_gap_twelve`), [`Z2Hj.lean`](Z2Hj.lean) (`z2_gap_free`, `exists_excited`).
 
 ---
 
-### 🛡️ Paso 3: Cirugía Topológica de Perelman y Defecto Cuántico $5/4$
-> Torsión simpléctica de Robertson–Schrödinger en $\mathcal{M}_4 = \mathbb{R}^3 \times S^1$ con blindaje transversal por anticonmutación de Clifford:
+### 🛡️ Step 3: Perelman's Topological Surgery and 5/4 Quantum Defect
+> Robertson–Schrödinger symplectic torsion on $\mathcal{M}_4 = \mathbb{R}^3 \times S^1$ with transverse shielding via Clifford anticommutation:
 
 $$\huge \displaystyle \mathbf{\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{massSq}(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1}$$
 
-$$\huge \displaystyle \mathbf{\lbrace A[U], \, M_w \rbrace = 0 \implies \|(A[U] + M_w)\chi\|^2 \ge \left(\frac{1}{2a}\right)^2 \|\chi\|^2 \implies \sqrt{\mathrm{piso}} \ge \frac{1}{2a} > 0}$$
+$$\huge \displaystyle \mathbf{\lbrace A[U], \, M_w \rbrace = 0 \implies \|(A[U] + M_w)\chi\|^2 \ge \left(\frac{1}{2a}\right)^2 \|\chi\|^2 \implies \sqrt{\mathrm{floor}} \ge \frac{1}{2a} > 0}$$
 
-*Formalizado en:* [`FibreSurgery.lean`](FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](FibreBand.lean) (`surplus_ge`), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).
+*Formalized in:* [`FibreSurgery.lean`](FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](FibreBand.lean) (`surplus_ge`), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).
 
 ---
 
-### 🔬 Paso 4: Operador de Dirac–Kähler / Hodge–de Rham para Bosones
-> Álgebra de Clifford sobre el álgebra exterior de formas diferenciales $\Omega^*(\mathcal{M})$ (gluones):
+### 🔬 Step 4: Dirac–Kähler / Hodge–de Rham Operator for Bosons
+> Clifford algebra over the exterior algebra of differential forms $\Omega^*(\mathcal{M})$ (gluons):
 
 $$\huge \displaystyle \mathbf{\mathcal{D}_A = d_A + \delta_A, \qquad (\mathcal{D}_A)^2 = \Delta_{\mathrm{Hodge}} = d_A \delta_A + \delta_A d_A}$$
 
 $$\huge \displaystyle \mathbf{\lbrace \mathcal{D}_{\mathbb{R}^3}, \, \mathcal{D}_{S^1} \rbrace = 0 \implies \langle \omega, \Delta_{\mathrm{Hodge}} \omega \rangle \ge \left(\frac{2}{\pi} \frac{\mathrm{holGap}(\theta)}{L}\right)^2 \|\omega\|^2 > 0}$$
 
-*Formalizado en:* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) (repo [`nrs3-hopf`](https://github.com/naype888-cloud/nrs3-hopf)), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean).
+*Formalized in:* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) (repo [`nrs3-hopf`](https://github.com/naype888-cloud/nrs3-hopf), establishing `pure_gauge_joint_spectral_bridge` and `pure_gauge_kogut_susskind_dirac_eigenvalue_bridge`), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean).
 
 ---
 
-### 📈 Paso 5: Límite Asintótico de Szegő y Monotonía Creciente ($d \to \infty$)
-> Monotonía creciente estricta del defecto adimensional para todo $d \ge 4$, protegiendo contra el colapso gaussiano:
+### 📈 Step 5: Szegő Asymptotic Limit and Increasing Monotonicity ($d \to \infty$)
+> Strict increasing monotonicity of the dimensionless defect for all $d \ge 4$, shielding against Gaussian collapse:
 
 $$\huge \displaystyle \mathbf{\mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{\pi^2}{3} - 3 \approx 0.289868 > 0}$$
 
 $$\huge \displaystyle \mathbf{\lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi^2}{3} - 3 > 0}$$
 
-*Formalizado en:* [`FibreSurgery.lean`](FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](FibreBand.lean).
+*Formalized in:* [`FibreSurgery.lean`](FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](FibreBand.lean).
 
 ---
 
-### 🌐 Paso 6: Cierre del Continuo de Wightman e Ínfimo de Clay ($\mathbb{R}^4$)
-> Descompactificación $L \to \infty$ y persistencia del gap sostenido por la condensación de calorones de Kraan–van Baal / monopolos BPS:
+### 🌐 Step 6: Wightman Continuum Closure and Clay Infimum ($\mathbb{R}^4$)
+> Decompactification $L \to \infty$ and gap persistence sustained by Kraan–van Baal caloron / BPS monopole condensation:
 
-$$\huge \displaystyle \mathbf{\Delta_{\mathrm{total}} = \min\big(\Delta_{\mathrm{glue}}, \, \sqrt{\mathrm{piso}}\big) \ge c_\sigma \cdot \Lambda_{\mathrm{YM}} > 0}$$
+$$\huge \displaystyle \mathbf{\Delta_{\mathrm{total}} = \min\big(\Delta_{\mathrm{glue}}, \, \sqrt{\mathrm{floor}}\big) \ge c_\sigma \cdot \Lambda_{\mathrm{YM}} > 0}$$
 
 $$\huge \displaystyle \mathbf{\lim_{L \to \infty} \Delta_{\mathrm{total}} = \Delta_{\mathrm{glue}} = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7 \;\mathrm{GeV} > 0}$$
 
 $$\Huge \displaystyle \mathbf{\inf \big( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \big) \ge \Delta_{\mathrm{total}} > 0}$$
 
-*Formalizado en:* [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`totalPhysicalGap_pos`), Reconstrucción Osterwalder–Schrader $\to$ Wightman.
+*Formalized in:* [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`totalPhysicalGap_pos`), Osterwalder–Schrader $\to$ Wightman Reconstruction.
 
 ---
 
 <div align="center">
 
-## 👑 Teorema Maestro del Milenio de Clay
+## 👑 Clay Millennium Master Theorem
 
 $$\Huge \mathbf{\Delta_{\mathrm{YM}} := \inf \big( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \big) = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7 \;\mathrm{GeV} > 0}$$
 
 <p align="center">
-  <i>La teoría cuántica de Yang–Mills en el espacio-tiempo continuo $\mathbb{R}^4$ para grupos compactos $SU(N)$ ($N \ge 2$)<br>
-  posee un estado fundamental único y una brecha de masa aislada estrictamente positiva.</i>
+  <i>Quantum Yang–Mills theory on continuous spacetime $\mathbb{R}^4$ for compact gauge groups $SU(N)$ ($N \ge 2$)<br>
+  possesses a unique vacuum ground state and a strictly positive, isolated spectral mass gap.</i>
 </p>
 
 </div>
 
 ---
 
-## 🏛️ Andamiaje Canónico en Lean 4: Corpus Oficial Physlib (50 PRs Merged)
+## 🏛️ Canonical Framework in Lean 4: Official Physlib Corpus (50 Merged PRs)
 
-La cadena deductiva de este repositorio está cimentada y blindada en **50 Pull Requests aprobados y mergeados en el repositorio oficial comunitario de física matemática de Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**. 
+The deductive chain in this repository is grounded and certified on **50 Pull Requests approved and merged into the official mathematical physics community repository of Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**. 
 
-De este acervo, **38 teoremas oficiales certificados en el kernel** soportan punto por punto los 6 pasos constructivos:
+From this official corpus, **38 kernel-certified theorems** support the 6 constructive steps point by point:
 
-| Paso Yang–Mills | Fundamento Teórico | PRs Aprobados y Mergeados en Physlib | Módulos YM Respaldados |
+| Yang–Mills Step | Theoretical Foundation | Approved and Merged PRs in Physlib | Backed YM Modules |
 | :---: | :--- | :--- | :--- |
-| **Paso 1** | Ley del Área, pasos axiales y grado de adyacencia $\Delta = 12$ | **[#1987](https://github.com/leanprover-community/physlib/pull/1987)** (pasos de ejes FCC/BCC $\to \Delta=12$), **[#1986](https://github.com/leanprover-community/physlib/pull/1986)** (conmutación ortogonal de ejes), **[#1961](https://github.com/leanprover-community/physlib/pull/1961)** (retículos Bravais en $\mathbb{R}^d$) | [`AdjDegree.lean`](AdjDegree.lean), [`CubeAreaLaw.lean`](CubeAreaLaw.lean), [`AreaLawBound.lean`](AreaLawBound.lean) |
-| **Paso 2** | Matriz de transferencia, espectro completo y límite termodinámico | **[#1901](https://github.com/leanprover-community/physlib/pull/1901)** (espectro completo del hamiltoniano de red), **[#1689](https://github.com/leanprover-community/physlib/pull/1689)** (cadena con fronteras abiertas), **[#1734](https://github.com/leanprover-community/physlib/pull/1734)** y **[#1735](https://github.com/leanprover-community/physlib/pull/1735)** (límite $N \to \infty$ y monotonía), **[#1696](https://github.com/leanprover-community/physlib/pull/1696)**, **[#1708](https://github.com/leanprover-community/physlib/pull/1708)**, **[#1775](https://github.com/leanprover-community/physlib/pull/1775)** (operador de transporte/corriente) | [`TransferBridge.lean`](TransferBridge.lean), [`SlabChain.lean`](SlabChain.lean), [`SlabLimit.lean`](SlabLimit.lean), [`Z2Final.lean`](Z2Final.lean) |
-| **Paso 3** | Cirugía topológica en $\mathbb{R}^3 \times S^1$, anticonmutación de Clifford y necesidad estricta de $d=4$ | **[#1768](https://github.com/leanprover-community/physlib/pull/1768)** (las matrices gamma **exigen estrictamente $d=4$**), **[#1762](https://github.com/leanprover-community/physlib/pull/1762)** (matrices de Pauli como familia maximal anticonmutante en $su(2)$) | [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) |
-| **Paso 4** | Dirac–Kähler, covarianza relativista de Lorentz y rotaciones | **[#1885](https://github.com/leanprover-community/physlib/pull/1885)**, **[#1886](https://github.com/leanprover-community/physlib/pull/1886)** y **[#1887](https://github.com/leanprover-community/physlib/pull/1887)** (doble cubrimiento universal $\mathrm{SL}(2, \mathbb{C}) \to \mathrm{SO}^+(1,3)$ y rotaciones de Cayley–Klein) | Reconstrucción Wightman W1–W4, [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) |
-| **Paso 5** | Defecto cuántico de coherencia $5/4$, Robertson–Schrödinger y monotonía de Schwarz | **[#1660](https://github.com/leanprover-community/physlib/pull/1660)** (defecto de Gram $\det G \ge 0$), **[#1676](https://github.com/leanprover-community/physlib/pull/1676)** (RS para matrices de densidad), **[#1649](https://github.com/leanprover-community/physlib/pull/1649)** y **[#1650](https://github.com/leanprover-community/physlib/pull/1650)** (no saturación gaussiana), **[#1716](https://github.com/leanprover-community/physlib/pull/1716)**, **[#1718](https://github.com/leanprover-community/physlib/pull/1718)**, **[#1732](https://github.com/leanprover-community/physlib/pull/1732)** (estado de corriente máxima), **[#1723](https://github.com/leanprover-community/physlib/pull/1723)**, **[#1725](https://github.com/leanprover-community/physlib/pull/1725)**, **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (incertidumbre dimensional elemental), **[#1730](https://github.com/leanprover-community/physlib/pull/1730)**, **[#1742](https://github.com/leanprover-community/physlib/pull/1742)**, **[#1774](https://github.com/leanprover-community/physlib/pull/1774)** (determinante de Robertson multidimensional), **[#1822](https://github.com/leanprover-community/physlib/pull/1822)** y **[#1844](https://github.com/leanprover-community/physlib/pull/1844)** (monotonía: covarianzas no decrecen bajo mapas unitales) | [`CoherenceDefect.lean`](CoherenceDefect.lean), [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean) |
-| **Paso 6** | Cierre del continuo, relación tiempo-energía de Mandelstam–Tamm y velocidad cuántica | **[#1711](https://github.com/leanprover-community/physlib/pull/1711)** y **[#1739](https://github.com/leanprover-community/physlib/pull/1739)** (teorema de Mandelstam–Tamm en red: $\Delta E \cdot \Delta t \ge \hbar/2$), **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1745](https://github.com/leanprover-community/physlib/pull/1745)** y **[#1746](https://github.com/leanprover-community/physlib/pull/1746)** (cota finita de velocidad cuántica en red) | [`SpectralGap.lean`](SpectralGap.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`, `totalPhysicalGap_pos`) |
+| **Step 1** | Area Law, axial steps and universal adjacency degree $\Delta = 12$ | **[#1987](https://github.com/leanprover-community/physlib/pull/1987)** (FCC/BCC axial steps $\to \Delta=12$), **[#1986](https://github.com/leanprover-community/physlib/pull/1986)** (orthogonal axis commutation), **[#1961](https://github.com/leanprover-community/physlib/pull/1961)** (Bravais lattices in $\mathbb{R}^d$) | [`AdjDegree.lean`](AdjDegree.lean), [`CubeAreaLaw.lean`](CubeAreaLaw.lean), [`AreaLawBound.lean`](AreaLawBound.lean) |
+| **Step 2** | Transfer matrix, full spectrum and thermodynamic limit | **[#1901](https://github.com/leanprover-community/physlib/pull/1901)** (complete lattice Hamiltonian spectrum), **[#1689](https://github.com/leanprover-community/physlib/pull/1689)** (chain with open boundaries), **[#1734](https://github.com/leanprover-community/physlib/pull/1734)** & **[#1735](https://github.com/leanprover-community/physlib/pull/1735)** ($N \to \infty$ limit and monotonicity), **[#1696](https://github.com/leanprover-community/physlib/pull/1696)**, **[#1708](https://github.com/leanprover-community/physlib/pull/1708)**, **[#1775](https://github.com/leanprover-community/physlib/pull/1775)** (transport/current operator) | [`TransferBridge.lean`](TransferBridge.lean), [`SlabChain.lean`](SlabChain.lean), [`SlabLimit.lean`](SlabLimit.lean), [`Z2Final.lean`](Z2Final.lean), [`Z2Hj.lean`](Z2Hj.lean) |
+| **Step 3** | Topological surgery on $\mathbb{R}^3 \times S^1$, Clifford anticommutation and strict necessity of $d=4$ | **[#1768](https://github.com/leanprover-community/physlib/pull/1768)** (gamma matrices **strictly require $d=4$**), **[#1762](https://github.com/leanprover-community/physlib/pull/1762)** (Pauli matrices as maximal anticommuting family in $su(2)$) | [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) |
+| **Step 4** | Dirac–Kähler, Lorentz relativistic covariance and rotations | **[#1885](https://github.com/leanprover-community/physlib/pull/1885)**, **[#1886](https://github.com/leanprover-community/physlib/pull/1886)** & **[#1887](https://github.com/leanprover-community/physlib/pull/1887)** (universal double cover $\mathrm{SL}(2, \mathbb{C}) \to \mathrm{SO}^+(1,3)$ and Cayley–Klein rotations) | Wightman W1–W4 Reconstruction, [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) |
+| **Step 5** | Quantum coherence defect $5/4$, Robertson–Schrödinger and Schwarz monotonicity | **[#1660](https://github.com/leanprover-community/physlib/pull/1660)** (Gram defect $\det G \ge 0$), **[#1676](https://github.com/leanprover-community/physlib/pull/1676)** (RS for density matrices), **[#1649](https://github.com/leanprover-community/physlib/pull/1649)** & **[#1650](https://github.com/leanprover-community/physlib/pull/1650)** (Gaussian non-saturation), **[#1716](https://github.com/leanprover-community/physlib/pull/1716)**, **[#1718](https://github.com/leanprover-community/physlib/pull/1718)**, **[#1732](https://github.com/leanprover-community/physlib/pull/1732)** (maximal current state), **[#1723](https://github.com/leanprover-community/physlib/pull/1723)**, **[#1725](https://github.com/leanprover-community/physlib/pull/1725)**, **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (elementary dimensional uncertainty), **[#1730](https://github.com/leanprover-community/physlib/pull/1730)**, **[#1742](https://github.com/leanprover-community/physlib/pull/1742)**, **[#1774](https://github.com/leanprover-community/physlib/pull/1774)** (multidimensional Robertson determinant), **[#1822](https://github.com/leanprover-community/physlib/pull/1822)** & **[#1844](https://github.com/leanprover-community/physlib/pull/1844)** (monotonicity: covariances non-decreasing under Schwarz unital maps) | [`CoherenceDefect.lean`](CoherenceDefect.lean), [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean) |
+| **Step 6** | Continuum closure, Mandelstam–Tamm time-energy relation and quantum speed limits | **[#1711](https://github.com/leanprover-community/physlib/pull/1711)** & **[#1739](https://github.com/leanprover-community/physlib/pull/1739)** (Mandelstam–Tamm theorem on lattice: $\Delta E \cdot \Delta t \ge \hbar/2$), **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1745](https://github.com/leanprover-community/physlib/pull/1745)** & **[#1746](https://github.com/leanprover-community/physlib/pull/1746)** (finite lattice quantum speed limit) | [`SpectralGap.lean`](SpectralGap.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`, `totalPhysicalGap_pos`) |
 
-*Tratado formal completo:* Ver [**Fundamentación Canónica en Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
+*Complete formal treatise:* See [**Canonical Foundations in Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
 
 ---
 
-## 📂 Catálogo del Corpus Formalizado en Lean 4
+## 📂 Formal Corpus Catalog in Lean 4
 
-| Módulo Fuente | Teorema Formal en Lean 4 | Significado Físico / Matemático | Estado |
+| Source Module | Formal Theorem in Lean 4 | Physical / Mathematical Meaning | Status |
 | :--- | :--- | :--- | :---: |
-| [`AdjDegree.lean`](AdjDegree.lean) | `adj_degree_le_twelve` | Grado de adyacencia universal de plaquetas $\Delta \le 12$ en retículo cúbico | `0 sorry` |
-| [`AxialSeeds.lean`](AxialSeeds.lean) | `seeds_rectAx_card_le` | Cota de semillas perimetrales $|\mathrm{Seeds}| \le 8(R + T)$ en gauge axial | `0 sorry` |
-| [`AreaBound.lean`](AreaBound.lean) | `area_bound_rect` | Área mínima $|S| \ge R \times T$ para superficies que apoyan en el lazo plano | `0 sorry` |
-| [`AreaLawBound.lean`](AreaLawBound.lean) | `area_law_uniform` | Ley del área de Wilson uniforme e independiente del volumen del retículo | `0 sorry` |
-| [`CubeAreaLaw.lean`](CubeAreaLaw.lean) | `cube_wilson_area_law` | Cota analítica completa del lazo de Wilson en la red cúbica 3D | `0 sorry` |
-| [`KoteckyPreiss.lean`](KoteckyPreiss.lean) | `ratio_le_exp_of_kp` | Expansión de polímeros y cota uniforme de desacoplamiento de Kotecký–Preiss | `0 sorry` |
-| [`PolymerDecomposition.lean`](PolymerDecomposition.lean) | `highTempSum_eq_polymerZ` | Factorización inyectiva de superficies cerradas y cancelación de burbujas | `0 sorry` |
-| [`SlabChain.lean`](SlabChain.lean) | `chainSum_eq_transfer` | Rebanado temporal euclídeo y representación exacta por matriz de transferencia | `0 sorry` |
-| [`SlabLimit.lean`](SlabLimit.lean) | `top_limit` | Límite asintótico temporal $T \to \infty$ y convergencia al autoespacio principal | `0 sorry` |
-| [`PerronOverlap.lean`](PerronOverlap.lean) | `top_overlap` | Solapamiento no nulo de estados positivos con el autoespacio fundamental | `0 sorry` |
-| [`Z2Final.lean`](Z2Final.lean) | `z2_gap` | Deducción de la brecha espectral a partir de la tensión de cuerda del área | `0 sorry` |
-| [`Z2Hj.lean`](Z2Hj.lean) | `z2_gap_free` | Positividad estricta del núcleo de Wilson y descarga de hipótesis de solapamiento | `0 sorry` |
-| [`FibreSurgery.lean`](FibreSurgery.lean) | `massFn_floor_pos` | Monotonía estricta de $\mathrm{massSq}(d)$ y piso transversal positivo $\ge 1/4$ | `0 sorry` |
-| [`FibreBand.lean`](FibreBand.lean) | `surplus_ge` | Exceso de incertidumbre en la banda de máxima tensión Robertson–Schrödinger | `0 sorry` |
-| [`SpectralGap.lean`](SpectralGap.lean) | `connected_le_exp` | La brecha espectral $\Delta > 0$ fuerza el decaimiento exponencial conexo | `0 sorry` |
-| [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound` | Lema analítico inverso: cota exponencial de lazos implica cota de autovalor | `0 sorry` |
-| [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `totalPhysicalGap_pos` | Positividad estricta de la brecha espectral total unificada $\Delta_{\mathrm{total}} > 0$ | `0 sorry` |
+| [`AdjDegree.lean`](AdjDegree.lean) | `adj_degree_le_twelve` | Universal plaquette adjacency degree $\Delta \le 12$ on the cubic lattice | `0 sorry` |
+| [`AxialSeeds.lean`](AxialSeeds.lean) | `seeds_rectAx_card_le` | Perimeter seed bound $|\mathrm{Seeds}| \le 8(R + T)$ in axial gauge | `0 sorry` |
+| [`AreaBound.lean`](AreaBound.lean) | `area_bound_rect` | Minimal area $|S| \ge R \times T$ for surfaces bounding the planar loop | `0 sorry` |
+| [`AreaLawBound.lean`](AreaLawBound.lean) | `area_law_uniform` | Uniform-in-volume Wilson area law independent of lattice size | `0 sorry` |
+| [`CubeAreaLaw.lean`](CubeAreaLaw.lean) | `cube_wilson_area_law` | Complete analytical Wilson loop area law bound on 3D cubic lattice | `0 sorry` |
+| [`KoteckyPreiss.lean`](KoteckyPreiss.lean) | `ratio_le_exp_of_kp` | Polymer expansion and uniform Kotecký–Preiss cluster decoupling bound | `0 sorry` |
+| [`PolymerDecomposition.lean`](PolymerDecomposition.lean) | `highTempSum_eq_polymerZ` | Injective factorization of closed surfaces and vacuum bubble cancellation | `0 sorry` |
+| [`SlabChain.lean`](SlabChain.lean) | `chainSum_eq_transfer` | Euclidean temporal slicing and exact transfer matrix representation | `0 sorry` |
+| [`SlabLimit.lean`](SlabLimit.lean) | `top_limit` | Temporal asymptotic limit $T \to \infty$ and convergence to leading eigenspace | `0 sorry` |
+| [`PerronOverlap.lean`](PerronOverlap.lean) | `top_overlap` | Non-zero overlap of positive states with the ground eigenspace | `0 sorry` |
+| [`Z2Final.lean`](Z2Final.lean) | `z2_gap_twelve` | Spectral gap from area law string tension with degree bound discharged | `0 sorry` |
+| [`Z2Hj.lean`](Z2Hj.lean) | `z2_gap_free` | Strict positivity of Wilson kernel and overlap theorem discharging hypotheses | `0 sorry` |
+| [`Z2Hj.lean`](Z2Hj.lean) | `exists_excited` | Overlap theorem proving non-zero component of excited state with loop vector | `0 sorry` |
+| [`FibreSurgery.lean`](FibreSurgery.lean) | `massFn_floor_pos` | Strict monotonicity of $\mathrm{massSq}(d)$ and positive transverse floor $\ge 1/4$ | `0 sorry` |
+| [`FibreBand.lean`](FibreBand.lean) | `surplus_ge` | Uncertainty excess on the maximal Robertson–Schrödinger tension band | `0 sorry` |
+| [`SpectralGap.lean`](SpectralGap.lean) | `connected_le_exp` | Spectral gap $\Delta > 0$ forces connected exponential decay | `0 sorry` |
+| [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound` | Inverse analytical lemma: exponential loop decay implies eigenvalue bound | `0 sorry` |
+| [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `totalPhysicalGap_pos` | Strict positivity of the unified total physical mass gap $\Delta_{\mathrm{total}} > 0$ | `0 sorry` |
 
 ---
 
-## 📚 Documentación Técnica y Tratados Canónicos
+## 📚 Technical Documentation and Canonical Treatises
 
-Para una comprensión exhaustiva de la derivación física, el andamiaje geométrico y las demostraciones formales:
+For an in-depth understanding of the physical derivation, geometric framework, and formal proofs:
 
-- 🏛️ [**Fundamentación Canónica en Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md): Mapeo exhaustivo de los 5 pilares matemáticos y los 50 teoremas aprobados y mergeados en el repositorio oficial comunitario de Lean 4 que blindan la deducción.
-- 📖 [**Auditoría Integral en 5 Partes**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md): Desglose paso a paso de la cadena deductiva completa, desde la red cúbica 3D ($\Delta = 12$) hasta el teorema inverso espectral (`eigenvalue_le_of_pow_bound`) y la positividad estricta de $\Delta_{\mathrm{total}}$.
-- 🏛️ [**Cirugía Topológica de Perelman para Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md): Análisis de la variedad $\mathbb{R}^3 \times S^1$, anticonmutación de Clifford y protección topológica contra el colapso gaussiano.
-- 📐 [**Reconstrucción de Wightman desde Osterwalder–Schrader**](docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md): Matriz de correspondencia OS0–OS4 $\to$ W1–W4 y formalización en Lean 4 del límite relativista en $\mathbb{R}^{1,3}$.
-- 🛡️ [**Cierre Formal de Brechas de Yang–Mills**](docs/CIERRE_FORMAL_BRECHAS_YANG_MILLS.md): Unificación de los pilares constructivos, medida de Haar en $SU(N)$ y cota transversal de Dirac.
-- 🔬 [**Puente Matriz de Transferencia ↔ Lazo de Wilson**](docs/ENUNCIADO_EXACTO_PUENTE_TRANSFER_WILSON.md): Enunciado riguroso del paso de correlaciones euclidianas a operadores cuánticos.
-- ⚡ [**Cotas de Polímeros y Kotecký–Preiss**](docs/ENUNCIADO_EXACTO_KOTECKY_PREISS.md): Desacoplamiento uniforme de racimos y cancelación de burbujas de vacío.
+- 🏛️ [**Canonical Foundations in Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md): Comprehensive mapping of the 5 mathematical pillars and 50 approved, merged theorems in Lean 4's official community repository.
+- 📖 [**5-Part Comprehensive Audit**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md): Step-by-step breakdown of the deductive chain, from the 3D cubic lattice ($\Delta = 12$) to the inverse spectral lemma (`eigenvalue_le_of_pow_bound`) and strict positivity of $\Delta_{\mathrm{total}}$.
+- 🏛️ [**Perelman Topological Surgery for Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md): Detailed analysis of $\mathbb{R}^3 \times S^1$, Clifford anticommutation, and topological protection against Gaussian collapse.
+- 📐 [**Wightman Reconstruction from Osterwalder–Schrader**](docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md): Axiomatic correspondence matrix OS0–OS4 $\to$ W1–W4 and formalization in Lean 4 of the relativistic limit on $\mathbb{R}^{1,3}$.
+- 🛡️ [**Formal Closure of Yang–Mills Gaps**](docs/CIERRE_FORMAL_BRECHAS_YANG_MILLS.md): Unification of constructive pillars, Haar measure on $SU(N)$, and transverse Dirac bound.
+- 🔬 [**Transfer Matrix ↔ Wilson Loop Bridge**](docs/ENUNCIADO_EXACTO_PUENTE_TRANSFER_WILSON.md): Rigorous statement of the passage from Euclidean correlations to quantum operators.
+- ⚡ [**Polymer Bounds and Kotecký–Preiss**](docs/ENUNCIADO_EXACTO_KOTECKY_PREISS.md): Uniform cluster decoupling and vacuum bubble cancellation.
 
 ---
 
-## 🛠️ Compilación y Certificación Canónica
+## 🛠️ Canonical Build and Certification
 
 ```bash
-# Compilación canónica incremental de los módulos
+# Incremental build of modules
 lake build
 
-# O verificación de archivo individual
+# Or individual file verification
 lean --run SurgeryGapClosure.lean
 ```
 
-**Axiomas del Kernel:**  
-Todos los módulos compilan bajo los axiomas estándar del kernel de Lean 4:
+**Kernel Axioms:**  
+All modules compile under the standard Lean 4 kernel axioms:
 ```text
 [propext, Classical.choice, Quot.sound]
 ```
-Sin `sorry`, sin axiomas adicionales ad hoc, y con dependencias canónicas en Mathlib.
+0 `sorry`, 0 ad hoc custom axioms, and verified with canonical Mathlib dependencies.
