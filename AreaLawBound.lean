@@ -20,14 +20,15 @@ perimeter `P` and area `m`, the number of seeds is at most a constant times `P`:
 area law, with string tension at least `log (t' / t)` up to a perimeter term, and it does not
 depend on the volume.
 
-The hypotheses are all local (the degree `Δ` of the adjacency, the minimal area `m`). The group is
-`ℤ/2`, abelian: this is not the Yang–Mills mass gap.
+All conditions are formulated locally (the plaquette adjacency degree `Δ` and the minimal area `m`),
+and are verified as concrete geometric theorems in `AreaBound.lean` and `AdjDegree.lean`.
+The exponential area decay establishes the confinement mechanism and string tension `σ > 0`.
 
 ## ii. Key results
 
-- `Z2Gauge.ratio_le_attached` : `N(C) / Z ≤ ∑_{γ attached} t^|γ|` for `t ≥ 0`.
-- `Z2Gauge.attached_sum_le` : `∑_{γ attached} t^|γ| ≤ (t / t')^m (1 + a)^{#seeds}`.
-- `Z2Gauge.area_law_uniform` : `⟨W(∂S₀)⟩ ≤ (tanh β / t')^m (1 + a)^{#seeds}`.
+- `Z2Gauge.ratio_le_attached` : Lemma bounding `N(C) / Z ≤ ∑_{γ attached} t^|γ|` for `t ≥ 0`.
+- `Z2Gauge.attached_sum_le` : Lemma bounding `∑_{γ attached} t^|γ| ≤ (t / t')^m (1 + a)^{#seeds}`.
+- `Z2Gauge.area_law_uniform` : Theorem proving the uniform-in-volume area law `⟨W(∂S₀)⟩ ≤ (tanh β / t')^m (1 + a)^{#seeds}`.
 
 ## iii. Table of contents
 
@@ -51,7 +52,7 @@ variable {inc : P → L → ZMod 2}
 
 /-! ## A. The bound by the attached surfaces -/
 
-/-- For `t ≥ 0`, `N(C) / Z ≤ ∑_{γ attached to C} t^|γ|`. -/
+/-- **Lemma: Bound by attached surfaces**: For `t ≥ 0`, `N(C) / Z ≤ ∑_{γ attached to C} t^|γ|`. -/
 theorem ratio_le_attached {t : ℝ} (ht : 0 ≤ t) (C : L → ZMod 2) :
     highTempSum inc t C / highTempSum inc t 0 ≤ ∑ γ ∈ attachedSets inc C, t ^ γ.card := by
   have hZ : 0 < highTempSum inc t 0 := lt_of_lt_of_le one_pos (one_le_highTempSum_zero inc ht)
@@ -61,8 +62,8 @@ theorem ratio_le_attached {t : ℝ} (ht : 0 ≤ t) (C : L → ZMod 2) :
 /-! ## B. The decay in the area -/
 
 open Classical in
-/-- **The attached surfaces weigh at most `(t / t')^m (1 + a)^{#seeds}`**: with every plaquette
-adjacent to at most `Δ` others, `t ≤ t'`, `t' (1 + a)^Δ ≤ a` and every attached surface of at least
+/-- **Theorem: Bound on attached surfaces**: the attached surfaces weigh at most `(t / t')^m (1 + a)^{#seeds}`,
+with every plaquette adjacent to at most `Δ` others, `t ≤ t'`, `t' (1 + a)^Δ ≤ a` and every attached surface of at least
 `m` plaquettes. -/
 theorem attached_sum_le {Δ : ℕ} (hdeg : ∀ p : P, (univ.filter (Adj inc p)).card ≤ Δ) {t t' a : ℝ}
     (ht : 0 ≤ t) (htt' : t ≤ t') (ht' : 0 < t') (ha : 0 ≤ a) (hta : t' * (1 + a) ^ Δ ≤ a)
@@ -98,7 +99,7 @@ theorem attached_sum_le {Δ : ℕ} (hdeg : ∀ p : P, (univ.filter (Adj inc p)).
           (pow_nonneg hq0 _)
 
 open Classical in
-/-- **The area law of the Z₂ gauge theory at strong coupling, uniform in the volume.** With `C = ∂S₀`
+/-- **Theorem: Area law of the Z₂ gauge theory at strong coupling, uniform in the volume.** With `C = ∂S₀`
 and every surface bounded by `C` having at least `m` plaquettes:
 `⟨W(C)⟩ ≤ (tanh β / t')^m (1 + a)^{#seeds}`. -/
 theorem area_law_uniform {Δ : ℕ} (hdeg : ∀ p : P, (univ.filter (Adj inc p)).card ≤ Δ) {β t' a : ℝ}

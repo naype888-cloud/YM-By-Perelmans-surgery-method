@@ -9,8 +9,8 @@ import TransferBridge
 # Spectral gap of the `Z₂` transfer matrix from the decay of a Wilson loop
 
 `TransferBridge.transfer_spectral_gap_wilson` assumes that the transfer matrix is positive
-semidefinite. For Wilson's `Z₂` model that is `Z2Transfer.transfer_posSemidef`; here it is
-discharged, so the only hypothesis left is the decay of `x ⬝ T^k x`.
+semidefinite. For Wilson's `Z₂` model that is proved in `Z2Transfer.transfer_posSemidef`; here it is
+discharged, connecting the spectral gap theorem directly to the decay bound of `x ⬝ T^k x` (proved in `Z2WilsonGap.hlaw`).
 
 ## Main results
 

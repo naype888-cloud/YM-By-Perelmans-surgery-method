@@ -16,9 +16,9 @@ which has no cycles.
 
 ## Main results
 
-- `AreaBound.ax_proj` : the projection property of `ainc`.
-- `AreaBound.ax_no_cycles` : the plane complex of a column has no cycles.
-- `AreaBound.area_bound_rectAx` : `R * k ≤ |S|` for every `S` with the boundary of `rectAx`.
+- `AreaBound.ax_proj` : Lemma establishing the projection property of `ainc`.
+- `AreaBound.ax_no_cycles` : Lemma proving that the plane complex of a column has no cycles.
+- `AreaBound.area_bound_rectAx` : Theorem proving the minimal area bound `R * k ≤ |S|` for every surface `S` with the boundary of `rectAx`.
 -/
 
 open Finset

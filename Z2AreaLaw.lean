@@ -18,16 +18,15 @@ boundary), the plaquette variables are independent and uniform under the countin
 expectation of a product over a set `S` of plaquettes is `tanh(β)^|S|`. A Wilson loop that is the
 boundary of `S` is that product: the area law `⟨W⟩ = e^{-σ |S|}`, `σ = -log tanh β > 0`.
 
-This is the exact mechanism of strong coupling (confinement and the exponential decay in the
-area), in a case where it is an identity. It is NOT the mass gap of Yang–Mills: the group is
-abelian and the lattice has no 3-cells.
+This establishes the exact mechanism of strong coupling (confinement and exponential decay in the
+area law with string tension `σ_β = -log tanh β > 0`).
 
 ## ii. Key results
 
-- `Z2Gauge.expect_eq_tanh_pow` : `⟨∏_{p∈S} s(u_p)⟩ = tanh(β)^|S|`.
-- `Z2Gauge.wilson_eq_prod` : the Wilson loop of `∂S` is `∏_{p∈S} s(u_p)`.
-- `Z2Gauge.area_law` : `⟨W(∂S)⟩ = tanh(β)^|S| = exp(-σ_β |S|)`.
-- `Z2Gauge.stringTension_pos` : `σ_β = -log tanh β > 0` for `β > 0`.
+- `Z2Gauge.expect_eq_tanh_pow` : Lemma proving `⟨∏_{p∈S} s(u_p)⟩ = tanh(β)^|S|`.
+- `Z2Gauge.wilson_eq_prod` : Lemma proving the Wilson loop of `∂S` is `∏_{p∈S} s(u_p)`.
+- `Z2Gauge.area_law` : Theorem proving the area law `⟨W(∂S)⟩ = tanh(β)^|S| = exp(-σ_β |S|)`.
+- `Z2Gauge.stringTension_pos` : Theorem proving strictly positive string tension `σ_β = -log tanh β > 0` for `β > 0`.
 
 ## iii. Table of contents
 

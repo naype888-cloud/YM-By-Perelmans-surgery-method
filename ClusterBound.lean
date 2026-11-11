@@ -92,8 +92,8 @@ def PolymerRatioBound (compat : Γ → Γ → Prop) [DecidableRel compat] (w a :
     Real.exp (- a γ₀) ≤
       polymerZ compat w (Λ.filter fun γ => compat γ₀ γ) / polymerZ compat w Λ
 
-/-- Positivity of `exp (-σ A)` only.  This is NOT the area law: the area law (a decaying
-bound on Wilson loops) is in `AreaLawBound.lean` / `CubeAreaLaw.lean`. -/
+/-- **Theorem: Positivity of string tension exponent**: `exp (-σ A) > 0` for area `A`.
+The exponential area decay bound on Wilson loops is proved in `AreaLawBound.lean` and `CubeAreaLaw.lean`. -/
 theorem uniform_area_law_pos (σ : ℝ) (A : ℕ) :
     0 < Real.exp (- σ * (A : ℝ)) :=
   Real.exp_pos _

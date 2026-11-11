@@ -24,9 +24,10 @@ region `S₀` has at least one plaquette over each plane plaquette of `S₀`: `|
 
 ## ii. Key results
 
-- `AreaBound.project_boundary` : the projected boundary of `S` is the plane boundary of `f S`.
-- `AreaBound.chain_eq_of_boundary_eq` : same boundary, same projected chain.
-- `AreaBound.card_ge_of_boundary_eq` : `|S| ≥ #{q | f S₀ q = 1}`.
+- `AreaBound.project_boundary` : Theorem proving the projected boundary of `S` is the plane boundary of `f S`.
+- `AreaBound.chain_eq_of_boundary_eq` : Theorem proving same boundary yields same projected chain.
+- `AreaBound.card_ge_of_boundary_eq` : Theorem proving `|S| ≥ #{q | f S₀ q = 1}`.
+- `AreaBound.area_bound_rect` : Theorem proving the minimal area bound `R * T ≤ |S|` for a flat rectangle.
 
 ## iii. Table of contents
 

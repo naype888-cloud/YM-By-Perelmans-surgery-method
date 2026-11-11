@@ -176,8 +176,8 @@ theorem z2_gap (β : ℝ) (hβ : 0 < β) {Δ : ℕ}
   simpa using h
 
 
-/-- **`z2_gap` without the degree hypothesis**: the adjacency degree of the plaquettes of the box
-is at most `12` (`AreaBound.adj_degree_le_twelve`). -/
+/-- **Theorem: `z2_gap_twelve`**: with the plaquette adjacency degree bounded by `12`
+as a theorem (`AreaBound.adj_degree_le_twelve`), the degree condition is discharged. -/
 theorem z2_gap_twelve (β : ℝ) (hβ : 0 < β)
     {t' a : ℝ} (htt' : Real.tanh β < t') (ha : 0 ≤ a)
     (hta : t' * (1 + a) ^ 12 ≤ a) (R : ℕ) (hR : R ≤ A) (k₀ : Fin (C + 1))

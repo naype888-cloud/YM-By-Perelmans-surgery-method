@@ -22,7 +22,7 @@ lemma bdry_eq_boundary {P L : Type*} [Fintype P] (inc : P → L → ZMod 2) (S :
     AreaBound.bdry inc S = Z2Gauge.boundary inc S := rfl
 
 open Classical in
-/-- **The concrete uniform-in-volume area law in the 3D cubic box**:
+/-- **Theorem: Concrete uniform-in-volume area law in the 3D cubic box**:
 for any box `A × B × C` and any flat rectangle `R × T` (`R ≤ A`, `T ≤ B`),
 the Wilson loop expectation decays exponentially with the area `R * T`. -/
 theorem cube_wilson_area_law (A B C R T : ℕ) (hR : R ≤ A) (hT : T ≤ B) (k₀ : Fin (C + 1))

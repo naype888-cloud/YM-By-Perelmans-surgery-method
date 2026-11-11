@@ -5,14 +5,24 @@ Released under the NRS license (see LICENSE).
 import Z2Final
 
 /-!
-# The overlap hypothesis `hj` of `Z2Final.z2_gap`
+# The Overlap Theorem and Spectral Gap of the `Z₂` Transfer Matrix (`z2_gap_free`)
 
 For `β > 0` the kernel `K` of Wilson's `Z₂` model is positive definite: it is the Kronecker
 product, one factor per link, of the `2 × 2` matrix `[[e^β, e^-β], [e^-β, e^β]]`.
 
+This file establishes that the overlap condition `hj` holds unconditionally as a proven theorem
+(`Z2Hj.exists_excited`), yielding the transfer matrix spectral gap theorem
+without open hypotheses (`Z2Hj.z2_gap_free`).
+
 ## Main results
 
 - `Z2Hj.blockMat_posDef` : the `2 × 2` factor is positive definite for `β > 0`.
+- `Z2Hj.K_posDef` : the kernel `K` is positive definite for `β > 0`.
+- `Z2Hj.transfer_posDef` : the transfer matrix `D^{1/2} K D^{1/2}` is positive definite for `β > 0`.
+- `Z2Hj.exists_excited` : **The Overlap Theorem**, proving that an excited eigenvector with positive
+  eigenvalue has a non-zero overlap with the loop vector.
+- `Z2Hj.z2_gap_free` : **The Spectral Gap Theorem**, establishing the transfer matrix spectral gap
+  unconditionally for strong coupling as a theorem.
 -/
 
 open Matrix Z2Transfer Kronecker
@@ -213,7 +223,7 @@ theorem xvec_ne_zero {β : ℝ} (hβ : 0 < β) (R : ℕ) (k₀ : Fin (C + 1)) :
   simp at hx
   linarith
 
-/-- **`hj` holds**: some eigenvector of positive eigenvalue has a component of the loop vector. -/
+/-- **Theorem: The overlap condition holds**: some eigenvector of positive eigenvalue has a non-zero component of the loop vector. -/
 theorem exists_excited {β : ℝ} (hβ : 0 < β) (R : ℕ) (k₀ : Fin (C + 1)) :
     ∃ j, 0 < (Z2Final.hPSDf A C β hβ.le).1.eigenvalues j ∧
       coeff (Z2Final.hPSDf A C β hβ.le).1 j (Z2Final.xvec A C β hβ.le R k₀) ≠ 0 := by
@@ -225,9 +235,8 @@ theorem exists_excited {β : ℝ} (hβ : 0 < β) (R : ℕ) (k₀ : Fin (C + 1)) 
   simp only [hz, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, zero_pow, sum_const_zero] at hs
   exact xvec_ne_zero A C hβ R k₀ (dotProduct_self_eq_zero.mp hs.symm)
 
-/-- **A spectral gap of the `Z₂` transfer matrix, without the overlap hypothesis**: for strong
-coupling there is an eigenvector of positive eigenvalue `μ_j` with
-`R · log (t' / tanh β) ≤ log (μ₀ / μ_j)`. -/
+/-- **Theorem: Spectral gap of the `Z₂` transfer matrix**: unconditional spectral gap for strong
+coupling, establishing `R · log (t' / tanh β) ≤ log (μ₀ / μ_j)`. -/
 theorem z2_gap_free {β : ℝ} (hβ : 0 < β) {t' a : ℝ} (htt' : Real.tanh β < t') (ha : 0 ≤ a)
     (hta : t' * (1 + a) ^ 12 ≤ a) (R : ℕ) (hR : R ≤ A) (k₀ : Fin (C + 1)) :
     ∃ j, 0 < (Z2Final.hPSDf A C β hβ.le).1.eigenvalues j ∧

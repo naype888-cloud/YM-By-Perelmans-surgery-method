@@ -5,16 +5,17 @@ Released under the NRS license (see LICENSE).
 import Z2Wilson
 
 /-!
-# The `Fin n` side: the area law as the hypothesis of `SlabLimit.top_limit`
+# The `Fin n` side: transfer matrix decay theorem from the area law
 
 The transfer matrix of `Z2Wilson` lives on configurations of one time slice. Here it is reindexed
 by `Fin n` (`SlabFin`), where `SpectralGap`, `SlabLimit` and `PerronOverlap` work, and the bound
-of `Z2Wilson.numerator_le` becomes the hypothesis
-`(T^N v) ⬝ (F T^k F) (T^N v) ≤ D_k · v ⬝ T^{2N+k} v` of `SlabLimit.top_limit`.
+of `Z2Wilson.numerator_le` establishes the theorem
+`(T^N v) ⬝ (F T^k F) (T^N v) ≤ D_k · v ⬝ T^{2N+k} v` for `SlabLimit.top_limit`.
 
 ## Main results
 
-- `Z2WilsonGap.hlaw` : that hypothesis, for the transfer matrix `Tfin` and the vector `vfin`.
+- `Z2WilsonGap.hlaw` : Theorem establishing the transfer matrix decay bound for `Tfin` and `vfin`
+  from the axial box area law.
 -/
 
 open Matrix Finset AreaBound
@@ -63,7 +64,7 @@ lemma symm_dot {β : ℝ} (hβ : 0 ≤ β) (m : ℕ) (z y : Idx A C → ℝ) :
   rw [← Matrix.vecMul_transpose, hs]
 
 open Classical in
-/-- **The hypothesis of `SlabLimit.top_limit`**, from the area law of the axial box. -/
+/-- **Theorem: Transfer matrix decay bound**, proved from the area law of the axial box. -/
 theorem hlaw (β : ℝ) (hβ : 0 ≤ β) {Δ : ℕ}
     (hdeg : ∀ (B : ℕ) (p : CPlaq A B C), (Finset.univ.filter (Z2Gauge.Adj (cinc A B C) p)).card ≤ Δ)
     {t' a : ℝ} (htt' : Real.tanh β ≤ t') (ht' : 0 < t') (ha : 0 ≤ a)
