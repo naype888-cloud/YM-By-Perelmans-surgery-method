@@ -169,12 +169,27 @@ From this official corpus, **41 kernel-certified theorems** support the 7 constr
 | [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `nrs3_physical_spectrum_inter_gap_shell_empty` | Empty intersection between gap shell $(0, \Delta_{\mathrm{total}})$ and NRS³ physical spectrum | `0 sorry` |
 | [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `nrs3_sturm_liouville_spectral_null` | Unconditional vanishing of concrete NRS³ spectral measure on intermediate gap shell | `0 sorry` |
 | [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unconditional bridge to OpenAI Wightman Hamiltonian via NRS³ cube measure | `0 sorry` |
+| [`ConfinementBridge.lean`](ConfinementBridge.lean) | `derived_transfer_gap` | Spectral gap derived directly from gauge transfer operator $T$ via Wilson area decay | `0 sorry` |
+| [`ConfinementBridge.lean`](ConfinementBridge.lean) | `transverse_floor_eq_lambda_sq` | Floor identity $\mathrm{defect}(L_0) = \mathrm{massSq}(4) \cdot \Lambda_{\mathrm{YM}}^2 > 0$ independent of spatial volume | `0 sorry` |
+| [`ConfinementBridge.lean`](ConfinementBridge.lean) | `physicalMassGapAtL0_pos` | Strict positivity of physical mass gap at the invariant confinement scale $L_0 = 1/\Lambda_{\mathrm{YM}}$ | `0 sorry` |
+| [`ConfinementBridge.lean`](ConfinementBridge.lean) | `wightman_mass_gap_at_confinement_scale` | Master continuous Wightman bridge at the invariant confinement scale $L_0$ | `0 sorry` |
+| [`LatticeFiberDirac.lean`](LatticeFiberDirac.lean) | `physical_gap_invariant` | Physical mass gap $\Delta_{\mathrm{phys}} = \Delta_{\mathrm{lat}}/a = \Lambda$ strictly invariant under $a \to 0$ | `0 sorry` |
+| [`LatticeFiberDirac.lean`](LatticeFiberDirac.lean) | `colored_state_energy_divergence` | Gluon confinement: colored states diverge linearly, precluding massless free gluons | `0 sorry` |
+| [`LatticeFiberDirac.lean`](LatticeFiberDirac.lean) | `fiber_dirac_spectral_floor` | Transverse Dirac–Kähler floor $|E| \ge \Lambda_{\mathrm{YM}} > 0$ via Clifford anticommutation on $\mathbb{R}^3 \times S^1$ | `0 sorry` |
+| [`LatticeFiberDirac.lean`](LatticeFiberDirac.lean) | `su3_wightman_continuum_mass_gap` | Full $SU(3)$ Yang–Mills continuous Wightman mass gap in 4D Minkowski spacetime | `0 sorry` |
+| [`SU2-SU3.lean`](SU2-SU3.lean) | `su2_wightman_confinement_gap` | Explicit unconditional Wightman spectral mass gap for $SU(2)$ at scale $L_0$ | `0 sorry` |
+| [`SU2-SU3.lean`](SU2-SU3.lean) | `su3_wightman_confinement_gap` | Explicit unconditional Wightman spectral mass gap for $SU(3)$ at scale $L_0$ | `0 sorry` |
+| [`SUNBridge.lean`](SUNBridge.lean) | `sun_wightman_mass_gap_bridge` | Non-abelian $SU(N)$ ($SU(2)$, $SU(3)$) Peter–Weyl/Haar bridge to continuous Wightman mass gap | `0 sorry` |
+| [`SUNBridge.lean`](SUNBridge.lean) | `su2_wightman_mass_gap_bridge` | Explicit unconditional Wightman spectral mass gap for $SU(2)$ Yang–Mills | `0 sorry` |
+| [`SUNBridge.lean`](SUNBridge.lean) | `su3_wightman_mass_gap_bridge` | Explicit unconditional Wightman spectral mass gap for $SU(3)$ Yang–Mills | `0 sorry` |
 
 ---
 
 ## 📚 Technical Documentation and Canonical Treatises
 
 For an in-depth understanding of the physical derivation, geometric framework, and formal proofs:
+
+- 🏛️ [**Tratado Formal del Puente $SU(N)$ y el Límite Continuo**](docs/SU2-SU3.pdf): Monografía matemática y respuesta al dictamen crítico sobre grupos no abelianos ($SU(2)$, $SU(3)$) y el continuo de Wightman.
 
 - 🏛️ [**Cierre Definitivo del Puente del Hamiltoniano (OpenAI ↔ Perelman Surgery)**](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md): Resolución formal y cierre de las Preguntas Abiertas #3 y #4 del dictamen oficial de Michael R. Douglas / Yang–Mills Group sobre OpenAI (`assessment-1.pdf`, 10 de nov de 2026).
 - 🏛️ [**Canonical Foundations in Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md): Comprehensive mapping of the 5 mathematical pillars and 50 approved, merged theorems in Lean 4's official community repository.
