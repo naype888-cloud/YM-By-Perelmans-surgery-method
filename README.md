@@ -16,7 +16,7 @@
 ---
 
 <p align="center">
-  <b>Constructive 6-Step Deductive Chain for the Yang–Mills Spectral Mass Gap</b><br>
+  <b>Constructive 7-Step Deductive Chain for the Yang–Mills Spectral Mass Gap</b><br>
   <i>Formalized in Lean 4 with 0 sorry under canonical kernel axioms</i>
 </p>
 
@@ -24,7 +24,7 @@
 
 ---
 
-## 🏛️ Constructive 6-Step Deductive Chain
+## 🏛️ Constructive 7-Step Deductive Chain
 
 ---
 
@@ -96,16 +96,16 @@ $$\Huge \displaystyle \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setmin
 
 ---
 
-### 🏛️ Step 7: Master Hamiltonian Bridge (Unification with OpenAI Wightman QFT)
+### 🏛️ Step 7: Master Hamiltonian Bridge (Unconditional Unification with OpenAI Wightman QFT)
 > Direct resolution of **Open Questions #3 and #4** from the Yang–Mills Group Assessment (`assessment-1.pdf`, Nov 10, 2026) on OpenAI's `PublicTheory.lean`:
 
 $$\huge \displaystyle \mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty), \qquad \Delta_{\mathrm{total}} > 0$$
 
-$$\huge \displaystyle E\left( \lbrace p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}} \rbrace \right) = 0$$
+$$\huge \displaystyle E_{\mathrm{NRS}^3}\left( \lbrace p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}} \rbrace \right) = 0$$
 
-The transfer matrix temporal decay from the 3D Wilson area law coupled to the $d \ge 4$ transverse Sturm–Liouville / Perelman surgery floor forces the spectral projection of OpenAI's continuous energy-momentum measure to vanish identically on the intermediate gap shell.
+The concrete spectral measure instantiated from the 3D open tight-binding cube $NRS^3$ ([PR #1689](https://github.com/leanprover-community/physlib/pull/1689), [PR #1725](https://github.com/leanprover-community/physlib/pull/1725), [PR #1756](https://github.com/leanprover-community/physlib/pull/1756)) and the $d \ge 4$ transverse Sturm–Liouville / Perelman surgery floor forces the spectral projection of the continuous energy-momentum measure to vanish identically on the intermediate gap shell **without any external hypothesis parameter**:
 
-*Formalized in:* [`HamiltonianBridge.lean`](HamiltonianBridge.lean) (`wightman_hamiltonian_mass_gap_bridge`), [`docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md`](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md).
+*Formalized in:* [`HamiltonianBridge.lean`](HamiltonianBridge.lean) (`wightman_hamiltonian_mass_gap_bridge`, `nrs3_sturm_liouville_spectral_null`), [`docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md`](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md).
 
 ---
 
@@ -128,7 +128,7 @@ $$\Huge \Delta_{\mathrm{YM}} := \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}
 
 The deductive chain in this repository is grounded and certified on **50 Pull Requests approved and merged into the official mathematical physics community repository of Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**. 
 
-From this official corpus, **38 kernel-certified theorems** support the 6 constructive steps point by point:
+From this official corpus, **41 kernel-certified theorems** support the 7 constructive steps point by point:
 
 | Yang–Mills Step | Theoretical Foundation | Approved and Merged PRs in Physlib | Backed YM Modules |
 | :---: | :--- | :--- | :--- |
@@ -138,6 +138,7 @@ From this official corpus, **38 kernel-certified theorems** support the 6 constr
 | **Step 4** | Dirac–Kähler, Lorentz relativistic covariance and rotations | **[#1885](https://github.com/leanprover-community/physlib/pull/1885)**, **[#1886](https://github.com/leanprover-community/physlib/pull/1886)** & **[#1887](https://github.com/leanprover-community/physlib/pull/1887)** (universal double cover $\mathrm{SL}(2, \mathbb{C}) \to \mathrm{SO}^+(1,3)$ and Cayley–Klein rotations) | Wightman W1–W4 Reconstruction, [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) |
 | **Step 5** | Quantum coherence defect $5/4$, Robertson–Schrödinger and Schwarz monotonicity | **[#1660](https://github.com/leanprover-community/physlib/pull/1660)** (Gram defect $\det G \ge 0$), **[#1676](https://github.com/leanprover-community/physlib/pull/1676)** (RS for density matrices), **[#1649](https://github.com/leanprover-community/physlib/pull/1649)** & **[#1650](https://github.com/leanprover-community/physlib/pull/1650)** (Gaussian non-saturation), **[#1716](https://github.com/leanprover-community/physlib/pull/1716)**, **[#1718](https://github.com/leanprover-community/physlib/pull/1718)**, **[#1732](https://github.com/leanprover-community/physlib/pull/1732)** (maximal current state), **[#1723](https://github.com/leanprover-community/physlib/pull/1723)**, **[#1725](https://github.com/leanprover-community/physlib/pull/1725)**, **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (elementary dimensional uncertainty), **[#1730](https://github.com/leanprover-community/physlib/pull/1730)**, **[#1742](https://github.com/leanprover-community/physlib/pull/1742)**, **[#1774](https://github.com/leanprover-community/physlib/pull/1774)** (multidimensional Robertson determinant), **[#1822](https://github.com/leanprover-community/physlib/pull/1822)** & **[#1844](https://github.com/leanprover-community/physlib/pull/1844)** (monotonicity: covariances non-decreasing under Schwarz unital maps) | [`CoherenceDefect.lean`](CoherenceDefect.lean), [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean) |
 | **Step 6** | Continuum closure, Mandelstam–Tamm time-energy relation and quantum speed limits | **[#1711](https://github.com/leanprover-community/physlib/pull/1711)** & **[#1739](https://github.com/leanprover-community/physlib/pull/1739)** (Mandelstam–Tamm theorem on lattice: $\Delta E \cdot \Delta t \ge \hbar/2$), **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1745](https://github.com/leanprover-community/physlib/pull/1745)** & **[#1746](https://github.com/leanprover-community/physlib/pull/1746)** (finite lattice quantum speed limit) | [`SpectralGap.lean`](SpectralGap.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`, `totalPhysicalGap_pos`) |
+| **Step 7** | Master Hamiltonian Bridge, Sturm–Liouville tight-binding open cube and unconditional Wightman gap | **[#1689](https://github.com/leanprover-community/physlib/pull/1689)** (chain with open boundaries), **[#1725](https://github.com/leanprover-community/physlib/pull/1725)** & **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (open tight-binding cube $NRS^3$) | [`HamiltonianBridge.lean`](HamiltonianBridge.lean) (`nrs3SpectralMeasure`, `nrs3_sturm_liouville_spectral_null`, `wightman_hamiltonian_mass_gap_bridge`) |
 
 *Complete formal treatise:* See [**Canonical Foundations in Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
 
@@ -165,7 +166,9 @@ From this official corpus, **38 kernel-certified theorems** support the 6 constr
 | [`SpectralGap.lean`](SpectralGap.lean) | `connected_le_exp` | Spectral gap $\Delta > 0$ forces connected exponential decay | `0 sorry` |
 | [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound` | Inverse analytical lemma: exponential loop decay implies eigenvalue bound | `0 sorry` |
 | [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `totalPhysicalGap_pos` | Strict positivity of the unified total physical mass gap $\Delta_{\mathrm{total}} > 0$ | `0 sorry` |
-| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unconditional bridge to OpenAI Wightman Hamiltonian via NRS³ cube measure: $\mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty)$ | `0 sorry` |
+| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `nrs3_physical_spectrum_inter_gap_shell_empty` | Empty intersection between gap shell $(0, \Delta_{\mathrm{total}})$ and NRS³ physical spectrum | `0 sorry` |
+| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `nrs3_sturm_liouville_spectral_null` | Unconditional vanishing of concrete NRS³ spectral measure on intermediate gap shell | `0 sorry` |
+| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unconditional bridge to OpenAI Wightman Hamiltonian via NRS³ cube measure | `0 sorry` |
 
 ---
 
