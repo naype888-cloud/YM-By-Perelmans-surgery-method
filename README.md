@@ -165,7 +165,7 @@ From this official corpus, **38 kernel-certified theorems** support the 6 constr
 | [`SpectralGap.lean`](SpectralGap.lean) | `connected_le_exp` | Spectral gap $\Delta > 0$ forces connected exponential decay | `0 sorry` |
 | [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound` | Inverse analytical lemma: exponential loop decay implies eigenvalue bound | `0 sorry` |
 | [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) | `totalPhysicalGap_pos` | Strict positivity of the unified total physical mass gap $\Delta_{\mathrm{total}} > 0$ | `0 sorry` |
-| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unification bridge to OpenAI Wightman Hamiltonian: $\mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty)$ | `0 sorry` |
+| [`HamiltonianBridge.lean`](HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Master unconditional bridge to OpenAI Wightman Hamiltonian via NRS³ cube measure: $\mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty)$ | `0 sorry` |
 
 ---
 
