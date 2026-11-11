@@ -44,9 +44,9 @@ La cadena de teoremas que cierra formalmente el puente en Lean 4:
 2. **`SlabLimit.lean`:** Paso al límite $N \to \infty$ proyectando sobre el subespacio de autovalores top (`top_limit`).
 3. **`PerronOverlap.lean`:** Solapamiento estricto del vector positivo con el autoespacio principal (`top_overlap`).
 4. **`AxialArea.lean`:** Cota de área minimal $R \cdot k$ en gauge axial (`area_bound_rectAx`).
-5. **`AxialSeeds.lean`:** Cota universal de plaquetas semilla $\#\text{Seeds} \le 8R$ independiente de la extensión temporal $k$ (`seeds_rectAx_card_le`).
+5. **`AxialSeeds.lean`:** Cota universal de plaquetas semilla $|\mathrm{Seeds}| \le 8R$ independiente de la extensión temporal $k$ (`seeds_rectAx_card_le`).
 6. **`Z2WilsonGap.lean` & `Z2Final.lean`:** Cierre del gap espectral neto $\ln(\mu_0 / \mu_j) \ge R \cdot \ln(t' / \tanh \beta)$ (`z2_gap_twelve`).
-7. **`Z2Hj.lean`:** Descarga completa de la hipótesis de solapamiento $h_j$ demostrando que el operador $K$ es positivo definido por producto de Kronecker (`z2_gap_free`).
+7. **`Z2Hj.lean`:** Teorema de solapamiento y gap libre: demostración de que el operador $K$ es positivo definido por producto de Kronecker (`exists_excited`), descargando la condición de solapamiento y probando el gap espectral neto (`z2_gap_free`).
 
 ---
 

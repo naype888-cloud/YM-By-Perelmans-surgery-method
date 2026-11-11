@@ -8,7 +8,7 @@
 
 Contabilidad canónica demostrada en la red cúbica 3D:
 1. El grado de adyacencia de plaquetas $\Delta = 12$ ([`AdjDegree.lean`](../AdjDegree.lean)).
-2. El número de semillas $\#\text{Seeds} \le 8(R + T)$ ([`AxialSeeds.lean`](../AxialSeeds.lean)).
+2. El número de semillas $|\mathrm{Seeds}| \le 8(R + T)$ ([`AxialSeeds.lean`](../AxialSeeds.lean)).
 
 ### A. Cota Universal de Grado: $\Delta = 12$
 Para cualquier caja finita o infinita $A \times B \times C$ en la red cúbica 3D con la incidencia `cinc` de [`AreaBound.lean`](../AreaBound.lean):
@@ -27,16 +27,16 @@ Para cualquier caja finita o infinita $A \times B \times C$ en la red cúbica 3D
      $$|\{q : \text{Adj}(p, q)\}| \le 4 \times 3 = 12$$
    $$\mathbf{\Delta = 12 \quad \text{independiente del volumen } A \times B \times C.}$$
 
-### B. Cota Universal de Semillas: $\#\text{Seeds} \le 8(R + T)$
+### B. Cota Universal de Semillas: $|\mathrm{Seeds}| \le 8(R + T)$
 Una semilla es una plaqueta $p$ que contiene al menos un enlace del borde del lazo $C = \partial(R \times T)$:
 1. El lazo plano rectangular $R \times T$ a altura fija $k_0$ tiene un perímetro de:
    $$|C| = 2R + 2T \quad \text{enlaces.}$$
 2. Cada enlace $l \in C$ está contenido en a lo más **4 plaquetas** de la red cúbica.
 3. Por tanto, el número total de plaquetas semilla satisface:
-   $$\#\text{Seeds} = |\text{IsSeed}(C)| \le 4 \times |C| = 4 \times 2(R + T) = \mathbf{8(R + T)}.$$
+   $$|\mathrm{Seeds}| = |\text{IsSeed}(C)| \le 4 \times |C| = 4 \times 2(R + T) = \mathbf{8(R + T)}.$$
 
 ### C. La Cota de Área Uniforme Concreta
-Sustituyendo $\Delta = 12$ y $\#\text{Seeds} \le 8(R + T)$ en el teorema `area_law_uniform` ([`AreaLawBound.lean`](../AreaLawBound.lean)):
+Sustituyendo $\Delta = 12$ y $|\mathrm{Seeds}| \le 8(R + T)$ en el teorema `area_law_uniform` ([`AreaLawBound.lean`](../AreaLawBound.lean)):
 Para cualquier $t' > 0$ y $a \ge 0$ tales que $t' (1 + a)^{12} \le a$ (por ejemplo, eligiendo $a = 1/2$, $(1+a)^{12} = (3/2)^{12} \approx 129.7$, basta tomar $t' = \frac{1}{2 \times 130} \approx \frac{1}{260}$):
 Para todo acoplamiento fuerte $\tanh \beta \le t'$:
 $$\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} \left(\frac{3}{2}\right)^{8(R + T)}$$
