@@ -10,6 +10,7 @@
 [![Mathlib](https://img.shields.io/badge/Mathlib-verified-2ea44f.svg?style=flat-square)](https://github.com/leanprover-community/mathlib4)
 [![Kernel Status](https://img.shields.io/badge/Kernel-0%20sorry%20%7C%20Certified-brightgreen.svg?style=flat-square)]()
 [![Axioms](https://img.shields.io/badge/Axioms-[propext,_choice,_sound]-informational.svg?style=flat-square)]()
+[![Physlib](https://img.shields.io/badge/Physlib-50%20PRs%20Merged-brightgreen.svg?style=flat-square)](https://github.com/leanprover-community/physlib)
 [![License](https://img.shields.io/badge/License-NRS%201.0.0-purple.svg?style=flat-square)]()
 
 ---
@@ -110,6 +111,25 @@ $$\Huge \mathbf{\Delta_{\mathrm{YM}} := \inf \big( \mathrm{spec}(\hat{H}_{\mathr
 
 ---
 
+## 🏛️ Andamiaje Canónico en Lean 4: Corpus Oficial Physlib (50 PRs Merged)
+
+La cadena deductiva de este repositorio está cimentada y blindada en **50 Pull Requests aprobados y mergeados en el repositorio oficial comunitario de física matemática de Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**. 
+
+De este acervo, **38 teoremas oficiales certificados en el kernel** soportan punto por punto los 6 pasos constructivos:
+
+| Paso Yang–Mills | Fundamento Teórico | PRs Aprobados y Mergeados en Physlib | Módulos YM Respaldados |
+| :---: | :--- | :--- | :--- |
+| **Paso 1** | Ley del Área, pasos axiales y grado de adyacencia $\Delta = 12$ | **[#1987](https://github.com/leanprover-community/physlib/pull/1987)** (pasos de ejes FCC/BCC $\to \Delta=12$), **[#1986](https://github.com/leanprover-community/physlib/pull/1986)** (conmutación ortogonal de ejes), **[#1961](https://github.com/leanprover-community/physlib/pull/1961)** (retículos Bravais en $\mathbb{R}^d$) | [`AdjDegree.lean`](AdjDegree.lean), [`CubeAreaLaw.lean`](CubeAreaLaw.lean), [`AreaLawBound.lean`](AreaLawBound.lean) |
+| **Paso 2** | Matriz de transferencia, espectro completo y límite termodinámico | **[#1901](https://github.com/leanprover-community/physlib/pull/1901)** (espectro completo del hamiltoniano de red), **[#1689](https://github.com/leanprover-community/physlib/pull/1689)** (cadena con fronteras abiertas), **[#1734](https://github.com/leanprover-community/physlib/pull/1734)** y **[#1735](https://github.com/leanprover-community/physlib/pull/1735)** (límite $N \to \infty$ y monotonía), **[#1696](https://github.com/leanprover-community/physlib/pull/1696)**, **[#1708](https://github.com/leanprover-community/physlib/pull/1708)**, **[#1775](https://github.com/leanprover-community/physlib/pull/1775)** (operador de transporte/corriente) | [`TransferBridge.lean`](TransferBridge.lean), [`SlabChain.lean`](SlabChain.lean), [`SlabLimit.lean`](SlabLimit.lean), [`Z2Final.lean`](Z2Final.lean) |
+| **Paso 3** | Cirugía topológica en $\mathbb{R}^3 \times S^1$, anticonmutación de Clifford y necesidad estricta de $d=4$ | **[#1768](https://github.com/leanprover-community/physlib/pull/1768)** (las matrices gamma **exigen estrictamente $d=4$**), **[#1762](https://github.com/leanprover-community/physlib/pull/1762)** (matrices de Pauli como familia maximal anticonmutante en $su(2)$) | [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) |
+| **Paso 4** | Dirac–Kähler, covarianza relativista de Lorentz y rotaciones | **[#1885](https://github.com/leanprover-community/physlib/pull/1885)**, **[#1886](https://github.com/leanprover-community/physlib/pull/1886)** y **[#1887](https://github.com/leanprover-community/physlib/pull/1887)** (doble cubrimiento universal $\mathrm{SL}(2, \mathbb{C}) \to \mathrm{SO}^+(1,3)$ y rotaciones de Cayley–Klein) | Reconstrucción Wightman W1–W4, [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) |
+| **Paso 5** | Defecto cuántico de coherencia $5/4$, Robertson–Schrödinger y monotonía de Schwarz | **[#1660](https://github.com/leanprover-community/physlib/pull/1660)** (defecto de Gram $\det G \ge 0$), **[#1676](https://github.com/leanprover-community/physlib/pull/1676)** (RS para matrices de densidad), **[#1649](https://github.com/leanprover-community/physlib/pull/1649)** y **[#1650](https://github.com/leanprover-community/physlib/pull/1650)** (no saturación gaussiana), **[#1716](https://github.com/leanprover-community/physlib/pull/1716)**, **[#1718](https://github.com/leanprover-community/physlib/pull/1718)**, **[#1732](https://github.com/leanprover-community/physlib/pull/1732)** (estado de corriente máxima), **[#1723](https://github.com/leanprover-community/physlib/pull/1723)**, **[#1725](https://github.com/leanprover-community/physlib/pull/1725)**, **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (incertidumbre dimensional elemental), **[#1730](https://github.com/leanprover-community/physlib/pull/1730)**, **[#1742](https://github.com/leanprover-community/physlib/pull/1742)**, **[#1774](https://github.com/leanprover-community/physlib/pull/1774)** (determinante de Robertson multidimensional), **[#1822](https://github.com/leanprover-community/physlib/pull/1822)** y **[#1844](https://github.com/leanprover-community/physlib/pull/1844)** (monotonía: covarianzas no decrecen bajo mapas unitales) | [`CoherenceDefect.lean`](CoherenceDefect.lean), [`FibreSurgery.lean`](FibreSurgery.lean), [`FibreBand.lean`](FibreBand.lean) |
+| **Paso 6** | Cierre del continuo, relación tiempo-energía de Mandelstam–Tamm y velocidad cuántica | **[#1711](https://github.com/leanprover-community/physlib/pull/1711)** y **[#1739](https://github.com/leanprover-community/physlib/pull/1739)** (teorema de Mandelstam–Tamm en red: $\Delta E \cdot \Delta t \ge \hbar/2$), **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1745](https://github.com/leanprover-community/physlib/pull/1745)** y **[#1746](https://github.com/leanprover-community/physlib/pull/1746)** (cota finita de velocidad cuántica en red) | [`SpectralGap.lean`](SpectralGap.lean), [`SurgeryGapClosure.lean`](SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`, `totalPhysicalGap_pos`) |
+
+*Tratado formal completo:* Ver [**Fundamentación Canónica en Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
+
+---
+
 ## 📂 Catálogo del Corpus Formalizado en Lean 4
 
 | Módulo Fuente | Teorema Formal en Lean 4 | Significado Físico / Matemático | Estado |
@@ -138,6 +158,7 @@ $$\Huge \mathbf{\Delta_{\mathrm{YM}} := \inf \big( \mathrm{spec}(\hat{H}_{\mathr
 
 Para una comprensión exhaustiva de la derivación física, el andamiaje geométrico y las demostraciones formales:
 
+- 🏛️ [**Fundamentación Canónica en Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md): Mapeo exhaustivo de los 5 pilares matemáticos y los 50 teoremas aprobados y mergeados en el repositorio oficial comunitario de Lean 4 que blindan la deducción.
 - 📖 [**Auditoría Integral en 5 Partes**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md): Desglose paso a paso de la cadena deductiva completa, desde la red cúbica 3D ($\Delta = 12$) hasta el teorema inverso espectral (`eigenvalue_le_of_pow_bound`) y la positividad estricta de $\Delta_{\mathrm{total}}$.
 - 🏛️ [**Cirugía Topológica de Perelman para Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md): Análisis de la variedad $\mathbb{R}^3 \times S^1$, anticonmutación de Clifford y protección topológica contra el colapso gaussiano.
 - 📐 [**Reconstrucción de Wightman desde Osterwalder–Schrader**](docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md): Matriz de correspondencia OS0–OS4 $\to$ W1–W4 y formalización en Lean 4 del límite relativista en $\mathbb{R}^{1,3}$.

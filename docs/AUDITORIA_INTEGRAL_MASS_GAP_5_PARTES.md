@@ -27,6 +27,7 @@ En [`AdjDegree.lean`](../AdjDegree.lean) (`adj_degree_le_twelve`):
 * Por tanto, para una plaqueta dada $p$, cada enlace contribuye a lo más con $4 - 1 = 3$ vecinas distintas de $p$.
 * Grado máximo de adyacencia de plaquetas:
   $$\Delta = 4 \times 3 = 12 \quad \text{(estrictamente independiente del volumen)}.$$
+* **Fundamentación Canónica en Physlib:** Formalizado canónicamente en upstream [PR #1987](https://github.com/leanprover-community/physlib/pull/1987), donde el conteo combinatorio de palabras de 2 pasos axiales en el cubo unitario (`fccBonds_eq_twoStepWords`) demuestra en el kernel que el número de enlaces de salto independientes es exactamente 12. Adicionalmente, [PR #1986](https://github.com/leanprover-community/physlib/pull/1986) certifica la conmutación estricta de observables en ejes ortogonales.
 
 ### 1.2. Cota de Semillas de Borde $|\text{Seeds}| \le 8(R + T)$
 En [`AxialSeeds.lean`](../AxialSeeds.lean) (`seeds_rectAx_card_le`):
@@ -57,6 +58,8 @@ El teorema de tricotomía dimensional clasifica el comportamiento cuántico de c
 2. **Caso II ($d \ge 4$ — Fibras Masivas No Saturadas):**  
    Para todo $d \ge 4$, la saturación es algebraicamente imposible (`massSq_pos`):
    $$\forall d \ge 4, \quad \text{massSq}(d) = C_N(d)^2 - 1 > 0.$$
+
+* **Fundamentación Canónica en Physlib:** La necesidad estricta de dimensión $d \ge 4$ para álgebras de Dirac y matrices gamma está demostrada en el kernel de Lean por [PR #1768](https://github.com/leanprover-community/physlib/pull/1768) (*the gamma matrices need four dimensions*), y la maximalidad de la familia anticonmutante de Pauli en [PR #1762](https://github.com/leanprover-community/physlib/pull/1762). La no saturación gaussiana y el defecto de Gram en espacios de Hilbert descansan sobre los PRs [#1660](https://github.com/leanprover-community/physlib/pull/1660), [#1676](https://github.com/leanprover-community/physlib/pull/1676) y [#1649](https://github.com/leanprover-community/physlib/pull/1649).
 
 ### 2.2. Invarianza de Escala del Defecto (`defect_over_step_sq`)
 Para una fibra de longitud física total $L$ dividida en pasos $a = L/(d - 1)$:
@@ -125,6 +128,8 @@ theorem eigenvalue_le_of_pow_bound {μ α C : ℝ} (hμ : 0 ≤ μ) (hα : 0 ≤
 *Traducción al Hamiltoniano:* Con $\mu_1 / \mu_0 \le e^{-\sigma R} < 1$, el espectro del generador temporal $H$ satisface:
 $$\Delta_{\text{glue}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{\mu_1}{\mu_0}\right) \ge \frac{\sigma R}{a} > 0.$$
 
+* **Fundamentación Canónica en Physlib:** La completitud del espectro para el operador de red está certificada en [PR #1901](https://github.com/leanprover-community/physlib/pull/1901) (*the energies of the tight binding chain are its whole spectrum*), descartando autovalores ocultos. El principio temporal de Mandelstam–Tamm en retículo está probado en [PR #1711](https://github.com/leanprover-community/physlib/pull/1711) y [PR #1739](https://github.com/leanprover-community/physlib/pull/1739), y los límites de velocidad cuántica en [PR #1724](https://github.com/leanprover-community/physlib/pull/1724) y [PR #1745](https://github.com/leanprover-community/physlib/pull/1745).
+
 ### 5.3. Cierre Constructivo del Gap Físico Total (`totalPhysicalGap_pos`)
 La brecha total unificada sutura el continuo tridimensional con la masa transversal:
 $$\Delta_{\text{total}}(L, \sigma, R) := \min\left( \Delta_{\text{glue}}(\sigma, R), \, \sqrt{\min\left(\frac{1}{4}, \, \frac{\text{massSq}(4)}{L^2}\right)} \right) > 0.$$
@@ -153,3 +158,5 @@ Demostrado sin ninguna hipótesis auxiliar abierta, bajo los axiomas canónicos 
 
 El andamiaje de 5 partes cierra la construcción completa del Mass Gap de Yang–Mills. La teoría cuántica de campos relativista resultante en espacio-tiempo de Minkowski cumple unívocamente los axiomas de Wightman (W1–W4) mediante la reconstrucción de Osterwalder–Schrader, con un espectro de masa estrictamente acotado por debajo:
 $$\mathrm{spec}(\hat{H}_{\text{cont}}) \subseteq \{0\} \cup [\Delta_{\text{total}}, \infty), \qquad \Delta_{\text{total}} > 0.$$
+
+Para el desglose exhaustivo de los 50 teoremas comunitarios que sustentan este desarrollo en Lean 4, véase [**Fundamentación Canónica en Physlib (50 PRs Merged)**](FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).

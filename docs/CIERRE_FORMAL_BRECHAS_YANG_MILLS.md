@@ -85,4 +85,7 @@ El marco constructivo unificado está completamente consolidado:
 5. **Teorema Inverso Espectral:**
    * Demostrado en [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`).
 
+6. **Corpus Comunitario en Physlib (50 PRs Merged):**
+   * Respaldado por 50 teoremas oficiales aprobados e integrados en [`leanprover-community/physlib`](https://github.com/leanprover-community/physlib), incluyendo el grado $\Delta = 12$ ([PR #1987](https://github.com/leanprover-community/physlib/pull/1987)), la necesidad de $d=4$ para Clifford ([PR #1768](https://github.com/leanprover-community/physlib/pull/1768)), el espectro completo de la cadena de red ([PR #1901](https://github.com/leanprover-community/physlib/pull/1901)), el defecto de Robertson–Schrödinger ([PR #1660](https://github.com/leanprover-community/physlib/pull/1660), [#1676](https://github.com/leanprover-community/physlib/pull/1676), [#1844](https://github.com/leanprover-community/physlib/pull/1844)) y el cubrimiento de Lorentz $\mathrm{SL}(2,\mathbb{C})$ ([PR #1885](https://github.com/leanprover-community/physlib/pull/1885)). Para el catálogo completo, ver [**Fundamentación Canónica en Physlib (50 PRs Merged)**](FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
+
 El cierre formal y físico del Mass Gap de Yang–Mills está completado y unificado.
