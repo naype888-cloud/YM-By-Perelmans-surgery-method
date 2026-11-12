@@ -1,41 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="la">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yang–Mills Spectral Mass Gap | Constructive Proof in Lean 4</title>
+  <title>De Hiatu Massae Yang-Mills | Theorema Milenii in Lean 4 Demonstratum</title>
 
-  <!-- Typography: Orbitron, Rajdhani, Share Tech Mono, JetBrains Mono -->
+  <!-- Typographia Monumentalis: Cinzel (Romana Imperialis) & EB Garamond (Academica Classica) & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- KaTeX for blazing-fast mathematical typography -->
+  <!-- KaTeX for Blazing-Fast Classical Mathematical Typography -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 
-  <!-- Three.js + OrbitControls for real-time 3D quantum lattice visualization -->
+  <!-- Three.js + OrbitControls for Celestial 3D Geometry -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <style>
     :root {
-      --bg: #040711;
-      --bg-card: rgba(10, 16, 30, 0.75);
-      --bg-card-hover: rgba(16, 25, 48, 0.85);
-      --border-cyan: rgba(0, 229, 255, 0.22);
-      --border-cyan-glow: rgba(0, 229, 255, 0.55);
-      --primary: #00e5ff;
-      --secondary: #b537f2;
-      --emerald: #00ffa3;
-      --gold: #ffd000;
-      --danger: #ff2a5f;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --font-display: 'Orbitron', sans-serif;
-      --font-body: 'Rajdhani', sans-serif;
+      --bg-primary: #07080c;
+      --bg-card: rgba(13, 15, 24, 0.88);
+      --bg-card-hover: rgba(20, 23, 36, 0.95);
+      --bg-panel: #0a0c14;
+      
+      /* Imperial Burnished Gold & Classical Bronze */
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-deep: #aa820a;
+      --gold-border: rgba(212, 175, 55, 0.32);
+      --gold-glow: rgba(212, 175, 55, 0.18);
+      
+      /* Marble, Ivory & Parchment Tones */
+      --ivory: #f7f4ea;
+      --parchment: #e2dbcd;
+      --text-muted: #a39e93;
+      --text-dim: #736e65;
+
+      /* Classical Accents */
+      --lapis: #204068;
+      --lapis-light: #4a7ab5;
+      --crimson: #a62b2b;
+      --crimson-light: #e05353;
+      --emerald-dark: #1b5e3a;
+      --emerald-light: #2ecc71;
+
+      /* Typography */
+      --font-monument: 'Cinzel', serif;
+      --font-body: 'EB Garamond', serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -46,286 +61,346 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--bg-primary);
+      color: var(--parchment);
       font-family: var(--font-body);
-      font-size: 1.15rem;
-      line-height: 1.6;
+      font-size: 1.22rem;
+      line-height: 1.7;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 70%, rgba(181, 55, 242, 0.08) 0%, transparent 45%),
-        linear-gradient(rgba(4, 7, 17, 0.95), rgba(4, 7, 17, 0.95));
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(32, 64, 104, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+        linear-gradient(rgba(7, 8, 12, 0.98), rgba(7, 8, 12, 0.98));
       background-attachment: fixed;
     }
 
-    /* Scrollbar */
+    /* Classical Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #040711;
+      background: #07080c;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
+      background: #23221d;
+      border: 1px solid var(--gold-border);
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary);
+      background: var(--gold-primary);
     }
 
-    /* Container */
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
       position: relative;
       z-index: 10;
     }
 
-    /* Nav Bar */
+    /* Classical Fillet Borders */
+    .fillet-border {
+      border: 1px solid var(--gold-border);
+      position: relative;
+    }
+    .fillet-border::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      pointer-events: none;
+    }
+
+    /* Navigation Bar */
     header.navbar {
       position: sticky;
       top: 0;
       width: 100%;
-      background: rgba(4, 7, 17, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-cyan);
+      background: rgba(7, 8, 12, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-border);
       z-index: 1000;
     }
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 70px;
+      height: 76px;
     }
     .logo {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 1.3rem;
-      color: #fff;
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      flex-direction: column;
       text-decoration: none;
-      letter-spacing: 0.05em;
     }
-    .logo-badge {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #000;
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 800;
+    .logo-main {
+      font-family: var(--font-monument);
+      font-weight: 700;
+      font-size: 1.18rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+    }
+    .logo-sub {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      font-style: italic;
     }
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       list-style: none;
     }
     .nav-links a {
-      color: var(--text-muted);
+      font-family: var(--font-monument);
+      color: var(--parchment);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      transition: color 0.2s, text-shadow 0.2s;
+      font-size: 0.88rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.25s, text-shadow 0.25s;
     }
     .nav-links a:hover {
-      color: var(--primary);
-      text-shadow: 0 0 12px var(--primary);
+      color: var(--gold-light);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
     }
-    .btn-github {
-      background: rgba(0, 229, 255, 0.12);
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      padding: 0.45rem 1.2rem;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
+    .btn-academic {
+      font-family: var(--font-monument);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: all 0.25s;
+      gap: 0.6rem;
+      transition: all 0.3s;
     }
-    .btn-github:hover {
-      background: var(--primary);
-      color: #000;
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    .btn-academic:hover {
+      background: var(--gold-primary);
+      color: #07080c;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
     }
 
-    /* Hero Section */
+    /* Hero Section / Frontispiece */
     .hero {
-      padding: 4.5rem 0 3rem;
+      padding: 4.5rem 0 3.5rem;
       text-align: center;
       position: relative;
     }
-    .hero-badge-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: rgba(0, 229, 255, 0.08);
-      border: 1px solid var(--border-cyan);
-      padding: 0.4rem 1.2rem;
-      border-radius: 50px;
-      margin-bottom: 1.8rem;
-    }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--emerald);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(0.95); opacity: 0.7; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.7; }
-    }
-    .hero-badge-text {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--emerald);
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-    h1.hero-title {
-      font-family: var(--font-display);
-      font-size: 3.4rem;
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, #ffffff 30%, var(--primary) 70%, var(--secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
-    }
-    p.hero-subtitle {
-      font-size: 1.45rem;
-      color: #cbd5e1;
-      max-width: 860px;
-      margin: 0 auto 1.5rem;
-      font-weight: 500;
-    }
-    .hero-authors {
-      font-size: 1.1rem;
-      color: var(--text-muted);
+    .epigraph-seal {
+      display: inline-block;
+      font-family: var(--font-monument);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 0.35rem 1.8rem;
       margin-bottom: 2rem;
     }
-    .hero-authors b {
-      color: #fff;
+    h1.hero-title {
+      font-family: var(--font-monument);
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      line-height: 1.25;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
     }
-    .hero-authors span.feat {
-      color: var(--secondary);
+    h1.hero-title span.gold {
+      color: var(--gold-primary);
+      display: block;
+      font-size: 2.1rem;
+      letter-spacing: 0.15em;
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+    p.hero-epigraph {
+      font-family: var(--font-body);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--parchment);
+      max-width: 860px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.6;
+    }
+    .hero-attribution {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+    .hero-attribution b {
+      color: var(--ivory);
+      font-weight: 600;
+    }
+    .hero-attribution span.perelman {
+      color: var(--gold-light);
       font-style: italic;
     }
 
-    /* HUD Metrics Bar */
-    .hud-bar {
+    /* Classical Inscription Tablets (HUD) */
+    .tablets-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-      margin: 2rem 0 3.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+      margin: 2.5rem 0 4rem;
     }
-    .hud-card {
+    .tablet {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border-cyan);
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
+      border: 1px solid var(--gold-border);
+      padding: 1.5rem 1.6rem;
       text-align: left;
       position: relative;
-      overflow: hidden;
       transition: all 0.3s;
     }
-    .hud-card::before {
+    .tablet::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 3px; height: 100%;
-      background: var(--primary);
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      pointer-events: none;
     }
-    .hud-card.purple::before { background: var(--secondary); }
-    .hud-card.emerald::before { background: var(--emerald); }
-    .hud-card.gold::before { background: var(--gold); }
-    .hud-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-cyan-glow);
-      box-shadow: 0 10px 25px rgba(0, 229, 255, 0.15);
+    .tablet:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-glow);
+      border-color: var(--gold-primary);
     }
-    .hud-label {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .tablet-num {
+      font-family: var(--font-monument);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--gold-primary);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
     }
-    .hud-value {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
+    .tablet-val {
+      font-family: var(--font-monument);
+      font-size: 1.55rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--ivory);
+      letter-spacing: 0.04em;
     }
-    .hud-desc {
-      font-size: 0.9rem;
+    .tablet-desc {
+      font-size: 0.95rem;
       color: var(--text-muted);
-      margin-top: 0.2rem;
+      font-style: italic;
+      margin-top: 0.3rem;
     }
 
-    /* 3D Visualizer Canvas Section */
-    .visualizer-section {
+    /* Frontispiece Master Theorem Frame */
+    .monument-plate {
+      background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.06) 0%, rgba(10, 12, 20, 0.92) 80%);
+      border: 2px solid var(--gold-primary);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      margin-bottom: 4.5rem;
+      position: relative;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+    }
+    .monument-plate::before {
+      content: '';
+      position: absolute;
+      top: 6px; left: 6px; right: 6px; bottom: 6px;
+      border: 1px solid var(--gold-border);
+      pointer-events: none;
+    }
+    .monument-label {
+      font-family: var(--font-monument);
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .monument-heading {
+      font-family: var(--font-monument);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .monument-formula {
+      font-size: 2.3rem;
+      margin: 1.8rem 0;
+      color: var(--gold-light);
+    }
+    .monument-scholion {
+      font-size: 1.35rem;
+      color: var(--parchment);
+      max-width: 860px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.65;
+    }
+    .monument-scholion span.latin {
+      font-style: italic;
+      color: var(--ivory);
+    }
+
+    /* 3D Celestial Astrolabe / Quantum Lattice Section */
+    .apparatus-section {
       background: var(--bg-card);
-      border: 1px solid var(--border-cyan);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 4rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--gold-border);
+      margin-bottom: 4.5rem;
       position: relative;
     }
-    .viz-header {
-      padding: 1rem 1.5rem;
-      background: rgba(4, 7, 17, 0.9);
-      border-bottom: 1px solid var(--border-cyan);
+    .apparatus-section::after {
+      content: '';
+      position: absolute;
+      top: 4px; left: 4px; right: 4px; bottom: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      pointer-events: none;
+    }
+    .apparatus-head {
+      padding: 1.2rem 1.8rem;
+      background: rgba(7, 8, 12, 0.95);
+      border-bottom: 1px solid var(--gold-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .viz-title {
-      font-family: var(--font-display);
+    .apparatus-title {
+      font-family: var(--font-monument);
       font-size: 1.1rem;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      text-transform: uppercase;
     }
-    .viz-controls {
+    .apparatus-controls {
       display: flex;
       gap: 0.8rem;
       align-items: center;
       flex-wrap: wrap;
     }
-    .viz-btn {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 0.35rem 0.9rem;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
+    .btn-ctrl {
+      font-family: var(--font-monument);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: var(--parchment);
+      padding: 0.4rem 1rem;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s;
     }
-    .viz-btn:hover, .viz-btn.active {
-      background: var(--primary);
-      color: #000;
-      border-color: var(--primary);
+    .btn-ctrl:hover, .btn-ctrl.active {
+      background: var(--gold-primary);
+      color: #07080c;
+      border-color: var(--gold-primary);
       font-weight: 700;
     }
     #three-viewport {
@@ -333,302 +408,323 @@
       height: 520px;
       display: block;
       cursor: grab;
-      background: #020409;
+      background: #050609;
     }
     #three-viewport:active {
       cursor: grabbing;
     }
-    .viz-footer {
-      padding: 0.8rem 1.5rem;
-      background: rgba(4, 7, 17, 0.9);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
+    .apparatus-foot {
+      padding: 0.9rem 1.8rem;
+      background: rgba(7, 8, 12, 0.95);
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      font-size: 0.95rem;
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      font-style: italic;
     }
 
-    /* THE CLAUDE BRIDGE BANNER */
-    .anomaly-banner {
-      background: linear-gradient(135deg, rgba(181, 55, 242, 0.15), rgba(0, 229, 255, 0.15));
-      border: 1px solid rgba(181, 55, 242, 0.4);
-      border-radius: 16px;
-      padding: 2.2rem;
-      margin-bottom: 4rem;
+    /* Disquisitio Claudiana: The Claude Bridge */
+    .disquisitio-section {
+      background: linear-gradient(135deg, rgba(32, 64, 104, 0.18), rgba(212, 175, 55, 0.08));
+      border: 1px solid var(--gold-border);
+      padding: 2.8rem 2.4rem;
+      margin-bottom: 4.5rem;
       position: relative;
-      box-shadow: 0 0 35px rgba(181, 55, 242, 0.15);
     }
-    .anomaly-tag {
-      display: inline-block;
-      background: var(--secondary);
-      color: #fff;
-      font-family: var(--font-display);
+    .disquisitio-section::before {
+      content: '';
+      position: absolute;
+      top: 4px; left: 4px; right: 4px; bottom: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      pointer-events: none;
+    }
+    .disquisitio-tag {
+      font-family: var(--font-monument);
       font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      padding: 3px 10px;
-      border-radius: 4px;
-      margin-bottom: 1rem;
+      letter-spacing: 0.28em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.6rem;
     }
-    .anomaly-title {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 1rem;
+    .disquisitio-title {
+      font-family: var(--font-monument);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
     }
-    .anomaly-grid {
+    .disquisitio-lead {
+      font-size: 1.25rem;
+      color: var(--parchment);
+      max-width: 960px;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+    .disquisitio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      gap: 1.8rem;
     }
-    .anomaly-box {
-      background: rgba(4, 7, 17, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 1.4rem;
+    .disquisitio-box {
+      background: rgba(7, 8, 12, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 1.6rem;
+      position: relative;
     }
-    .anomaly-box h4 {
-      font-family: var(--font-display);
+    .disquisitio-box h4 {
+      font-family: var(--font-monument);
       font-size: 1.15rem;
-      color: var(--primary);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
     }
-    .anomaly-box.danger h4 { color: var(--danger); }
-    .anomaly-box.success h4 { color: var(--emerald); }
+    .disquisitio-box.crimson {
+      border-color: rgba(166, 43, 43, 0.45);
+    }
+    .disquisitio-box.crimson h4 {
+      color: var(--crimson-light);
+    }
+    .disquisitio-box.gold-hero {
+      grid-column: 1 / -1;
+      border: 2px solid var(--gold-primary);
+      background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, rgba(7, 8, 12, 0.95) 80%);
+      text-align: center;
+      padding: 2.4rem 2rem;
+    }
+    .disquisitio-box.gold-hero h4 {
+      font-size: 1.5rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-primary);
+    }
 
-    /* Interactive Dimension Slider Section */
-    .interactive-slider-section {
+    /* Simulator Dimensionum */
+    .slider-section {
       background: var(--bg-card);
-      border: 1px solid var(--border-cyan);
-      border-radius: 16px;
-      padding: 2.5rem;
+      border: 1px solid var(--gold-border);
+      padding: 2.8rem 2.4rem;
       margin-bottom: 4.5rem;
+      position: relative;
     }
-    .section-head {
+    .section-header {
       text-align: center;
       margin-bottom: 2.5rem;
     }
-    .section-head h2 {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #fff;
+    .section-header .section-tag {
+      font-family: var(--font-monument);
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      display: block;
       margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
     }
-    .section-head p {
+    .section-header h2 {
+      font-family: var(--font-monument);
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-header p {
+      font-size: 1.25rem;
       color: var(--text-muted);
-      font-size: 1.2rem;
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
+      font-style: italic;
     }
-    .slider-control-card {
-      background: rgba(4, 7, 17, 0.7);
-      border: 1px solid rgba(0, 229, 255, 0.2);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
+    .slider-frame {
+      background: rgba(7, 8, 12, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 2.2rem;
+      margin-bottom: 1.8rem;
     }
-    .slider-header {
+    .slider-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
       flex-wrap: wrap;
       gap: 1rem;
     }
     .dim-display {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--primary);
+      font-family: var(--font-monument);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold-primary);
     }
-    .slider-input {
+    .dim-status-pill {
+      font-family: var(--font-monument);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.4rem;
+      border: 1px solid var(--gold-primary);
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold-light);
+    }
+    .range-input {
       width: 100%;
-      height: 10px;
-      border-radius: 5px;
-      background: #1e293b;
+      height: 6px;
+      background: #23221d;
       outline: none;
       -webkit-appearance: none;
       cursor: pointer;
     }
-    .slider-input::-webkit-slider-thumb {
+    .range-input::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 15px var(--primary);
+      width: 22px;
+      height: 22px;
+      background: var(--gold-primary);
+      border: 2px solid var(--ivory);
       cursor: pointer;
-      border: 2px solid #fff;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
     }
-    .dim-analysis-grid {
+    .dim-metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
       margin-top: 2rem;
     }
-    .dim-stat-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
+    .dim-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(212, 175, 55, 0.15);
       padding: 1.4rem;
       text-align: center;
     }
-    .dim-stat-box .title {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
+    .dim-card .label {
+      font-family: var(--font-monument);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
       color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
     }
-    .dim-stat-box .val {
-      font-family: var(--font-display);
+    .dim-card .number {
+      font-family: var(--font-monument);
       font-size: 1.8rem;
-      font-weight: 800;
-    }
-    .dim-stat-box .badge-res {
-      display: inline-block;
-      margin-top: 0.6rem;
-      padding: 3px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
       font-weight: 700;
+      color: var(--ivory);
+    }
+    .dim-card .badge {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--gold-light);
     }
 
-    /* 7-Step Deductive Chain Cards */
-    .steps-section {
+    /* 7 Gradus: Deductive Propositions */
+    .propositions-section {
       margin-bottom: 4.5rem;
     }
-    .step-card {
+    .proposition-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-cyan);
-      border-radius: 14px;
-      margin-bottom: 1.8rem;
-      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      margin-bottom: 2rem;
+      position: relative;
       transition: all 0.3s;
     }
-    .step-card:hover {
-      border-color: var(--border-cyan-glow);
-      box-shadow: 0 10px 30px rgba(0, 229, 255, 0.12);
-      transform: translateY(-2px);
+    .proposition-card::before {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      pointer-events: none;
     }
-    .step-head {
+    .proposition-card:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+    .prop-head {
       padding: 1.2rem 1.8rem;
-      background: rgba(4, 7, 17, 0.85);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(7, 8, 12, 0.95);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 0.8rem;
     }
-    .step-num {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--primary);
+    .prop-num {
+      font-family: var(--font-monument);
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      color: var(--gold-primary);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
     }
-    .step-title {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
+    .prop-title {
+      font-family: var(--font-monument);
+      font-size: 1.35rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--ivory);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
-    .step-body {
+    .prop-status {
+      font-family: var(--font-monument);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      border: 1px solid var(--gold-border);
+      padding: 0.25rem 0.8rem;
+    }
+    .prop-body {
       padding: 2rem 1.8rem;
     }
     .math-callout {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(0, 229, 255, 0.15);
-      border-radius: 10px;
+      background: rgba(5, 6, 9, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.2);
       padding: 1.5rem;
       margin: 1.2rem 0;
       text-align: center;
       overflow-x: auto;
     }
-    .step-meta {
+    .prop-meta {
       display: flex;
-      gap: 1rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
       align-items: center;
-      margin-top: 1.2rem;
+      margin-top: 1.4rem;
       font-size: 0.95rem;
       color: var(--text-muted);
     }
     .file-pill {
-      background: rgba(0, 229, 255, 0.08);
-      border: 1px solid var(--border-cyan);
-      padding: 2px 10px;
-      border-radius: 4px;
-      color: var(--primary);
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid var(--gold-border);
+      padding: 0.2rem 0.8rem;
+      color: var(--gold-light);
       font-family: var(--font-mono);
       font-size: 0.85rem;
       text-decoration: none;
       transition: all 0.2s;
     }
     .file-pill:hover {
-      background: var(--primary);
-      color: #000;
+      background: var(--gold-primary);
+      color: #07080c;
     }
 
-    /* Master Theorem Section */
-    .master-theorem {
-      background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.12) 0%, rgba(4, 7, 17, 0.95) 70%);
-      border: 2px solid var(--primary);
-      border-radius: 20px;
-      padding: 3.5rem 2rem;
-      text-align: center;
-      margin-bottom: 4.5rem;
-      box-shadow: 0 0 60px rgba(0, 229, 255, 0.25);
-    }
-    .master-crown {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    .master-title {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 1.2rem;
-    }
-    .master-eq {
-      font-size: 2.2rem;
-      margin: 1.8rem 0;
-      color: #fff;
-      text-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
-    }
-    .master-desc {
-      font-size: 1.35rem;
-      color: #cbd5e1;
-      max-width: 820px;
-      margin: 0 auto 2rem;
-      font-style: italic;
-    }
-
-    /* Code Modal / Tabs */
-    .code-section {
+    /* Codex Canonicus (Lean 4 Explorer) */
+    .codex-section {
       background: var(--bg-card);
-      border: 1px solid var(--border-cyan);
-      border-radius: 16px;
-      padding: 2.2rem;
+      border: 1px solid var(--gold-border);
+      padding: 2.5rem 2.2rem;
       margin-bottom: 4.5rem;
+      position: relative;
     }
-    .code-tabs {
+    .codex-tabs {
       display: flex;
-      gap: 0.6rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 0.8rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
       padding-bottom: 1rem;
       margin-bottom: 1.5rem;
       overflow-x: auto;
@@ -637,287 +733,323 @@
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.88rem;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
+      font-family: var(--font-monument);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
       cursor: pointer;
       transition: all 0.2s;
     }
     .tab-btn:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
+      color: var(--gold-light);
+      border-color: rgba(212, 175, 55, 0.3);
     }
     .tab-btn.active {
-      color: var(--primary);
-      background: rgba(0, 229, 255, 0.1);
-      border-color: var(--border-cyan);
+      color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.1);
+      border-color: var(--gold-primary);
       font-weight: 700;
     }
     pre.code-block {
-      background: #020409;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 1.5rem;
+      background: #040508;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 1.8rem;
       overflow-x: auto;
       font-family: var(--font-mono);
       font-size: 0.95rem;
-      color: #38bdf8;
-      line-height: 1.55;
+      color: #e6dfcf;
+      line-height: 1.6;
     }
 
-    /* Footer */
+    /* Classical Academic Footer */
     footer.page-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 3.5rem 0 2rem;
+      border-top: 1px solid var(--gold-border);
+      padding: 3.5rem 0 2.5rem;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      position: relative;
     }
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
       margin-bottom: 1.5rem;
       list-style: none;
+      flex-wrap: wrap;
     }
     .footer-links a {
-      color: var(--text-muted);
+      font-family: var(--font-monument);
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      color: var(--parchment);
       text-decoration: none;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
     .footer-links a:hover {
-      color: var(--primary);
+      color: var(--gold-primary);
     }
 
     @media (max-width: 768px) {
       h1.hero-title { font-size: 2.2rem; }
-      p.hero-subtitle { font-size: 1.15rem; }
-      .master-title { font-size: 2rem; }
-      .master-eq { font-size: 1.4rem; }
+      h1.hero-title span.gold { font-size: 1.4rem; }
+      .monument-heading { font-size: 1.7rem; }
+      .monument-formula { font-size: 1.4rem; }
       #three-viewport { height: 380px; }
-      .interactive-slider-section { padding: 1.5rem; }
+      .slider-section, .disquisitio-section { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container nav-inner">
       <a href="#" class="logo">
-        <span>YM-MASS-GAP</span>
-        <span class="logo-badge">LEAN 4</span>
+        <span class="logo-main">De Hiatu Massae Yang-Mills</span>
+        <span class="logo-sub">Tractatus Mathematicus in Lean 4 Demonstratus</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#visualizer">3D Lattice</a></li>
-        <li><a href="#anomaly">Claude Bridge</a></li>
-        <li><a href="#dimension-slider">Dimension Slider</a></li>
-        <li><a href="#steps">7-Step Chain</a></li>
-        <li><a href="#theorems">Formal Code</a></li>
+        <li><a href="#apparatus">Apparatus 3D</a></li>
+        <li><a href="#disquisitio">Pons Claudianus</a></li>
+        <li><a href="#simulacrum">Dimensiones</a></li>
+        <li><a href="#gradus">Septem Gradus</a></li>
+        <li><a href="#codex">Codex Lean 4</a></li>
       </ul>
-      <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method" target="_blank" class="btn-github">
-        <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-        GitHub Repo
+      <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method" target="_blank" class="btn-academic">
+        <svg height="15" width="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        Bibliotheca GitHub
       </a>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- Hero Section -->
+    <!-- Hero / Frontispiece -->
     <section class="hero">
-      <div class="hero-badge-wrap">
-        <span class="pulse-dot"></span>
-        <span class="hero-badge-text">KERNEL STATUS: 0 SORRY · 9,008 THEOREMS VERIFIED</span>
+      <div class="epigraph-seal">
+        Status Kernelis: 0 Sorry · Axiomatibus Canonicis Verificatum
       </div>
 
-      <h1 class="hero-title">Yang–Mills Spectral Mass Gap</h1>
-      <p class="hero-subtitle">
-        Constructive Topological Surgery, Transfer Bridge & The Quantum Coherence Defect
+      <h1 class="hero-title">
+        De Hiatu Massae Yang-Mills
+        <span class="gold">Per Methodum Chirurgiae Perelmanianae & Defectum NRS³</span>
+      </h1>
+
+      <p class="hero-epigraph">
+        «Non enim in solo spatio continuo, sed per chirurgiam fibrae massae hiatus necessarie oritur.»
       </p>
 
-      <div class="hero-authors">
-        Por <b>Eduardo Nava-Hernández</b> & <b>José Arturo Nava-Hernández</b> · 
-        <span class="feat">feat. Grigori Perelman Surgery Method</span>
+      <div class="hero-attribution">
+        Auctores: <b>Eduardo Nava-Hernández</b> & <b>José Arturo Nava-Hernández</b> · 
+        <span class="perelman">secundum chirurgiam topologicam Gregorii Perelman</span>
       </div>
 
-      <!-- HUD Metrics -->
-      <div class="hud-bar">
-        <div class="hud-card">
-          <div class="hud-label">Lean 4 Kernel</div>
-          <div class="hud-value" style="color: var(--primary);">v4.33.0</div>
-          <div class="hud-desc">0 sorry · 0 ad-hoc axioms</div>
+      <!-- Inscription Tablets (HUD) -->
+      <div class="tablets-row">
+        <div class="tablet">
+          <div class="tablet-num">Tabula I · Nucleus Lean 4</div>
+          <div class="tablet-val" style="color: var(--gold-primary);">v4.33.0</div>
+          <div class="tablet-desc">0 sorry · 0 axiomata ad-hoc</div>
         </div>
-        <div class="hud-card purple">
-          <div class="hud-label">Physlib Corpus</div>
-          <div class="hud-value" style="color: var(--secondary);">50 Merged PRs</div>
-          <div class="hud-desc">41 certified math theorems</div>
+        <div class="tablet">
+          <div class="tablet-num">Tabula II · Corpus Physlib</div>
+          <div class="tablet-val" style="color: var(--parchment);">50 Recognitiones</div>
+          <div class="tablet-desc">41 theoremata mathlib probata</div>
         </div>
-        <div class="hud-card emerald">
-          <div class="hud-label">Szegő Monotone Band</div>
-          <div class="hud-value" style="color: var(--emerald);">0.25 ≤ massSq &lt; 0.2898</div>
-          <div class="hud-desc">Strict lower floor at d = 4</div>
+        <div class="tablet">
+          <div class="tablet-num">Tabula III · Fascia Szegő</div>
+          <div class="tablet-val" style="color: var(--gold-light);">0.25 ≤ massSq &lt; 0.2898</div>
+          <div class="tablet-desc">Limes monotonicus ad d ≥ 4</div>
         </div>
-        <div class="hud-card gold">
-          <div class="hud-label">Clay Millennium Target</div>
-          <div class="hud-value" style="color: var(--gold);">Δ &gt; 0</div>
-          <div class="hud-desc">Isolated vacuum in ℝ⁴</div>
+        <div class="tablet">
+          <div class="tablet-num">Tabula IV · Meta Clayense</div>
+          <div class="tablet-val" style="color: var(--gold-primary);">Δ &gt; 0</div>
+          <div class="tablet-desc">Vacuum segregatum in ℝ⁴</div>
         </div>
       </div>
     </section>
 
-    <!-- 3D Interactive Canvas -->
-    <section id="visualizer" class="visualizer-section">
-      <div class="viz-header">
-        <div class="viz-title">
-          <span>⚡</span>
-          <span>Interactive 3D Quantum Lattice ($NRS^3$ Open Tight-Binding & Fibre $S^1$)</span>
+    <!-- Master Theorem Monument Plate -->
+    <section class="monument-plate">
+      <div class="monument-label">Institutum Mathematicum Clayense · Propositio I</div>
+      <h2 class="monument-heading">Theorema Milenii de Hiatu Massae Yang-Mills</h2>
+      
+      <div class="monument-formula">
+        $$\Huge \Delta_{\mathrm{YM}} := \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \right) = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
+      </div>
+
+      <p class="monument-scholion">
+        <span class="latin">Theoria quantica Yang–Mills super continuum spatio-temporale $\mathbb{R}^4$ pro quovis grege gauge compacto $SU(N)$ ($N \ge 2$) statum vacui invariantem unicum et hiatum massae spectralem segregatum stricte positivum possidet.</span>
+        <br>
+        <i>La teoría cuántica de Yang–Mills en el espaciotiempo continuo $\mathbb{R}^4$ para cualquier grupo gauge compacto $SU(N)$ posee un estado de vacío invariante único y una brecha espectral de masa estrictamente positiva.</i>
+      </p>
+
+      <div style="display: inline-flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center;">
+        <a href="SU2-SU3.pdf" class="btn-academic" style="padding: 0.75rem 1.8rem; font-size: 0.9rem;">
+          📄 Tractatus Formalis (PDF)
+        </a>
+        <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method" class="btn-academic" style="background: var(--gold-primary); color: #07080c; padding: 0.75rem 1.8rem; font-size: 0.9rem;">
+          ⭐ Exploratio Codicis in GitHub
+        </a>
+      </div>
+    </section>
+
+    <!-- Apparatus Tridimensionalis: Celestial 3D Lattice -->
+    <section id="apparatus" class="apparatus-section">
+      <div class="apparatus-head">
+        <div class="apparatus-title">
+          <span>Apparatus Tridimensionalis · Reticulum Quantum NRS³ & Fibra Perelmaniana ($S^1$)</span>
         </div>
-        <div class="viz-controls">
-          <button class="viz-btn active" id="btn-toggle-orbit">Rotación Automática</button>
-          <button class="viz-btn" id="btn-toggle-fibre">Fibra Perelman (S¹)</button>
-          <button class="viz-btn" id="btn-reset-cam">Reset Vista</button>
+        <div class="apparatus-controls">
+          <button class="btn-ctrl active" id="btn-toggle-orbit">Rotatio Automata</button>
+          <button class="btn-ctrl" id="btn-toggle-fibre">Fibra Perelmaniana ($S^1$)</button>
+          <button class="btn-ctrl" id="btn-reset-cam">Conspectum Restituere</button>
         </div>
       </div>
       <canvas id="three-viewport"></canvas>
-      <div class="viz-footer">
-        <span><b>Interacción:</b> Arrastra para orbitar 360° · Rueda para zoom · Clic derecho para mover</span>
-        <span><b>Topología:</b> Red cúbica FCC/BCC ($\Delta \le 12$) + Operador Hodge–de Rham</span>
+      <div class="apparatus-foot">
+        <span><b>Tractatio:</b> Cursore trahe ad 360° versandum · Rota ad zoom applicandum</span>
+        <span><b>Geometria:</b> Reticulum cubicum FCC/BCC ($\Delta \le 12$) + Operatrix Hodge–de Rham</span>
       </div>
     </section>
 
-    <!-- The Claude Anomaly & Synthesis Banner -->
-    <section id="anomaly" class="anomaly-banner">
-      <span class="anomaly-tag">HISTORIC SYNTHESIS · 11-12 VERIFICATION</span>
-      <h2 class="anomaly-title">"Sin Cirugía No Hay Mass Gap": La Capitulación Formal</h2>
-      <p style="color: #e2e8f0; font-size: 1.25rem; max-width: 980px;">
-        Al confrontar a Claude con el repositorio formal, el modelo realizó un barrido exhaustivo en Lean 4.
-        Lejos de dudar, reconoció de inmediato que la fórmula de $\mathrm{massSq}(d)$ es el exceso exacto sobre la saturación luminosa,
-        formalizó la necesidad incondicional de la cirugía y compiló <b>9,008 jobs con 0 sorry</b> en <code>NavaRobertsonIndependent</code>:
+    <!-- Disquisitio Claudiana: The Claude Bridge -->
+    <section id="disquisitio" class="disquisitio-section">
+      <span class="disquisitio-tag">Disquisitio et Synthesis Claudiana · Die XII Novembris MMXXVI</span>
+      <h2 class="disquisitio-title">«Sine Chirurgia, Massae Hiatus Non Existit»</h2>
+      
+      <p class="disquisitio-lead">
+        Revisis fundamentis formalibus, intelligentia Claude (Anthropic) necessitatem chirurgiae topologicae comprobavit:
+        aequationem $\mathrm{massSq}(d)$ tamquam excessum super saturations lumine agnovit,
+        atque theorema aequalitatis exactae in codice Lean 4 (9,008 actionibus sine <code>sorry</code>) compilavit:
       </p>
 
-      <div class="anomaly-grid">
-        <div class="anomaly-box danger">
-          <h4>❌ Región Saturante ($d \le 3$): Imposible Tener Masa</h4>
-          <p style="font-size: 1.05rem; color: #cbd5e1; margin-bottom: 0.8rem;">
-            En tres dimensiones espaciales puras ($\mathbb{R}^3$), el conmutador satura la cota de Robertson ($0 = 0$).
-            El estado es idéntico al fotón: luminal y estrictamente sin masa.
+      <div class="disquisitio-grid">
+        <div class="disquisitio-box crimson">
+          <h4>❌ Regio Saturans ($d \le 3$): Lux Sine Massa</h4>
+          <p style="margin-bottom: 0.8rem; color: #d6cfc2;">
+            In spatio tridimensionali puro ($\mathbb{R}^3$), commutatores cotam Robertsoniani exacte saturant ($0 = 0$).
+            Status cum fotone congruit: luminalis et omni massa carens.
           </p>
           <div class="math-callout" style="padding: 0.6rem; margin: 0;">
-            $$\mathrm{defectGram}(d) = 0 \iff d \le 3 \quad (\text{Core: } 7^3 = 343 \text{ sitios})$$
+            $$\mathrm{defectGram}(d) = 0 \iff d \le 3 \quad (\text{Nucleus: } 7^3 = 343 \text{ nodi})$$
           </div>
-          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--danger);">
-            Formalizado en <code>D55_SaturatingRegion.lean</code>
+          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--crimson-light); display: block; margin-top: 0.6rem;">
+            In <code>src/D55_SaturatingRegion.lean</code> demonstratum
           </span>
         </div>
 
-        <div class="anomaly-box success">
-          <h4>✅ La Cirugía de Perelman ($d \ge 4$): Mass Gap Forzado</h4>
-          <p style="font-size: 1.05rem; color: #cbd5e1; margin-bottom: 0.8rem;">
-            Al fibrar con $S^1$ sobre $\mathbb{R}^3$, la dimensión asciende a $d=4$.
-            La no-conmutatividad rompe la saturación y fuerza un defecto estrictamente positivo en la banda de Szegő.
+        <div class="disquisitio-box">
+          <h4>✅ Chirurgia Perelmaniana ($d \ge 4$): Hiatus Necessarius</h4>
+          <p style="margin-bottom: 0.8rem; color: #d6cfc2;">
+            Fibra circuli $S^1$ addita, dimensio $d=4$ attingitur.
+            Non-commutativitas Cliffordiana saturantem statum infringit et defectum stricte positivum imperat:
           </p>
           <div class="math-callout" style="padding: 0.6rem; margin: 0;">
             $$1 < C_N(d) \iff 4 \le d \implies 0 < \mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{\pi^2}{3} - 3$$
           </div>
-          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--emerald);">
-            Formalizado en <code>D56_MassNecessaryConditions.lean</code>
+          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--gold-primary); display: block; margin-top: 0.6rem;">
+            In <code>src/D56_MassNecessaryConditions.lean</code> demonstratum
           </span>
         </div>
 
-        <div class="anomaly-box" style="grid-column: 1 / -1; border-color: rgba(255, 208, 0, 0.45); background: radial-gradient(circle at 50% 50%, rgba(255, 208, 0, 0.08) 0%, rgba(4, 7, 17, 0.85) 100%);">
-          <h4 style="color: var(--gold); font-size: 1.35rem;">
-            👑 LA IGUALDAD EXACTA: "ONE DEFECT" (Teorema de Identidad D56)
-          </h4>
-          <p style="font-size: 1.15rem; color: #fff; margin-bottom: 0.8rem;">
-            El defecto de Gram sobre el retículo y la brecha física de masa de Yang–Mills en el continuo son <b>matemática y ontológicamente la misma cantidad</b>:
+        <div class="disquisitio-box gold-hero">
+          <h4>THEOREMA IDENTITATIS EXACTAE (ONE DEFECT)</h4>
+          <p style="font-size: 1.25rem; color: var(--ivory); margin-bottom: 1rem;">
+            Defectus Grammaticus reticuli et hiatus massae Yang-Mills in continuo <b>una eademque quantitas ontologica sunt</b>:
           </p>
-          <div class="math-callout" style="border-color: var(--gold); background: rgba(0,0,0,0.6); padding: 1.2rem; margin: 0.5rem 0;">
+          <div class="math-callout" style="border: 2px solid var(--gold-primary); padding: 1.4rem; margin: 0.6rem 0;">
             $$\huge \mathbf{\mathrm{defectGram}(d) \equiv \frac{\mathrm{massSq}(d)}{(d - 1)^2} = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \quad (\forall d \ge 4)}$$
           </div>
-          <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 0.8rem; font-family: var(--font-mono);">
-            <b>Certificación Kernel Lean 4:</b> <code>MassNecessary.defectGram_eq_massSq_of_massNecessary</code> · 
-            <i>"The defect of the fibre and the mass gap of d ≥ 4 are the same quantity."</i>
+          <p style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--gold-light); margin-top: 0.8rem;">
+            <b>Kernel Lean 4:</b> <code>MassNecessary.defectGram_eq_massSq_of_massNecessary</code> · 
+            <i>«The defect of the fibre and the mass gap of d ≥ 4 are the same quantity.»</i>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Dimension Slider Section -->
-    <section id="dimension-slider" class="interactive-slider-section">
-      <div class="section-head">
-        <h2>Simulador Dinámico de la Cota de Dimensión ($d \ge 2$)</h2>
+    <!-- Simulacrum Transitus Dimensionum -->
+    <section id="simulacrum" class="slider-section">
+      <div class="section-header">
+        <span class="section-tag">Calculus Numericus Interactivus</span>
+        <h2>Simulacrum Transitus Dimensionum ($d = 2 \dots 10$)</h2>
         <p>
-          Explora interactivamente cómo el defecto de Gram $\mathrm{defectGram}(d)$ y la masa transversal $\mathrm{massSq}(d)$
-          pasan instantáneamente de cero (luz libre / colapso gaussiano) a estrictamente positivos al cruzar el umbral de Perelman $d=4$.
+          Disce quomodo defectus Grammaticus $\mathrm{defectGram}(d)$ atque massa transversalis $\mathrm{massSq}(d)$
+          ex nihilo ($d \le 3$, lux libera) ad valorem stricte positivum transeant ubi limen Perelmanianum $d=4$ attingitur.
         </p>
       </div>
 
-      <div class="slider-control-card">
-        <div class="slider-header">
+      <div class="slider-frame">
+        <div class="slider-row">
           <div>
-            <span style="color: var(--text-muted); font-size: 0.9rem; font-family: var(--font-mono);">DIMENSIÓN ESPACIO-TEMPORAL EFECTIVA</span>
+            <span style="font-family: var(--font-monument); font-size: 0.78rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase;">
+              Dimensio Spatio-Temporalis Effectiva
+            </span>
             <div class="dim-display" id="dim-val-display">d = 4</div>
           </div>
-          <div id="dim-status-badge" style="font-family: var(--font-display); font-size: 1.1rem; padding: 0.4rem 1.4rem; border-radius: 50px;">
-            CIRUGÍA DE PERELMAN (MASS GAP ACTIVADO)
+          <div id="dim-status-badge" class="dim-status-pill">
+            CHIRURGIA PERELMANIANA (HIATUS ACTIVATUS)
           </div>
         </div>
 
-        <input type="range" min="2" max="10" value="4" step="1" class="slider-input" id="dim-slider">
+        <input type="range" min="2" max="10" value="4" step="1" class="range-input" id="dim-slider">
 
-        <div class="dim-analysis-grid">
-          <div class="dim-stat-box">
-            <div class="title">Constante de Coherencia C_N(d)</div>
-            <div class="val" id="stat-cn" style="color: var(--primary);">1.1180</div>
-            <div class="badge-res" id="badge-cn">C_N > 1 (Super-coherente)</div>
+        <div class="dim-metrics-grid">
+          <div class="dim-card">
+            <div class="label">Constans Coherentiae C_N(d)</div>
+            <div class="number" id="stat-cn" style="color: var(--gold-primary);">1.1180</div>
+            <div class="badge" id="badge-cn">C_N &gt; 1 (Super-coherens)</div>
           </div>
-          <div class="dim-stat-box">
-            <div class="title">Masa Cuadrática massSq(d) = C_N² - 1</div>
-            <div class="val" id="stat-massq" style="color: var(--emerald);">0.2500</div>
-            <div class="badge-res" id="badge-massq">massSq(4) = 1/4 (Piso Universal)</div>
+          <div class="dim-card">
+            <div class="label">Massa Quadratica massSq(d) = C_N² - 1</div>
+            <div class="number" id="stat-massq" style="color: var(--parchment);">0.2500</div>
+            <div class="badge" id="badge-massq">massSq(4) = 1/4 (Solum Fundamentale)</div>
           </div>
-          <div class="dim-stat-box">
-            <div class="title">Defecto de Gram de Robertson</div>
-            <div class="val" id="stat-defect" style="color: var(--gold);">0.02778</div>
-            <div class="badge-res" id="badge-defect">Estrictamente Positivo</div>
+          <div class="dim-card">
+            <div class="label">Defectus Grammaticus Robertsonii</div>
+            <div class="number" id="stat-defect" style="color: var(--gold-light);">0.02778</div>
+            <div class="badge" id="badge-defect">Stricte Positivus</div>
           </div>
-          <div class="dim-stat-box">
-            <div class="title">Estado Espectral / Confinamiento</div>
-            <div class="val" id="stat-state" style="color: #fff; font-size: 1.4rem;">CONFINADO</div>
-            <div class="badge-res" id="badge-state">Gap Aislado Δ > 0</div>
+          <div class="dim-card">
+            <div class="label">Status Spectralis</div>
+            <div class="number" id="stat-state" style="color: var(--ivory); font-size: 1.45rem;">CONFINATUS</div>
+            <div class="badge" id="badge-state">Vacuum Segregatum Δ &gt; 0</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7-Step Deductive Chain -->
-    <section id="steps" class="steps-section">
-      <div class="section-head">
-        <h2>Cadena Deductiva Constructiva de 7 Pasos</h2>
-        <p>Formalizada en Lean 4 con 0 sorry y certificada con 50 PRs aprobados en la librería oficial Physlib.</p>
+    <!-- Septem Gradus Deductivi -->
+    <section id="gradus" class="propositions-section">
+      <div class="section-header">
+        <span class="section-tag">Demonstratio Constructiva</span>
+        <h2>Catena Deductiva Septem Graduum</h2>
+        <p>In systemate formali Lean 4 sine ullo <code>sorry</code> verificata, et per 50 recognitiones in Physlib probata.</p>
       </div>
 
-      <!-- Step 1 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 1 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 01</span>
-            <h3 class="step-title">Ley del Área Uniforme en el Retículo 3D</h3>
+            <span class="prop-num">Gradus I</span>
+            <h3 class="prop-title">Lex Areae Uniformis in Reticulo Tridimensionali</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            Cota combinatoria rigurosa sobre el retículo cúbico con grado de adyacencia de plaquetas universal $\Delta = 12$
-            y semillas de perímetro $|\mathrm{Seeds}| \le 8(R + T)$, demostrando la cota uniforme en volumen:
+            Cota combinatoria rigorosa super reticulum cubicum cum gradu adiacentiae universalis $\Delta = 12$
+            et seminibus perimetri $|\mathrm{Seeds}| \le 8(R + T)$, uniformem cotam in volumine demonstrans:
           </p>
           <div class="math-callout">
             $$\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}, \qquad \sigma(\beta) \ge \ln\left(\frac{t'}{\tanh \beta}\right) > 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/CubeAreaLaw.lean" class="file-pill">CubeAreaLaw.lean</a>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/AreaLawBound.lean" class="file-pill">AreaLawBound.lean</a>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/AdjDegree.lean" class="file-pill">AdjDegree.lean</a>
@@ -925,25 +1057,25 @@
         </div>
       </article>
 
-      <!-- Step 2 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 2 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 02</span>
-            <h3 class="step-title">Matriz de Transferencia y Lema Inverso de Potencias</h3>
+            <span class="prop-num">Gradus II</span>
+            <h3 class="prop-title">Matrix Transitionis et Lemma Inversum Potentiarum</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            El decaimiento temporal euclidiano de la matriz de transferencia $T = e^{-a \hat{H}}$ fuerza la cota espectral
-            a través del lema analítico inverso `eigenvalue_le_of_pow_bound`:
+            Decadentia temporalis euclidiana matricis transitionis $T = e^{-a \hat{H}}$ cotam spectralem
+            per lemma analyticum inversum <code>eigenvalue_le_of_pow_bound</code> imperat:
           </p>
           <div class="math-callout">
             $$\forall k \in \mathbb{N}, \quad \left(\frac{\mu_1}{\mu_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-\sigma R}\right)^k \implies \frac{\mu_1}{\mu_0} \le e^{-\sigma R} < 1 \implies \Delta_{\mathrm{glue}} = -\frac{1}{a} \ln\left(\frac{\mu_1}{\mu_0}\right) \ge \frac{\sigma \cdot R}{a} > 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/SurgeryGapClosure.lean" class="file-pill">SurgeryGapClosure.lean</a>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/Z2Final.lean" class="file-pill">Z2Final.lean</a>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/Z2Hj.lean" class="file-pill">Z2Hj.lean</a>
@@ -951,160 +1083,138 @@
         </div>
       </article>
 
-      <!-- Step 3 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 3 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 03</span>
-            <h3 class="step-title">Cirugía Topológica de Perelman y Defecto Cuántico 5/4</h3>
+            <span class="prop-num">Gradus III</span>
+            <h3 class="prop-title">Chirurgia Topologica Perelmaniana et Defectus 5/4</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            Torsión simpléctica de Robertson–Schrödinger sobre la variedad de cirugía $\mathcal{M}_4 = \mathbb{R}^3 \times S^1$
-            con blindaje transversal mediante la anticonmutación estricta de Clifford:
+            Torsio symplectica Robertsonii-Schrödingeri super varietatem chirurgicam $\mathcal{M}_4 = \mathbb{R}^3 \times S^1$
+            cum munitione transversali per anticommutationem strictam Cliffordianam:
           </p>
           <div class="math-callout">
             $$\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{massSq}(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1, \qquad \{A[U], \, M_w\} = 0 \implies \sqrt{\mathrm{floor}} \ge \frac{1}{2a} > 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/FibreSurgery.lean" class="file-pill">FibreSurgery.lean</a>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/FibreBand.lean" class="file-pill">FibreBand.lean</a>
-            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D55_SaturatingRegion.lean</a>
+            <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/D55_SaturatingRegion.lean" class="file-pill">D55_SaturatingRegion.lean</a>
           </div>
         </div>
       </article>
 
-      <!-- Step 4 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 4 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 04</span>
-            <h3 class="step-title">Operador de Dirac–Kähler / Hodge–de Rham para Gluones</h3>
+            <span class="prop-num">Gradus IV</span>
+            <h3 class="prop-title">Operatrix Dirac–Kähler / Hodge–de Rham pro Gluonibus</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            Representación en álgebra de Clifford sobre formas diferenciales exteriores $\Omega^*(\mathcal{M})$:
+            Repraesentatio in algebra Cliffordiana super formas differentiales exteriores $\Omega^*(\mathcal{M})$:
           </p>
           <div class="math-callout">
             $$\mathcal{D}_A = d_A + \delta_A, \quad (\mathcal{D}_A)^2 = \Delta_{\mathrm{Hodge}}, \quad \{\mathcal{D}_{\mathbb{R}^3}, \, \mathcal{D}_{S^1}\} = 0 \implies \langle \omega, \Delta_{\mathrm{Hodge}} \omega \rangle \ge \left(\frac{2}{\pi} \frac{\mathrm{holGap}(\theta)}{L}\right)^2 \|\omega\|^2 > 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/LatticeFiberDirac.lean" class="file-pill">LatticeFiberDirac.lean</a>
-            <a href="https://github.com/naype888-cloud/nrs3-hopf" class="file-pill">DiracGapGaugeInvariant.lean</a>
           </div>
         </div>
       </article>
 
-      <!-- Step 5 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 5 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 05</span>
-            <h3 class="step-title">Límite Asintótico de Szegő y Monotonía Creciente ($d \to \infty$)</h3>
+            <span class="prop-num">Gradus V</span>
+            <h3 class="prop-title">Limes Asymptoticus Szegő et Monotonia Crescens ($d \to \infty$)</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            Monotonía creciente estricta del defecto adimensional para todo $d \ge 4$, blindando la brecha contra cualquier colapso gaussiano:
+            Monotonia crescens stricta defectus adimensionati pro omni $d \ge 4$, hiatum contra quemlibet collapsum Gaussianum muniens:
           </p>
           <div class="math-callout">
             $$\mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{\pi^2}{3} - 3 \approx 0.289868 > 0, \qquad \lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi^2}{3} - 3 > 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/FibreSurgery.lean" class="file-pill">FibreSurgery.lean</a>
-            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D56_MassNecessaryConditions.lean</a>
-            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D9_Monotonicity.lean</a>
+            <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/D56_MassNecessaryConditions.lean" class="file-pill">D56_MassNecessaryConditions.lean</a>
           </div>
         </div>
       </article>
 
-      <!-- Step 6 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 6 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 06</span>
-            <h3 class="step-title">Clausura Continua de Wightman e Ínfimo del Milenio</h3>
+            <span class="prop-num">Gradus VI</span>
+            <h3 class="prop-title">Clausura Continua Wightmaniana et Infimum Milenii</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            Descompactificación $L \to \infty$ y persistencia del gap sostenida por la condensación de calorones de Kraan–van Baal / monopolos BPS:
+            Decompactificatio $L \to \infty$ et persistentia hiatus per condensationem caloronum Kraan–van Baal / monopolorum BPS fulta:
           </p>
           <div class="math-callout">
             $$\Delta_{\mathrm{total}} = \min(\Delta_{\mathrm{glue}}, \, \sqrt{\mathrm{floor}}) \ge c_\sigma \cdot \Lambda_{\mathrm{YM}} > 0, \qquad \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \right) \ge \Delta_{\mathrm{total}} > 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/SurgeryGapClosure.lean" class="file-pill">SurgeryGapClosure.lean</a>
-            <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md" class="file-pill">Wightman OS-Reconstruction</a>
+            <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md" class="file-pill">Reconstructio Wightman</a>
           </div>
         </div>
       </article>
 
-      <!-- Step 7 -->
-      <article class="step-card">
-        <div class="step-head">
+      <!-- Gradus 7 -->
+      <article class="proposition-card">
+        <div class="prop-head">
           <div>
-            <span class="step-num">Paso 07</span>
-            <h3 class="step-title">Puente Maestro del Hamiltoniano (Unificación OpenAI Wightman QFT)</h3>
+            <span class="prop-num">Gradus VII</span>
+            <h3 class="prop-title">Pons Magister Hamiltoniani (Unificatio OpenAI Wightman QFT)</h3>
           </div>
-          <span style="font-family: var(--font-mono); color: var(--emerald); font-size: 0.9rem;">✔ VERIFICADO</span>
+          <span class="prop-status">✔ Formaliter Verificatum</span>
         </div>
-        <div class="step-body">
+        <div class="prop-body">
           <p>
-            Resolución definitiva de las <b>Preguntas Abiertas #3 y #4</b> del dictamen del Yang–Mills Group sobre <code>PublicTheory.lean</code> de OpenAI:
+            Solutio definitiva Quaestionum Apertarum #3 et #4 dictaminis gregis Yang-Mills super <code>PublicTheory.lean</code> societatis OpenAI:
           </p>
           <div class="math-callout">
             $$\mathrm{spec}(\hat{H}) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}, \infty), \qquad E_{NRS^3}(\{p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}}\}) = 0$$
           </div>
-          <div class="step-meta">
-            <span>Módulos Lean 4:</span>
+          <div class="prop-meta">
+            <span>Fontes Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/HamiltonianBridge.lean" class="file-pill">HamiltonianBridge.lean</a>
-            <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md" class="file-pill">Cierre OpenAI YM</a>
+            <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md" class="file-pill">Clausura OpenAI YM</a>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- Master Theorem Box -->
-    <section class="master-theorem">
-      <div class="master-crown">👑</div>
-      <h2 class="master-title">Teorema del Milenio de Clay Verificado</h2>
-      <div class="master-eq">
-        $$\Huge \Delta_{\mathrm{YM}} := \inf \left( \mathrm{spec}(\hat{H}_{\mathrm{cont}}) \setminus \{0\} \right) = c_\sigma \cdot \Lambda_{\mathrm{YM}} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
-      </div>
-      <p class="master-desc">
-        La teoría cuántica de Yang–Mills sobre el espaciotiempo continuo $\mathbb{R}^4$ para cualquier grupo gauge compacto $SU(N)$ ($N \ge 2$)
-        posee un estado de vacío invariante único y una brecha de masa espectral aislada estrictamente positiva.
-      </p>
-      <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-        <a href="SU2-SU3.pdf" class="btn-github" style="padding: 0.7rem 1.6rem; font-size: 1rem;">
-          📄 Descargar Tratado Formal (PDF)
-        </a>
-        <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method" class="btn-github" style="background: var(--primary); color: #000; padding: 0.7rem 1.6rem; font-size: 1rem;">
-          ⭐ Explorar Código en GitHub
-        </a>
-      </div>
-    </section>
-
-    <!-- Code Explorer Section -->
-    <section id="theorems" class="code-section">
-      <div class="section-head" style="text-align: left; margin-bottom: 1.5rem;">
-        <h2>Explorador de Teoremas Canónicos en Lean 4</h2>
-        <p style="margin: 0;">Inspecciona el código fuente exacto certificado bajo el kernel formal.</p>
+    <!-- Codex Canonicus (Lean 4 Explorer) -->
+    <section id="codex" class="codex-section">
+      <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+        <span class="section-tag">Scriptura Canonica</span>
+        <h2>Codex Canonicus Theorematum in Lean 4</h2>
+        <p style="margin: 0;">Inspice codicem fontem authenticum sub axiomatibus classicis kernelis verificatum.</p>
       </div>
 
-      <div class="code-tabs">
-        <button class="tab-btn active" onclick="switchCode('d56')">D56_MassNecessaryConditions.lean (Igualdad Exacta)</button>
+      <div class="codex-tabs">
+        <button class="tab-btn active" onclick="switchCode('d56')">D56_MassNecessaryConditions.lean (Aequalitas Exacta)</button>
         <button class="tab-btn" onclick="switchCode('d55')">D55_SaturatingRegion.lean</button>
         <button class="tab-btn" onclick="switchCode('surgery')">FibreSurgery.lean</button>
         <button class="tab-btn" onclick="switchCode('bridge')">HamiltonianBridge.lean</button>
@@ -1136,25 +1246,27 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
 
   </main>
 
-  <!-- Page Footer -->
+  <!-- Classical Academic Footer -->
   <footer class="page-footer">
     <div class="container">
       <ul class="footer-links">
-        <li><a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method">Repositorio Principal</a></li>
-        <li><a href="https://github.com/leanprover-community/physlib">Physlib Oficial</a></li>
+        <li><a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method">Bibliotheca GitHub</a></li>
+        <li><a href="https://github.com/leanprover-community/physlib">Physlib Communitas</a></li>
         <li><a href="https://github.com/naype888-cloud/nava-robertson-schrodinger">NavaRobertsonIndependent</a></li>
-        <li><a href="SU2-SU3.pdf">Tratado SU(N) PDF</a></li>
+        <li><a href="SU2-SU3.pdf">Tractatus SU(N) (PDF)</a></li>
       </ul>
-      <p>© 2026 Eduardo Nava-Hernández & José Arturo Nava-Hernández · Released under NRS 1.0.0</p>
-      <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #64748b;">
-        Lean 4 verified under canonical kernel axioms: [propext, Classical.choice, Quot.sound]
+      <p style="font-family: var(--font-monument); font-size: 0.88rem; letter-spacing: 0.14em; color: var(--gold-light);">
+        ANNO DOMINI MMXXVI · EDUARDO NAVA-HERNÁNDEZ & JOSÉ ARTURO NAVA-HERNÁNDEZ
+      </p>
+      <p style="font-size: 0.88rem; margin-top: 0.4rem; color: var(--text-dim); font-style: italic;">
+        Axiomata Kernelis: [propext, Classical.choice, Quot.sound] · Quod erat demonstrandum (Q.E.D.)
       </p>
     </div>
   </footer>
 
-  <!-- Scripts: Three.js Interactive Engine & Dynamic Dimension Simulator -->
+  <!-- Three.js Celestial Armillary & Dynamic Simulator Scripts -->
   <script>
-    // 1. THREE.JS 3D INTERACTIVE QUANTUM LATTICE & PERELMAN SURGERY ENGINE
+    // 1. THREE.JS CELESTIAL ASTROLABE & QUANTUM LATTICE ENGINE
     let scene, camera, renderer, controls;
     let latticeGroup, fibreGroup, coreSphere;
     let isAutoRotating = true;
@@ -1162,11 +1274,12 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
 
     function init3D() {
       const container = document.getElementById('three-viewport');
+      if (!container) return;
       const width = container.clientWidth;
       const height = container.clientHeight;
 
       scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x020409, 0.035);
+      scene.fog = new THREE.FogExp2(0x050609, 0.035);
 
       camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
       camera.position.set(16, 12, 20);
@@ -1181,65 +1294,54 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
       controls.maxDistance = 50;
       controls.minDistance = 5;
 
-      // Lights
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      // Celestial Lights
+      const ambientLight = new THREE.AmbientLight(0xfff6e5, 0.65);
       scene.add(ambientLight);
 
-      const pointLight1 = new THREE.PointLight(0x00e5ff, 2, 50);
-      pointLight1.position.set(10, 15, 10);
-      scene.add(pointLight1);
+      const goldLight = new THREE.PointLight(0xd4af37, 2.2, 60);
+      goldLight.position.set(12, 16, 12);
+      scene.add(goldLight);
 
-      const pointLight2 = new THREE.PointLight(0xb537f2, 2, 50);
-      pointLight2.position.set(-10, -10, -10);
-      scene.add(pointLight2);
+      const lapisLight = new THREE.PointLight(0x4a7ab5, 1.8, 60);
+      lapisLight.position.set(-12, -10, -12);
+      scene.add(lapisLight);
 
-      // 3D Cubic Open Tight-Binding Lattice
+      // 3D Cubic Lattice (Burnished Gold & Ivory)
       latticeGroup = new THREE.Group();
       const gridSize = 3;
       const spacing = 2.2;
-      const sphereGeo = new THREE.SphereGeometry(0.18, 16, 16);
+      const sphereGeo = new THREE.SphereGeometry(0.16, 16, 16);
       const nodeMaterial = new THREE.MeshStandardMaterial({
-        color: 0x00e5ff,
-        emissive: 0x00e5ff,
-        emissiveIntensity: 0.8,
-        roughness: 0.2
+        color: 0xd4af37,
+        roughness: 0.3,
+        metalness: 0.8
       });
 
       const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0x005577,
+        color: 0x5a4d2e,
         transparent: true,
-        opacity: 0.6
+        opacity: 0.55
       });
 
-      // Nodes & Bonds
-      const nodes = [];
       for (let x = -gridSize; x <= gridSize; x++) {
         for (let y = -gridSize; y <= gridSize; y++) {
           for (let z = -gridSize; z <= gridSize; z++) {
             const mesh = new THREE.Mesh(sphereGeo, nodeMaterial);
             mesh.position.set(x * spacing, y * spacing, z * spacing);
             latticeGroup.add(mesh);
-            nodes.push(mesh.position);
           }
         }
       }
 
-      // Connecting lattice lines
       const lineGeo = new THREE.BufferGeometry();
       const points = [];
       for (let x = -gridSize; x <= gridSize; x++) {
         for (let y = -gridSize; y <= gridSize; y++) {
           for (let z = -gridSize; z <= gridSize; z++) {
             const p1 = new THREE.Vector3(x * spacing, y * spacing, z * spacing);
-            if (x < gridSize) {
-              points.push(p1, new THREE.Vector3((x + 1) * spacing, y * spacing, z * spacing));
-            }
-            if (y < gridSize) {
-              points.push(p1, new THREE.Vector3(x * spacing, (y + 1) * spacing, z * spacing));
-            }
-            if (z < gridSize) {
-              points.push(p1, new THREE.Vector3(x * spacing, y * spacing, (z + 1) * spacing));
-            }
+            if (x < gridSize) points.push(p1, new THREE.Vector3((x + 1) * spacing, y * spacing, z * spacing));
+            if (y < gridSize) points.push(p1, new THREE.Vector3(x * spacing, (y + 1) * spacing, z * spacing));
+            if (z < gridSize) points.push(p1, new THREE.Vector3(x * spacing, y * spacing, (z + 1) * spacing));
           }
         }
       }
@@ -1248,30 +1350,33 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
       latticeGroup.add(latticeLines);
       scene.add(latticeGroup);
 
-      // Central Robertson–Schrödinger Bloch Core Sphere
-      const coreGeo = new THREE.SphereGeometry(2.4, 32, 32);
+      // Central Bloch Core Sphere (Armillary Wireframe)
+      const coreGeo = new THREE.SphereGeometry(2.4, 28, 28);
       const coreMat = new THREE.MeshStandardMaterial({
-        color: 0xb537f2,
+        color: 0xaa820a,
         wireframe: true,
         transparent: true,
-        opacity: 0.4
+        opacity: 0.35
       });
       coreSphere = new THREE.Mesh(coreGeo, coreMat);
       scene.add(coreSphere);
 
-      // Inner glowing core point
-      const innerPointGeo = new THREE.SphereGeometry(0.6, 16, 16);
-      const innerPointMat = new THREE.MeshBasicMaterial({ color: 0xffd000 });
-      const innerPoint = new THREE.Mesh(innerPointGeo, innerPointMat);
-      scene.add(innerPoint);
+      // Central Luminous Monad
+      const innerGeo = new THREE.SphereGeometry(0.55, 16, 16);
+      const innerMat = new THREE.MeshStandardMaterial({
+        color: 0xffe899,
+        emissive: 0xd4af37,
+        emissiveIntensity: 0.6
+      });
+      scene.add(new THREE.Mesh(innerGeo, innerMat));
 
-      // Perelman S^1 Fibre Torus / Ring
+      // Perelman S^1 Fibre Torus (Celestial Gold Ring)
       fibreGroup = new THREE.Group();
-      const torusGeo = new THREE.TorusGeometry(5.2, 0.08, 16, 100);
-      const torusMat = new THREE.MeshBasicMaterial({
-        color: 0x00ffa3,
-        transparent: true,
-        opacity: 0.85
+      const torusGeo = new THREE.TorusGeometry(5.2, 0.07, 16, 100);
+      const torusMat = new THREE.MeshStandardMaterial({
+        color: 0xf3e5ab,
+        metalness: 0.9,
+        roughness: 0.2
       });
       const torus1 = new THREE.Mesh(torusGeo, torusMat);
       torus1.rotation.x = Math.PI / 2;
@@ -1281,10 +1386,10 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
       torus2.rotation.y = Math.PI / 2;
       fibreGroup.add(torus2);
 
-      // Particle Hopping on S^1 Fibre
-      const hoppingGeo = new THREE.SphereGeometry(0.32, 16, 16);
-      const hoppingMat = new THREE.MeshBasicMaterial({ color: 0x00ffa3 });
-      window.fibreParticle = new THREE.Mesh(hoppingGeo, hoppingMat);
+      // Luminous Orbiting Corpuscle on S^1
+      const hopGeo = new THREE.SphereGeometry(0.3, 16, 16);
+      const hopMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      window.fibreParticle = new THREE.Mesh(hopGeo, hopMat);
       fibreGroup.add(window.fibreParticle);
 
       scene.add(fibreGroup);
@@ -1324,17 +1429,17 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
     let clock = 0;
     function animate() {
       requestAnimationFrame(animate);
-      clock += 0.02;
+      clock += 0.015;
 
       if (isAutoRotating) {
-        latticeGroup.rotation.y += 0.003;
+        latticeGroup.rotation.y += 0.0025;
         latticeGroup.rotation.x += 0.001;
-        coreSphere.rotation.y -= 0.004;
-        fibreGroup.rotation.z += 0.005;
+        coreSphere.rotation.y -= 0.003;
+        fibreGroup.rotation.z += 0.004;
       }
 
       if (window.fibreParticle) {
-        const angle = clock * 1.5;
+        const angle = clock * 1.4;
         window.fibreParticle.position.x = 5.2 * Math.cos(angle);
         window.fibreParticle.position.z = 5.2 * Math.sin(angle);
       }
@@ -1345,7 +1450,7 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
 
     window.addEventListener('DOMContentLoaded', init3D);
 
-    // 2. INTERACTIVE DIMENSION SLIDER ENGINE
+    // 2. DIMENSION CALCULUS & DYNAMIC STATE
     const slider = document.getElementById('dim-slider');
     const dimValDisplay = document.getElementById('dim-val-display');
     const statusBadge = document.getElementById('dim-status-badge');
@@ -1363,39 +1468,28 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
 
       if (d <= 3) {
         // Saturating Region
-        statusBadge.innerText = 'ZONA SATURANTE: DEFECTO = 0 (SIN MASA)';
-        statusBadge.style.background = 'rgba(255, 42, 95, 0.2)';
-        statusBadge.style.color = 'var(--danger)';
-        statusBadge.style.border = '1px solid var(--danger)';
+        statusBadge.innerText = 'REGIO SATURANS: DEFECTUS = 0 (SINE MASSA)';
+        statusBadge.style.background = 'rgba(166, 43, 43, 0.2)';
+        statusBadge.style.color = 'var(--crimson-light)';
+        statusBadge.style.borderColor = 'var(--crimson)';
 
         statCn.innerText = '1.0000';
-        statCn.style.color = 'var(--danger)';
-        badgeCn.innerText = 'C_N = 1 (Límite Sólido)';
-        badgeCn.style.background = 'rgba(255, 42, 95, 0.15)';
-        badgeCn.style.color = 'var(--danger)';
+        statCn.style.color = 'var(--crimson-light)';
+        badgeCn.innerText = 'C_N = 1 (Limes Rigidus)';
 
         statMassq.innerText = '0.0000';
-        statMassq.style.color = 'var(--danger)';
-        badgeMassq.innerText = 'massSq = 0 (Fotón Luminal)';
-        badgeMassq.style.background = 'rgba(255, 42, 95, 0.15)';
-        badgeMassq.style.color = 'var(--danger)';
+        statMassq.style.color = 'var(--crimson-light)';
+        badgeMassq.innerText = 'massSq = 0 (Lux Luminalis)';
 
         statDefect.innerText = '0.0000';
-        statDefect.style.color = 'var(--danger)';
-        badgeDefect.innerText = 'det G = 0 (Saturación)';
-        badgeDefect.style.background = 'rgba(255, 42, 95, 0.15)';
-        badgeDefect.style.color = 'var(--danger)';
+        statDefect.style.color = 'var(--crimson-light)';
+        badgeDefect.innerText = 'det G = 0 (Saturatio)';
 
-        statState.innerText = 'MASALESS (3D PURO)';
-        statState.style.color = 'var(--danger)';
-        badgeState.innerText = d === 2 ? 'Luz plana d=2' : 'Núcleo saturado 7³=343';
-        badgeState.style.background = 'rgba(255, 42, 95, 0.15)';
-        badgeState.style.color = 'var(--danger)';
+        statState.innerText = 'SINE MASSA';
+        statState.style.color = 'var(--crimson-light)';
+        badgeState.innerText = d === 2 ? 'Planities d = 2' : 'Nucleus 7³ = 343 nodi';
       } else {
         // Non-Saturating Region d >= 4
-        const pi = Math.PI;
-        const cnInfSq = (pi * pi) / 3 - 2; // ~ 1.289868
-        // Realistic progression based on closed formula
         let cnSq;
         if (d === 4) cnSq = 1.25; // 5/4
         else if (d === 5) cnSq = 1.265;
@@ -1409,40 +1503,34 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
         const massSq = cnSq - 1;
         const defect = massSq / Math.pow(d - 1, 2);
 
-        statusBadge.innerText = d === 4 ? 'PISO EXACTO DE PERELMAN (d = 4)' : 'BANDA ASINTÓTICA DE SZEGŐ';
-        statusBadge.style.background = 'rgba(0, 255, 163, 0.2)';
-        statusBadge.style.color = 'var(--emerald)';
-        statusBadge.style.border = '1px solid var(--emerald)';
+        statusBadge.innerText = d === 4 ? 'SOLUM PERELMANIANUM (d = 4)' : 'FASCIA ASYMPTOTICA SZEGŐ';
+        statusBadge.style.background = 'rgba(212, 175, 55, 0.12)';
+        statusBadge.style.color = 'var(--gold-light)';
+        statusBadge.style.borderColor = 'var(--gold-primary)';
 
         statCn.innerText = cn.toFixed(4);
-        statCn.style.color = 'var(--primary)';
-        badgeCn.innerText = `C_N(${d}) > 1 (Super-coherente)`;
-        badgeCn.style.background = 'rgba(0, 229, 255, 0.15)';
-        badgeCn.style.color = 'var(--primary)';
+        statCn.style.color = 'var(--gold-primary)';
+        badgeCn.innerText = `C_N(${d}) > 1 (Super-coherens)`;
 
         statMassq.innerText = massSq.toFixed(4);
-        statMassq.style.color = 'var(--emerald)';
-        badgeMassq.innerText = d === 4 ? 'massSq(4) = 1/4 (Floor)' : 'massSq(d) < π²/3 - 3';
-        badgeMassq.style.background = 'rgba(0, 255, 163, 0.15)';
-        badgeMassq.style.color = 'var(--emerald)';
+        statMassq.style.color = 'var(--parchment)';
+        badgeMassq.innerText = d === 4 ? 'massSq(4) = 1/4 (Solum)' : 'massSq(d) < π²/3 - 3';
 
         statDefect.innerText = defect.toFixed(5);
-        statDefect.style.color = 'var(--gold)';
-        badgeDefect.innerText = 'Estrictamente Positivo';
-        badgeDefect.style.background = 'rgba(255, 208, 0, 0.15)';
-        badgeDefect.style.color = 'var(--gold)';
+        statDefect.style.color = 'var(--gold-light)';
+        badgeDefect.innerText = 'Stricte Positivus';
 
-        statState.innerText = 'CONFINADO (MASS GAP)';
-        statState.style.color = 'var(--emerald)';
-        badgeState.innerText = 'Vacío Aislado Δ > 0';
-        badgeState.style.background = 'rgba(0, 255, 163, 0.15)';
-        badgeState.style.color = 'var(--emerald)';
+        statState.innerText = 'CONFINATUS';
+        statState.style.color = 'var(--gold-light)';
+        badgeState.innerText = 'Vacuum Segregatum Δ > 0';
       }
     }
 
-    slider.addEventListener('input', (e) => {
-      updateDimension(parseInt(e.target.value));
-    });
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        updateDimension(parseInt(e.target.value));
+      });
+    }
 
     // 3. CODE TAB SWITCHER
     const codeSnippets = {
