@@ -16,7 +16,6 @@
 
 <br><br>
 
-<a href="docs/assets/step1_preview.mp4">
   <img src="docs/assets/step1_preview.gif" alt="Paso 1: Red 3D Tight-Binding y Ley del Área" width="380" />
 </a>
 
