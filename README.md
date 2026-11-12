@@ -12,8 +12,6 @@
 
 <br><br>
 
-](docs/SU2-SU3.pdf?raw=true)
-
 <br><br>
 
 </a>
