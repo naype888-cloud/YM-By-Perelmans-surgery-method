@@ -6,6 +6,7 @@ Authors: Eduardo Nava-Hernandez
 import Mathlib.Analysis.SpecialFunctions.Exp
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.InnerProductSpace.Basic
+import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Topology.MetricSpace.Basic
 
 /-!
@@ -63,10 +64,10 @@ namespace HamiltonianBridge
 abbrev Axis := Fin 4
 abbrev Spacetime := EuclideanSpace ℝ Axis
 def timeAxis : Axis := Fin.last 3
-def time (p : Spacetime) : ℝ := p timeAxis
+def time (p : Spacetime) : ℝ := (p : Fin 4 → ℝ) timeAxis
 
 def spatialNormSq (p : Spacetime) : ℝ :=
-  (p 0)^2 + (p 1)^2 + (p 2)^2
+  ((p : Fin 4 → ℝ) 0)^2 + ((p : Fin 4 → ℝ) 1)^2 + ((p : Fin 4 → ℝ) 2)^2
 
 /-- The closed forward light cone in the convention where time is the final coordinate
 (identical to OpenAI `PublicTheory.lean`, line 64). -/
@@ -94,11 +95,11 @@ Here $d$ parameterizes simultaneously:
 - The spatial lattice modes along $(x, y, z)$ with cubic degree $\Delta \le 12$.
 - The dimension of the discrete Hilbert space $H_d$.
 - Spacetime dimension $D = 4 \ge 4$. -/
-def CoherenceConstantSq (d : ℕ) : ℝ :=
+noncomputable def CoherenceConstantSq (d : ℕ) : ℝ :=
   1 + 1 / ((d : ℝ) - 1)^2
 
 /-- The transverse fiber mass defect: $\mathrm{massSq}(d) = C_N(d)^2 - 1$. -/
-def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
+noncomputable def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
 
 theorem massSq_four : massSq 4 = 1 / 9 := by
   unfold massSq CoherenceConstantSq
@@ -108,11 +109,13 @@ theorem massSq_four : massSq 4 = 1 / 9 := by
 proves that quantum non-commutation prevents zero-mode collapse. -/
 theorem massSq_pos (d : ℕ) (hd : 4 ≤ d) : 0 < massSq d := by
   unfold massSq CoherenceConstantSq
-  have h : 1 < (d : ℝ) - 1 := by
-    have h4 : (4 : ℝ) ≤ (d : ℝ) := Nat.cast_le.mpr hd
-    linarith
-  have hpos : 0 < ((d : ℝ) - 1)^2 := sq_pos_of_pos (by linarith)
-  exact div_pos one_pos hpos
+  have hpos : 0 < ((d : ℝ) - 1)^2 := by
+    have h1 : 1 < (d : ℝ) - 1 := by
+      have h4 : (4 : ℝ) ≤ (d : ℝ) := Nat.cast_le.mpr hd
+      linarith
+    exact sq_pos_of_pos (by linarith)
+  have hdiv : 0 < 1 / ((d : ℝ) - 1)^2 := div_pos one_pos hpos
+  linarith
 
 /-! ## 4. Transfer Matrix String Tension and Glueball Gap -/
 
@@ -160,12 +163,12 @@ Sturm–Liouville Hamiltonian: consists of the vacuum ground state {0} and excit
 at or above the physical mass gap floor $\Delta_{\mathrm{total}} > 0$.
 Grounded on Physlib PRs #1689, #1725, #1756. -/
 def nrs3PhysicalSpectrum (L σ : ℝ) (R : ℕ) : Set Spacetime :=
-  {0} ∪ {p ∈ forwardCone | totalPhysicalGap L σ R ≤ time p}
+  {(0 : Spacetime)} ∪ {p ∈ forwardCone | totalPhysicalGap L σ R ≤ time p}
 
 /-- The intersection between the spectral gap shell and the NRS³ physical spectrum is non-empty:
 disproved unconditionally by the strictly positive Sturm–Liouville gap $\Delta_{\mathrm{total}} > 0$. -/
 lemma nrs3_gap_shell_inter_spectrum_not_nonempty (L σ : ℝ) (R : ℕ) :
-    ¬ (spectralGapShell (totalPhysicalGap L σ R) ∩ nrs3PhysicalSpectrum L σ R).Nonempty := by
+    ¬ (spectralGapShell (totalPhysicalGap L σ R) ∩ nrs3PhysicalSpectrum L σ R : Set Spacetime).Nonempty := by
   intro ⟨p, ⟨_, hpos, hlt⟩, hspec⟩
   rcases hspec with (rfl | ⟨_, hge⟩)
   · have h0 : time (0 : Spacetime) = 0 := rfl
@@ -177,7 +180,7 @@ lemma nrs3_gap_shell_inter_spectrum_not_nonempty (L σ : ℝ) (R : ℕ) :
 the Sturm–Liouville Hamiltonian on the open tight-binding cube NRS³ excludes all states
 with energy in the open window $(0, \Delta_{\mathrm{total}})$. -/
 theorem nrs3_physical_spectrum_inter_gap_shell_empty (L σ : ℝ) (R : ℕ) :
-    spectralGapShell (totalPhysicalGap L σ R) ∩ nrs3PhysicalSpectrum L σ R = ∅ := by
+    (spectralGapShell (totalPhysicalGap L σ R) ∩ nrs3PhysicalSpectrum L σ R : Set Spacetime) = ∅ := by
   ext p
   constructor
   · intro hp
@@ -185,6 +188,8 @@ theorem nrs3_physical_spectrum_inter_gap_shell_empty (L σ : ℝ) (R : ℕ) :
     exact nrs3_gap_shell_inter_spectrum_not_nonempty L σ R ⟨p, hp⟩
   · intro hp
     exact False.elim hp
+
+open Classical
 
 /-- **Concrete Spectral Measure of the NRS³ Open Tight-Binding Cube**:
 For any set of 4-momenta $S$, if its intersection with the physical spectrum
@@ -195,7 +200,7 @@ noncomputable def nrs3SpectralMeasure {H : Type*} [NormedAddCommGroup H] [InnerP
     (L σ : ℝ) (R : ℕ)
     (proj : { s : Set Spacetime // s ⊆ nrs3PhysicalSpectrum L σ R } → (H →L[ℂ] H))
     (S : Set Spacetime) : (H →L[ℂ] H) :=
-  if h : (S ∩ nrs3PhysicalSpectrum L σ R).Nonempty then
+  if _h : (S ∩ nrs3PhysicalSpectrum L σ R).Nonempty then
     proj ⟨S ∩ nrs3PhysicalSpectrum L σ R, Set.inter_subset_right⟩
   else
     0
@@ -212,7 +217,8 @@ theorem nrs3_sturm_liouville_spectral_null {H : Type*} [NormedAddCommGroup H] [I
   unfold nrs3SpectralMeasure
   have h_not : ¬ (spectralGapShell (totalPhysicalGap L σ R) ∩ nrs3PhysicalSpectrum L σ R).Nonempty :=
     nrs3_gap_shell_inter_spectrum_not_nonempty L σ R
-  exact dif_neg h_not
+  split_ifs
+  rfl
 
 /-! ## 6. Master Theorem: The Unconditional Hamiltonian Bridge -/
 
