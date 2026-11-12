@@ -17,7 +17,7 @@ as developed across Physlib PRs #1660, #1676, #1649, #1650, #1716, #1718, #1732,
 ## Key Exports
 - `FibreSurgery.massSq`: The squared mass of the fibre in lattice units ($C_N(d)^2 - 1$).
 - `FibreSurgery.massFn_floor_pos`: Strict positivity of the transverse mass floor.
-- `FibreBand.surplus_ge`: Explicit lower bound on Robertson–Schrödinger surplus along the maximal tension band.
+- `FibreBand.surplus_ge_massSq`: Explicit lower bound on Robertson–Schrödinger surplus along the maximal tension band.
 -/
 
 namespace CoherenceDefect

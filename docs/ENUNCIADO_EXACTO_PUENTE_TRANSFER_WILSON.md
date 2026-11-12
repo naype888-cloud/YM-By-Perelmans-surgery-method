@@ -8,10 +8,10 @@
 
 ## 1. El Puente Formalizado
 
-En [`SpectralGap.lean`](../SpectralGap.lean):
+En [`SpectralGap.lean`](../src/SpectralGap.lean):
 * `connected_le_exp`: Si $\mu_1 < \mu_0$, entonces la correlación conectada decae como $e^{-\Delta k}$ con $\Delta = \ln(\mu_0 / \mu_1)$.
 
-En [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean):
+En [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean):
 * `eigenvalue_le_of_pow_bound`: Si $\mu^k \le C \cdot \alpha^k$ para todo $k \in \mathbb{N}$ con $0 \le \alpha < \mu$, entonces $\mu \le \alpha$.
 
 El puente está completamente cerrado mediante la **representación por Matriz de Transferencia del Lazo de Wilson axial** $R \times k$.

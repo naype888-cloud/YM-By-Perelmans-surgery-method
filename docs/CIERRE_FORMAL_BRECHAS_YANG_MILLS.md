@@ -25,7 +25,7 @@
      ```
 
 2. **Topología de Racimo y Ortogonalidad de Caracteres en $SU(N)$:**
-   * La descomposición de racimo $S \mapsto (\gamma, R)$ formalizada en [`PolymerBound.lean`](../PolymerBound.lean) opera a nivel puramente combinatorio y topológico en la red.
+   * La descomposición de racimo $S \mapsto (\gamma, R)$ formalizada en [`PolymerBound.lean`](../src/PolymerBound.lean) opera a nivel puramente combinatorio y topológico en la red.
    * La integración de Haar sobre grupos compactos $SU(N)$ preserva la ortogonalidad exacta de caracteres:
      $$\int_{SU(N)} dU_l \, \chi_j(U_l) \overline{\chi_k(U_l)} = \delta_{jk}$$
      forzando la misma inyectividad de racimo: toda superficie que contribute al lazo de Wilson $\chi_1(U_C)$ debe recubrir los enlaces del perímetro.
@@ -47,7 +47,7 @@
 
 2. **Cierre de la Fibra y No Saturación:**
    * La compacidad de la fibra $S^1$ impone un transporte cerrado no contráctil que genera una cota espectral estrictamente positiva.
-   * En [`FibreSurgery.lean`](../FibreSurgery.lean) y [`FibreBand.lean`](../FibreBand.lean), la cantidad monótona $\text{massSq}(d) = C_N(d)^2 - 1$ para $d \ge 4$ y el piso $\min(1/4, \text{massSq}(4)/L^2) > 0$ blindan la masa transversal contra cualquier desvanecimiento.
+   * En [`FibreSurgery.lean`](../src/FibreSurgery.lean) y [`FibreBand.lean`](../src/FibreBand.lean), la cantidad monótona $\text{massSq}(d) = C_N(d)^2 - 1$ para $d \ge 4$ y el piso $\min(1/4, \text{massSq}(4)/L^2) > 0$ blindan la masa transversal contra cualquier desvanecimiento.
 
 ---
 
@@ -75,15 +75,15 @@
 El marco constructivo unificado está completamente consolidado:
 
 1. **Modelo de Retículo Cúbico 3D y Ley del Área:**
-   * Ley del área uniforme en el volumen probada en [`CubeAreaLaw.lean`](../CubeAreaLaw.lean) con $\Delta = 12$ ([`AdjDegree.lean`](../AdjDegree.lean)) y semillas $\le 8R$ ([`AxialSeeds.lean`](../AxialSeeds.lean)).
+   * Ley del área uniforme en el volumen probada en [`CubeAreaLaw.lean`](../src/CubeAreaLaw.lean) con $\Delta = 12$ ([`AdjDegree.lean`](../src/AdjDegree.lean)) y semillas $\le 8R$ ([`AxialSeeds.lean`](../src/AxialSeeds.lean)).
 2. **Matriz de Transferencia y Gap Espectral Neto:**
-   * Demostrado en [`Z2Final.lean`](../Z2Final.lean) y [`Z2Hj.lean`](../Z2Hj.lean) (`z2_gap_free`), descargando las hipótesis de grado y de solapamiento.
+   * Demostrado en [`Z2Final.lean`](../src/Z2Final.lean) y [`Z2Hj.lean`](../src/Z2Hj.lean) (`z2_gap_free`), descargando las hipótesis de grado y de solapamiento.
 3. **Descomposición de Polímeros y Kotecký–Preiss:**
-   * Descomposición $Z = \text{polymerZ}$ en [`PolymerDecomposition.lean`](../PolymerDecomposition.lean) y cotas de Kotecký–Preiss en [`KoteckyPreiss.lean`](../KoteckyPreiss.lean).
+   * Descomposición $Z = \text{polymerZ}$ en [`PolymerDecomposition.lean`](../src/PolymerDecomposition.lean) y cotas de Kotecký–Preiss en [`KoteckyPreiss.lean`](../src/KoteckyPreiss.lean).
 4. **Defecto de Fibra y Brecha Total:**
-   * Cota transversal positiva en [`FibreSurgery.lean`](../FibreSurgery.lean) y [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) con $\Delta_{\text{total}} = \min(\Delta_{\text{glue}}, \sqrt{\text{piso}}) > 0$ (`totalPhysicalGap_pos`).
+   * Cota transversal positiva en [`FibreSurgery.lean`](../src/FibreSurgery.lean) y [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean) con $\Delta_{\text{total}} = \min(\Delta_{\text{glue}}, \sqrt{\text{piso}}) > 0$ (`totalPhysicalGap_pos`).
 5. **Teorema Inverso Espectral:**
-   * Demostrado en [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`).
+   * Demostrado en [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`).
 
 6. **Corpus Comunitario en Physlib (50 PRs Merged):**
    * Respaldado por 50 teoremas oficiales aprobados e integrados en [`leanprover-community/physlib`](https://github.com/leanprover-community/physlib), incluyendo el grado $\Delta = 12$ ([PR #1987](https://github.com/leanprover-community/physlib/pull/1987)), la necesidad de $d=4$ para Clifford ([PR #1768](https://github.com/leanprover-community/physlib/pull/1768)), el espectro completo de la cadena de red ([PR #1901](https://github.com/leanprover-community/physlib/pull/1901)), el defecto de Robertson–Schrödinger ([PR #1660](https://github.com/leanprover-community/physlib/pull/1660), [#1676](https://github.com/leanprover-community/physlib/pull/1676), [#1844](https://github.com/leanprover-community/physlib/pull/1844)) y el cubrimiento de Lorentz $\mathrm{SL}(2,\mathbb{C})$ ([PR #1885](https://github.com/leanprover-community/physlib/pull/1885)). Para el catálogo completo, ver [**Fundamentación Canónica en Physlib (50 PRs Merged)**](FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).

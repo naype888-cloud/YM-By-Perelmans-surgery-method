@@ -21,7 +21,7 @@ Ambos sectores se suturan a través del **teorema inverso espectral** (`eigenval
 ## Parte 1: Red Cúbica 3D, Grado $\Delta = 12$ y Ley del Área de Wilson
 
 ### 1.1. Grado de Adyacencia Universal $\Delta = 12$
-En [`AdjDegree.lean`](../AdjDegree.lean) (`adj_degree_le_twelve`):
+En [`AdjDegree.lean`](../src/AdjDegree.lean) (`adj_degree_le_twelve`):
 * En la red cúbica 3D con incidencia de frontera `cinc`, toda plaqueta $p$ está delimitada por 4 enlaces.
 * Cada enlace interior $l$ es compartido por a lo más 4 plaquetas (2 en el plano directo y 2 en el plano ortogonal).
 * Por tanto, para una plaqueta dada $p$, cada enlace contribuye a lo más con $4 - 1 = 3$ vecinas distintas de $p$.
@@ -30,13 +30,13 @@ En [`AdjDegree.lean`](../AdjDegree.lean) (`adj_degree_le_twelve`):
 * **Fundamentación Canónica en Physlib:** Formalizado canónicamente en upstream [PR #1987](https://github.com/leanprover-community/physlib/pull/1987), donde el conteo combinatorio de palabras de 2 pasos axiales en el cubo unitario (`fccBonds_eq_twoStepWords`) demuestra en el kernel que el número de enlaces de salto independientes es exactamente 12. Adicionalmente, [PR #1986](https://github.com/leanprover-community/physlib/pull/1986) certifica la conmutación estricta de observables en ejes ortogonales.
 
 ### 1.2. Cota de Semillas de Borde $|\text{Seeds}| \le 8(R + T)$
-En [`AxialSeeds.lean`](../AxialSeeds.lean) (`seeds_rectAx_card_le`):
+En [`AxialSeeds.lean`](../src/AxialSeeds.lean) (`seeds_rectAx_card_le`):
 * El lazo de Wilson plano rectangular $R \times T$ posee un perímetro de $|C| = 2(R + T)$ enlaces.
 * Dado que cada enlace pertenece a lo más a 4 plaquetas en la red 3D, el número de plaquetas semilla que tocan el borde del lazo cumple:
   $$|\text{IsSeed}(C)| \le 4 \times 2(R + T) = 8(R + T).$$
 
 ### 1.3. La Ley del Área Concreta y Tensión de Cuerda
-En [`CubeAreaLaw.lean`](../CubeAreaLaw.lean) (`cube_wilson_area_law`) y [`AreaLawBound.lean`](../AreaLawBound.lean) (`area_law_uniform`):
+En [`CubeAreaLaw.lean`](../src/CubeAreaLaw.lean) (`cube_wilson_area_law`) y [`AreaLawBound.lean`](../src/AreaLawBound.lean) (`area_law_uniform`):
 Para todo acoplamiento en la región $\tanh \beta \le t'$ con $t'(1+a)^{12} \le a$:
 $$\langle W(R \times T) \rangle \le \left(\frac{\tanh \beta}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
 Tomando el límite termodinámico se extrae la tensión de cuerda física estrictamente positiva:
@@ -46,7 +46,7 @@ $$\sigma(\beta) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \
 
 ## Parte 2: Clasificación y Normalización Dimensional
 
-En [`FibreSurgery.lean`](../FibreSurgery.lean):
+En [`FibreSurgery.lean`](../src/FibreSurgery.lean):
 
 ### 2.1. Tricotomía Dimensional y Ecuación de Niven
 El teorema de tricotomía dimensional clasifica el comportamiento cuántico de cualquier fibra discretizada de paso $a = L/(d-1)$:
@@ -70,7 +70,7 @@ El factor cinemático $(d - 1)^2$ se cancela algebraicamente de manera exacta. L
 
 ## Parte 3: La Sutura Universal y Positividad Absoluta del Piso
 
-En [`FibreSurgery.lean`](../FibreSurgery.lean):
+En [`FibreSurgery.lean`](../src/FibreSurgery.lean):
 
 ### 3.1. Definición de la Función Suturada (`massFn`)
 Para unificar el régimen cinético discreto ($d = 3$) con el régimen de defecto continuo ($d \ge 4$):
@@ -89,7 +89,7 @@ $$0 < \min\left(\frac{1}{4}, \, \frac{\text{massSq}(4)}{L^2}\right).$$
 
 ## Parte 4: Exceso de Incertidumbre Cuántica en la Banda de Tensión
 
-En [`FibreBand.lean`](../FibreBand.lean):
+En [`FibreBand.lean`](../src/FibreBand.lean):
 
 ### 4.1. El Surplus Cuántico de Robertson–Schrödinger
 El surplus cuántico mide la distancia por la cual un estado físico $\psi$ falla en saturar la cota mínima de incertidumbre:
@@ -105,7 +105,7 @@ $$\text{surplus}(d, \psi) \ge \frac{\text{massSq}(d)}{2(d - 1)^2} > 0.$$
 
 ## Parte 5: Teorema Inverso Espectral y Cierre Total del Mass Gap Físico
 
-En [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean):
+En [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean):
 
 ### 5.1. El Sector Gauge Puro y Brecha de Glueballs
 * **Tensión de Cuerda:** $\sigma(t, t') = \ln(t'/t) > 0$ (`stringTension_pos`) para $0 < t < t'$.
@@ -146,11 +146,11 @@ Demostrado sin ninguna hipótesis auxiliar abierta, bajo los axiomas canónicos 
 
 | Parte | Módulo Principal | Teorema Clave | Estado |
 | :---: | :--- | :--- | :---: |
-| **1** | [`CubeAreaLaw.lean`](../CubeAreaLaw.lean) | `cube_wilson_area_law` ($\Delta = 12$, $|\text{Seeds}| \le 8(R+T)$) | `0 sorry` |
-| **2** | [`FibreSurgery.lean`](../FibreSurgery.lean) | `massSq_strictMonoOn`, `defect_over_step_sq` | `0 sorry` |
-| **3** | [`FibreSurgery.lean`](../FibreSurgery.lean) | `massFn_floor_pos` ($\text{piso} > 0$ universal) | `0 sorry` |
-| **4** | [`FibreBand.lean`](../FibreBand.lean) | `surplus_ge_massSq` (defecto irreducible en banda) | `0 sorry` |
-| **5** | [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound`, `totalPhysicalGap_pos` | `0 sorry` |
+| **1** | [`CubeAreaLaw.lean`](../src/CubeAreaLaw.lean) | `cube_wilson_area_law` ($\Delta = 12$, $|\text{Seeds}| \le 8(R+T)$) | `0 sorry` |
+| **2** | [`FibreSurgery.lean`](../src/FibreSurgery.lean) | `massSq_strictMonoOn`, `defect_over_step_sq` | `0 sorry` |
+| **3** | [`FibreSurgery.lean`](../src/FibreSurgery.lean) | `massFn_floor_pos` ($\text{piso} > 0$ universal) | `0 sorry` |
+| **4** | [`FibreBand.lean`](../src/FibreBand.lean) | `surplus_ge_massSq` (defecto irreducible en banda) | `0 sorry` |
+| **5** | [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean) | `eigenvalue_le_of_pow_bound`, `totalPhysicalGap_pos` | `0 sorry` |
 
 ---
 

@@ -21,7 +21,7 @@ Este tratado resuelve y formaliza en **Lean 4** los cuatro puntos críticos plan
 3. **Derivación rigurosa del gap** a partir de un operador de transferencia hermítico semidefinido positivo $T = e^{-a\hat{H}}$ mediante la ley del área de Wilson, utilizando el teorema verificado `transfer_spectral_gap_wilson`.
 4. **Cierre incondicional con el Hamiltoniano relativista continuo de Wightman** formalizado por OpenAI.
 
-Se formaliza y certifica el código completo de [`ConfinementBridge.lean`](../ConfinementBridge.lean) y [`SU2-SU3.lean`](../SU2-SU3.lean) con **0 sorry** bajo los axiomas canónicos del kernel.
+Se formaliza y certifica el código completo de [`ConfinementBridge.lean`](../src/ConfinementBridge.lean) y [`SU2-SU3.lean`](../src/SU2-SU3.lean) con **0 sorry** bajo los axiomas canónicos del kernel.
 
 ---
 
@@ -58,7 +58,7 @@ Cuando se toma el límite termodinámico macroscópico, las tres dimensiones esp
 
 ### 2.2 Formalización en Lean 4 de la Escala $L_0$
 
-En [`ConfinementBridge.lean`](../ConfinementBridge.lean):
+En [`ConfinementBridge.lean`](../src/ConfinementBridge.lean):
 
 ```lean
 structure DimensionalTransmutation where
@@ -167,7 +167,7 @@ theorem mass_gap_volume_independent (dt : DimensionalTransmutation) (sigma : Rea
 
 ### 4.2 Unificación con el Hamiltoniano Continuo de Wightman
 
-El módulo [`ConfinementBridge.lean`](../ConfinementBridge.lean) conecta esta brecha con el Hamiltoniano relativista continuo de Wightman formalizado por OpenAI:
+El módulo [`ConfinementBridge.lean`](../src/ConfinementBridge.lean) conecta esta brecha con el Hamiltoniano relativista continuo de Wightman formalizado por OpenAI:
 
 ### Teorema 4.1 (`wightman_mass_gap_at_confinement_scale`)
 
@@ -193,7 +193,7 @@ theorem wightman_mass_gap_at_confinement_scale
 
 ## 5. Código Lean 4 Completo: `ConfinementBridge.lean`
 
-El código fuente verificado que formaliza la deducción completa con 0 sorry se encuentra en [`ConfinementBridge.lean`](../ConfinementBridge.lean) e implementa:
+El código fuente verificado que formaliza la deducción completa con 0 sorry se encuentra en [`ConfinementBridge.lean`](../src/ConfinementBridge.lean) e implementa:
 1. `DimensionalTransmutation` y la escala invariante `confinementScale dt = 1 / dt.Lambda`.
 2. El piso de confinamiento transversal `transverseConfinementFloor` y su positividad estricta.
 3. La identidad algebraica `transverse_floor_eq_lambda_sq` que congela el piso frente a $V_3 \to \infty$.
@@ -205,7 +205,7 @@ El código fuente verificado que formaliza la deducción completa con 0 sorry se
 
 ## 6. Conclusión
 
-Con la introducción de [`ConfinementBridge.lean`](../ConfinementBridge.lean) y su integración en [`SU2-SU3.lean`](../SU2-SU3.lean) y [`SUNBridge.lean`](../SUNBridge.lean):
+Con la introducción de [`ConfinementBridge.lean`](../src/ConfinementBridge.lean) y su integración en [`SU2-SU3.lean`](../src/SU2-SU3.lean) y [`SUNBridge.lean`](../src/SUNBridge.lean):
 
 1. **La escala $L$ está formalmente fijada** a la transmutación dimensional invariante $L_0 = 1/\Lambda_{\mathrm{YM}}$.
 2. **Se demuestra que la brecha evaluada en $L_0$ es estrictamente positiva** e independiente del volumen macroscópico $V_3$.

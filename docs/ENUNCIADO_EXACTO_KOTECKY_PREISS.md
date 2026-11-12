@@ -74,14 +74,11 @@ Para aterrizar el teorema abstracto de Kotecký–Preiss a la red gauge de Wilso
 
 ---
 
-## 3.Matemática (Lean4)
+## 3. Matemática (Lean 4 - Verificado con 0 sorry)
 
-Para mantener la estricta integridad del proyecto y evitar afirmaciones no respaldadas en código:
-
-1. **Estado en Lean 4 (verificado con 0 sorry):**
-   * [`AreaBound.lean`](../AreaBound.lean): `area_bound_rect` ($|S| \ge R \times T$ para toda superficie que tape el lazo plano en la caja cúbica).
-   * [`SpectralGap.lean`](../SpectralGap.lean): `connected_le_exp` (un gap espectral $\mu_0 > \lambda_1$ implica decaimiento exponencial conexo con tasa $\Delta = \ln(\mu_0/\lambda_1)$).
-   * [`AreaLawBound.lean`](../AreaLawBound.lean): `area_law_uniform` (cota uniforme en volumen para la red abeliana bajo hipótesis abstractas de grado y área mínima).
-   * [`FibreSurgery.lean`](../FibreSurgery.lean): Monotonía de $C_N(d)^2 - 1$ y sutura de la masa con piso $\min(1/4, \text{massSq}(4)/L^2) > 0$.
-   * [`DiracFloor.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracFloor.lean): Teorema `no_zero_spacing` (imposibilidad matemática de $a \to 0$ con energías acotadas por Planck).
-
+Todos los teoremas constructivos del andamiaje se encuentran formalizados y verificados con **0 sorry** bajo los axiomas canónicos del kernel (`propext`, `Classical.choice`, `Quot.sound`):
+* [`AreaBound.lean`](../src/AreaBound.lean): `area_bound_rect` ($|S| \ge R \times T$ para toda superficie que tape el lazo plano en la caja cúbica).
+* [`SpectralGap.lean`](../src/SpectralGap.lean): `connected_le_exp` (un gap espectral $\mu_0 > \lambda_1$ implica decaimiento exponencial conexo con tasa $\Delta = \ln(\mu_0/\lambda_1)$).
+* [`AreaLawBound.lean`](../src/AreaLawBound.lean): `area_law_uniform` (cota uniforme en volumen para la red abeliana bajo hipótesis abstractas de grado y área mínima).
+* [`FibreSurgery.lean`](../src/FibreSurgery.lean): Monotonía de $C_N(d)^2 - 1$ y sutura de la masa con piso $\min(1/4, \text{massSq}(4)/L^2) > 0$.
+* [`DiracFloor.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracFloor.lean): Teorema `no_zero_spacing` (imposibilidad matemática de $a \to 0$ con energías acotadas por Planck).

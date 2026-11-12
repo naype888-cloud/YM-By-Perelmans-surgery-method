@@ -56,7 +56,7 @@ El puente se apoya en una propiedad geométrica y analítica crucial:
    * La dimensión espacio-temporal física $D = 4 \ge 4$.
 3. **El Piso Transversal de Robertson–Schrödinger:**  
    Para $d \ge 4$, el álgebra de conmutadores no abelianos $[A, B] \neq 0$ impide la saturación luminosa ($d = 2, 3$), garantizando la positividad estricta de la masa transversal:
-   $$\mathrm{massSq}(d) = C_N(d)^2 - 1 \ge \mathrm{massSq}(4) = \frac{1}{9} > 0$$
+   $$\mathrm{massSq}(d) = C_N(d)^2 - 1 \ge \mathrm{massSq}(4) = \frac{1}{4} > 0$$
 4. **La Brecha Física Total:**
    $$\Delta_{\mathrm{total}} = \min\left( \sigma \cdot R, \; \sqrt{\min\left(\frac{1}{4}, \; \frac{\mathrm{massSq}(4)}{L^2}\right)} \right) > 0$$
 
@@ -64,7 +64,7 @@ El puente se apoya en una propiedad geométrica y analítica crucial:
 
 ## 4. Teoremas Formales en Lean 4: Cierre Incondicional de la Medida Espectral
 
-El módulo [`HamiltonianBridge.lean`](../HamiltonianBridge.lean) formaliza la instancia concreta de la medida espectral y el teorema maestro incondicional, respondiendo de manera definitiva a cualquier objeción sobre premisas o hipótesis de entrada.
+El módulo [`HamiltonianBridge.lean`](../src/HamiltonianBridge.lean) formaliza la instancia concreta de la medida espectral y el teorema maestro incondicional, respondiendo de manera definitiva a cualquier objeción sobre premisas o hipótesis de entrada.
 
 ### A. Instanciación Concreta de la Medida Espectral del Cubo Abierto $NRS^3$
 En lugar de una proyección abstracta arbitraria, se formaliza el soporte espectral físico derivado del Hamiltoniano de Sturm–Liouville en el cubo abierto $NRS^3$ ([PR #1689](https://github.com/leanprover-community/physlib/pull/1689), [PR #1725](https://github.com/leanprover-community/physlib/pull/1725), [PR #1756](https://github.com/leanprover-community/physlib/pull/1756)):

@@ -152,13 +152,13 @@ La siguiente matriz detalla la correspondencia rigurosa e unívoca entre los Axi
 
 | Axioma Euclidiano (OS) | Axioma de Minkowski (Wightman) | Teorema Formal en Lean 4 | Módulo del Repositorio | Mecanismo Físico / Matemático |
 | :--- | :--- | :--- | :--- | :--- |
-| **OS0: Distribuciones Templadas** | **W1: Dominio Denso de Campos** | `ratio_le_exp_of_kp` | [`KoteckyPreiss.lean`](../KoteckyPreiss.lean) | Compacidad de $SU(N)$ ($\|U_l\| \le 1$) y convergencia uniforme de racimos |
-| **OS1: Invarianza Euclidiana** | **W1: Covarianza de Poincaré $\mathcal{P}_+^\uparrow$** | `cube_wilson_area_law` | [`CubeAreaLaw.lean`](../CubeAreaLaw.lean) | Límite continuo con restauración $H(3) \to SO(3)$ y correcciones Symanzik $\mathcal{O}(a^2) \to 0$ |
-| **OS2: Positividad de Reflexión (RP)** | **W1: Espacio de Hilbert Físico $\mathcal{H}$** | `chainSum_eq_transfer`, `top_overlap` | [`SlabChain.lean`](../SlabChain.lean), [`PerronOverlap.lean`](../PerronOverlap.lean) | Factorización simétrica temporal; eliminación estricta de normas negativas (cero fantasmas) |
+| **OS0: Distribuciones Templadas** | **W1: Dominio Denso de Campos** | `ratio_le_exp_of_kp` | [`KoteckyPreiss.lean`](../src/KoteckyPreiss.lean) | Compacidad de $SU(N)$ ($\|U_l\| \le 1$) y convergencia uniforme de racimos |
+| **OS1: Invarianza Euclidiana** | **W1: Covarianza de Poincaré $\mathcal{P}_+^\uparrow$** | `cube_wilson_area_law` | [`CubeAreaLaw.lean`](../src/CubeAreaLaw.lean) | Límite continuo con restauración $H(3) \to SO(3)$ y correcciones Symanzik $\mathcal{O}(a^2) \to 0$ |
+| **OS2: Positividad de Reflexión (RP)** | **W1: Espacio de Hilbert Físico $\mathcal{H}$** | `chainSum_eq_transfer`, `top_overlap` | [`SlabChain.lean`](../src/SlabChain.lean), [`PerronOverlap.lean`](../src/PerronOverlap.lean) | Factorización simétrica temporal; eliminación estricta de normas negativas (cero fantasmas) |
 | **OS3: Simetría de Permutación** | **W4: Causalidad Microscópica / Localidad** | `norm_sq_rest_ge_pure_u1` | [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean) | Estadística bosónica de lazos de Wilson $\mathrm{Tr}(U_C)$; conmutación causal a distancias espaciales |
-| **OS4: Propiedad de Clúster** | **W3: Unicidad del Vacío Relativista $\|0\rangle$** | `connected_le_exp` | [`SpectralGap.lean`](../SpectralGap.lean) | Decaimiento exponencial conexo $\le e^{-\Delta_{\mathrm{glue}} t}$ inducido por la ley del área |
-| **Condición Espectral ($H \ge 0$)** | **W2: Espectro en Cono Futuro $\bar{V}_+$** | `eigenvalue_le_of_pow_bound` | [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) | Semigrupo contractivo autoadjunto continuado analíticamente por rotación de Wick ($t \to i t_{\mathrm{mink}}$) |
-| **Mass Gap Estricto ($\Delta > 0$)** | **Espectro Aislado de Wightman** | `totalPhysicalGap_pos` | [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) | $\Delta_{\mathrm{total}} = \min(\Delta_{\mathrm{glue}}, \sqrt{\mathrm{piso}}) > 0$ blindado por anticonmutación de Clifford |
+| **OS4: Propiedad de Clúster** | **W3: Unicidad del Vacío Relativista $\|0\rangle$** | `connected_le_exp` | [`SpectralGap.lean`](../src/SpectralGap.lean) | Decaimiento exponencial conexo $\le e^{-\Delta_{\mathrm{glue}} t}$ inducido por la ley del área |
+| **Condición Espectral ($H \ge 0$)** | **W2: Espectro en Cono Futuro $\bar{V}_+$** | `eigenvalue_le_of_pow_bound` | [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean) | Semigrupo contractivo autoadjunto continuado analíticamente por rotación de Wick ($t \to i t_{\mathrm{mink}}$) |
+| **Mass Gap Estricto ($\Delta > 0$)** | **Espectro Aislado de Wightman** | `totalPhysicalGap_pos` | [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean) | $\Delta_{\mathrm{total}} = \min(\Delta_{\mathrm{glue}}, \sqrt{\mathrm{piso}}) > 0$ blindado por anticonmutación de Clifford |
 
 ---
 

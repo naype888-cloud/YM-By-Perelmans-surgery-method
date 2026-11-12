@@ -43,7 +43,7 @@ graph TD
 ---
 
 ### Pilar 1: Retículo Cúbico 3D, Pasos Axiales y Grado de Adyacencia $\Delta = 12$
-En [`AdjDegree.lean`](../AdjDegree.lean) y [`CubeAreaLaw.lean`](../CubeAreaLaw.lean), la cota uniforme de la ley del área de Wilson depende críticamente de que cada plaqueta en la red cúbica 3D tenga a lo sumo 12 plaquetas vecinas compartiendo un enlace ($\Delta \le 12$).
+En [`AdjDegree.lean`](../src/AdjDegree.lean) y [`CubeAreaLaw.lean`](../src/CubeAreaLaw.lean), la cota uniforme de la ley del área de Wilson depende críticamente de que cada plaqueta en la red cúbica 3D tenga a lo sumo 12 plaquetas vecinas compartiendo un enlace ($\Delta \le 12$).
 
 * **[PR #1987](https://github.com/leanprover-community/physlib/pull/1987)** — *feat(PhyslibAlpha): the nearest neighbours of fcc and bcc are words of axis steps*  
   **Teoremas Clave:** `axisStep`, `twoStepWords`, `fccBonds_eq_twoStepWords`, `card_twoStepWords_fiber = 2`.  
@@ -58,7 +58,7 @@ En [`AdjDegree.lean`](../AdjDegree.lean) y [`CubeAreaLaw.lean`](../CubeAreaLaw.l
 ---
 
 ### Pilar 2: Anticonmutación de Clifford en $d=4$, Espinores y Cubrimiento de Lorentz
-En la [Cirugía Topológica de Perelman](CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md) y [`FibreSurgery.lean`](../FibreSurgery.lean), la variedad $\mathcal{M}_4 = \mathbb{R}^3 \times S^1$ es de dimensión 4 estricta, y el operador transversal $M_w$ anticonmuta con las conexiones espaciales $A[U]$, forzando un gap no nulo.
+En la [Cirugía Topológica de Perelman](CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md) y [`FibreSurgery.lean`](../src/FibreSurgery.lean), la variedad $\mathcal{M}_4 = \mathbb{R}^3 \times S^1$ es de dimensión 4 estricta, y el operador transversal $M_w$ anticonmuta con las conexiones espaciales $A[U]$, forzando un gap no nulo.
 
 * **[PR #1768](https://github.com/leanprover-community/physlib/pull/1768)** — *feat(PhyslibAlpha): the gamma matrices need four dimensions*  
   **Teoremas Clave:** Incompatibilidad de matrices de Dirac en $d < 4$.  
@@ -73,11 +73,11 @@ En la [Cirugía Topológica de Perelman](CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.
 ---
 
 ### Pilar 3: Cadena de Red, Espectro Completo, Matriz de Transferencia y Límite Termodinámico
-En [`TransferBridge.lean`](../TransferBridge.lean), [`SlabChain.lean`](../SlabChain.lean) y [`SlabLimit.lean`](../SlabLimit.lean), la representación de las funciones de correlación euclidianas mediante la matriz de transferencia $T = e^{-a \hat{H}}$ exige control exhaustivo sobre el espectro discreto del retículo.
+En [`TransferBridge.lean`](../src/TransferBridge.lean), [`SlabChain.lean`](../src/SlabChain.lean) y [`SlabLimit.lean`](../src/SlabLimit.lean), la representación de las funciones de correlación euclidianas mediante la matriz de transferencia $T = e^{-a \hat{H}}$ exige control exhaustivo sobre el espectro discreto del retículo.
 
 * **[PR #1901](https://github.com/leanprover-community/physlib/pull/1901)** — *feat(CondensedMatter): the energies of the tight binding chain are its whole spectrum*  
   **Teoremas Clave:** Caracterización exhaustiva del espectro del hamiltoniano de red.  
-  **Conexión con YM:** Prueba que las energías analíticas de salto discreto **agotan todo el espectro** del operador (no existen autovalores espurios o continuos en volumen finito). Esto asegura que el cociente de autovalores dominantes $\mu_1 / \mu_0$ en [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean) gobierna sin excepciones el decaimiento de correlaciones.
+  **Conexión con YM:** Prueba que las energías analíticas de salto discreto **agotan todo el espectro** del operador (no existen autovalores espurios o continuos en volumen finito). Esto asegura que el cociente de autovalores dominantes $\mu_1 / \mu_0$ en [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean) gobierna sin excepciones el decaimiento de correlaciones.
 * **[PR #1689](https://github.com/leanprover-community/physlib/pull/1689)** — *feat(PhyslibAlpha): tight binding chain with open boundary conditions*  
   **Teoremas Clave:** Construcción del hamiltoniano libre de saltos con fronteras abiertas.  
   **Conexión con YM:** Base analítica para el rebanado temporal finito $T$ del slab antes del paso asintótico.
@@ -91,7 +91,7 @@ En [`TransferBridge.lean`](../TransferBridge.lean), [`SlabChain.lean`](../SlabCh
 ---
 
 ### Pilar 4: Desigualdad Robertson–Schrödinger y Defecto Cuántico de Coherencia
-El corazón de la protección de Perelman en [`CoherenceDefect.lean`](../CoherenceDefect.lean) y [`FibreSurgery.lean`](../FibreSurgery.lean) reside en que el transporte cerrado sobre $S^1$ produce un defecto cuántico no nulo que impide el colapso gaussiano:
+El corazón de la protección de Perelman en [`CoherenceDefect.lean`](../src/CoherenceDefect.lean) y [`FibreSurgery.lean`](../src/FibreSurgery.lean) reside en que el transporte cerrado sobre $S^1$ produce un defecto cuántico no nulo que impide el colapso gaussiano:
 $$\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{massSq}(4) = \frac{5}{4} > 1$$
 
 * **[PR #1660](https://github.com/leanprover-community/physlib/pull/1660)** — *express variance and Gram defect of vector states as Hilbert space*  
@@ -119,7 +119,7 @@ $$\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{massSq}(4) = \frac{5}{4} > 1$$
 ---
 
 ### Pilar 5: Cotas de Velocidad Cuántica y Mandelstam–Tamm (Brecha Espectral Temporal)
-En [`SpectralGap.lean`](../SpectralGap.lean) y [`SurgeryGapClosure.lean`](../SurgeryGapClosure.lean), el gap de masa $\Delta > 0$ se manifiesta físicamente como una velocidad máxima de propagación y una cota de tiempo mínimo de correlación:
+En [`SpectralGap.lean`](../src/SpectralGap.lean) y [`SurgeryGapClosure.lean`](../src/SurgeryGapClosure.lean), el gap de masa $\Delta > 0$ se manifiesta físicamente como una velocidad máxima de propagación y una cota de tiempo mínimo de correlación:
 
 * **[PR #1711](https://github.com/leanprover-community/physlib/pull/1711) y [PR #1739](https://github.com/leanprover-community/physlib/pull/1739)** — *Mandelstam–Tamm and Cramér–Rao in the open tight binding chain / maximal current state*  
   **Teoremas Clave:** Teorema de Mandelstam–Tamm en retículo: $\Delta E \cdot \Delta t \ge \hbar/2$.  
