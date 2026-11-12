@@ -12,6 +12,11 @@
 
 <br><br>
 
+[![Interactive 3D Portal](https://img.shields.io/badge/Live_Portal-Interactive_3D_Sim_%26_Proof_Explorer-00e5ff.svg?style=for-the-badge&logo=three.js)](https://naype888-cloud.github.io/YM-By-Perelmans-surgery-method/)
+[![Formal Treatise PDF](https://img.shields.io/badge/Treatise-Download_PDF-purple.svg?style=for-the-badge&logo=adobeacrobatreader)](docs/SU2-SU3.pdf?raw=true)
+
+<br><br>
+
 <a href="docs/assets/step1_preview.mp4">
   <img src="docs/assets/step1_preview.gif" alt="Paso 1: Red 3D Tight-Binding y Ley del Área" width="380" />
 </a>
