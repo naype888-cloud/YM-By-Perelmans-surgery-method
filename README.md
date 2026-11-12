@@ -10,15 +10,6 @@
 [![Kernel Status](https://img.shields.io/badge/Kernel-0%20sorry%20%7C%20Certified-brightgreen.svg?style=flat-square)]()
 [![Physlib](https://img.shields.io/badge/Physlib-50%20PRs%20Merged-brightgreen.svg?style=flat-square)](https://github.com/leanprover-community/physlib)
 
-<br><br>
-
-<br><br>
-
-</a>
-
-<br>
-
-</div>
 
 ---
 
