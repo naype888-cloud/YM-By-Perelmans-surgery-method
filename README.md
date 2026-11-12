@@ -21,7 +21,6 @@
 </a>
 
 <br>
-<sub><b>Paso 1 (Hook Visual):</b> Retículo cúbico 3D $NRS^3$ y ley del área ($\Delta \le 12$) · <a href="docs/assets/step1_preview.mp4">▶ Ver clip HD (1.1 MB)</a></sub>
 
 </div>
 
