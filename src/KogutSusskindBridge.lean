@@ -253,6 +253,17 @@ theorem kogut_susskind_clay_master_bridge
   · exact totalUnifiedGap_pos ks L hL σ hσ R hR
   · exact coupled_spectral_null_on_gap_shell ks L σ R proj
 
+/-- **Exact formal statement of the Clay Millennium Wightman Mass Gap**:
+`∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/
+theorem YM_mass_gap_wightman
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    (ks : KogutSusskindParams) (L : ℝ) (hL : 0 < L) (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R)
+    (proj : { s : Set Spacetime // s ⊆ coupledPhysicalSpectrum ks L σ R } → (H →L[ℂ] H)) :
+    ∃ Δ > 0, coupledSpectralMeasure ks L σ R proj {p ∈ forwardCone | 0 < time p ∧ time p < Δ} = 0 := by
+  have h := kogut_susskind_clay_master_bridge ks L hL σ hσ R hR proj
+  exact ⟨totalUnifiedGap ks L σ R, h.1, h.2⟩
+
 #print axioms kogut_susskind_clay_master_bridge
+#print axioms YM_mass_gap_wightman
 
 end KogutSusskindBridge

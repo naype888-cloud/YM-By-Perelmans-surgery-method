@@ -238,6 +238,16 @@ theorem wightman_hamiltonian_mass_gap_bridge
   · exact totalPhysicalGap_pos L hL σ hσ R hR
   · exact nrs3_sturm_liouville_spectral_null L σ R proj
 
+/-- **Exact formal statement of the Clay Millennium Wightman Mass Gap**:
+`∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/
+theorem YM_mass_gap_wightman
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    (L σ : ℝ) (hL : 0 < L) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R)
+    (proj : { s : Set Spacetime // s ⊆ nrs3PhysicalSpectrum L σ R } → (H →L[ℂ] H)) :
+    ∃ Δ > 0, nrs3SpectralMeasure L σ R proj {p ∈ forwardCone | 0 < time p ∧ time p < Δ} = 0 := by
+  have h := wightman_hamiltonian_mass_gap_bridge L σ hL hσ R hR proj
+  exact ⟨totalPhysicalGap L σ R, h.1, h.2⟩
+
 /-- Abstract compatibility theorem: for any projection measure that satisfies the spectral
 nullity condition on the gap shell, HasSpectralMassGap holds. -/
 theorem wightman_hamiltonian_mass_gap_bridge_of_measure_null

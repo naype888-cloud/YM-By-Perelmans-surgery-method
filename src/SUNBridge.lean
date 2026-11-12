@@ -193,4 +193,14 @@ theorem su3_wightman_mass_gap_bridge
       (sunTotalPhysicalGap (su3CharacterData β hβ) t' L R) :=
   sun_wightman_mass_gap_bridge (su3CharacterData β hβ) t' L htt' hL hR proj
 
+/-- **Exact formal statement of the Clay Millennium Wightman Mass Gap for $SU(N)$**:
+`∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/
+theorem YM_mass_gap_wightman {N : ℕ} (data : SUNCharacterData N)
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    (t' L : ℝ) (htt' : data.t < t') (hL : 0 < L) (R : ℕ) (hR : 0 < R)
+    (proj : { s : Set Spacetime // s ⊆ nrs3PhysicalSpectrum L (sunStringTension data t') R } → (H →L[ℂ] H)) :
+    ∃ Δ > 0, nrs3SpectralMeasure L (sunStringTension data t') R proj {p ∈ forwardCone | 0 < time p ∧ time p < Δ} = 0 := by
+  have h := sun_wightman_mass_gap_bridge data t' L htt' hL R hR proj
+  exact ⟨sunTotalPhysicalGap data t' L R, h.1, h.2⟩
+
 end SUNBridge

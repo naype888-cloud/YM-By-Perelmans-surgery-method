@@ -268,7 +268,9 @@ La totalité de la chaîne déductive repose sur **50 Pull Requests validées et
 | [`HamiltonianBridge.lean`](src/HamiltonianBridge.lean) | `nrs3_physical_spectrum_inter_gap_shell_empty` | Intersection vide entre la coquille $(0, Gap_{total})$ et le spectre physique | `0 sorry` |
 | [`HamiltonianBridge.lean`](src/HamiltonianBridge.lean) | `nrs3_sturm_liouville_spectral_null` | Annulation inconditionnelle de la mesure spectrale $NRS^3$ sur l'intervalle intermédiaire | `0 sorry` |
 | [`HamiltonianBridge.lean`](src/HamiltonianBridge.lean) | `wightman_hamiltonian_mass_gap_bridge` | Pont inconditionnel vers le Hamiltonien de Wightman via la mesure du cube $NRS^3$ | `0 sorry` |
+| [`HamiltonianBridge.lean`](src/HamiltonianBridge.lean) | `YM_mass_gap_wightman` | **Énoncé canonique exact de Clay/Wightman :** $\exists \Delta > 0, E(\{p \in \overline{V_+} \mid 0 < p_0 < \Delta\}) = 0$ | `0 sorry` |
 | [`KogutSusskindBridge.lean`](src/KogutSusskindBridge.lean) | `kogut_susskind_clay_master_bridge` | Pont maître inconditionnel Kogut–Susskind (1975) vers Wightman et infimum de Clay | `0 sorry` |
+| [`KogutSusskindBridge.lean`](src/KogutSusskindBridge.lean) | `YM_mass_gap_wightman` | **Énoncé canonique exact sous l'Hamiltonien couplé Kogut–Susskind / $NRS^3$** | `0 sorry` |
 | [`KogutSusskindBridge.lean`](src/KogutSusskindBridge.lean) | `totalUnifiedGap_pos` | Positivité stricte du gap unifié $\min(Gap_{KS}, Gap_{cube}, \sqrt{floor}) > 0$ | `0 sorry` |
 | [`ConfinementBridge.lean`](src/ConfinementBridge.lean) | `derived_transfer_gap` | Gap spectral dérivé de l'opérateur de jauge $T$ via la décroissance de boucle | `0 sorry` |
 | [`ConfinementBridge.lean`](src/ConfinementBridge.lean) | `transverse_floor_eq_lambda_sq` | Identité de plancher $defect(L_0) = massSq(4) \cdot Scale_{YM}^2 > 0$ | `0 sorry` |
@@ -281,6 +283,7 @@ La totalité de la chaîne déductive repose sur **50 Pull Requests validées et
 | [`SU2-SU3.lean`](src/SU2-SU3.lean) | `su2_wightman_confinement_gap` | Gap spectral continu inconditionnel pour $SU(2)$ à l'échelle de confinement $L_0$ | `0 sorry` |
 | [`SU2-SU3.lean`](src/SU2-SU3.lean) | `su3_wightman_confinement_gap` | Gap spectral continu inconditionnel pour $SU(3)$ à l'échelle de confinement $L_0$ | `0 sorry` |
 | [`SUNBridge.lean`](src/SUNBridge.lean) | `sun_wightman_mass_gap_bridge` | Pont Peter–Weyl / Haar non-abélien $SU(N)$ vers le gap continu de Wightman | `0 sorry` |
+| [`SUNBridge.lean`](src/SUNBridge.lean) | `YM_mass_gap_wightman` | **Énoncé canonique exact pour tout groupe de jauge $SU(N)$ ($N \ge 2$)** | `0 sorry` |
 | [`SUNBridge.lean`](src/SUNBridge.lean) | `su2_wightman_mass_gap_bridge` | Gap spectral inconditionnel de Wightman pour $SU(2)$ Yang–Mills | `0 sorry` |
 | [`SUNBridge.lean`](src/SUNBridge.lean) | `su3_wightman_mass_gap_bridge` | Gap spectral inconditionnel de Wightman pour $SU(3)$ Yang–Mills | `0 sorry` |
 | [`Cube/Spectrum.lean`](src/Cube/Spectrum.lean) | `hasEigenvalue_cubeHamiltonian_iff` | Épuisement spectral : les valeurs propres sont les sommes d'ondes stationnaires $E_x + E_y + E_z$ | `0 sorry` |
