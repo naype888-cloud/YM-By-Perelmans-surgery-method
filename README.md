@@ -98,7 +98,7 @@ $$\huge \displaystyle Gap_{glue} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{
 
 $$\huge \displaystyle \frac{\det Cov}{|\det Symp|} = 1 + massSq(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1$$
 
-$$\huge \displaystyle \{ A[U], \, M_w \} = 0 \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \implies \sqrt{floor} \ge \frac{1}{2a} > 0$$
+$$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \implies \sqrt{floor} \ge \frac{1}{2a} > 0$$
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](src/FibreBand.lean) (`surplus_ge_massSq`), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D55_SaturatingRegion.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D55_SaturatingRegion.lean) (`defectGram_eq_zero_iff_le_three`, prouvant la saturation exacte à défaut nul en $d \le 3$).
@@ -156,11 +156,11 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
 ---
 
 ### 🔬 Étape 4 : Opérateur de Dirac–Kähler / Hodge–de Rham pour Bosons de Jauge
-> **Proposition 4.1 (Algèbre de Clifford sur l'espace des formes).** Sur l'algèbre extérieure $\mathrm{Forms}^*(M)$ des gluons, l'opérateur de Dirac-Hodge satisfait l'anticommutation chirale :
+> **Proposition 4.1 (Algèbre de Clifford sur l'espace des formes).** Sur l'algèbre extérieure des gluons $\mathrm{Forms}(M)$, l'opérateur de Dirac-Hodge satisfait l'anticommutation chirale :
 
-$$\huge \displaystyle D_A = d_A + d_A^*, \qquad (D_A)^2 = Laplacian_{Hodge} = d_A d_A^* + d_A^* d_A$$
+$$\huge \displaystyle D_A = d_A + d_A^{\dagger}, \qquad (D_A)^2 = \mathrm{Laplacian} = d_A d_A^{\dagger} + d_A^{\dagger} d_A$$
 
-$$\huge \displaystyle \{ D_{R^3}, \, D_{S^1} \} = 0 \implies \langle w, Laplacian_{Hodge} w \rangle \ge \left(\frac{2}{pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
+$$\huge \displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \mathrm{Laplacian} \, w \rangle \ge \left(\frac{2}{pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
 
 *Modules formels :* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean).
 
