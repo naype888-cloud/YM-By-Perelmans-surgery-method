@@ -808,7 +808,7 @@
             $$\mathrm{defectGram}(d) = 0 \iff d \le 3 \quad (\text{Core: } 7^3 = 343 \text{ sitios})$$
           </div>
           <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--danger);">
-            Formalizado en <code>D50_SaturatingRegion.lean</code>
+            Formalizado en <code>D55_SaturatingRegion.lean</code>
           </span>
         </div>
 
@@ -822,8 +822,24 @@
             $$1 < C_N(d) \iff 4 \le d \implies 0 < \mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{\pi^2}{3} - 3$$
           </div>
           <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--emerald);">
-            Formalizado en <code>D51_MassNecessaryConditions.lean</code>
+            Formalizado en <code>D56_MassNecessaryConditions.lean</code>
           </span>
+        </div>
+
+        <div class="anomaly-box" style="grid-column: 1 / -1; border-color: rgba(255, 208, 0, 0.45); background: radial-gradient(circle at 50% 50%, rgba(255, 208, 0, 0.08) 0%, rgba(4, 7, 17, 0.85) 100%);">
+          <h4 style="color: var(--gold); font-size: 1.35rem;">
+            👑 LA IGUALDAD EXACTA: "ONE DEFECT" (Teorema de Identidad D56)
+          </h4>
+          <p style="font-size: 1.15rem; color: #fff; margin-bottom: 0.8rem;">
+            El defecto de Gram sobre el retículo y la brecha física de masa de Yang–Mills en el continuo son <b>matemática y ontológicamente la misma cantidad</b>:
+          </p>
+          <div class="math-callout" style="border-color: var(--gold); background: rgba(0,0,0,0.6); padding: 1.2rem; margin: 0.5rem 0;">
+            $$\huge \mathbf{\mathrm{defectGram}(d) \equiv \frac{\mathrm{massSq}(d)}{(d - 1)^2} = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \quad (\forall d \ge 4)}$$
+          </div>
+          <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 0.8rem; font-family: var(--font-mono);">
+            <b>Certificación Kernel Lean 4:</b> <code>MassNecessary.defectGram_eq_massSq_of_massNecessary</code> · 
+            <i>"The defect of the fibre and the mass gap of d ≥ 4 are the same quantity."</i>
+          </p>
         </div>
       </div>
     </section>
@@ -956,7 +972,7 @@
             <span>Módulos Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/FibreSurgery.lean" class="file-pill">FibreSurgery.lean</a>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/FibreBand.lean" class="file-pill">FibreBand.lean</a>
-            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D50_SaturatingRegion.lean</a>
+            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D55_SaturatingRegion.lean</a>
           </div>
         </div>
       </article>
@@ -1004,7 +1020,7 @@
           <div class="step-meta">
             <span>Módulos Lean 4:</span>
             <a href="https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method/blob/main/src/FibreSurgery.lean" class="file-pill">FibreSurgery.lean</a>
-            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D51_MassNecessaryConditions.lean</a>
+            <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D56_MassNecessaryConditions.lean</a>
             <a href="https://github.com/naype888-cloud/nava-robertson-schrodinger" class="file-pill">D9_Monotonicity.lean</a>
           </div>
         </div>
@@ -1088,17 +1104,24 @@
       </div>
 
       <div class="code-tabs">
-        <button class="tab-btn active" onclick="switchCode('d51')">D51_MassNecessaryConditions.lean</button>
-        <button class="tab-btn" onclick="switchCode('d50')">D50_SaturatingRegion.lean</button>
+        <button class="tab-btn active" onclick="switchCode('d56')">D56_MassNecessaryConditions.lean (Igualdad Exacta)</button>
+        <button class="tab-btn" onclick="switchCode('d55')">D55_SaturatingRegion.lean</button>
         <button class="tab-btn" onclick="switchCode('surgery')">FibreSurgery.lean</button>
         <button class="tab-btn" onclick="switchCode('bridge')">HamiltonianBridge.lean</button>
       </div>
 
       <pre class="code-block" id="code-content">
--- D51: The squared mass band under necessary causal conditions
+-- D56: The Exact Identity — The defect of the fibre is the mass gap
+theorem defectGram_eq_massSq_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
+    (h : MassNecessaryConditions d ℓ) :
+    0 < defectGram d ∧ defectGram d = (CoherenceConstantSq d - 1) / ((d : ℝ) - 1) ^ 2 := by
+  have h4 : 4 ≤ d := (one_lt_CoherenceConstant_iff hd).mp h.coherenceAboveOne
+  exact ⟨gramStep_gram_pos h4, gramStep_gram hd⟩
+
+-- The universal squared mass band agrees with FibreSurgery:
 theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
     (h : MassNecessaryConditions d ℓ) :
-    0 < CoherenceConstantSq 4 - 1 ∧ 
+    0 < CoherenceConstantSq 4 - 1 ∧
     CoherenceConstantSq 4 - 1 ≤ CoherenceConstantSq d - 1 ∧
     CoherenceConstantSq d - 1 < Real.pi ^ 2 / 3 - 3 := by
   have h4 : 4 ≤ d := (one_lt_CoherenceConstant_iff hd).mp h.coherenceAboveOne
@@ -1423,12 +1446,12 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
 
     // 3. CODE TAB SWITCHER
     const codeSnippets = {
-      d51: `-- D51: Necessary conditions for mass in NRS³ (c, ℓ > 0, C_N > 1)
-structure MassNecessaryConditions (d : ℕ) (ℓ : ℝ) : Prop where
-  speedLimit : ∀ (k : ℕ) (i j : Fin d), k < distPath i j → (Td d ^ k) i j = 0
-  speedAttained : ∀ (k : ℕ) (i j : Fin d), j.val = i.val + k → (Td d ^ k) i j ≠ 0
-  stepPositive : 0 < ℓ
-  coherenceAboveOne : 1 < CoherenceConstant d
+      d56: `-- D56: The Exact Identity — The defect of the fibre is the mass gap
+theorem defectGram_eq_massSq_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
+    (h : MassNecessaryConditions d ℓ) :
+    0 < defectGram d ∧ defectGram d = (CoherenceConstantSq d - 1) / ((d : ℝ) - 1) ^ 2 := by
+  have h4 : 4 ≤ d := (one_lt_CoherenceConstant_iff hd).mp h.coherenceAboveOne
+  exact ⟨gramStep_gram_pos h4, gramStep_gram hd⟩
 
 -- Equivalence: mass conditions hold if and only if d ≥ 4
 theorem massNecessaryConditions_iff {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d) (hℓ : 0 < ℓ) :
@@ -1441,7 +1464,7 @@ theorem massSq_band_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
     CoherenceConstantSq 4 - 1 ≤ CoherenceConstantSq d - 1 ∧
     CoherenceConstantSq d - 1 < Real.pi ^ 2 / 3 - 3`,
 
-      d50: `-- D50: The saturating region is d ≤ 3 (no mass in pure 3D)
+      d55: `-- D55: The saturating region is d ≤ 3 (no mass in pure 3D)
 theorem defectGram_eq_zero_iff_le_three {d : ℕ} (hd : 2 ≤ d) :
     defectGram d = 0 ↔ d ≤ 3
 

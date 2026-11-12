@@ -60,7 +60,7 @@ $$\huge \displaystyle \mathbf{\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{ma
 $$\huge \displaystyle \mathbf{\lbrace A[U], \, M_w \rbrace = 0 \implies \|(A[U] + M_w)\chi\|^2 \ge \left(\frac{1}{2a}\right)^2 \|\chi\|^2 \implies \sqrt{\mathrm{floor}} \ge \frac{1}{2a} > 0}$$
 
 *Formalized in:* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](src/FibreBand.lean) (`surplus_ge_massSq`), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).  
-*Certified in NRS³ corpus:* [`D50_SaturatingRegion`](https://github.com/naype888-cloud/nava-robertson-schrodinger) (`defectGram_eq_zero_iff_le_three`, proving that pure 3D $d \le 3$ is strictly saturating/massless, strictly requiring Perelman surgery $\mathbb{R}^3 \times S^1 \implies d \ge 4$).
+*Certified in NRS³ corpus:* [`D55_SaturatingRegion`](https://github.com/naype888-cloud/nava-robertson-schrodinger) (`defectGram_eq_zero_iff_le_three`, proving that pure 3D $d \le 3$ is strictly saturating/massless, strictly requiring Perelman surgery $\mathbb{R}^3 \times S^1 \implies d \ge 4$).
 
 ---
 
@@ -83,7 +83,26 @@ $$\huge \displaystyle \mathbf{\mathrm{massSq}(4) \le \mathrm{massSq}(d) < \frac{
 $$\huge \displaystyle \mathbf{\lim_{d \to \infty} \mathrm{massSq}(d) = \frac{\pi^2}{3} - 3 > 0}$$
 
 *Formalized in:* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](src/FibreBand.lean).  
-*Certified in NRS³ corpus:* [`D51_MassNecessaryConditions`](https://github.com/naype888-cloud/nava-robertson-schrodinger) (`massSq_band_of_massNecessary`, proving the universal squared mass band $0 < \mathrm{massSq}(4) \le \mathrm{massSq}(d) < \pi^2/3 - 3$ from the Szegő limit in D8/D9).
+*Certified in NRS³ corpus:* [`D56_MassNecessaryConditions`](https://github.com/naype888-cloud/nava-robertson-schrodinger) (`massSq_band_of_massNecessary`, proving the universal squared mass band $0 < \mathrm{massSq}(4) \le \mathrm{massSq}(d) < \pi^2/3 - 3$ from the Szegő limit in D8/D9).
+
+---
+
+<div align="center">
+
+### 👑 The Exact Identity Theorem: "One Defect"
+> *Formalized in Lean 4 with 0 sorry across both independent repositories:*
+
+$$\Huge \displaystyle \mathbf{\mathrm{defectGram}(d) \equiv \frac{\mathrm{massSq}(d)}{(d - 1)^2} = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \quad (\forall d \ge 4)}$$
+
+<p align="center">
+  <i>The Gram defect of the quantum Robertson–Schrödinger transport on the fibre axis and the Yang–Mills physical mass gap<br>
+  are <b>the exact same mathematical quantity</b>.</i>
+</p>
+
+*Formalized in:* [`src/FibreSurgery.lean`](src/FibreSurgery.lean) (`defect_over_step_sq`).  
+*Certified in NRS³ corpus:* [`D56_MassNecessaryConditions`](https://github.com/naype888-cloud/nava-robertson-schrodinger) (`defectGram_eq_massSq_of_massNecessary`).
+
+</div>
 
 ---
 
