@@ -12,8 +12,7 @@
 
 <br><br>
 
-[![Interactive 3D Portal](https://img.shields.io/badge/Live_Portal-Interactive_3D_Sim_%26_Proof_Explorer-00e5ff.svg?style=for-the-badge&logo=three.js)](https://naype888-cloud.github.io/YM-By-Perelmans-surgery-method/)
-[![Formal Treatise PDF](https://img.shields.io/badge/Treatise-Download_PDF-purple.svg?style=for-the-badge&logo=adobeacrobatreader)](docs/SU2-SU3.pdf?raw=true)
+](docs/SU2-SU3.pdf?raw=true)
 
 <br><br>
 
