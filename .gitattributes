@@ -1,0 +1,7 @@
+# Explicitly declare binary files to ensure GitHub and Git handle them as binary assets
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary

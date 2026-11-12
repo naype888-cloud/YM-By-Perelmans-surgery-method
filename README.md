@@ -193,7 +193,7 @@ From this official corpus, **41 kernel-certified theorems** support the 7 constr
 
 For an in-depth understanding of the physical derivation, geometric framework, and formal proofs:
 
-- 🏛️ [**Tratado Formal del Puente $SU(N)$ y el Límite Continuo**](docs/SU2-SU3.pdf): Monografía matemática y respuesta al dictamen crítico sobre grupos no abelianos ($SU(2)$, $SU(3)$) y el continuo de Wightman.
+- 🏛️ [**Tratado Formal del Puente $SU(N)$ y el Límite Continuo**](docs/SU2-SU3.md) ([Descargar versión PDF](docs/SU2-SU3.pdf?raw=true)): Monografía matemática y respuesta al dictamen crítico sobre grupos no abelianos ($SU(2)$, $SU(3)$) y el continuo de Wightman.
 
 - 🏛️ [**Cierre Definitivo del Puente del Hamiltoniano (OpenAI ↔ Perelman Surgery)**](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md): Resolución formal y cierre de las Preguntas Abiertas #3 y #4 del dictamen oficial de Michael R. Douglas / Yang–Mills Group sobre OpenAI (`assessment-1.pdf`, 10 de nov de 2026).
 - 🏛️ [**Canonical Foundations in Physlib (50 PRs Merged)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md): Comprehensive mapping of the 5 mathematical pillars and 50 approved, merged theorems in Lean 4's official community repository.
