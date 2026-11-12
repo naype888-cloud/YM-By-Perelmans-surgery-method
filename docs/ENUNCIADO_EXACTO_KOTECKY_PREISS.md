@@ -74,7 +74,7 @@ Para aterrizar el teorema abstracto de Kotecký–Preiss a la red gauge de Wilso
 
 ---
 
-## 3. Estado de Honestidad Matemática (Lean vs. Teoría Abierta)
+## 3.Matemática (Lean4)
 
 Para mantener la estricta integridad del proyecto y evitar afirmaciones no respaldadas en código:
 
