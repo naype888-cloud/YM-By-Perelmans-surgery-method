@@ -47,6 +47,9 @@ establishing the strictly positive spectral floor `min (1/4) (massSq 4 / L²) > 
 
 ## iv. References
 
+- `NavaRobertsonIndependent.Mathematics.D50_SaturatingRegion`: Proof that `d ≤ 3` is the saturating region (`defectGram = 0`), making topological surgery necessary to reach `d ≥ 4`.
+- `NavaRobertsonIndependent.Mathematics.D51_MassNecessaryConditions`: Necessary conditions for mass (`MassNecessaryConditions`), establishing the universal band `0 < massSq 4 ≤ massSq d < π²/3 - 3`.
+
 -/
 
 open Gnomon
