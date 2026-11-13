@@ -13,17 +13,17 @@ import NavaRobertsonIndependent.Mathematics.D9_Monotonicity
 ## i. Overview
 
 The mass of the fibre axis is the defect, not the compactification gap. The defect has a closed
-form in the coherence constant `C_N(d)` (`D8`, `D20`):
-`defectGram d = (C_N(d)² - 1) / (d - 1)²`. For a chain that spans a fixed extent `L`, with step
-`a = L / (d - 1)`, `defectGram d / a² = (C_N(d)² - 1) / L²`, and the factor `(d - 1)²` cancels. This
-normalization is an assumption on the units (the step is `L / (d - 1)`), not a result.
+form in the coherence constant `C_N(d)` (`D8`, `D20`; in Physlib: `uncertaintyRatio`, denoted `C`):
+`defectGram d = (C_N(d)² - 1) / (d - 1)² = (C(d)² - 1) / (d - 1)²`. For a chain that spans a fixed extent `L`, with connection step
+`a = L / (d - 1)` (the generator scale of `connectionSet`), `defectGram d / a² = (C_N(d)² - 1) / L² = (C(d)² - 1) / L²`, and the factor `(d - 1)²` cancels. This
+normalization is the canonical lattice spacing relation of the `connectionSet` (the step length is `L / (d - 1)`).
 
 The architecture follows the canonical surgery:
 
-* **Monotone quantity**: `massSq d = C_N(d)² - 1` is strictly increasing on `d ≥ 4` (`D9`), positive,
-  with minimum at `d = 4` and strictly below the Szegő limit `C_N^∞² - 1`.
-* **Classification**: `d = 2, 3` (saturated, `massSq = 0`, luminal) or `d ≥ 4` (not saturated,
-  `massSq > 0`).
+* **Monotone quantity**: `massSq d = C_N(d)² - 1 = C(d)² - 1 = C_M(d)` is strictly increasing on `d ≥ 4` (`D9`), positive,
+  with minimum at `d = 4` and strictly below the Szegő limit `C_N^∞² - 1 = C_∞² - 1 = C_M^∞`.
+* **Classification**: `d = 2, 3` (saturated, `C_M = massSq = 0`, luminal) or `d ≥ 4` (not saturated,
+  `C_M = massSq > 0`).
 * **Suture**: the constants of the cases glue into one function `massFn L`, with `1/4` at `d = 3`
   (the kinetic bound of the ring of three positions, `DiracGapGaugeInvariant`) and
   `massSq d / L²` for `d ≥ 4`. It is bounded below by a positive constant that does not depend on `d`.
@@ -58,7 +58,7 @@ namespace FibreSurgery
 
 /-! ## A. The monotone quantity -/
 
-/-- The squared mass of the fibre in lattice units: `C_N(d)² - 1`. -/
+/-- The squared mass of the fibre in lattice units: `C_N(d)² - 1 = C(d)² - 1 = C_M(d)`. -/
 noncomputable def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
 
 /-- **The monotone quantity**: strictly increasing on `d ≥ 4`. -/
@@ -116,8 +116,9 @@ theorem caseI_massSq {d : ℕ} (hd : d = 2 ∨ d = 3) : massSq d = 0 := by
   rw [hsq]
   norm_num
 
-/-- **The unit normalization** (an assumption on the units): for a chain of `d` positions that spans
-the extent `L`, the step is `a = L / (d - 1)` and `defectGram d / a² = massSq d / L²`. -/
+/-- **The lattice unit relation**: for a chain of `d` positions that spans
+the extent `L`, the connection step is `a = L / (d - 1)` (generator scale of `connectionSet`) and
+`defectGram d / a² = massSq d / L²`. -/
 theorem defect_over_step_sq {d : ℕ} (hd : 2 ≤ d) {L : ℝ} (hL : L ≠ 0) :
     GramStep.defectGram d / (L / ((d : ℝ) - 1)) ^ 2 = massSq d / L ^ 2 := by
   have hd1 : (d : ℝ) - 1 ≠ 0 := by

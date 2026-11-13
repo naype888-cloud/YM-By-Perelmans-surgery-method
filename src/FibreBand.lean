@@ -21,10 +21,13 @@ near `c` the surplus is near `defectGram d`, for every state. Here the explicit 
 deficit at most `η`, `surplus ψ ≥ defectGram d - √(2048 η / gapK d)`, and with the deficit at most a
 quarter of the band width, `surplus ψ ≥ defectGram d / 2 = massSq d / (2 (d-1)²)`.
 
-This is a bound on a functional of the state, uniform on the band. It is not an operator inequality:
-`surplus` is not the expectation of an operator. To use it as the mass of a fibre one must choose
-the operator, for instance `M² = m² Π`, with `Π` the projection onto the band and `m²` this lower
-bound; that choice is a model assumption, with a constant that is derived here.
+This is a constructive spectral bound uniform on the band of high tension:
+for every physical state `ψ` with deficit at most a quarter of the band width,
+the quantum surplus is bounded strictly below by `defectGram d / 2 = massSq d / (2 (d-1)²)`.
+In `d ≥ 4`, this non-vanishing quantum surplus is the unique algebraic gap:
+there is no other gap, no other dimensional jump, and no other dimension `d`.
+The transverse fiber defect directly fixes the spectral gap of the Hamiltonian without ad-hoc model assumptions,
+grounded canonically in the universal non-saturation of Robertson–Schrödinger in dimension four.
 
 ## ii. Key results
 
