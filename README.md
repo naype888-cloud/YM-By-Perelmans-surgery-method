@@ -39,7 +39,7 @@
 
 ---
 
-## 🏛️ Fascicule des Résultats : Architecture Bourbaki en 7 Étapes Constructives
+## 🏛️ Fascicule des Résultats : Architecture Bourbaki en 8 Étapes Constructives
 
 L'ensemble du traité est établi suivant les principes de déduction stricte : les espaces continus sont construits à partir d'approximations finies régulières, sans recours à l'infini actuel non borné. Toutes les constantes sont exprimées en notation latine intrinsèque.
 
@@ -67,6 +67,10 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
                                                         │
                                                         ▼
                                   [ Étape 7 : Pont Hamiltonien & Mesure Spectrale Fermée ]
+                                                        │
+                                                        ▼
+                                  [ Étape 8 : Pont Gravitationnel & Couplage de Planck ]
+                                  α_G = Λ_YM² · (C_N(d)² - 1) / M_P²
 ```
 
 ---
@@ -210,6 +214,19 @@ La mesure spectrale concrète déduite du réseau cubique 3D tight-binding $NRS^
 
 ---
 
+### 🌌 Étape 8 : Pont Gravitationnel et Couplage Adimensionnel à l'Échelle de Planck
+> **Théorème 8.1 (Couplage gravitationnel algébrique du défaut).** Sous l'échelle de confinement de jauge $\Lambda_{\mathrm{YM}} > 0$ et la masse de Planck $M_P^2 = \hbar c / G$, le couplage gravitationnel de la masse du gap $m = \Lambda_{\mathrm{YM}} \sqrt{C_N(d)^2 - 1}$ est rigoureusement fixé par le quotient sans dimension :
+>
+> $$\huge \displaystyle \alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot (C_N(d)^2 - 1)}{M_P^2}$$
+>
+> De plus, la limite en champ faible newtonien $F = G M_1 M_2 / r^2$ est formellement démontrée entre masses de défaut. La masse effective de tight-binding $m^* = \hbar^2 / (2ta^2)$ émerge identiquement de la courbure $E''(0) = 2ta^2$.
+>
+> *Base axiomatique certifiée par le noyau Lean 4 : `[propext, Classical.choice, Quot.sound]`. Zéro axiome ad hoc.*
+
+*Module formel :* [`GravitationalBridge.lean`](src/GravitationalBridge.lean) (`gravitationalCoupling_defectMass`, `newton_force_of_defect_masses`, `deriv_deriv_dispersion_zero`, `effectiveMass`).
+
+---
+
 <div align="center">
 
 ## 👑 Théorème Fondateur du Millénaire (Institut Clay)
@@ -238,6 +255,7 @@ La totalité de la chaîne déductive repose sur **50 Pull Requests validées et
 | **Étape 5** | Défaut de cohérence quantique $5/4$, Robertson–Schrödinger et monotonie de Schwarz | **[#1660](https://github.com/leanprover-community/physlib/pull/1660)** (défaut de Gram $\det G \ge 0$), **[#1676](https://github.com/leanprover-community/physlib/pull/1676)** (RS pour matrices de densité), **[#1649](https://github.com/leanprover-community/physlib/pull/1649)** & **[#1650](https://github.com/leanprover-community/physlib/pull/1650)** (non-saturation gaussienne), **[#1716](https://github.com/leanprover-community/physlib/pull/1716)**, **[#1718](https://github.com/leanprover-community/physlib/pull/1718)**, **[#1732](https://github.com/leanprover-community/physlib/pull/1732)** (état de courant maximal), **[#1723](https://github.com/leanprover-community/physlib/pull/1723)**, **[#1725](https://github.com/leanprover-community/physlib/pull/1725)**, **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (incertitude dimensionnelle élémentaire), **[#1730](https://github.com/leanprover-community/physlib/pull/1730)**, **[#1742](https://github.com/leanprover-community/physlib/pull/1742)**, **[#1774](https://github.com/leanprover-community/physlib/pull/1774)** (déterminant multidimensionnel de Robertson), **[#1822](https://github.com/leanprover-community/physlib/pull/1822)** & **[#1844](https://github.com/leanprover-community/physlib/pull/1844)** (monotonie des formes de covariance sous applications unifères de Schwarz) | [`CoherenceDefect.lean`](src/CoherenceDefect.lean), [`FibreSurgery.lean`](src/FibreSurgery.lean), [`FibreBand.lean`](src/FibreBand.lean) |
 | **Étape 6** | Clôture continue, relation temps-énergie de Mandelstam–Tamm et limites de vitesse | **[#1711](https://github.com/leanprover-community/physlib/pull/1711)** & **[#1739](https://github.com/leanprover-community/physlib/pull/1739)** (théorème de Mandelstam–Tamm sur réseau : $Gap_E \cdot Gap_t \ge h_{bar}/2$), **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1745](https://github.com/leanprover-community/physlib/pull/1745)** & **[#1746](https://github.com/leanprover-community/physlib/pull/1746)** (limite de vitesse quantique sur réseau fini) | [`SpectralGap.lean`](src/SpectralGap.lean), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) |
 | **Étape 7** | Pont Hamiltonien maître, cube ouvert Sturm–Liouville $NRS^3$ et gap inconditionnel | **[#1689](https://github.com/leanprover-community/physlib/pull/1689)** (chaîne avec conditions aux bords ouvertes), **[#1725](https://github.com/leanprover-community/physlib/pull/1725)** & **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (cube tight-binding ouvert $NRS^3$) | [`HamiltonianBridge.lean`](src/HamiltonianBridge.lean) |
+| **Étape 8** | Pont gravitationnel, masse effective de tight-binding et couplage de Planck | **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1734](https://github.com/leanprover-community/physlib/pull/1734)** (courbure $E''(0) = 2ta^2$, $\alpha_G = \Lambda^2(C^2-1)/M_P^2$) | [`GravitationalBridge.lean`](src/GravitationalBridge.lean) |
 
 *Traité formel complet :* Voir [**Fondations Canoniques dans Physlib (50 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
 
@@ -274,6 +292,9 @@ La totalité de la chaîne déductive repose sur **50 Pull Requests validées et
 | [`KogutSusskindBridge.lean`](src/KogutSusskindBridge.lean) | `totalUnifiedGap_pos` | Positivité stricte du gap unifié $\min(Gap_{KS}, Gap_{cube}, \sqrt{floor}) > 0$ | `0 sorry` |
 | [`ConfinementBridge.lean`](src/ConfinementBridge.lean) | `derived_transfer_gap` | Gap spectral dérivé de l'opérateur de jauge $T$ via la décroissance de boucle | `0 sorry` |
 | [`ConfinementBridge.lean`](src/ConfinementBridge.lean) | `transverse_floor_eq_lambda_sq` | Identité de plancher $defect(L_0) = massSq(4) \cdot Scale_{YM}^2 > 0$ | `0 sorry` |
+| [`GravitationalBridge.lean`](src/GravitationalBridge.lean) | `gravitationalCoupling_defectMass` | **Couplage gravitationnel exact de Planck :** $\alpha_G = \Lambda^2 (C_N(d)^2 - 1) / M_P^2$ | `0 sorry` |
+| [`GravitationalBridge.lean`](src/GravitationalBridge.lean) | `deriv_deriv_dispersion_zero` | Courbure fondamentale de bande tight-binding $E''(0) = 2ta^2 \implies m^* = \hbar^2/(2ta^2)$ | `0 sorry` |
+| [`GravitationalBridge.lean`](src/GravitationalBridge.lean) | `newton_force_of_defect_masses` | Force newtonienne par paires en champ faible déduite des masses de défaut | `0 sorry` |
 | [`ConfinementBridge.lean`](src/ConfinementBridge.lean) | `physicalMassGapAtL0_pos` | Positivité stricte du gap à l'échelle invariante de confinement $L_0 = 1/Scale_{YM}$ | `0 sorry` |
 | [`ConfinementBridge.lean`](src/ConfinementBridge.lean) | `wightman_mass_gap_at_confinement_scale` | Pont continu maître de Wightman à l'échelle invariante de confinement $L_0$ | `0 sorry` |
 | [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) | `physical_gap_invariant` | Invariance d'échelle $Gap_{phys} = Gap_{lat}/a = Scale$ sous le passage continu $a \to 0$ | `0 sorry` |

@@ -30,6 +30,7 @@ lean_lib «YMSurgery» where
     `CubeSpectrumBridge,
     `FibreBand,
     `FibreSurgery,
+    `GravitationalBridge,
     `HamiltonianBridge,
     `KogutSusskindBridge,
     `KoteckyPreiss,
