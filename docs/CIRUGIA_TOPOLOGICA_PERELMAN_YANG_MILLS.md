@@ -106,3 +106,12 @@ En lugar de tomar el límite plano directo $\mathbb{R}^4$, se realiza una **ciru
      $$\Delta_{\text{total}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{m_0}\right) > 0.$$
 
 Esta homologación otorga una coherencia física inexpugnable: la fibra es el tiempo, el defecto es el gap de energía, y la solución discreta se traduce con fidelidad absoluta al continuo axiomático.
+
+---
+
+> ### ⚡ **Axioma Fundamental del Espaciotiempo Cuántico:**
+> <div align="center">
+>
+> ## *« El gap de masa no es un milagro topológico abstracto: es el costo energético del tiempo cuántico. »*
+>
+> </div>

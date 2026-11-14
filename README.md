@@ -177,7 +177,14 @@ theorem massive_four_le
 
 ### 🌌 Homologation Physique Fondamentale : Le $+1$ de Minkowski est la Fibre Temporelle Euclidienne
 
-> **Remarque Fondatrice (Réalité Discrète vs Exigence du Continu de Clay).**
+> ### ⚡ **Axiome Fondateur du Temps Quantique**
+> <div align="center">
+>
+> ### *« Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
+> **(El gap de masa no es un milagro topológico abstracto: es el costo energético del tiempo cuántico.)**
+>
+> </div>
+>
 > 1. **Indépendance de la Réalité Discrète ($d \ge 4$) :**  
 >    Dans le cadre discret de BACQM / $NRS^3$, l'espace-temps n'est pas un continuum lorentzien infini arbitraire. Le mass gap n'a pas besoin d'hypothèses géométriques étrangères : dès que la dimension totale atteint $d \ge 4$, l'espace discret compte $2^d = 16$ orthants. La dispersion quantique de Robertson–Schrödinger dépasse inévitablement la capacité d'absorption du nœud frontière $0$, forçant un excès de cohérence $C_N(d) > 1$ et engendrant un **gap de masse strictement positif et gratuit** sans aucune référence au continu.
 >

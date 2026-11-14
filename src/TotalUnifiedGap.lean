@@ -5,6 +5,9 @@ Authors: Eduardo Nava-Hernandez, Claude (Anthropic), Antigravity (Google DeepMin
 
 # TotalUnifiedGap.lean — Módulo Canónico Unificado del Gap de Masa y Gravedad
 
+Axioma Maestro de Unificación:
+« El gap de masa no es un milagro topológico abstracto: es el costo energético del tiempo cuántico. »
+
 Este archivo establece formalmente en Lean 4 la deducción unificada completa:
 1. La brecha de la red espacial de Kogut–Susskind (1975) con $[H_{KS}, Gauss_x] = 0$.
 2. La ley de área de Wilson y la brecha de glueballs $\Delta_{glue} = \sigma \cdot R > 0$.
