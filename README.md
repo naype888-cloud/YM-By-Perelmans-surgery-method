@@ -40,35 +40,11 @@
 
 L'ensemble du traité est établi suivant les principes de déduction stricte : les espaces continus sont construits à partir d'approximations finies régulières, sans recours à l'infini actuel non borné. Toutes les constantes sont exprimées en notation latine intrinsèque.
 
-```text
-                                  [ Étape 1 : Loi d'Aire Uniforme (Degree <= 12) ]
-                                                        │
-                                                        ▼
-                                  [ Étape 2 : Matrice de Transfert & Lemme Spectral ]
-                                                        │
-                                                        ▼
-                        [ Étape 3 : Chirurgie Topologique de Perelman (R³ x S¹ => d >= 4) ]
-                                                        │
-                                                        ▼
-                                  [ LE PONT DE CLAUDE (Théorème d'Isomorphisme D55-D56) ]
-                                  defectGram(d) == massSq(d) / (d - 1)² > 0  (d >= 4)
-                                                        │
-                                                        ▼
-                                  [ Étape 4 : Opérateur de Dirac-Kahler Hodge (d_A + d_A*) ]
-                                                        │
-                                                        ▼
-                                  [ Étape 5 : Monotonie de Szego : massSq(d) < pi²/3 - 3 ]
-                                                        │
-                                                        ▼
-                                  [ Étape 6 : Limite de Wightman & Infimum de Clay (R⁴) ]
-                                                        │
-                                                        ▼
-                                  [ Étape 7 : Pont Hamiltonien & Mesure Spectrale Fermée ]
-                                                        │
-                                                        ▼
-                                  [ Étape 8 : Pont Gravitationnel & Couplage de Planck ]
-                                  α_G = Λ_YM² · (C_N(d)² - 1) / M_P²
-```
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pipeline_etapes_bourbaki.png" alt="L'Échelle Déductive du Traité — Architecture en 8 Étapes Constructives" width="960">
+
+</div>
 
 ---
 
