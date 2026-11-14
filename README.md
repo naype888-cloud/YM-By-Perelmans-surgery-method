@@ -116,24 +116,21 @@ $$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \
 
 </div>
 
-> ### **Théorème Fondamental (Isomorphisme du Défaut de Fibre et Clôture Nécessaire-Suffisante)**
-> *Soit un pas spatial $step > 0$, une dimension de chaîne $d \ge 2$, et un état quantique d'excitation physique $v \in H_d$.*
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pont_de_claude.png" alt="Théorème Fondamental : Le Pont de Claude — Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960">
+
+</div>
+
+> ### **Fondements Géométriques et Physiques des Quatre Conditions :**
 >
-> 1. **Nécessité Géométrique Absolue ($d \ge 4$) :**  
->    $$\mathbf{defectGram}(d) = 0 \iff d \le 3$$
->    *Sur le cube spatial 3D pur, la boîte $[-3, 3]^3$ contenant $343$ sites sature rigoureusement la constante de cohérence ($C_N = 1$). Le défaut s'annule identiquement : absence totale de masse propre (phase luminale invariante, photonique ou chirale).*
+> 1. **Nécessité Géométrique Absolue ($d \ge 4$) :** Sur le cube spatial 3D pur, la boîte $[-3, 3]^3$ contenant 343 sites sature rigoureusement la constante de cohérence ($C_N = 1$). Le défaut s'annule identiquement : absence totale de masse propre (phase luminale invariante, photonique ou chirale).
 >
-> 2. **Isomorphisme Exact du Défaut de Chirurgie :**  
->    $$\Huge \displaystyle \mathbf{defectGram}(d) \equiv \frac{\mathbf{massSq}(d)}{(d - 1)^2} = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \quad (\forall d \ge 4)$$
->    *Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.*
+> 2. **Isomorphisme Exact du Défaut de Chirurgie :** Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
-> 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
->    *Un état quantique possède une masse propre si et seulement si les conditions géométriques sont satisfaites et que l'état porte le défaut quantique de Gram :*
->    $$\mathbf{Massive}(d, step, v) \iff \mathbf{MassNecessaryConditions}(d, step) \land \mathbf{StateCarriesDefect}(d, v)$$
->    *Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson $\sum U_{\mathrm{box}}$, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique $d \ge 4$ induite par la chirurgie de Perelman $\mathbb{R}^3 \times S^1$ est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul $\Delta_{\mathrm{total}} > 0$.*
+> 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :** Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique $d \ge 4$ induite par la chirurgie de Perelman $\mathbb{R}^3 \times S^1$ est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul $\Delta_{\mathrm{total}} > 0$.
 >
-> 4. **Encadrement Universel Invariant de Szegő :**  
->    $$\mathbf{0 < massSq(4) \le massSq(d) < \frac{pi^2}{3} - 3 \approx 0.289868}$$
+> 4. **Encadrement Universel Invariant de Szegő :** La suite $massSq(d)$ est uniformément bornée par $\pi^2/3 - 3 \approx 0.289868$ lorsque $d \to \infty$, excluant tout effondrement ultraviolet ou divergence du spectre.
 
 ```lean
 -- Extraits certifiés du corpus NavaRobertsonIndependent/Mathematics:
@@ -168,7 +165,7 @@ theorem massive_four_le {d : ℕ} {ℓ : ℝ} {ψ : Hd d} (hd : 2 ≤ d) (h : Ma
 
 $$\huge \displaystyle D_A = d_A + d_A^{\dagger}, \qquad (D_A)^2 = \mathrm{Laplacian} = d_A d_A^{\dagger} + d_A^{\dagger} d_A$$
 
-$$\huge \displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \mathrm{Laplacian} \, w \rangle \ge \left(\frac{2}{pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
+$$\huge \displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \mathrm{Laplacian} \, w \rangle \ge \left(\frac{2}{\pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
 
 *Modules formels :* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean).
 
@@ -177,9 +174,9 @@ $$\huge \displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \math
 ### 📈 Étape 5 : Limite Asymptotique de Szegő et Monotonie Stricte ($d \to \infty$)
 > **Proposition 5.1 (Absence d'effondrement gaussien).** La suite des constantes de cohérence $C_N(d)^2 - 1$ est strictement croissante pour $d \ge 4$ et converge vers la borne analytique de Szegő :
 
-$$\huge \displaystyle massSq(4) \le massSq(d) < \frac{pi^2}{3} - 3 \approx 0.289868 > 0$$
+$$\huge \displaystyle massSq(4) \le massSq(d) < \frac{\pi^2}{3} - 3 \approx 0.289868 > 0$$
 
-$$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{pi^2}{3} - 3 > 0$$
+$$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 > 0$$
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](src/FibreBand.lean).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D56_MassNecessaryConditions.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D56_MassNecessaryConditions.lean) (`massSq_band_of_massNecessary`).
