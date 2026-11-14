@@ -51,9 +51,9 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 ### 📐 Étape 1 : Loi d'Aire Uniforme sur le Réseau Tridimensionnel
 > **Proposition 1.1 (Majoration combinatoire uniforme).** Sur le réseau cubique à degré d'adjacence $Degree = 12$ et germes de périmètre $|\mathrm{Seeds}| \le 8(R + T)$ pour toute boucle de Wilson rectangulaire $W(R \times T)$ :
 
-$$\huge \displaystyle \langle W(R \times T) \rangle \le \left(\frac{\tanh b}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
+$$\displaystyle \langle W(R \times T) \rangle \le \left(\frac{\tanh b}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
 
-$$\huge \displaystyle Tension(b) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \times T) \rangle \ge \ln\left(\frac{t'}{\tanh b}\right) > 0$$
+$$\displaystyle Tension(b) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \times T) \rangle \ge \ln\left(\frac{t'}{\tanh b}\right) > 0$$
 
 *Modules formels :* [`CubeAreaLaw.lean`](src/CubeAreaLaw.lean) (`cube_wilson_area_law`), [`AreaLawBound.lean`](src/AreaLawBound.lean) (`area_law_uniform`), [`AdjDegree.lean`](src/AdjDegree.lean) (`adj_degree_le_twelve`).
 
@@ -62,9 +62,9 @@ $$\huge \displaystyle Tension(b) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} 
 ### ⚡ Étape 2 : Matrice de Transfert et Lemme de Puissance Inverse
 > **Lemme 2.1 (Décroissance spectrale du semi-groupe).** La décroissance euclidienne temporelle de la matrice de transfert $T = e^{-a H}$ contraint le quotient des deux plus grandes valeurs propres réelles :
 
-$$\huge \displaystyle \forall k \in \mathbf{N}, \quad \left(\frac{m_1}{m_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-s \cdot R}\right)^k \implies \frac{m_1}{m_0} \le e^{-s \cdot R} < 1$$
+$$\displaystyle \forall k \in \mathbf{N}, \quad \left(\frac{m_1}{m_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-s \cdot R}\right)^k \implies \frac{m_1}{m_0} \le e^{-s \cdot R} < 1$$
 
-$$\huge \displaystyle Gap_{glue} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{m_0}\right) \ge \frac{s \cdot R}{a} > 0$$
+$$\displaystyle Gap_{glue} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{m_0}\right) \ge \frac{s \cdot R}{a} > 0$$
 
 *Modules formels :* [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`), [`Z2Final.lean`](src/Z2Final.lean) (`z2_gap_twelve`), [`Z2Hj.lean`](src/Z2Hj.lean) (`z2_gap_free`, `exists_excited`).
 
@@ -73,9 +73,9 @@ $$\huge \displaystyle Gap_{glue} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{
 ### 🛡️ Étape 3 : Chirurgie Topologique de Perelman et Défaut $5/4$ sur $R^3 \times S^1$
 > **Proposition 3.1 (Torsion symplectique et blindage transverse).** Sur la variété décomposée $M_4 = R^3 \times S^1$, l'inégalité de Robertson–Schrödinger pour les matrices de covariance $Cov$ et symplectique $Symp$ impose une rupture stricte de saturation :
 
-$$\huge \displaystyle \frac{\det Cov}{|\det Symp|} = 1 + massSq(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1$$
+$$\displaystyle \frac{\det Cov}{|\det Symp|} = 1 + massSq(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1$$
 
-$$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \implies \sqrt{floor} \ge \frac{1}{2a} > 0$$
+$$\displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \implies \sqrt{floor} \ge \frac{1}{2a} > 0$$
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](src/FibreBand.lean) (`surplus_ge_massSq`), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D55_SaturatingRegion.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D55_SaturatingRegion.lean) (`defectGram_eq_zero_iff_le_three`, prouvant la saturation exacte à défaut nul en $d \le 3$).
@@ -136,9 +136,9 @@ theorem massive_four_le {d : ℕ} {ℓ : ℝ} {ψ : Hd d} (hd : 2 ≤ d) (h : Ma
 ### 🔬 Étape 4 : Opérateur de Dirac–Kähler / Hodge–de Rham pour Bosons de Jauge
 > **Proposition 4.1 (Algèbre de Clifford sur l'espace des formes).** Sur l'algèbre extérieure des gluons $\mathrm{Forms}(M)$, l'opérateur de Dirac-Hodge satisfait l'anticommutation chirale :
 
-$$\huge \displaystyle D_A = d_A + d_A^{\dagger}, \qquad (D_A)^2 = \mathrm{Laplacian} = d_A d_A^{\dagger} + d_A^{\dagger} d_A$$
+$$\displaystyle D_A = d_A + d_A^{\dagger}, \qquad (D_A)^2 = \mathrm{Laplacian} = d_A d_A^{\dagger} + d_A^{\dagger} d_A$$
 
-$$\huge \displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \mathrm{Laplacian} \, w \rangle \ge \left(\frac{2}{\pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
+$$\displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \mathrm{Laplacian} \, w \rangle \ge \left(\frac{2}{\pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
 
 *Modules formels :* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean).
 
@@ -147,9 +147,9 @@ $$\huge \displaystyle [ D_{R^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \math
 ### 📈 Étape 5 : Limite Asymptotique de Szegő et Monotonie Stricte ($d \to \infty$)
 > **Proposition 5.1 (Absence d'effondrement gaussien).** La suite des constantes de cohérence $C_N(d)^2 - 1$ est strictement croissante pour $d \ge 4$ et converge vers la borne analytique de Szegő :
 
-$$\huge \displaystyle massSq(4) \le massSq(d) < \frac{\pi^2}{3} - 3 \approx 0.289868 > 0$$
+$$\displaystyle massSq(4) \le massSq(d) < \frac{\pi^2}{3} - 3 \approx 0.289868 > 0$$
 
-$$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 > 0$$
+$$\displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 > 0$$
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](src/FibreBand.lean).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D56_MassNecessaryConditions.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D56_MassNecessaryConditions.lean) (`massSq_band_of_massNecessary`).
@@ -159,9 +159,9 @@ $$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 > 0$$
 ### 🌐 Étape 6 : Clôture Continue de Wightman et Infimum de Clay ($R^4$)
 > **Théorème 6.1 (Décompactification et persistance du gap).** Dans la limite de grand volume $L \to \infty$, la condensation des monopôles BPS et calorons de Kraan–van Baal préserve l'infimum spectral non nul :
 
-$$\huge \displaystyle Gap_{total} = \min\left(Gap_{glue}, \, \sqrt{floor}\right) \ge c_{tension} \cdot Scale_{YM} > 0$$
+$$\displaystyle Gap_{total} = \min\left(Gap_{glue}, \, \sqrt{floor}\right) \ge c_{tension} \cdot Scale_{YM} > 0$$
 
-$$\huge \displaystyle \lim_{L \to \infty} Gap_{total} = Gap_{glue} = c_{tension} \cdot Scale_{YM} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
+$$\displaystyle \lim_{L \to \infty} Gap_{total} = Gap_{glue} = c_{tension} \cdot Scale_{YM} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
 
 $$\Huge \displaystyle \inf \left( \mathrm{spec}(H_{cont}) \setminus \{ 0 \} \right) \ge Gap_{total} > 0$$
 
@@ -172,11 +172,11 @@ $$\Huge \displaystyle \inf \left( \mathrm{spec}(H_{cont}) \setminus \{ 0 \} \rig
 ### 🏛️ Étape 7 : Pont Hamiltonien Maître et Unification Kogut–Susskind (Wightman QFT)
 > **Théorème 7.1 (Annulation de la mesure spectrale sur la coquille de masse).** Résolution formelle et complète des exigences de jauge spatiale continue (Kogut & Susskind, 1975) et des Questions Ouvertes #3 et #4 de l'évaluation Douglas-YM (`assessment-1.pdf`) sur `PublicTheory.lean` :
 
-$$\huge \displaystyle \mathrm{spec}(H) \setminus \{ 0 \} \subseteq [Gap_{total}, \infty), \qquad Gap_{total} > 0$$
+$$\displaystyle \mathrm{spec}(H) \setminus \{ 0 \} \subseteq [Gap_{total}, \infty), \qquad Gap_{total} > 0$$
 
-$$\huge \displaystyle E_{NRS^3}\left( \{ p \in \overline{V_+} \mid 0 < p_0 < Gap_{total} \} \right) = 0$$
+$$\displaystyle E_{NRS^3}\left( \{ p \in \overline{V_+} \mid 0 < p_0 < Gap_{total} \} \right) = 0$$
 
-$$\huge \displaystyle Gap_{total} = \min\left( Scale_E - Scale_B \cdot 2N \cdot |Plaquettes|, \; Gap_{cube}, \; \sqrt{\min\left(\frac{1}{4}, \frac{massSq(4)}{L^2}\right)} \right) > 0$$
+$$\displaystyle Gap_{total} = \min\left( Scale_E - Scale_B \cdot 2N \cdot |Plaquettes|, \; Gap_{cube}, \; \sqrt{\min\left(\frac{1}{4}, \frac{massSq(4)}{L^2}\right)} \right) > 0$$
 
 La mesure spectrale concrète déduite du réseau cubique 3D tight-binding $NRS^3$ ([PR #1689](https://github.com/leanprover-community/physlib/pull/1689), [PR #1725](https://github.com/leanprover-community/physlib/pull/1725), [PR #1756](https://github.com/leanprover-community/physlib/pull/1756)), le plancher électrique de Kogut–Susskind respectant la loi de Gauss $[H_{KS}, Gauss_x] = 0$, et le plancher chirurgical de Perelman en $d \ge 4$ annulent identiquement toute projection spectrale intermédiaire **sans aucun paramètre hypothétique libre**.
 
@@ -187,7 +187,7 @@ La mesure spectrale concrète déduite du réseau cubique 3D tight-binding $NRS^
 ### 🌌 Étape 8 : Pont Gravitationnel et Couplage Adimensionnel à l'Échelle de Planck
 > **Théorème 8.1 (Couplage gravitationnel algébrique du défaut).** Sous l'échelle de confinement de jauge $\Lambda_{\mathrm{YM}} > 0$ et la masse de Planck $M_P^2 = \hbar c / G$, le couplage gravitationnel de la masse du gap $m = \Lambda_{\mathrm{YM}} \sqrt{C_N(d)^2 - 1}$ est rigoureusement fixé par le quotient sans dimension :
 >
-> $$\huge \displaystyle \alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot (C_N(d)^2 - 1)}{M_P^2}$$
+> $$\displaystyle \alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot (C_N(d)^2 - 1)}{M_P^2}$$
 >
 > De plus, la limite en champ faible newtonien $F = G M_1 M_2 / r^2$ est formellement démontrée entre masses de défaut. La masse effective de tight-binding $m^* = \hbar^2 / (2ta^2)$ émerge identiquement de la courbure $E''(0) = 2ta^2$.
 >
@@ -199,14 +199,7 @@ La mesure spectrale concrète déduite du réseau cubique 3D tight-binding $NRS^
 
 <div align="center">
 
-## 👑 Théorème Fondateur du Millénaire (Institut Clay)
-
-$$\Huge \mathbf{MassGap}(YM) := \inf \left( \mathrm{spec}(H_{cont}) \setminus \{ 0 \} \right) = c_{tension} \cdot Scale_{YM} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
-
-<p align="center">
-  <i>Pour tout groupe de jauge compact simple $SU(N)$ ($N \ge 2$), la théorie quantique de Yang–Mills sur l'espace-temps continu $R^4$<br>
-  possède un état fondamental unique invariant et un gap spectral de masse strictement positif et isolé.</i>
-</p>
+<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/theoreme_millenaire_clay.png" alt="Théorème Fondateur du Millénaire — Institut Clay" width="960">
 
 </div>
 
