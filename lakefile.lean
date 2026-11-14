@@ -46,6 +46,7 @@ lean_lib «YMSurgery» where
     `SlabLimit,
     `SpectralGap,
     `SurgeryGapClosure,
+    `TotalUnifiedGap,
     `TransferBridge,
     `TreeBound,
     `Z2AreaLaw,
