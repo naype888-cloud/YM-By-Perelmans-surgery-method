@@ -30,9 +30,14 @@
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
 >
-> * **1. Formalisme Hamiltonien de Kogut–Susskind :** Invariance de jauge exacte $[H_{\mathrm{KS}}, \mathrm{Gauss}_x] = 0$. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
-> * **2. Chirurgie Topologique de Perelman ($d \ge 4$) :** Isomorphisme exact entre le défaut de Robertson–Schrödinger sur la fibre transverse et le gap de masse physique. En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le défaut est strictement positif et universellement borné par la limite de Szegő.
-> * **3. Annulation Spectrale de Wightman ($\mathbb{R}^4$) :** Décompactification continue $L \to \infty$. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille $[0, Gap_{\mathrm{total}})$, établissant rigoureusement l'existence d'un état fondamental unique et d'un gap de masse isolé.
+> * **1. Formalisme Hamiltonien de Kogut–Susskind :**  
+>   Invariance de jauge exacte $[H_{\mathrm{KS}}, \mathrm{Gauss}_x] = 0$. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
+>
+> * **2. Chirurgie Topologique de Perelman ($d \ge 4$) :**  
+>   Isomorphisme exact entre le défaut de Robertson–Schrödinger sur la fibre transverse et le gap de masse physique. En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le défaut est strictement positif et universellement borné par la limite de Szegő.
+>
+> * **3. Annulation Spectrale de Wightman ($\mathbb{R}^4$) :**  
+>   Décompactification continue $L \to \infty$. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille $[0, Gap_{\mathrm{total}})$, établissant rigoureusement l'existence d'un état fondamental unique et d'un gap de masse isolé.
 
 ---
 
@@ -245,13 +250,19 @@ La mesure spectrale concrète déduite du réseau cubique 3D tight-binding $NRS^
 ---
 
 ### 🌌 Étape 8 : Pont Gravitationnel et Couplage Adimensionnel à l'Échelle de Planck
-> **Théorème 8.1 (Couplage gravitationnel algébrique du défaut).** Sous l'échelle de confinement de jauge $\Lambda_{\mathrm{YM}} > 0$ et la masse de Planck $M_P^2 = \hbar c / G$, le couplage gravitationnel de la masse du gap $m = \Lambda_{\mathrm{YM}} \sqrt{C_N(d)^2 - 1}$ est rigoureusement fixé par le quotient sans dimension :
->
-> $$\huge \displaystyle \alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot (C_N(d)^2 - 1)}{M_P^2}$$
->
-> De plus, la limite en champ faible newtonien $F = G M_1 M_2 / r^2$ est formellement démontrée entre masses de défaut. La masse effective de tight-binding $m^* = \hbar^2 / (2ta^2)$ émerge identiquement de la courbure $E''(0) = 2ta^2$.
->
-> *Base axiomatique certifiée par le noyau Lean 4 : `[propext, Classical.choice, Quot.sound]`. Zéro axiome ad hoc.*
+
+**Théorème 8.1 (Couplage gravitationnel algébrique du défaut).**  
+Sous l'échelle de confinement de jauge $\Lambda_{\mathrm{YM}} > 0$ et la masse de Planck $M_P^2 = \hbar c / G$, le couplage gravitationnel de la masse du gap $m = \Lambda_{\mathrm{YM}} \sqrt{C_N(d)^2 - 1}$ est rigoureusement fixé par le quotient sans dimension :
+
+<div align="center">
+
+$$\huge \displaystyle \mathbf{\alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot \left(C_N(d)^2 - 1\right)}{M_P^2}}$$
+
+</div>
+
+De plus, la limite en champ faible newtonien $F = G M_1 M_2 / r^2$ est formellement démontrée entre masses de défaut. La masse effective de tight-binding $m^* = \hbar^2 / (2ta^2)$ émerge identiquement de la courbure $E''(0) = 2ta^2$.
+
+*Base axiomatique certifiée par le noyau Lean 4 : `[propext, Classical.choice, Quot.sound]`. Zéro axiome ad hoc.*
 
 *Module formel :* [`GravitationalBridge.lean`](src/GravitationalBridge.lean) (`gravitationalCoupling_defectMass`, `newton_force_of_defect_masses`, `deriv_deriv_dispersion_zero`, `effectiveMass`).
 
