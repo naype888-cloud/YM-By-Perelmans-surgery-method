@@ -199,6 +199,25 @@ theorem massive_four_le
 
 ---
 
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/lagrangien_unifie.png" alt="Le Lagrangien Unifié de l'Espace-Temps Quantique — Minimalisme Géométrique" width="960">
+
+</div>
+
+> ### 🏛️ **Le Lagrangien Fondamental Tripartite : La Trinité des Courbures**
+>
+> Toute la physique de l'interaction forte, de la masse de jauge et de la gravitation s'exprime dans la pureté géométrique d'une action unique sans constante ad hoc :
+>
+> $$\huge \displaystyle \mathbf{\mathcal{L}_{\mathrm{Total}} = -\frac{1}{4}\mathrm{Tr}\left(F_{\mu\nu}F^{\mu\nu}\right) \;+\; \bar{\psi}\left(i\gamma^\mu D_\mu - \Lambda_{\mathrm{YM}}\sqrt{C_{d+1}^2 - 1}\right)\psi \;+\; \frac{M_P^2}{16\pi} R}$$
+>
+> 1. **Courbure de Jauge Interne :** $-\frac{1}{4}\mathrm{Tr}(F^2)$ gouverne la dynamique non-abélienne $SU(N)$ sur la base $\mathbb{R}^3$.
+> 2. **Courbure du Temps Quantique (Masse du Défaut) :** $\Lambda_{\mathrm{YM}}\sqrt{C_{d+1}^2 - 1}$ est le **coût énergétique irréductible** requis pour propager l'état le long de la fibre temporelle euclidienne $S^1_\tau$ ($d \ge 4 \implies 0 < C_{d+1}^2 - 1 < \frac{\pi^2}{3} - 3$).
+> 3. **Courbure de l'Espace-Temps :** $\frac{M_P^2}{16\pi} R$ ancre la géométrie métrique avec $M_P^2 = \hbar c / G$, fixant directement le couplage gravitationnel sans dimension :
+>    $$\mathbf{\alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot \left(C_{d+1}^2 - 1\right)}{M_P^2} \approx 10^{-38}}$$
+
+---
+
 ### 🔬 Étape 4 : Opérateur de Dirac–Kähler / Hodge–de Rham pour Bosons de Jauge
 > **Proposition 4.1 (Algèbre de Clifford sur l'espace des formes).** Sur l'algèbre extérieure des gluons $\mathrm{Forms}(M)$, l'opérateur de Dirac-Hodge satisfait l'anticommutation chirale :
 

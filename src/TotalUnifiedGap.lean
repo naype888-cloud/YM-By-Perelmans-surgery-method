@@ -25,6 +25,7 @@ import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Topology.MetricSpace.Basic
+import FibreSurgery
 
 namespace TotalUnifiedGap
 
@@ -60,26 +61,19 @@ def cubicAdjacencyDegree : ℕ := 12
 
 theorem cubic_adjacency_le_twelve : cubicAdjacencyDegree ≤ 12 := le_rfl
 
-/-- Constante de coherencia de Gnomon/Szegő al cuadrado $C_N(d)^2 = 1 + 1/(d - 1)^2$ -/
-noncomputable def CoherenceConstantSq (d : ℕ) : ℝ :=
-  1 + 1 / ((d : ℝ) - 1)^2
+/-- Defecto de masa canónico importado directamente de `FibreSurgery`: $massSq(d) = C_N(d)^2 - 1$ -/
+noncomputable def massSq (d : ℕ) : ℝ := FibreSurgery.massSq d
 
-/-- Defecto de masa de la fibra transversal: $massSq(d) = C_N(d)^2 - 1$ -/
-noncomputable def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
+theorem massSq_pos (d : ℕ) (hd : 4 ≤ d) : 0 < massSq d :=
+  FibreSurgery.massSq_pos hd
 
-theorem massSq_four : massSq 4 = 1 / 9 := by
-  unfold massSq CoherenceConstantSq
-  ring
+/-- Monotonía estricta de la masa del defecto en dimensión d ≥ 4 -/
+theorem massSq_strictMonoOn : StrictMonoOn massSq {d : ℕ | 4 ≤ d} :=
+  FibreSurgery.massSq_strictMonoOn
 
-theorem massSq_pos (d : ℕ) (hd : 4 ≤ d) : 0 < massSq d := by
-  unfold massSq CoherenceConstantSq
-  have hpos : 0 < ((d : ℝ) - 1)^2 := by
-    have h1 : 1 < (d : ℝ) - 1 := by
-      have h4 : (4 : ℝ) ≤ (d : ℝ) := Nat.cast_le.mpr hd
-      linarith
-    exact sq_pos_of_pos (by linarith)
-  have hdiv : 0 < 1 / ((d : ℝ) - 1)^2 := div_pos one_pos hpos
-  linarith
+/-- Cota superior analítica universal de Szegő: massSq(d) < π²/3 - 3 -/
+theorem massSq_lt_szego (d : ℕ) (hd : 4 ≤ d) : massSq d < Real.pi ^ 2 / 3 - 3 :=
+  FibreSurgery.massSq_lt_inf hd
 
 /-- Piso de Dirac transverso combinando la cota cinética $1/4$ y el defecto de no-saturación -/
 noncomputable def transverseFloor (L : ℝ) : ℝ :=
@@ -87,9 +81,7 @@ noncomputable def transverseFloor (L : ℝ) : ℝ :=
 
 theorem transverseFloor_pos (L : ℝ) (hL : 0 < L) : 0 < transverseFloor L := by
   unfold transverseFloor
-  have h4 : 0 < massSq 4 := by
-    rw [massSq_four]
-    norm_num
+  have h4 : 0 < massSq 4 := massSq_pos 4 (le_refl 4)
   have hL2 : 0 < L^2 := sq_pos_of_pos hL
   have hdiv : 0 < massSq 4 / L^2 := div_pos h4 hL2
   have hmin : 0 < min (1 / 4) (massSq 4 / L^2) := lt_min (by norm_num) hdiv
