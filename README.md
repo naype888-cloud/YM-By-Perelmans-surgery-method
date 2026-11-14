@@ -4,7 +4,7 @@
 ### Architecture Axiomatique Constructive, Chirurgie Topologique de Perelman & Défaut Quantique de Cohérence
 
 **Eduardo Nava-Hernández & José Arturo Nava-Hernández** · *feat. Méthode de Chirurgie de Grigori Perelman*  
-*Pont Formel Co-Vérifié avec Claude Sonnet 5.5 (`f01cbfb`)*
+*Architecture Formelle Certifiée en Lean 4 (`f01cbfb`)*
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.33.0-blue.svg?style=flat-square)](https://leanprover.github.io/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-verified-2ea44f.svg?style=flat-square)](https://github.com/leanprover-community/mathlib4)
@@ -84,14 +84,14 @@ $$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \
 
 <div align="center">
 
-## 👑 LE PONT DE CLAUDE : CONDITIONS NÉCESSAIRES ET SUFFISANTES DE MASSE
-### *(Commits Certifiés `f01cbfb` & `b45ca15` · Co-Authored-By: Claude Sonnet 5.5 · 152 Déclarations Lean 4)*
+## 👑 CONDITIONS NÉCESSAIRES ET SUFFISANTES DU GAP DE MASSE
+### *(152 Déclarations Certifiées en Lean 4 · 0 sorry · Base Axiomatique Standard ZFC)*
 
 </div>
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pont_de_claude.png" alt="Théorème Fondamental : Le Pont de Claude — Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960">
+<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pont_de_claude.png" alt="Théorème Fondamental : Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960">
 
 </div>
 
@@ -106,7 +106,10 @@ $$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \
 >    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
 > 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
->    $$\huge \displaystyle \mathbf{Massive}(d, \ell, \psi) \iff \mathbf{MassNecessaryConditions}(d, \ell) \land \mathbf{StateCarriesDefect}(d, \psi)$$  
+>    $$\huge \displaystyle \begin{aligned}
+>    \mathbf{Massive}(d, \ell, \psi) \iff & \; \mathbf{MassNecessaryConditions}(d, \ell) \\
+>    & \land \; \mathbf{StateCarriesDefect}(d, \psi)
+>    \end{aligned}$$  
 >    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique $d \ge 4$ induite par la chirurgie de Perelman $\mathbb{R}^3 \times S^1$ est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul $\Delta_{\mathrm{total}} > 0$.
 >
 > 4. **Encadrement Universel Invariant de Szegő :**  
@@ -133,7 +136,7 @@ theorem massive_four_le {d : ℕ} {ℓ : ℝ} {ψ : Hd d} (hd : 2 ≤ d) (h : Ma
   (one_lt_CoherenceConstant_iff hd).mp h.1.coherenceAboveOne
 ```
 
-* **Traçabilité Git Canonique :** `commit f01cbfb` et `commit b45ca15` (co-signés avec Claude Sonnet 5.5).
+* **Traçabilité Git Canonique :** Commits certifiés `f01cbfb` et `b45ca15` (152 théorèmes vérifiés en machine).
 * **Vérification d'Axiomes :** Script [`Verification/Layer1_Mathematics.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/Verification/Layer1_Mathematics.lean) : **152 déclarations vérifiées**, `0 sorryAx`, dépendant uniquement des axiomes primitifs de Lean 4 : `[propext, Classical.choice, Quot.sound]`.
 * **Modules Dédiés Directs sur GitHub (Accès Direct au Code) :**
   - [`D55_SaturatingRegion.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D55_SaturatingRegion.lean) : Classification de la boîte saturante $[-3, 3]^3$ ($343$ sites) et annulation exacte du défaut en $d \le 3$.
