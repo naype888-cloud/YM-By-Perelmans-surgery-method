@@ -1,10 +1,11 @@
 <div align="center">
 
 # Yang–Mills Spectral Mass Gap
-### Architecture Axiomatique Constructive, Chirurgie Topologique de Perelman & Défaut Quantique de Cohérence
+### Architecture Axiomatique Constructive & Défaut Quantique de Cohérence de Szegő
+#### *Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique.*
 
-**Eduardo Nava-Hernández & José Arturo Nava-Hernández** · *feat. Méthode de Chirurgie de Grigori Perelman*  
-*Architecture Formelle Certifiée en Lean 4 (`f01cbfb`)*
+**Eduardo Nava-Hernández & José Arturo Nava-Hernández**  
+*Architecture Formelle Certifiée en Lean 4 (`f01cbfb` · D8_Szego approuvé dans Physlib)*
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.33.0-blue.svg?style=flat-square)](https://leanprover.github.io/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-verified-2ea44f.svg?style=flat-square)](https://github.com/leanprover-community/mathlib4)
@@ -33,8 +34,8 @@
 > * **1. Formalisme Hamiltonien de Kogut–Susskind :**  
 >   Invariance de jauge exacte $[H_{\mathrm{KS}}, \mathrm{Gauss}_x] = 0$. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
 >
-> * **2. Chirurgie Topologique de Perelman ($d \ge 4$) :**  
->   Isomorphisme exact entre le défaut de Robertson–Schrödinger sur la fibre transverse et le gap de masse physique. En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le défaut est strictement positif et universellement borné par la limite de Szegő.
+> * **2. Coût Énergétique du Temps Quantique & Limite de Szegő ($d \ge 4$) :**  
+>   La théorie n'a plus besoin de l'échafaudage de chirurgie topologique : le mass gap découle directement du défaut de Robertson–Schrödinger / Mandelstam–Tamm certifié dans `D8_Szego.lean` (approuvé par Joseph dans Physlib). En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le défaut $C_N(d)^2 - 1 = C_M(d) > 0$ est strictement croissant vers la borne de Szegő $\pi^2/3 - 3$, constituant le coût énergétique irréductible de l'évolution temporelle quantique.
 >
 > * **3. Annulation Spectrale de Wightman ($\mathbb{R}^4$) :**  
 >   Décompactification continue $L \to \infty$. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille $[0, Gap_{\mathrm{total}})$, établissant rigoureusement l'existence d'un état fondamental unique et d'un gap de masse isolé.
