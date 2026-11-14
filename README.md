@@ -53,7 +53,10 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 
 $$\huge \displaystyle \langle W(R \times T) \rangle \le \left(\frac{\tanh b}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
 
-$$\huge \displaystyle \mathrm{Tension}(b) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \times T) \rangle \ge \ln\left(\frac{t'}{\tanh b}\right) > 0$$
+$$\huge \displaystyle \begin{aligned}
+\mathrm{Tension}(b) & := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \times T) \rangle \\
+& \ge \ln\left(\frac{t'}{\tanh b}\right) > 0
+\end{aligned}$$
 
 *Modules formels :* [`CubeAreaLaw.lean`](src/CubeAreaLaw.lean) (`cube_wilson_area_law`), [`AreaLawBound.lean`](src/AreaLawBound.lean) (`area_law_uniform`), [`AdjDegree.lean`](src/AdjDegree.lean) (`adj_degree_le_twelve`).
 
@@ -62,7 +65,10 @@ $$\huge \displaystyle \mathrm{Tension}(b) := -\lim_{R, T \to \infty} \frac{1}{R 
 ### ⚡ Étape 2 : Matrice de Transfert et Lemme de Puissance Inverse
 > **Lemme 2.1 (Décroissance spectrale du semi-groupe).** La décroissance euclidienne temporelle de la matrice de transfert $T = e^{-a H}$ contraint le quotient des deux plus grandes valeurs propres réelles :
 
-$$\huge \displaystyle \forall k \in \mathbb{N}, \quad \left(\frac{m_1}{m_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-s \cdot R}\right)^k \implies \frac{m_1}{m_0} \le e^{-s \cdot R} < 1$$
+$$\huge \displaystyle \begin{aligned}
+\forall k \in \mathbb{N}, \quad & \left(\frac{m_1}{m_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-s \cdot R}\right)^k \\
+& \implies \frac{m_1}{m_0} \le e^{-s \cdot R} < 1
+\end{aligned}$$
 
 $$\huge \displaystyle Gap_{\mathrm{glue}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{m_0}\right) \ge \frac{s \cdot R}{a} > 0$$
 
@@ -75,7 +81,10 @@ $$\huge \displaystyle Gap_{\mathrm{glue}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\f
 
 $$\huge \displaystyle \frac{\det Cov}{|\det Symp|} = 1 + massSq(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1$$
 
-$$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \implies \sqrt{floor} \ge \frac{1}{2a} > 0$$
+$$\huge \displaystyle \begin{aligned}
+[ A[U], \, M_w ]_+ = 0 & \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \\
+& \implies \sqrt{floor} \ge \frac{1}{2a} > 0
+\end{aligned}$$
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](src/FibreBand.lean) (`surplus_ge_massSq`), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D55_SaturatingRegion.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D55_SaturatingRegion.lean) (`defectGram_eq_zero_iff_le_three`, prouvant la saturation exacte à défaut nul en $d \le 3$).
@@ -85,7 +94,7 @@ $$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \
 <div align="center">
 
 ## 👑 CONDITIONS NÉCESSAIRES ET SUFFISANTES DU GAP DE MASSE
-### *(152 Déclarations Certifiées en Lean 4 · 0 sorry · Base Axiomatique Standard ZFC)*
+<p align="center"><b><font color="#58A6FF">152 Déclarations Certifiées en Lean 4 · 0 sorry · Base Axiomatique Standard ZFC</font></b></p>
 
 </div>
 
@@ -102,7 +111,10 @@ $$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \
 >    Sur le cube spatial 3D pur, la boîte $[-3, 3]^3$ contenant 343 sites sature rigoureusement la constante de cohérence ($C_N = 1$). Le défaut s'annule identiquement : absence totale de masse propre (phase luminale invariante, photonique ou chirale).
 >
 > 2. **Isomorphisme Exact du Défaut de Chirurgie :**  
->    $$\huge \displaystyle \mathbf{defectGram}(d) \equiv \frac{\mathbf{massSq}(d)}{(d - 1)^2} = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \quad (\forall d \ge 4)$$  
+>    $$\huge \displaystyle \begin{aligned}
+>    \mathbf{defectGram}(d) & \equiv \frac{\mathbf{massSq}(d)}{(d - 1)^2} \\
+>    & = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \qquad (\forall d \ge 4)
+>    \end{aligned}$$  
 >    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
 > 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
@@ -113,27 +125,40 @@ $$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \
 >    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique $d \ge 4$ induite par la chirurgie de Perelman $\mathbb{R}^3 \times S^1$ est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul $\Delta_{\mathrm{total}} > 0$.
 >
 > 4. **Encadrement Universel Invariant de Szegő :**  
->    $$\huge \displaystyle 0 < \mathbf{massSq}(4) \le \mathbf{massSq}(d) < \frac{\pi^2}{3} - 3 \approx 0.289868$$  
+>    $$\huge \displaystyle \begin{aligned}
+>    0 < \mathbf{massSq}(4) & \le \mathbf{massSq}(d) \\
+>    & < \frac{\pi^2}{3} - 3 \approx 0.289868
+>    \end{aligned}$$  
 >    La suite $massSq(d)$ est uniformément bornée par $\pi^2/3 - 3 \approx 0.289868$ lorsque $d \to \infty$, excluant tout effondrement ultraviolet ou divergence du spectre.
 
 ```lean
--- Extraits certifiés du corpus NavaRobertsonIndependent/Mathematics:
+-- Extraits certifiés du corpus
+-- NavaRobertsonIndependent/Mathematics:
 
-/-- D56: Le défaut de la fibre et le gap de masse en d ≥ 4 sont la même quantité -/
-theorem defectGram_eq_massSq_of_massNecessary {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
+/-- D56: Défaut de fibre = gap de masse -/
+theorem defectGram_eq_massSq_of_massNecessary
+    {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
     (h : MassNecessaryConditions d ℓ) :
     0 < defectGram d ∧
-    defectGram d = (CoherenceConstantSq d - 1) / ((d : ℝ) - 1) ^ 2 := by
-  have h4 : 4 ≤ d := (one_lt_CoherenceConstant_iff hd).mp h.coherenceAboveOne
+    defectGram d =
+      (CoherenceConstantSq d - 1) /
+        ((d : ℝ) - 1) ^ 2 := by
+  have h4 : 4 ≤ d :=
+    (one_lt_CoherenceConstant_iff hd).mp
+      h.coherenceAboveOne
   exact ⟨gramStep_gram_pos h4, gramStep_gram hd⟩
 
-/-- D57: La condition suffisante complète — un état physique de jauge qui porte le défaut est massif -/
+/-- D57: Condition suffisante de masse -/
 def Massive (d : ℕ) (ℓ : ℝ) (ψ : Hd d) : Prop :=
-  MassNecessaryConditions d ℓ ∧ StateCarriesDefect d ψ
+  MassNecessaryConditions d ℓ ∧
+  StateCarriesDefect d ψ
 
-theorem massive_four_le {d : ℕ} {ℓ : ℝ} {ψ : Hd d} (hd : 2 ≤ d) (h : Massive d ℓ ψ) :
+theorem massive_four_le
+    {d : ℕ} {ℓ : ℝ} {ψ : Hd d}
+    (hd : 2 ≤ d) (h : Massive d ℓ ψ) :
     4 ≤ d :=
-  (one_lt_CoherenceConstant_iff hd).mp h.1.coherenceAboveOne
+  (one_lt_CoherenceConstant_iff hd).mp
+    h.1.coherenceAboveOne
 ```
 
 * **Traçabilité Git Canonique :** Commits certifiés `f01cbfb` et `b45ca15` (152 théorèmes vérifiés en machine).
@@ -150,7 +175,10 @@ theorem massive_four_le {d : ℕ} {ℓ : ℝ} {ψ : Hd d} (hd : 2 ≤ d) (h : Ma
 
 $$\huge \displaystyle D_A = d_A + d_A^{\dagger}, \qquad (D_A)^2 = \Delta_{\mathrm{Hodge}} = d_A d_A^{\dagger} + d_A^{\dagger} d_A$$
 
-$$\huge \displaystyle [ D_{\mathbb{R}^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \Delta_{\mathrm{Hodge}} \, w \rangle \ge \left(\frac{2}{\pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
+$$\huge \displaystyle \begin{aligned}
+[ D_{\mathbb{R}^3}, \, D_{S^1} ]_+ = 0 \implies & \langle w, \, \Delta_{\mathrm{Hodge}} \, w \rangle \\
+& \ge \left(\frac{2}{\pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0
+\end{aligned}$$
 
 *Modules formels :* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean).
 
@@ -159,9 +187,9 @@ $$\huge \displaystyle [ D_{\mathbb{R}^3}, \, D_{S^1} ]_+ = 0 \implies \langle w,
 ### 📈 Étape 5 : Limite Asymptotique de Szegő et Monotonie Stricte ($d \to \infty$)
 > **Proposition 5.1 (Absence d'effondrement gaussien).** La suite des constantes de cohérence $C_N(d)^2 - 1$ est strictement croissante pour $d \ge 4$ et converge vers la borne analytique de Szegő :
 
-$$\huge \displaystyle massSq(4) \le massSq(d) < \frac{\pi^2}{3} - 3 \approx 0.289868 > 0$$
+$$\huge \displaystyle massSq(4) \le massSq(d) < \frac{\pi^2}{3} - 3$$
 
-$$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 > 0$$
+$$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 \approx 0.289868 > 0$$
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](src/FibreBand.lean).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D56_MassNecessaryConditions.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D56_MassNecessaryConditions.lean) (`massSq_band_of_massNecessary`).
