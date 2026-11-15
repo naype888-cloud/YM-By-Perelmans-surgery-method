@@ -128,19 +128,19 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 > ### **Fondements Géométriques et Physiques des Quatre Conditions :**
 >
 > 1. **Nécessité Géométrique Absolue ($d \ge 4$) :**  
->    $$\huge \displaystyle \mathbf{defectGram}(d) = 0 \iff d \le 3$$  
+>    <div align="center"><img src="docs/assets/eq/eq18.png" alt="Équation 18" width="900"></div>
 >    Sur le cube spatial 3D pur, la boîte $[-3, 3]^3$ contenant 343 sites sature rigoureusement la constante de cohérence ($C_N = 1$). Le défaut s'annule identiquement : absence totale de masse propre (phase luminale invariante, photonique ou chirale).
 >
 > 2. **Isomorphisme Exact du Défaut de Fibre :**  
->    $$\huge \displaystyle \mathbf{defectGram}(d) \equiv \frac{\mathbf{massSq}(d)}{(d - 1)^2} = \frac{C_N(d)^2 - 1}{(d - 1)^2} > 0 \qquad (\forall d \ge 4)$$  
+>    <div align="center"><img src="docs/assets/eq/eq19.png" alt="Équation 19" width="900"></div>
 >    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
 > 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
->    $$\huge \displaystyle \mathbf{Massive}(d, \ell, \psi) \iff \mathbf{MassNecessaryConditions}(d, \ell) \land \mathbf{StateCarriesDefect}(d, \psi)$$  
+>    <div align="center"><img src="docs/assets/eq/eq20.png" alt="Équation 20" width="900"></div>
 >    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique $d \ge 4$ certifiée dans `D8_Szego.lean` est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul $\Delta_{\mathrm{total}} > 0$.
 >
 > 4. **Encadrement Universel Invariant de Szegő :**  
->    $$\huge \displaystyle 0 < \mathbf{massSq}(4) \le \mathbf{massSq}(d) < \frac{\pi^2}{3} - 3 \approx 0.289868$$  
+>    <div align="center"><img src="docs/assets/eq/eq21.png" alt="Équation 21" width="900"></div>
 >    La suite $massSq(d)$ est uniformément bornée par $\pi^2/3 - 3 \approx 0.289868$ lorsque $d \to \infty$, excluant tout effondrement ultraviolet ou divergence du spectre.
 
 ```lean
@@ -199,9 +199,9 @@ theorem massive_four_le
 >    La décomposition par chirurgie $\mathbb{R}^3 \times S^1$ n'introduit **aucune dimension spatiale exotique supplémentaire** (de type Kaluza–Klein). Elle correspond rigoureusement à l'espace-temps standard de Minkowski $(3+1)$ après rotation de Wick ($t \to -i\tau$) sous le formalisme axiomatique d'Osterwalder–Schrader :
 >    - La base $\mathbb{R}^3$ (ou réseau discret 3D) héberge les degrés de liberté spatiaux de Yang–Mills ($d_{\mathrm{espace}} = 3$, $8$ octants, autorisant la saturation luminale $C_N = 1$ pour les photons et fermions de Weyl).
 >    - La fibre fermée $S^1$ est **l'axe du temps euclidien compactifié** de pas fini $a$ ou de période thermique $\beta$, le long duquel opère le semi-groupe de la matrice de transfert :
->      $$\mathbb{T} = e^{-a \hat{H}_{\mathrm{KS}}}$$
+>    <div align="center"><img src="docs/assets/eq/eq22.png" alt="Équation 22" width="900"></div>
 >    - Le défaut de Gram transversal $\mathbf{massSq}(4) > 0$ le long de la fibre temporelle est **exactement le saut d'énergie minimal** entre le fondamental invariant et le premier état excité :
->      $$\Delta_{\mathrm{total}} = E_1 - E_0 = -\frac{1}{a}\ln\left(\frac{m_1}{m_0}\right) > 0$$
+>    <div align="center"><img src="docs/assets/eq/eq23.png" alt="Équation 23" width="900"></div>
 >    *Fibrer le temps réconcilie la pureté combinatoire discrète avec l'exigence du continu infini imposée par Jaffe et Witten, fermant définitivement la question sans introduire de dimensions spectrales fantômes.*
 
 ---
@@ -216,12 +216,12 @@ theorem massive_four_le
 >
 > Toute la physique de l'interaction forte, de la masse de jauge et de la gravitation s'exprime dans la pureté géométrique d'une action unique sans constante ad hoc :
 >
-> $$\huge \displaystyle \mathbf{\mathcal{L}_{\mathrm{Total}} = -\frac{1}{4}\mathrm{Tr}\left(F_{\mu\nu}F^{\mu\nu}\right) \;+\; \bar{\psi}\left(i\gamma^\mu D_\mu - \Lambda_{\mathrm{YM}}\sqrt{C_{d+1}^2 - 1}\right)\psi \;+\; \frac{M_P^2}{16\pi} R}$$
+>    <div align="center"><img src="docs/assets/eq/eq24.png" alt="Équation 24" width="900"></div>
 >
 > 1. **Courbure de Jauge Interne :** $-\frac{1}{4}\mathrm{Tr}(F^2)$ gouverne la dynamique non-abélienne $SU(N)$ sur la base $\mathbb{R}^3$.
 > 2. **Courbure du Temps Quantique (Masse du Défaut) :** $\Lambda_{\mathrm{YM}}\sqrt{C_{d+1}^2 - 1}$ est le **coût énergétique irréductible** requis pour propager l'état le long de la fibre temporelle euclidienne $S^1_\tau$ ($d \ge 4 \implies 0 < C_{d+1}^2 - 1 < \frac{\pi^2}{3} - 3$).
 > 3. **Courbure de l'Espace-Temps :** $\frac{M_P^2}{16\pi} R$ ancre la géométrie métrique avec $M_P^2 = \hbar c / G$, fixant directement le couplage gravitationnel sans dimension :
->    $$\mathbf{\alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot \left(C_{d+1}^2 - 1\right)}{M_P^2} \approx 10^{-38}}$$
+>    <div align="center"><img src="docs/assets/eq/eq25.png" alt="Équation 25" width="900"></div>
 
 ---
 
