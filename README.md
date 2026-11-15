@@ -42,13 +42,13 @@
 
 ---
 
-## 🏛️ Fascicule des Résultats : Architecture Bourbaki en 8 Étapes Constructives
+## 🏛️ Fascicule des Résultats : Architecture en 8 Étapes Constructives
 
 L'ensemble du traité est établi suivant les principes de déduction stricte : les espaces continus sont construits à partir d'approximations finies régulières, sans recours à l'infini actuel non borné. Toutes les constantes sont exprimées en notation latine intrinsèque.
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pipeline_etapes_bourbaki.png" alt="L'Échelle Déductive du Traité — Architecture en 8 Étapes Constructives" width="960">
+<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pipeline_etapes_deductives.png" alt="L'Échelle Déductive du Traité — Architecture en 8 Étapes Constructives" width="960">
 
 </div>
 
@@ -57,9 +57,17 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 ### 📐 Étape 1 : Loi d'Aire Uniforme sur le Réseau Tridimensionnel
 > **Proposition 1.1 (Majoration combinatoire uniforme).** Sur le réseau cubique à degré d'adjacence $Degree = 12$ et germes de périmètre $|\mathrm{Seeds}| \le 8(R + T)$ pour toute boucle de Wilson rectangulaire $W(R \times T)$ :
 
-$$\huge \displaystyle \langle W(R \times T) \rangle \le \left(\frac{\tanh b}{t'}\right)^{R \cdot T} (1 + a)^{8(R + T)}$$
+<div align="center">
 
-$$\huge \displaystyle \mathrm{Tension}(b) := -\lim_{R, T \to \infty} \frac{1}{R \cdot T} \ln \langle W(R \times T) \rangle \ge \ln\left(\frac{t'}{\tanh b}\right) > 0$$
+<img src="docs/assets/eq/eq01.png" alt="Équation 1" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq02.png" alt="Équation 2" width="960">
+
+</div>
 
 *Modules formels :* [`CubeAreaLaw.lean`](src/CubeAreaLaw.lean) (`cube_wilson_area_law`), [`AreaLawBound.lean`](src/AreaLawBound.lean) (`area_law_uniform`), [`AdjDegree.lean`](src/AdjDegree.lean) (`adj_degree_le_twelve`).
 
@@ -68,9 +76,17 @@ $$\huge \displaystyle \mathrm{Tension}(b) := -\lim_{R, T \to \infty} \frac{1}{R 
 ### ⚡ Étape 2 : Matrice de Transfert et Lemme de Puissance Inverse
 > **Lemme 2.1 (Décroissance spectrale du semi-groupe).** La décroissance euclidienne temporelle de la matrice de transfert $T = e^{-a H}$ contraint le quotient des deux plus grandes valeurs propres réelles :
 
-$$\huge \displaystyle \forall k \in \mathbb{N}, \quad \left(\frac{m_1}{m_0}\right)^k \le \frac{C}{|c_1|^2} \left(e^{-s \cdot R}\right)^k \implies \frac{m_1}{m_0} \le e^{-s \cdot R} < 1$$
+<div align="center">
 
-$$\huge \displaystyle Gap_{\mathrm{glue}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\frac{m_1}{m_0}\right) \ge \frac{s \cdot R}{a} > 0$$
+<img src="docs/assets/eq/eq03.png" alt="Équation 3" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq04.png" alt="Équation 4" width="960">
+
+</div>
 
 *Modules formels :* [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`eigenvalue_le_of_pow_bound`), [`Z2Final.lean`](src/Z2Final.lean) (`z2_gap_twelve`), [`Z2Hj.lean`](src/Z2Hj.lean) (`z2_gap_free`, `exists_excited`).
 
@@ -79,9 +95,17 @@ $$\huge \displaystyle Gap_{\mathrm{glue}} = E_1 - E_0 = -\frac{1}{a} \ln\left(\f
 ### 🛡️ Étape 3 : Chirurgie Topologique de Perelman et Défaut $5/4$ sur $R^3 \times S^1$
 > **Proposition 3.1 (Torsion symplectique et blindage transverse).** Sur la variété décomposée $M_4 = R^3 \times S^1$, l'inégalité de Robertson–Schrödinger pour les matrices de covariance $Cov$ et symplectique $Symp$ impose une rupture stricte de saturation :
 
-$$\huge \displaystyle \frac{\det Cov}{|\det Symp|} = 1 + massSq(4) = 1 + \frac{1}{4} = \frac{5}{4} > 1$$
+<div align="center">
 
-$$\huge \displaystyle [ A[U], \, M_w ]_+ = 0 \implies \|(A[U] + M_w) v\|^2 \ge \left(\frac{1}{2a}\right)^2 \|v\|^2 \implies \sqrt{floor} \ge \frac{1}{2a} > 0$$
+<img src="docs/assets/eq/eq05.png" alt="Équation 5" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq06.png" alt="Équation 6" width="960">
+
+</div>
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massFn_floor_pos`), [`FibreBand.lean`](src/FibreBand.lean) (`surplus_ge_massSq`), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D55_SaturatingRegion.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D55_SaturatingRegion.lean) (`defectGram_eq_zero_iff_le_three`, prouvant la saturation exacte à défaut nul en $d \le 3$).
@@ -204,9 +228,17 @@ theorem massive_four_le
 ### 🔬 Étape 4 : Opérateur de Dirac–Kähler / Hodge–de Rham pour Bosons de Jauge
 > **Proposition 4.1 (Algèbre de Clifford sur l'espace des formes).** Sur l'algèbre extérieure des gluons $\mathrm{Forms}(M)$, l'opérateur de Dirac-Hodge satisfait l'anticommutation chirale :
 
-$$\huge \displaystyle D_A = d_A + d_A^{\dagger}, \qquad (D_A)^2 = \Delta_{\mathrm{Hodge}} = d_A d_A^{\dagger} + d_A^{\dagger} d_A$$
+<div align="center">
 
-$$\huge \displaystyle [ D_{\mathbb{R}^3}, \, D_{S^1} ]_+ = 0 \implies \langle w, \, \Delta_{\mathrm{Hodge}} \, w \rangle \ge \left(\frac{2}{\pi} \frac{holGap(u)}{L}\right)^2 \|w\|^2 > 0$$
+<img src="docs/assets/eq/eq07.png" alt="Équation 7" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq08.png" alt="Équation 8" width="960">
+
+</div>
 
 *Modules formels :* [`DiracGapGaugeInvariant.lean`](https://github.com/naype888-cloud/nrs3-hopf/blob/main/NRS3Hopf/DiracGapGaugeInvariant.lean), [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean).
 
@@ -215,9 +247,17 @@ $$\huge \displaystyle [ D_{\mathbb{R}^3}, \, D_{S^1} ]_+ = 0 \implies \langle w,
 ### 📈 Étape 5 : Limite Asymptotique de Szegő et Monotonie Stricte ($d \to \infty$)
 > **Proposition 5.1 (Absence d'effondrement gaussien).** La suite des constantes de cohérence $C_N(d)^2 - 1$ est strictement croissante pour $d \ge 4$ et converge vers la borne analytique de Szegő :
 
-$$\huge \displaystyle massSq(4) \le massSq(d) < \frac{\pi^2}{3} - 3$$
+<div align="center">
 
-$$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 \approx 0.289868 > 0$$
+<img src="docs/assets/eq/eq09.png" alt="Équation 9" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq10.png" alt="Équation 10" width="960">
+
+</div>
 
 *Modules formels :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`), [`FibreBand.lean`](src/FibreBand.lean).  
 *Corpus $NRS^3$ associé (accès direct au code source) :* [`D56_MassNecessaryConditions.lean`](https://github.com/naype888-cloud/nava-robertson-schrodinger/blob/main/NavaRobertsonIndependent/Mathematics/D56_MassNecessaryConditions.lean) (`massSq_band_of_massNecessary`).
@@ -227,11 +267,23 @@ $$\huge \displaystyle \lim_{d \to \infty} massSq(d) = \frac{\pi^2}{3} - 3 \appro
 ### 🌐 Étape 6 : Clôture Continue de Wightman et Infimum de Clay ($R^4$)
 > **Théorème 6.1 (Décompactification et persistance du gap).** Dans la limite de grand volume $L \to \infty$, la condensation des monopôles BPS et calorons de Kraan–van Baal préserve l'infimum spectral non nul :
 
-$$\huge \displaystyle Gap_{\mathrm{total}} = \min\left(Gap_{\mathrm{glue}}, \, \sqrt{floor}\right) \ge c_{\mathrm{tension}} \cdot Scale_{\mathrm{YM}} > 0$$
+<div align="center">
 
-$$\huge \displaystyle \lim_{L \to \infty} Gap_{\mathrm{total}} = Gap_{\mathrm{glue}} = c_{\mathrm{tension}} \cdot Scale_{\mathrm{YM}} \approx 1.5\text{--}1.7\text{ GeV} > 0$$
+<img src="docs/assets/eq/eq11.png" alt="Équation 11" width="960">
 
-$$\Huge \displaystyle \inf \left( \mathrm{spec}(H_{\mathrm{cont}}) \setminus \{ 0 \} \right) \ge Gap_{\mathrm{total}} > 0$$
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq12.png" alt="Équation 12" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq13.png" alt="Équation 13" width="960">
+
+</div>
 
 *Modules formels :* [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`), Reconstruction d'Osterwalder–Schrader $\to$ Wightman.
 
@@ -240,14 +292,23 @@ $$\Huge \displaystyle \inf \left( \mathrm{spec}(H_{\mathrm{cont}}) \setminus \{ 
 ### 🏛️ Étape 7 : Pont Hamiltonien Maître et Unification Kogut–Susskind (Wightman QFT)
 > **Théorème 7.1 (Annulation de la mesure spectrale sur la coquille de masse).** Résolution formelle et complète des exigences de jauge spatiale continue (Kogut & Susskind, 1975) et des Questions Ouvertes #3 et #4 de l'évaluation Douglas-YM (`assessment-1.pdf`) sur `PublicTheory.lean` :
 
-$$\huge \displaystyle \mathrm{spec}(H) \setminus \{ 0 \} \subseteq [Gap_{\mathrm{total}}, \infty), \qquad Gap_{\mathrm{total}} > 0$$
+<div align="center">
 
-$$\huge \displaystyle E_{NRS^3}\left( \{ p \in \overline{V_+} \mid 0 < p_0 < Gap_{\mathrm{total}} \} \right) = 0$$
+<img src="docs/assets/eq/eq14.png" alt="Équation 14" width="960">
 
-$$\huge \displaystyle \begin{aligned}
-Gap_{\mathrm{total}} = \min\Big( & Scale_E - Scale_B \cdot 2N \cdot |\mathrm{Plaquettes}|, \\
-& Gap_{\mathrm{cube}}, \; \sqrt{\min\left(\frac{1}{4}, \frac{massSq(4)}{L^2}\right)} \Big) > 0
-\end{aligned}$$
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq15.png" alt="Équation 15" width="960">
+
+</div>
+
+<div align="center">
+
+<img src="docs/assets/eq/eq16.png" alt="Équation 16" width="960">
+
+</div>
 
 La mesure spectrale concrète déduite du réseau cubique 3D tight-binding $NRS^3$ ([PR #1689](https://github.com/leanprover-community/physlib/pull/1689), [PR #1725](https://github.com/leanprover-community/physlib/pull/1725), [PR #1756](https://github.com/leanprover-community/physlib/pull/1756)), le plancher électrique de Kogut–Susskind respectant la loi de Gauss $[H_{KS}, Gauss_x] = 0$, et le plancher chirurgical de Perelman en $d \ge 4$ annulent identiquement toute projection spectrale intermédiaire **sans aucun paramètre hypothétique libre**.
 
@@ -262,7 +323,11 @@ Sous l'échelle de confinement de jauge $\Lambda_{\mathrm{YM}} > 0$ et la masse 
 
 <div align="center">
 
-$$\huge \displaystyle \mathbf{\alpha_G \equiv \frac{G m^2}{\hbar c} = \frac{m^2}{M_P^2} = \frac{\Lambda_{\mathrm{YM}}^2 \cdot \left(C_N(d)^2 - 1\right)}{M_P^2}}$$
+<div align="center">
+
+<img src="docs/assets/eq/eq17.png" alt="Équation 17" width="960">
+
+</div>
 
 </div>
 
