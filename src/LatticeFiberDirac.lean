@@ -124,7 +124,7 @@ theorem colored_state_energy_divergence (sigma : ℝ) (hσ : 0 < sigma) (m0 : �
   obtain ⟨R, hR⟩ := exists_nat_gt ((E_cutoff - m0) / sigma)
   refine ⟨R, ?_⟩
   have h_div : (E_cutoff - m0) / sigma < (R : ℝ) := hR
-  have h_mul : E_cutoff - m0 < sigma * (R : ℝ) := (div_lt_iff₀ hσ).mp h_div
+  have h_mul : E_cutoff - m0 < (R : ℝ) * sigma := (div_lt_iff₀ hσ).mp h_div
   linarith
 
 /-! ## 3. The Non-Vanishing Gluon Condensate Observable -/

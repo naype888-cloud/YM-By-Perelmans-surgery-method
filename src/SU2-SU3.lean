@@ -57,12 +57,12 @@ structure GaugeGroupData (N : ℕ) where
   t : ℝ
   ht_pos : 0 < t
 
-def su2Data (β : ℝ) (hβ : 0 < β) : GaugeGroupData 2 where
+noncomputable def su2Data (β : ℝ) (hβ : 0 < β) : GaugeGroupData 2 where
   hN := le_refl 2
   t := β / 4
   ht_pos := by linarith
 
-def su3Data (β : ℝ) (hβ : 0 < β) : GaugeGroupData 3 where
+noncomputable def su3Data (β : ℝ) (hβ : 0 < β) : GaugeGroupData 3 where
   hN := by norm_num
   t := β / 18
   ht_pos := by linarith

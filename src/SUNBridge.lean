@@ -75,13 +75,13 @@ structure SUNCharacterData (N : ℕ) where
   ht_pos : 0 < t
 
 /-- Concrete $SU(2)$ gauge group instantiation with $t_2(\beta) \approx \beta/4$. -/
-def su2CharacterData (β : ℝ) (hβ : 0 < β) : SUNCharacterData 2 where
+noncomputable def su2CharacterData (β : ℝ) (hβ : 0 < β) : SUNCharacterData 2 where
   hN := le_refl 2
   t := β / 4
   ht_pos := by linarith
 
 /-- Concrete $SU(3)$ gauge group instantiation with $t_3(\beta) \approx \beta/18$. -/
-def su3CharacterData (β : ℝ) (hβ : 0 < β) : SUNCharacterData 3 where
+noncomputable def su3CharacterData (β : ℝ) (hβ : 0 < β) : SUNCharacterData 3 where
   hN := by norm_num
   t := β / 18
   ht_pos := by linarith
@@ -170,7 +170,7 @@ theorem sun_wightman_mass_gap_bridge {N : ℕ} (data : SUNCharacterData N)
     HasSpectralMassGap (nrs3SpectralMeasure L (sunStringTension data t') R proj)
       (sunTotalPhysicalGap data t' L R) := by
   have h_gap_eq : sunTotalPhysicalGap data t' L R =
-      totalPhysicalGap L (sunStringTension data t') R := rfl
+      HamiltonianBridge.totalPhysicalGap L (sunStringTension data t') R := rfl
   rw [h_gap_eq]
   have hσ : 0 < sunStringTension data t' := sun_stringTension_pos data htt'
   exact wightman_hamiltonian_mass_gap_bridge L (sunStringTension data t') hL hσ R hR proj
@@ -182,7 +182,7 @@ theorem su2_wightman_mass_gap_bridge
     (proj : { s : Set Spacetime // s ⊆ nrs3PhysicalSpectrum L (sunStringTension (su2CharacterData β hβ) t') R } → (H →L[ℂ] H)) :
     HasSpectralMassGap (nrs3SpectralMeasure L (sunStringTension (su2CharacterData β hβ) t') R proj)
       (sunTotalPhysicalGap (su2CharacterData β hβ) t' L R) :=
-  sun_wightman_mass_gap_bridge (su2CharacterData β hβ) t' L htt' hL hR proj
+  sun_wightman_mass_gap_bridge (su2CharacterData β hβ) t' L htt' hL R hR proj
 
 /-- Explicit closure for $SU(3)$ Yang–Mills theory in 4D continuous Minkowski spacetime. -/
 theorem su3_wightman_mass_gap_bridge
@@ -191,7 +191,7 @@ theorem su3_wightman_mass_gap_bridge
     (proj : { s : Set Spacetime // s ⊆ nrs3PhysicalSpectrum L (sunStringTension (su3CharacterData β hβ) t') R } → (H →L[ℂ] H)) :
     HasSpectralMassGap (nrs3SpectralMeasure L (sunStringTension (su3CharacterData β hβ) t') R proj)
       (sunTotalPhysicalGap (su3CharacterData β hβ) t' L R) :=
-  sun_wightman_mass_gap_bridge (su3CharacterData β hβ) t' L htt' hL hR proj
+  sun_wightman_mass_gap_bridge (su3CharacterData β hβ) t' L htt' hL R hR proj
 
 /-- **Exact formal statement of the Clay Millennium Wightman Mass Gap for $SU(N)$**:
 `∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/

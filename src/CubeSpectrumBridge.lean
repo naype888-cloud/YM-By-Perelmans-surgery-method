@@ -53,12 +53,13 @@ theorem cubeExcitedEnergy_eq (E0 t : ℝ) (d : ℕ) :
   ring
 
 /-- The angle $\theta_0 = \pi / (d+1)$ lies in $(0, \pi)$. -/
-lemma cubeAngle_zero_mem (d : ℕ) : 0 < cubeAngle d 0 ∧ cubeAngle d 0 < Real.pi := by
+lemma cubeAngle_zero_mem {d : ℕ} (hd : 1 ≤ d) : 0 < cubeAngle d 0 ∧ cubeAngle d 0 < Real.pi := by
   unfold cubeAngle
   simp only [Nat.cast_zero, zero_add, one_mul]
   have hpos : (0 : ℝ) < (d : ℝ) + 1 := by positivity
   refine ⟨div_pos Real.pi_pos hpos, ?_⟩
   rw [div_lt_iff₀ hpos]
+  have hd' : (1 : ℝ) ≤ (d : ℝ) := by exact_mod_cast hd
   have : Real.pi * 1 < Real.pi * ((d : ℝ) + 1) := by
     nlinarith [Real.pi_pos]
   linarith
@@ -69,8 +70,7 @@ lemma cubeAngle_zero_lt_one (d : ℕ) : cubeAngle d 0 < cubeAngle d 1 := by
   have hpos : (0 : ℝ) < (d : ℝ) + 1 := by positivity
   rw [div_lt_div_iff_of_pos_right hpos]
   simp only [Nat.cast_zero, zero_add, one_mul, Nat.cast_one]
-  have : (1 : ℝ) * Real.pi < 2 * Real.pi := by nlinarith [Real.pi_pos]
-  exact this
+  nlinarith [Real.pi_pos]
 
 /-- The angle $\theta_1 = 2\pi / (d+1)$ lies in $(0, \pi]$ for all $d \ge 1$. -/
 lemma cubeAngle_one_le_pi {d : ℕ} (hd : 1 ≤ d) : cubeAngle d 1 ≤ Real.pi := by
@@ -85,7 +85,7 @@ lemma cubeAngle_one_le_pi {d : ℕ} (hd : 1 ≤ d) : cubeAngle d 1 ≤ Real.pi :
 /-- Cosine is strictly decreasing on $[0, \pi]$, hence $\cos(\theta_0) > \cos(\theta_1)$. -/
 lemma cos_cubeAngle_zero_gt_one {d : ℕ} (hd : 1 ≤ d) :
     Real.cos (cubeAngle d 1) < Real.cos (cubeAngle d 0) := by
-  have h0 := cubeAngle_zero_mem d
+  have h0 := cubeAngle_zero_mem hd
   have h0_ge : 0 ≤ cubeAngle d 0 := le_of_lt h0.1
   have h1_le : cubeAngle d 1 ≤ Real.pi := cubeAngle_one_le_pi hd
   have h_lt : cubeAngle d 0 < cubeAngle d 1 := cubeAngle_zero_lt_one d
@@ -124,7 +124,7 @@ lemma cubeAngle_le_pi {d : ℕ} {k : ℕ} (hk : k < d) :
 
 lemma cos_cubeAngle_le_cos_zero {d : ℕ} {k : ℕ} (hk : k < d) :
     Real.cos (cubeAngle d k) ≤ Real.cos (cubeAngle d 0) := by
-  have h0 := cubeAngle_zero_mem d
+  have h0 := cubeAngle_zero_mem (lt_of_le_of_lt (Nat.zero_le k) hk)
   have h0_ge : 0 ≤ cubeAngle d 0 := le_of_lt h0.1
   have hk_le : cubeAngle d k ≤ Real.pi := cubeAngle_le_pi hk
   have h_le : cubeAngle d 0 ≤ cubeAngle d k := cubeAngle_le_of_le d (Nat.zero_le k)
@@ -132,7 +132,7 @@ lemma cos_cubeAngle_le_cos_zero {d : ℕ} {k : ℕ} (hk : k < d) :
 
 lemma cos_cubeAngle_le_cos_one {d : ℕ} {k : ℕ} (h1 : 1 ≤ k) (hk : k < d) :
     Real.cos (cubeAngle d k) ≤ Real.cos (cubeAngle d 1) := by
-  have h0 := cubeAngle_zero_mem d
+  have h0 := cubeAngle_zero_mem (lt_of_le_of_lt (Nat.zero_le k) hk)
   have h1_ge : 0 ≤ cubeAngle d 1 := by
     have := cubeAngle_zero_lt_one d
     linarith [h0.1]
@@ -190,7 +190,7 @@ theorem no_eigenvalue_in_cube_gap {E0 t : ℝ} (ht : 0 < t) {d : ℕ} (hd : 1 �
     rw [heq] at h_gt
     exact lt_irrefl _ h_gt
   · rw [← cubeExcitedEnergy_eq] at h_lt
-    have h_le := cubeModeEnergy_ge_excited ht hd a b c ha hb hc h0
+    have h_le := cubeModeEnergy_ge_excited (E0 := E0) ht hd a b c ha hb hc h0
     exact not_lt_of_ge h_le h_lt
 
 end CubeSpectrum

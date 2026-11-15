@@ -68,8 +68,7 @@ theorem transverse_floor_eq_lambda_sq (dt : DimensionalTransmutation) :
     HamiltonianBridge.massSq 4 * dt.Lambda^2 := by
   unfold confinementScale
   have h_sq : (1 / dt.Lambda)^2 = 1 / dt.Lambda^2 := by ring
-  rw [h_sq, div_div_eq_mul_div, mul_one]
-  ring
+  rw [h_sq, div_div_eq_mul_div, div_one]
 
 /-! ## 2. Derivation of the Gap from a Transfer Operator and Area Law Decay -/
 
@@ -89,7 +88,7 @@ structure LatticeGaugeTransfer (n : ℕ) where
   j : Fin n
   hj_coeff : coeff hT j ψR ≠ 0
   hμj_pos : 0 < hT.eigenvalues j
-  t t' a C : ℝ
+  (t t' a C : ℝ)
   ht : 0 < t
   htt' : t < t'
   ha : 0 ≤ a
@@ -113,14 +112,14 @@ theorem derived_transfer_gap {n : ℕ} (gauge : LatticeGaugeTransfer n) :
 /-- The total physical mass gap evaluated at the physical confinement scale $L_0 = 1/\Lambda_{\mathrm{YM}}$:
 $$\Delta_{\mathrm{phys}}(\Lambda_{\mathrm{YM}}, \sigma, R) = \min(\sigma R, \sqrt{\min(1/4, \Lambda_{\mathrm{YM}}^2 \cdot \mathrm{massSq}(4))})$$ -/
 noncomputable def physicalMassGapAtL0 (dt : DimensionalTransmutation) (σ : ℝ) (R : ℕ) : ℝ :=
-  min (glueballGap σ R) (transverseConfinementFloor dt)
+  min (HamiltonianBridge.glueballGap σ R) (transverseConfinementFloor dt)
 
 /-- **Master Theorem: Strict positivity of the mass gap at the physical confinement scale $L_0$**.
 Proves that at the physical scale $L_0$, the gap is unconditionally strictly positive. -/
 theorem physicalMassGapAtL0_pos (dt : DimensionalTransmutation) (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R) :
     0 < physicalMassGapAtL0 dt σ R := by
   unfold physicalMassGapAtL0
-  refine lt_min (glueballGap_pos hσ hR) (transverseConfinementFloor_pos dt)
+  refine lt_min (HamiltonianBridge.glueballGap_pos hσ hR) (transverseConfinementFloor_pos dt)
 
 /-- **Stability in the Infinite Spatial Volume Limit ($V_3 \to \infty$)**:
 Because $\Lambda_{\mathrm{YM}}$ is an invariant of the renormalization group,
@@ -145,7 +144,7 @@ theorem wightman_mass_gap_at_confinement_scale
     HasSpectralMassGap (nrs3SpectralMeasure (confinementScale dt) σ R proj)
       (physicalMassGapAtL0 dt σ R) := by
   have h_eq : physicalMassGapAtL0 dt σ R =
-      totalPhysicalGap (confinementScale dt) σ R := rfl
+      HamiltonianBridge.totalPhysicalGap (confinementScale dt) σ R := rfl
   rw [h_eq]
   exact wightman_hamiltonian_mass_gap_bridge (confinementScale dt) σ
     (confinementScale_pos dt) hσ R hR proj
