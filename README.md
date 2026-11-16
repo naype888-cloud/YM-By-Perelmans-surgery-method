@@ -31,14 +31,14 @@
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
 >
-> * **1. Formalisme Hamiltonien de Kogut–Susskind :**  
->   Invariance de jauge exacte $[H_{\mathrm{KS}}, \mathrm{Gauss}_x] = 0$. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
+> * **$\color{#61AFEF}\mathbf{1 \cdot \text{Formalisme Hamiltonien de Kogut–Susskind :}}$**  
+>   Invariance de jauge exacte $[H_{\mathrm{KS}}, \mathrm{Gauss}_x] = 0$. Le plancher spectral électrique $\textcolor{#61AFEF}{\Delta_{\mathrm{KS}} = \lambda_E - 2N|\mathrm{Plq}|\lambda_B > 0}$ des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
 >
-> * **2. Coût Énergétique du Temps Quantique & Limite de Szegő ($d \ge 4$) :**  
->   La théorie n'a plus besoin de l'échafaudage de chirurgie topologique : le mass gap découle directement du défaut de Robertson–Schrödinger / Mandelstam–Tamm certifié dans `D8_Szego.lean` (approuvé par Joseph dans Physlib). En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le défaut $C_N(d)^2 - 1 = C_M(d) > 0$ est strictement croissant vers la borne de Szegő $\pi^2/3 - 3$, constituant le coût énergétique irréductible de l'évolution temporelle quantique.
+> * **$\color{#D19A66}\mathbf{2 \cdot \text{Coût Énergétique du Temps Quantique \& Limite de Szegő }(d \ge 4)\text{ :}}$**  
+>   La théorie n'a plus besoin de l'échafaudage de chirurgie topologique : le mass gap découle directement du défaut de Robertson–Schrödinger / Mandelstam–Tamm certifié dans `D8_Szego.lean` (approuvé par Joseph dans Physlib). En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le défaut $\textcolor{#D19A66}{C_N(d)^2 - 1 = C_M(d) > 0}$ est strictement croissant vers la borne de Szegő $\pi^2/3 - 3$, constituant le coût énergétique irréductible de l'évolution temporelle quantique.
 >
-> * **3. Annulation Spectrale de Wightman ($\mathbb{R}^4$) :**  
->   Décompactification continue $L \to \infty$. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille $[0, Gap_{\mathrm{total}})$, établissant rigoureusement l'existence d'un état fondamental unique et d'un gap de masse isolé.
+> * **$\color{#98C379}\mathbf{3 \cdot \text{Annulation Spectrale de Wightman }(\mathbb{R}^4)\text{ :}}$**  
+>   Décompactification continue $L \to \infty$. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille $\textcolor{#98C379}{[0, Gap_{\mathrm{total}})}$, $\textcolor{#E5C07B}{E(\{p \in \overline{V_+} \mid 0 < p_0 < \Delta\}) = 0}$, établissant rigoureusement l'existence d'un état fondamental unique et d'un gap de masse isolé.
 
 ---
 
