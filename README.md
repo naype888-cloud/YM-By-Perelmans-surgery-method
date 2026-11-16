@@ -7,7 +7,7 @@
 **Eduardo Nava-Hernández & José Arturo Nava-Hernández**  
 *Architecture Formelle Certifiée en Lean 4 (`f01cbfb` · D8_Szego approuvé dans Physlib)*
 
-[![Lean 4](https://img.shields.io/badge/Lean_4-v4.33.0-blue.svg?style=flat-square)](https://leanprover.github.io/)
+[![Lean 4](https://img.shields.io/badge/Lean_4-v4.35.0-blue.svg?style=flat-square)](https://leanprover.github.io/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-verified-2ea44f.svg?style=flat-square)](https://github.com/leanprover-community/mathlib4)
 [![Kernel Status](https://img.shields.io/badge/Kernel-0%20sorry%20%7C%20152%20Declarations%20Certified-brightgreen.svg?style=flat-square)]()
 [![Physlib](https://img.shields.io/badge/Physlib-50%20PRs%20Merged-brightgreen.svg?style=flat-square)](https://github.com/leanprover-community/physlib)
