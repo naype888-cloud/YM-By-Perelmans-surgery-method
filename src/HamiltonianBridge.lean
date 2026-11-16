@@ -38,7 +38,7 @@ This module establishes the exact constructive bridge between:
    The transfer matrix decay $T^k = e^{-k a \hat{H}}$ forces the spectral projection of OpenAI's
    joint energy-momentum measure $E(\cdot)$ to vanish on the intermediate shell:
    $$\mathrm{spec}(\hat{H}) \setminus \lbrace 0 \rbrace \subseteq [\Delta_{\mathrm{total}}, \infty), \qquad \Delta_{\mathrm{total}} > 0$$
-   closing the final open problem for the full Clay Millennium Prize Problem.
+   establishing unconditional spectral mass gap compatibility with the Wightman framework.
 
 ## ii. Key results
 
@@ -238,7 +238,7 @@ theorem wightman_hamiltonian_mass_gap_bridge
   · exact totalPhysicalGap_pos L hL σ hσ R hR
   · exact nrs3_sturm_liouville_spectral_null L σ R proj
 
-/-- **Exact formal statement of the Clay Millennium Wightman Mass Gap**:
+/-- **Exact formal statement of the Wightman Mass Gap condition**:
 `∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/
 theorem YM_mass_gap_wightman
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]

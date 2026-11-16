@@ -10,7 +10,7 @@ import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Topology.MetricSpace.Basic
 
 /-!
-# Master Kogut–Susskind ↔ NRS³ ↔ Clay Millennium Hamiltonian Bridge
+# Master Kogut–Susskind ↔ NRS³ ↔ Wightman Spectral Mass Gap Bridge
 
 ## i. Overview
 
@@ -35,7 +35,7 @@ This module establishes the comprehensive constructive bridge between:
      for any gauge configuration $U$.
    - Transverse floor: $\|(A[U] + M_w)\chi\|^2 \ge (1/4)\|\chi\|^2$.
 
-4. **The Clay Millennium Mass Gap Problem (Wightman QFT)**:
+4. **The Wightman Mass Gap Condition (Wightman QFT)**:
    - Continuous relativistic Hamiltonian $\hat{H} = P^0 \ge 0$ (Wightman axioms W0–W3).
    - Osterwalder–Schrader transfer matrix correspondence: $T^k = e^{-k a \hat{H}}$.
    - Unified mass gap:
@@ -43,7 +43,7 @@ This module establishes the comprehensive constructive bridge between:
    - Spectral gap shell: $\{p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}}\}$.
    - The spectral measure $\mathcal{E}$ vanishes identically on the gap shell:
      $$\mathrm{spec}(\hat{H}) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}, \infty)$$
-     closing the final open problem for the Clay Millennium Prize.
+     establishing the spectral gap condition for the coupled Wightman framework.
 
 ## ii. Key results
 
@@ -235,15 +235,15 @@ theorem coupled_spectral_null_on_gap_shell {H : Type*} [NormedAddCommGroup H] [I
   split_ifs
   rfl
 
-/-! ## 7. Master Theorem: The Unified Kogut–Susskind ↔ NRS³ ↔ Clay Bridge -/
+/-! ## 7. Master Theorem: The Unified Kogut–Susskind ↔ NRS³ ↔ Wightman Bridge -/
 
-/-- **Master Kogut–Susskind ↔ NRS³ ↔ Clay Millennium Bridge Theorem (Unconditional)**:
+/-- **Master Kogut–Susskind ↔ NRS³ ↔ Wightman Bridge Theorem (Unconditional)**:
 The continuous relativistic Wightman Hamiltonian generator $\hat{H} = P^0$
 coupled to the Kogut–Susskind lattice gauge theory and the NRS³ spatial tight-binding
 cube possesses a strictly positive spectral mass gap $\Delta_{\mathrm{total}} > 0$.
 The spectral projection on the gap shell $\{p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}}\}$
-vanishes identically with no external hypothesis, resolving Question 3 of the
-Yang–Mills Group assessment and closing the Clay Millennium Prize Problem. -/
+vanishes identically with no external hypothesis for any spectral measure supported on
+the coupled physical spectrum, establishing compatibility with the Wightman mass gap condition. -/
 theorem kogut_susskind_clay_master_bridge
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
     (ks : KogutSusskindParams) (L : ℝ) (hL : 0 < L) (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R)
@@ -253,7 +253,7 @@ theorem kogut_susskind_clay_master_bridge
   · exact totalUnifiedGap_pos ks L hL σ hσ R hR
   · exact coupled_spectral_null_on_gap_shell ks L σ R proj
 
-/-- **Exact formal statement of the Clay Millennium Wightman Mass Gap**:
+/-- **Exact formal statement of the Wightman Mass Gap condition**:
 `∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/
 theorem YM_mass_gap_wightman
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]

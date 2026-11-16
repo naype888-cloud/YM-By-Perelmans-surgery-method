@@ -58,7 +58,7 @@ This module establishes the exact formal bridge resolving the critique:
 3. **Unconditional Hamiltonian Mass Gap Closure**:
    The unified physical gap $\Delta_{\mathrm{total}}(SU(N)) > 0$ isolates the spectrum:
    $$\mathrm{spec}(\hat{H}_{SU(N)}) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}(SU(N)), \infty)$$
-   closing the Clay Millennium Problem for $SU(2)$ and $SU(3)$.
+   establishing the spectral gap condition for $SU(2)$ and $SU(3)$ gauge theories.
 -/
 
 namespace SUNBridge
@@ -193,7 +193,7 @@ theorem su3_wightman_mass_gap_bridge
       (sunTotalPhysicalGap (su3CharacterData β hβ) t' L R) :=
   sun_wightman_mass_gap_bridge (su3CharacterData β hβ) t' L htt' hL R hR proj
 
-/-- **Exact formal statement of the Clay Millennium Wightman Mass Gap for $SU(N)$**:
+/-- **Exact formal statement of the Wightman Mass Gap condition for $SU(N)$**:
 `∃ Δ > 0, E {p | p ∈ forwardCone ∧ 0 < time p ∧ time p < Δ} = 0`. -/
 theorem YM_mass_gap_wightman {N : ℕ} (data : SUNCharacterData N)
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
