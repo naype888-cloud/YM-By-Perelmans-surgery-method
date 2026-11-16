@@ -31,17 +31,17 @@
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
 >
-> * **$\color{#61AFEF}\mathbf{(1)}$ Formalisme Hamiltonien de Kogut–Susskind :**  
->   Invariance de jauge exacte $[H_{\mathrm{KS}}, \mathrm{Gauss}_x] = 0$. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette :
->   $$\textcolor{#61AFEF}{\mathbf{(1)} \quad \Delta_{\mathrm{KS}} = \lambda_E - 2N|\mathrm{Plq}|\lambda_B > 0}$$
+> <div align="center"><img src="docs/assets/triade/pilier_1_kogut_susskind.png" alt="(1) Formalisme Hamiltonien de Kogut–Susskind : Δ_KS = λ_E − 2N|Plq|λ_B > 0" width="900"></div>
 >
-> * **$\color{#D19A66}\mathbf{(2)}$ Coût Énergétique du Temps Quantique et Limite de Szegő ($d \ge 4$) :**  
->   La théorie n'a plus besoin de l'échafaudage de chirurgie topologique : le mass gap découle directement du défaut de Robertson–Schrödinger / Mandelstam–Tamm certifié dans `D8_Szego.lean` (approuvé par Joseph dans Physlib). En $d \le 3$, la boîte saturante annule le défaut ; en $d \ge 4$, le coût énergétique irréductible de l'évolution temporelle quantique est strictement borné par la limite universelle de Szegő :
->   $$\textcolor{#D19A66}{\mathbf{(2)} \quad C_N(d)^2 - 1 = C_M(d) > 0, \qquad \lim_{d \to \infty} C_M(d) = \frac{\pi^2}{3} - 3 \approx 0{,}289868}$$
+> Invariance de jauge exacte [H_KS, Gauss_x] = 0. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
 >
-> * **$\color{#98C379}\mathbf{(3)}$ Annulation Spectrale de Wightman ($\mathbb{R}^4$) :**  
->   Décompactification continue $L \to \infty$. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille intermédiaire, isolant le vide :
->   $$\textcolor{#98C379}{\mathbf{(3)} \quad \mathrm{spec}(H) \setminus \{0\} \subseteq [\Delta_{\mathrm{total}}, \infty)}, \qquad \textcolor{#E5C07B}{E(\{p \in \overline{V_+} \mid 0 < p_0 < \Delta_{\mathrm{total}}\}) = 0}$$
+> <div align="center"><img src="docs/assets/triade/pilier_2_temps_quantique_szego.png" alt="(2) Coût Énergétique du Temps Quantique et Limite de Szegő (d ≥ 4) : C_N(d)² − 1 = C_M(d) > 0, lim C_M(d) = π²/3 − 3 ≈ 0,289868" width="900"></div>
+>
+> La théorie n'a plus besoin de l'échafaudage de chirurgie topologique : le mass gap découle directement du défaut de Robertson–Schrödinger / Mandelstam–Tamm certifié dans `D8_Szego.lean` (approuvé par Joseph dans Physlib). En d ≤ 3, la boîte saturante annule le défaut ; en d ≥ 4, le coût énergétique irréductible de l'évolution temporelle quantique est strictement borné par la limite universelle de Szegő.
+>
+> <div align="center"><img src="docs/assets/triade/pilier_3_wightman.png" alt="(3) Annulation Spectrale de Wightman (ℝ⁴) : spec(H) ∖ {0} ⊆ [Δ_total, ∞), E({p ∈ V̄₊ | 0 < p₀ < Δ_total}) = 0" width="900"></div>
+>
+> Décompactification continue L → ∞. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille intermédiaire, isolant le vide.
 
 ---
 
