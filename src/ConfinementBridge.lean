@@ -52,9 +52,7 @@ noncomputable def transverseConfinementFloor (dt : DimensionalTransmutation) : â
 theorem transverseConfinementFloor_pos (dt : DimensionalTransmutation) :
     0 < transverseConfinementFloor dt := by
   unfold transverseConfinementFloor
-  have h4 : 0 < HamiltonianBridge.massSq 4 := by
-    rw [HamiltonianBridge.massSq_four]
-    norm_num
+  have h4 : 0 < HamiltonianBridge.massSq 4 := FibreSurgery.massSq_pos (le_refl 4)
   have hL0_sq : 0 < (confinementScale dt)^2 := sq_pos_of_pos (confinementScale_pos dt)
   have hdiv : 0 < HamiltonianBridge.massSq 4 / (confinementScale dt)^2 := div_pos h4 hL0_sq
   have hmin : 0 < min (1 / 4) (HamiltonianBridge.massSq 4 / (confinementScale dt)^2) :=

@@ -8,6 +8,9 @@ import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Topology.MetricSpace.Basic
+import SurgeryGapClosure
+import AdjDegree
+import HamiltonianBridge
 
 /-!
 # Master Kogut–Susskind ↔ NRS³ ↔ Wightman Spectral Mass Gap Bridge
@@ -18,7 +21,7 @@ This module establishes the comprehensive constructive bridge between:
 1. **The 3D Spatial NRS³ Tight-Binding / Sturm–Liouville Hamiltonian ($H_{\mathrm{NRS}^3}$)**:
    - Cubic lattice adjacency degree $\Delta \le 12$ (`AdjDegree.lean`, Physlib PR #1987).
    - Analytical 3D cubic box spectral gap $\Delta_{\mathrm{cube}} = 2t(\cos\frac{\pi}{d+1} - \cos\frac{2\pi}{d+1}) > 0$.
-   - Transverse fiber $S^1$ non-saturation defect $\mathrm{massSq}(d) = C_N(d)^2 - 1 \ge \mathrm{massSq}(4) = 1/9 > 0$.
+   - Transverse fiber $S^1$ non-saturation defect $\mathrm{massSq}(d) = C_N(d)^2 - 1 \ge \mathrm{massSq}(4) = (99 - 42\sqrt{5})/5 - 1 > 0$.
    - Robertson–Schrödinger quantum uncertainty ratio $\det \Sigma / |\det \Omega| = 5/4 > 1$,
      preventing Gaussian massless zero-mode collapse.
 
@@ -86,48 +89,22 @@ def HasSpectralMassGap {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ
     (projection : Set Spacetime → (H →L[ℂ] H)) (Δ : ℝ) : Prop :=
   0 < Δ ∧ projection (spectralGapShell Δ) = 0
 
-/-! ## 3. NRS³ 3D Spatial Geometry and Transverse Fiber Defect -/
+/-! ## 3. The fibre defect, from `FibreSurgery`
 
-/-- Adjacency degree of the 3D cubic lattice: $\Delta = 12$. -/
-def cubicAdjacencyDegree : ℕ := 12
+The squared mass of the fibre is the one of the corpus, `FibreSurgery.massSq d = C_N(d)² - 1`
+(`D20_GramStepCoherenceConstant`), with value `(99 - 42 √5) / 5 - 1` at `d = 4`
+(`D8_Szego.CoherenceConstantSq_four_eq`) and minimum on `d ≥ 4` there
+(`FibreSurgery.massSq_floor`). The bound `12` on the adjacency degree of the plaquettes of the box
+is `AreaBound.adj_degree_le_twelve`; it is used in `z2_kogut_susskind_mass_gap_bridge`. -/
 
-theorem cubic_adjacency_le_twelve : cubicAdjacencyDegree ≤ 12 := le_rfl
-
-/-- Squared Gnomon/Szegő coherence constant $C_N(d)^2 = 1 + 1/(d - 1)^2$
-from tridiagonal Sturm–Liouville discretization on $[-1, 1]$. -/
-noncomputable def CoherenceConstantSq (d : ℕ) : ℝ :=
-  1 + 1 / ((d : ℝ) - 1)^2
-
-/-- Transverse fiber mass defect: $\mathrm{massSq}(d) = C_N(d)^2 - 1$. -/
-noncomputable def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
-
-theorem massSq_four : massSq 4 = 1 / 9 := by
-  unfold massSq CoherenceConstantSq
-  ring
-
-theorem massSq_pos (d : ℕ) (hd : 4 ≤ d) : 0 < massSq d := by
-  unfold massSq CoherenceConstantSq
-  have hpos : 0 < ((d : ℝ) - 1)^2 := by
-    have h1 : 1 < (d : ℝ) - 1 := by
-      have h4 : (4 : ℝ) ≤ (d : ℝ) := Nat.cast_le.mpr hd
-      linarith
-    exact sq_pos_of_pos (by linarith)
-  have hdiv : 0 < 1 / ((d : ℝ) - 1)^2 := div_pos one_pos hpos
-  linarith
+export FibreSurgery (massSq massSq_pos massSq_floor massFn_floor_pos)
 
 /-- Transverse fiber floor combining the kinetic ring bound $1/4$ and the non-saturation defect. -/
 noncomputable def transverseFloor (L : ℝ) : ℝ :=
-  Real.sqrt (min (1 / 4) (massSq 4 / L^2))
+  Real.sqrt (min (1 / 4) (massSq 4 / L ^ 2))
 
-theorem transverseFloor_pos (L : ℝ) (hL : 0 < L) : 0 < transverseFloor L := by
-  unfold transverseFloor
-  have h4 : 0 < massSq 4 := by
-    rw [massSq_four]
-    norm_num
-  have hL2 : 0 < L^2 := sq_pos_of_pos hL
-  have hdiv : 0 < massSq 4 / L^2 := div_pos h4 hL2
-  have hmin : 0 < min (1 / 4) (massSq 4 / L^2) := lt_min (by norm_num) hdiv
-  exact Real.sqrt_pos.mpr hmin
+theorem transverseFloor_pos (L : ℝ) (hL : 0 < L) : 0 < transverseFloor L :=
+  Real.sqrt_pos.mpr (FibreSurgery.massFn_floor_pos hL)
 
 /-! ## 4. Kogut–Susskind Lattice Gauge Theory Hamiltonian -/
 
@@ -151,21 +128,11 @@ theorem kogutSusskindGap_pos (ks : KogutSusskindParams) : 0 < kogutSusskindGap k
   unfold kogutSusskindGap
   linarith [ks.h_strong_coupling]
 
-/-! ## 5. Total Unified Physical Mass Gap -/
+/-! ## 5. Total Unified Physical Mass Gap
 
-/-- The physical string tension from 3D Wilson loop area law: $\sigma(t, t') = \ln(t'/t) > 0$. -/
-noncomputable def stringTension (t t' : ℝ) : ℝ := Real.log (t' / t)
+The string tension and the glueball gap are the ones of `SurgeryGapClosure`. -/
 
-theorem stringTension_pos {t t' : ℝ} (ht : 0 < t) (htt' : t < t') : 0 < stringTension t t' := by
-  unfold stringTension
-  have hq : 1 < t' / t := (one_lt_div ht).mpr htt'
-  exact Real.log_pos hq
-
-/-- The glueball spectral gap from Wilson loop temporal decay: $\Delta_{\mathrm{glue}} = \sigma \cdot R$. -/
-noncomputable def glueballGap (σ : ℝ) (R : ℕ) : ℝ := σ * (R : ℝ)
-
-theorem glueballGap_pos {σ : ℝ} {R : ℕ} (hσ : 0 < σ) (hR : 0 < R) : 0 < glueballGap σ R :=
-  mul_pos hσ (Nat.cast_pos.mpr hR)
+export SurgeryGapClosure (stringTension stringTension_pos glueballGap glueballGap_pos)
 
 /-- The Total Unified Physical Mass Gap combining:
 1. The Kogut–Susskind pure gauge gap $\Delta_{\mathrm{KS}} > 0$,
@@ -265,5 +232,42 @@ theorem YM_mass_gap_wightman
 
 #print axioms kogut_susskind_clay_master_bridge
 #print axioms YM_mass_gap_wightman
+
+/-! ## 8. The ℤ₂ instance: the tension is the one of the area law
+
+Here `σ` is not a parameter. It is `log (t' / tanh β)`, the decay rate of the Wilson loop of the
+ℤ₂ gauge theory in the box `A × B × C` proved in `Z2Gauge.cube_wilson_area_law`, with the degree
+condition discharged by `AreaBound.adj_degree_le_twelve`. -/
+
+open Classical AreaBound Z2Gauge in
+/-- **The ℤ₂ Kogut–Susskind bridge.** With `σ = log (t' / tanh β)`: the gap
+`totalUnifiedGap ks L σ R` is positive, the measure `coupledSpectralMeasure` vanishes on the shell
+below it, and the Wilson loop of the flat rectangle `R × T` decays with that same `σ`:
+`⟨W⟩ ≤ exp (-(σ · R T)) · (1 + a) ^ #seeds`. -/
+theorem z2_kogut_susskind_mass_gap_bridge
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    (ks : KogutSusskindParams)
+    (A B C R T : ℕ) (hRA : R ≤ A) (hTB : T ≤ B) (hR : 0 < R) (k₀ : Fin (C + 1))
+    {β t' a L : ℝ} (hβ : 0 < β) (htt' : Real.tanh β < t') (ha : 0 ≤ a)
+    (hta : t' * (1 + a) ^ 12 ≤ a) (hL : 0 < L)
+    (proj : { s : Set Spacetime //
+      s ⊆ coupledPhysicalSpectrum ks L (SurgeryGapClosure.stringTension (Real.tanh β) t') R } →
+        (H →L[ℂ] H)) :
+    HasSpectralMassGap
+        (coupledSpectralMeasure ks L (SurgeryGapClosure.stringTension (Real.tanh β) t') R proj)
+        (totalUnifiedGap ks L (SurgeryGapClosure.stringTension (Real.tanh β) t') R) ∧
+      wilsonExpect (cinc A B C) β (rect A B C R T k₀) ≤
+        Real.exp (-(SurgeryGapClosure.stringTension (Real.tanh β) t' * ((R * T : ℕ) : ℝ))) *
+          (1 + a) ^ (Finset.univ.filter
+            (IsSeed (cinc A B C) (boundary (cinc A B C) (rect A B C R T k₀)))).card := by
+  have ht : 0 < Real.tanh β := HamiltonianBridge.tanh_pos_of_pos hβ
+  have ht' : 0 < t' := ht.trans htt'
+  refine ⟨kogut_susskind_clay_master_bridge ks L hL _
+    (SurgeryGapClosure.stringTension_pos ht htt') R hR proj, ?_⟩
+  rw [HamiltonianBridge.exp_neg_stringTension_mul ht ht']
+  exact cube_wilson_area_law A B C R T hRA hTB k₀
+    (fun p => adj_degree_le_twelve A B C p) hβ.le htt'.le ht' ha hta
+
+#print axioms z2_kogut_susskind_mass_gap_bridge
 
 end KogutSusskindBridge

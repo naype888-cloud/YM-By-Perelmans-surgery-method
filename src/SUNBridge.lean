@@ -52,7 +52,7 @@ This module establishes the exact formal bridge resolving the critique:
 2. **Topological Protection on $\mathbb{R}^3 \times S^1$**:
    Perelman topological surgery prevents Gaussian vacuum collapse via the Robertson–Schrödinger
    quantum defect:
-   $$\frac{\det \Sigma}{|\det \Omega|} = 1 + \mathrm{massSq}(4) = \frac{5}{4} > 1$$
+   $$\frac{\det \Sigma}{|\det \Omega|} \ge 1 + \frac{1}{4} = \frac{5}{4} > 1$$
    and Clifford anticommutation (Physlib PR #1768).
 
 3. **Unconditional Hamiltonian Mass Gap Closure**:
@@ -135,9 +135,7 @@ theorem sun_totalPhysicalGap_pos {N : ℕ} (data : SUNCharacterData N) {t' L : �
     0 < sunTotalPhysicalGap data t' L R := by
   unfold sunTotalPhysicalGap
   refine lt_min (sun_glueballGap_pos data htt' hR) ?_
-  have h4 : 0 < HamiltonianBridge.massSq 4 := by
-    rw [HamiltonianBridge.massSq_four]
-    norm_num
+  have h4 : 0 < HamiltonianBridge.massSq 4 := FibreSurgery.massSq_pos (le_refl 4)
   have hL2 : 0 < L^2 := sq_pos_of_pos hL
   have hdiv : 0 < HamiltonianBridge.massSq 4 / L^2 := div_pos h4 hL2
   have hmin : 0 < min (1 / 4) (HamiltonianBridge.massSq 4 / L^2) := lt_min (by norm_num) hdiv

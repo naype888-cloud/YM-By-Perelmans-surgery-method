@@ -27,70 +27,35 @@ Certificado por el núcleo de Lean 4 bajo los axiomas estándar [propext, Classi
 Cero sorry, cero axiomas ad-hoc.
 -/
 
-import Mathlib.Analysis.SpecialFunctions.Exp
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 import Mathlib.Analysis.Real.Pi.Bounds
-import Mathlib.Analysis.InnerProductSpace.Basic
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.Topology.MetricSpace.Basic
+import NavaRobertsonIndependent.Mathematics.D8_Szego
+import FibreSurgery
+import KogutSusskindBridge
 
 namespace TotalUnifiedGap
 
 open Real
 
-/-! ## 1. Espacio-Tiempo y Cono de Luz Positivo -/
+/-! ## 1. Espacio-Tiempo y Cono de Luz Positivo
 
-abbrev Axis := Fin 4
-abbrev Spacetime := EuclideanSpace ℝ Axis
-def timeAxis : Axis := Fin.last 3
-def time (p : Spacetime) : ℝ := (p : Fin 4 → ℝ) timeAxis
+Los de `KogutSusskindBridge`; aquí no se redefine nada. -/
 
-def spatialNormSq (p : Spacetime) : ℝ :=
-  ((p : Fin 4 → ℝ) 0)^2 + ((p : Fin 4 → ℝ) 1)^2 + ((p : Fin 4 → ℝ) 2)^2
+export KogutSusskindBridge (Axis Spacetime timeAxis time spatialNormSq forwardCone
+  spectralGapShell HasSpectralMassGap)
 
-/-- Cono de luz hacia el futuro cerrado -/
-def forwardCone : Set Spacetime :=
-  {p | spatialNormSq p ≤ (time p)^2 ∧ 0 ≤ time p}
+/-! ## 2. Defecto Canónico de Gnomon/Szego
 
-/-- Coquilla de la brecha espectral: 0 < p_0 < Delta con p en forwardCone -/
-def spectralGapShell (Δ : ℝ) : Set Spacetime :=
-  {p ∈ forwardCone | 0 < time p ∧ time p < Δ}
+`C_N(d)²` es `Gnomon.CoherenceConstantSq` (`D8_Szego`) y el defecto de la fibra es
+`FibreSurgery.massSq d = C_N(d)² - 1`. La forma cerrada en `d = 4` se liga al corpus con
+`massSq4_eq_massSq`. -/
 
-/-- Definición formal de medida espectral con brecha de masa de Wightman -/
-def HasSpectralMassGap {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
-    (projection : Set Spacetime → (H →L[ℂ] H)) (Δ : ℝ) : Prop :=
-  0 < Δ ∧ projection (spectralGapShell Δ) = 0
-
-/-! ## 2. Red Cúbica y Defecto Canónico de Gnomon/Szego -/
-
-/-- Grado de coordinación de vértices en la red cúbica 3D (Z^3): 6 primeros vecinos -/
-def cubicCoordinationNumber : ℕ := 6
-
-/-- Número de aristas/enlaces por celda cúbica elemental: 12 -/
-def cubicCellLinkDegree : ℕ := 12
-
-theorem cubic_coordination_eq : cubicCoordinationNumber = 6 := rfl
-theorem cubic_cell_link_eq : cubicCellLinkDegree = 12 := rfl
-
-/-- Dimensión efectiva en reales N = d + 1 -/
-noncomputable def Nreal (d : ℕ) : ℝ := (d : ℝ) + 1
-
-/-- Ángulo fundamental de Sturm-Liouville theta_d = pi / (d + 1) -/
-noncomputable def theta (d : ℕ) : ℝ := Real.pi / Nreal d
-
-/-- Constante de coherencia de Gnomon/Szego al cuadrado C_N(d)^2 en forma cerrada canónica (D8_Szego):
-Para d <= 3, C_N(d)^2 = 1 (saturación luminal).
-Para d >= 4, C_N(d)^2 > 1 estrictamente creciente hacia la cota de Szego pi^2/3 - 2. -/
-noncomputable def CoherenceConstantSq (d : ℕ) : ℝ :=
-  2 * ((d : ℝ) - 1) / (Nreal d * Real.cos (theta d) ^ 2) *
-    (((Nreal d ^ 2 + 2) / 6) * Real.sin (theta d) ^ 2 - 1)
-
-/-- Defecto de masa canónico de la fibra transversal: massSq(d) = C_N(d)^2 - 1 = C_M(d) -/
-noncomputable def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
+export FibreSurgery (massSq massSq_pos massSq_floor)
 
 /-- Cota superior analítica universal de Szego: C_M^infty = pi^2 / 3 - 3 approx 0.289868 -/
 noncomputable def szegoBound : ℝ := Real.pi ^ 2 / 3 - 3
+
+/-- La cota de Szego es la del corpus. -/
+theorem szegoBound_eq_massSqInf : szegoBound = FibreSurgery.massSqInf := rfl
 
 /-- Defecto de masa canónico evaluado en la dimensión crítica física d = 4
 según la fórmula exacta de D8_Szego:
@@ -113,70 +78,38 @@ theorem massSq4_lt_szego : massSq4 < szegoBound := by
   have hpi : 3.1415 < Real.pi := Real.pi_gt_d4
   nlinarith
 
-/-- Piso de Dirac transverso en la fibra S^1 combinando la cota cinética 1/4 y el defecto de masa de Szego -/
-noncomputable def transverseFloor (L : ℝ) : ℝ :=
-  Real.sqrt (min (1 / 4) (massSq4 / L^2))
+/-- **Liga con el corpus**: la forma cerrada `massSq4` es el defecto de la fibra del corpus en
+`d = 4`, por `Gnomon.CoherenceConstantSq_four_eq`. -/
+theorem massSq4_eq_massSq : massSq4 = FibreSurgery.massSq 4 := by
+  unfold massSq4 FibreSurgery.massSq
+  rw [Gnomon.CoherenceConstantSq_four_eq]
 
-theorem transverseFloor_pos (L : ℝ) (hL : 0 < L) : 0 < transverseFloor L := by
-  unfold transverseFloor
-  have h4 : 0 < massSq4 := massSq4_pos
-  have hL2 : 0 < L^2 := sq_pos_of_pos hL
-  have hdiv : 0 < massSq4 / L^2 := div_pos h4 hL2
-  have hmin : 0 < min (1 / 4) (massSq4 / L^2) := lt_min (by norm_num) hdiv
-  exact Real.sqrt_pos.mpr hmin
+-- Piso de Dirac transverso en la fibra S^1: el de `KogutSusskindBridge`.
+export KogutSusskindBridge (transverseFloor transverseFloor_pos)
 
-/-! ## 3. Hamiltoniano de Jauge en Red de Kogut-Susskind -/
+/-- El piso transverso escrito con la forma cerrada `massSq4`. -/
+theorem transverseFloor_eq (L : ℝ) :
+    transverseFloor L = Real.sqrt (min (1 / 4) (massSq4 / L ^ 2)) := by
+  rw [massSq4_eq_massSq]
+  rfl
 
-structure KogutSusskindParams where
-  lambdaE : ℝ
-  lambdaB : ℝ
-  dimN : ℕ
-  numPlaquettes : ℕ
-  hE_pos : 0 < lambdaE
-  hB_nonneg : 0 ≤ lambdaB
-  h_strong_coupling : lambdaB * (2 * (dimN : ℝ) * (numPlaquettes : ℝ)) < lambdaE
+/-! ## 3. Hamiltoniano de Jauge en Red de Kogut-Susskind
 
-/-- Brecha espectral en acoplamiento fuerte del Hamiltoniano de Kogut-Susskind -/
-noncomputable def kogutSusskindGap (ks : KogutSusskindParams) : ℝ :=
-  ks.lambdaE - ks.lambdaB * (2 * (ks.dimN : ℝ) * (ks.numPlaquettes : ℝ))
+Los de `KogutSusskindBridge`. -/
 
-theorem kogutSusskindGap_pos (ks : KogutSusskindParams) : 0 < kogutSusskindGap ks := by
-  unfold kogutSusskindGap
-  linarith [ks.h_strong_coupling]
+export KogutSusskindBridge (KogutSusskindParams kogutSusskindGap kogutSusskindGap_pos)
 
-/-! ## 4. Ley de Área de Wilson y Brecha de Glueballs -/
+/-! ## 4. Ley de Área de Wilson y Brecha de Glueballs
 
-/-- Tensión de cuerda física a partir de la ley de área: sigma(t, t') = ln(t'/t) > 0 -/
-noncomputable def stringTension (t t' : ℝ) : ℝ := Real.log (t' / t)
+Los de `SurgeryGapClosure`. -/
 
-theorem stringTension_pos {t t' : ℝ} (ht : 0 < t) (htt' : t < t') : 0 < stringTension t t' := by
-  unfold stringTension
-  have hq : 1 < t' / t := (one_lt_div ht).mpr htt'
-  exact Real.log_pos hq
+export SurgeryGapClosure (stringTension stringTension_pos glueballGap glueballGap_pos)
 
-/-- Brecha de masa de glueballs a partir del decaimiento temporal del bucle de Wilson: Delta_glue = sigma * R -/
-noncomputable def glueballGap (σ : ℝ) (R : ℕ) : ℝ := σ * (R : ℝ)
+/-! ## 5. El Teorema Central: Brecha de Masa Física Total Unificada
 
-theorem glueballGap_pos {σ : ℝ} {R : ℕ} (hσ : 0 < σ) (hR : 0 < R) : 0 < glueballGap σ R :=
-  mul_pos hσ (Nat.cast_pos.mpr hR)
+`totalUnifiedGap` y su positividad son los de `KogutSusskindBridge`. -/
 
-/-! ## 5. El Teorema Central: Brecha de Masa Física Total Unificada -/
-
-/-- **Brecha de Masa Total Unificada** (totalUnifiedGap):
-Combina el triplete irreductible:
-1. Brecha de Kogut-Susskind Delta_KS > 0,
-2. Brecha de la ley de área de Wilson Delta_glue > 0,
-3. Piso transverso de la fibra de Robertson-Schrodinger / Szego transverseFloor(L) > 0. -/
-noncomputable def totalUnifiedGap (ks : KogutSusskindParams) (L σ : ℝ) (R : ℕ) : ℝ :=
-  min (kogutSusskindGap ks) (min (glueballGap σ R) (transverseFloor L))
-
-/-- **Positividad Estricta de la Brecha Total Unificada** (Delta_total > 0) -/
-theorem totalUnifiedGap_pos (ks : KogutSusskindParams) (L : ℝ) (hL : 0 < L)
-    (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R) :
-    0 < totalUnifiedGap ks L σ R := by
-  unfold totalUnifiedGap
-  refine lt_min (kogutSusskindGap_pos ks) ?_
-  refine lt_min (glueballGap_pos hσ hR) (transverseFloor_pos L hL)
+export KogutSusskindBridge (totalUnifiedGap totalUnifiedGap_pos)
 
 /-! ## 6. Formalización del Axioma Maestro: Costo Energético del Tiempo Cuántico -/
 
@@ -207,73 +140,28 @@ theorem mass_gap_identically_quantum_time_cost (ħ Δ : ℝ) (hħ : 0 < ħ) (hΔ
     field_simp
   · exact hΔ
 
-/-! ## 7. Espectro Físico y Anulación Espectral de Wightman -/
+/-! ## 7. Espectro Físico y Anulación Espectral de Wightman
 
-/-- Espectro de energía-momento físico del sistema acoplado Kogut-Susskind-NRS^3:
-vacío invariante de jauge {0} y excitaciones masivas a partir de Delta_total > 0. -/
-def coupledPhysicalSpectrum (ks : KogutSusskindParams) (L σ : ℝ) (R : ℕ) : Set Spacetime :=
-  {(0 : Spacetime)} ∪ {p ∈ forwardCone | totalUnifiedGap ks L σ R ≤ time p}
+Los de `KogutSusskindBridge`. -/
 
-/-- Intersección vacía entre la coquilla espectral intermedia y el espectro físico -/
-lemma coupled_gap_shell_inter_spectrum_not_nonempty (ks : KogutSusskindParams) (L σ : ℝ) (R : ℕ) :
-    ¬ (spectralGapShell (totalUnifiedGap ks L σ R) ∩ coupledPhysicalSpectrum ks L σ R : Set Spacetime).Nonempty := by
-  intro ⟨p, ⟨_, hpos, hlt⟩, hspec⟩
-  rcases hspec with (rfl | ⟨_, hge⟩)
-  · have h0 : time (0 : Spacetime) = 0 := rfl
-    rw [h0] at hpos
-    exact lt_irrefl 0 hpos
-  · exact lt_irrefl (time p) (hlt.trans_le hge)
-
-theorem coupled_spectrum_inter_gap_shell_empty (ks : KogutSusskindParams) (L σ : ℝ) (R : ℕ) :
-    (spectralGapShell (totalUnifiedGap ks L σ R) ∩ coupledPhysicalSpectrum ks L σ R : Set Spacetime) = ∅ := by
-  ext p
-  constructor
-  · intro hp
-    exfalso
-    exact coupled_gap_shell_inter_spectrum_not_nonempty ks L σ R ⟨p, hp⟩
-  · intro hp
-    exact False.elim hp
-
-open Classical
-
-/-- Medida espectral del Hamiltoniano acoplado -/
-noncomputable def coupledSpectralMeasure {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
-    (ks : KogutSusskindParams) (L σ : ℝ) (R : ℕ)
-    (proj : { s : Set Spacetime // s ⊆ coupledPhysicalSpectrum ks L σ R } → (H →L[ℂ] H))
-    (S : Set Spacetime) : (H →L[ℂ] H) :=
-  if _h : (S ∩ coupledPhysicalSpectrum ks L σ R).Nonempty then
-    proj ⟨S ∩ coupledPhysicalSpectrum ks L σ R, Set.inter_subset_right⟩
-  else
-    0
-
-/-- Anulación incondicional de la medida espectral en la coquilla intermedia (0, Delta_total) -/
-theorem coupled_spectral_null_on_gap_shell {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
-    (ks : KogutSusskindParams) (L σ : ℝ) (R : ℕ)
-    (proj : { s : Set Spacetime // s ⊆ coupledPhysicalSpectrum ks L σ R } → (H →L[ℂ] H)) :
-    coupledSpectralMeasure ks L σ R proj (spectralGapShell (totalUnifiedGap ks L σ R)) = 0 := by
-  unfold coupledSpectralMeasure
-  have h_not : ¬ (spectralGapShell (totalUnifiedGap ks L σ R) ∩ coupledPhysicalSpectrum ks L σ R).Nonempty :=
-    coupled_gap_shell_inter_spectrum_not_nonempty ks L σ R
-  split_ifs
-  rfl
+export KogutSusskindBridge (coupledPhysicalSpectrum coupled_gap_shell_inter_spectrum_not_nonempty
+  coupled_spectrum_inter_gap_shell_empty coupledSpectralMeasure coupled_spectral_null_on_gap_shell
+  z2_kogut_susskind_mass_gap_bridge)
 
 /-- **Teorema Maestro Unificado**: El generador continuo relativista posee brecha espectral positiva -/
 theorem total_unified_gap_master_bridge
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
     (ks : KogutSusskindParams) (L : ℝ) (hL : 0 < L) (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R)
     (proj : { s : Set Spacetime // s ⊆ coupledPhysicalSpectrum ks L σ R } → (H →L[ℂ] H)) :
-    HasSpectralMassGap (coupledSpectralMeasure ks L σ R proj) (totalUnifiedGap ks L σ R) := by
-  constructor
-  · exact totalUnifiedGap_pos ks L hL σ hσ R hR
-  · exact coupled_spectral_null_on_gap_shell ks L σ R proj
+    HasSpectralMassGap (coupledSpectralMeasure ks L σ R proj) (totalUnifiedGap ks L σ R) :=
+  KogutSusskindBridge.kogut_susskind_clay_master_bridge ks L hL σ hσ R hR proj
 
 theorem YM_mass_gap_wightman
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
     (ks : KogutSusskindParams) (L : ℝ) (hL : 0 < L) (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R)
     (proj : { s : Set Spacetime // s ⊆ coupledPhysicalSpectrum ks L σ R } → (H →L[ℂ] H)) :
-    ∃ Δ > 0, coupledSpectralMeasure ks L σ R proj {p ∈ forwardCone | 0 < time p ∧ time p < Δ} = 0 := by
-  have h := total_unified_gap_master_bridge ks L hL σ hσ R hR proj
-  exact ⟨totalUnifiedGap ks L σ R, h.1, h.2⟩
+    ∃ Δ > 0, coupledSpectralMeasure ks L σ R proj {p ∈ forwardCone | 0 < time p ∧ time p < Δ} = 0 :=
+  KogutSusskindBridge.YM_mass_gap_wightman ks L hL σ hσ R hR proj
 
 /-! ## 8. Pont Gravitationnel y Masa de Planck -/
 

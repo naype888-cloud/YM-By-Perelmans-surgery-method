@@ -8,6 +8,9 @@ import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Topology.MetricSpace.Basic
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+import SurgeryGapClosure
+import AdjDegree
 
 /-!
 # Master Hamiltonian Bridge: OpenAI Wightman QFT ↔ Perelman Surgery Mass Gap
@@ -45,8 +48,8 @@ This module establishes the exact constructive bridge between:
 - `HamiltonianBridge.forwardCone` : OpenAI forward light cone.
 - `HamiltonianBridge.spectralGapShell` : intermediate region $(0, \Delta)$ where the mass gap excludes spectrum.
 - `HamiltonianBridge.HasSpectralMassGap` : formal Wightman mass gap proposition.
-- `HamiltonianBridge.CoherenceConstantSq` : Gnomon/Szegő constant from Sturm–Liouville on $[-1, 1]$.
-- `HamiltonianBridge.massSq_pos` : strict positivity of the fiber defect for all $d \ge 4$.
+- `FibreSurgery.massSq` : the fibre defect of the corpus, `C_N(d)² - 1` (re-exported, not redefined).
+- `FibreSurgery.massSq_pos` : strict positivity of the fibre defect for all $d \ge 4$ (re-exported).
 - `HamiltonianBridge.totalPhysicalGap_pos` : strict positivity of $\Delta_{\mathrm{total}} > 0$.
 - `HamiltonianBridge.nrs3PhysicalSpectrum` : physical spectrum of the NRS³ open tight-binding cube.
 - `HamiltonianBridge.nrs3_physical_spectrum_inter_gap_shell_empty` : empty intersection between spectrum and gap shell.
@@ -87,74 +90,33 @@ def HasSpectralMassGap {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ
     (projection : Set Spacetime → (H →L[ℂ] H)) (Δ : ℝ) : Prop :=
   0 < Δ ∧ projection (spectralGapShell Δ) = 0
 
-/-! ## 3. Sturm–Liouville Discretization on $[-1, 1]$ and Gnomon Coherence -/
+/-! ## 3. The fibre defect, from `FibreSurgery`
 
-/-- The squared Gnomon/Szegő coherence constant $C_N(d)^2 = 1 + 1/(d - 1)^2$
-originating from the tridiagonal Sturm–Liouville discretization on $[-1, 1]$.
-Here $d$ parameterizes simultaneously:
-- The spatial lattice modes along $(x, y, z)$ with cubic degree $\Delta \le 12$.
-- The dimension of the discrete Hilbert space $H_d$.
-- Spacetime dimension $D = 4 \ge 4$. -/
-noncomputable def CoherenceConstantSq (d : ℕ) : ℝ :=
-  1 + 1 / ((d : ℝ) - 1)^2
+The squared mass of the fibre is the one of the corpus, `FibreSurgery.massSq d = C_N(d)² - 1`
+with `C_N(d)²` the coherence constant of `D20_GramStepCoherenceConstant`. Its value at `d = 4` is
+`(99 - 42 √5) / 5 - 1` (`D8_Szego.CoherenceConstantSq_four_eq`), and it is the minimum on `d ≥ 4`
+(`FibreSurgery.massSq_floor`). Nothing is redefined here. -/
 
-/-- The transverse fiber mass defect: $\mathrm{massSq}(d) = C_N(d)^2 - 1$. -/
-noncomputable def massSq (d : ℕ) : ℝ := CoherenceConstantSq d - 1
+export FibreSurgery (massSq massSq_pos massSq_floor massFn_floor_pos)
 
-theorem massSq_four : massSq 4 = 1 / 9 := by
-  unfold massSq CoherenceConstantSq
-  ring
+/-! ## 4. String tension and glueball gap, from `SurgeryGapClosure` -/
 
-/-- Strict positivity of the mass defect for all dimensions $d \ge 4$:
-proves that quantum non-commutation prevents zero-mode collapse. -/
-theorem massSq_pos (d : ℕ) (hd : 4 ≤ d) : 0 < massSq d := by
-  unfold massSq CoherenceConstantSq
-  have hpos : 0 < ((d : ℝ) - 1)^2 := by
-    have h1 : 1 < (d : ℝ) - 1 := by
-      have h4 : (4 : ℝ) ≤ (d : ℝ) := Nat.cast_le.mpr hd
-      linarith
-    exact sq_pos_of_pos (by linarith)
-  have hdiv : 0 < 1 / ((d : ℝ) - 1)^2 := div_pos one_pos hpos
-  linarith
+export SurgeryGapClosure (stringTension stringTension_pos glueballGap glueballGap_pos
+  totalPhysicalGap totalPhysicalGap_pos)
 
-/-! ## 4. Transfer Matrix String Tension and Glueball Gap -/
+/-- `tanh β` is positive for `β > 0`. -/
+lemma tanh_pos_of_pos {β : ℝ} (hβ : 0 < β) : 0 < Real.tanh β := by
+  rw [Real.tanh_eq_sinh_div_cosh]
+  exact div_pos (Real.sinh_pos_iff.mpr hβ) (Real.cosh_pos β)
 
-/-- The physical string tension extracted from the 3D Wilson loop area law:
-$\sigma(t, t') = \ln(t' / t) > 0$. -/
-noncomputable def stringTension (t t' : ℝ) : ℝ := Real.log (t' / t)
-
-theorem stringTension_pos {t t' : ℝ} (ht : 0 < t) (htt' : t < t') : 0 < stringTension t t' := by
-  unfold stringTension
-  have hq : 1 < t' / t := (one_lt_div ht).mpr htt'
-  exact Real.log_pos hq
-
-/-- The glueball spectral gap from temporal decay of a Wilson loop of spatial width $R$:
-$\Delta_{\mathrm{glue}} = \sigma \cdot R$. -/
-noncomputable def glueballGap (σ : ℝ) (R : ℕ) : ℝ := σ * (R : ℝ)
-
-theorem glueballGap_pos {σ : ℝ} {R : ℕ} (hσ : 0 < σ) (hR : 0 < R) : 0 < glueballGap σ R :=
-  mul_pos hσ (Nat.cast_pos.mpr hR)
-
-/-- The total physical mass gap combining spatial glueball excitations and the transverse
-fiber surgery floor:
-$\Delta_{\mathrm{total}} = \min(\Delta_{\mathrm{glue}}, \sqrt{\min(1/4, \mathrm{massSq}(4)/L^2)})$. -/
-noncomputable def totalPhysicalGap (L σ : ℝ) (R : ℕ) : ℝ :=
-  min (glueballGap σ R) (Real.sqrt (min (1 / 4) (massSq 4 / L^2)))
-
-/-- **Strict positivity of the unified physical mass gap**:
-both the spatial gauge flux tubes and the transverse Sturm–Liouville/Perelman fiber
-exhibit strictly positive spectral floors. -/
-theorem totalPhysicalGap_pos (L : ℝ) (hL : 0 < L) (σ : ℝ) (hσ : 0 < σ) (R : ℕ) (hR : 0 < R) :
-    0 < totalPhysicalGap L σ R := by
-  unfold totalPhysicalGap
-  refine lt_min (glueballGap_pos hσ hR) ?_
-  have h4 : 0 < massSq 4 := by
-    rw [massSq_four]
-    norm_num
-  have hL2 : 0 < L^2 := sq_pos_of_pos hL
-  have hdiv : 0 < massSq 4 / L^2 := div_pos h4 hL2
-  have hmin : 0 < min (1 / 4) (massSq 4 / L^2) := lt_min (by norm_num) hdiv
-  exact Real.sqrt_pos.mpr hmin
+/-- The string tension is the decay rate: `exp (-(σ(t, t') · n)) = (t / t') ^ n`. -/
+lemma exp_neg_stringTension_mul {t t' : ℝ} (ht : 0 < t) (ht' : 0 < t') (n : ℕ) :
+    Real.exp (-(stringTension t t' * (n : ℝ))) = (t / t') ^ n := by
+  have h : -(stringTension t t' * (n : ℝ)) = (n : ℝ) * Real.log (t / t') := by
+    unfold SurgeryGapClosure.stringTension
+    rw [← inv_div t t', Real.log_inv]
+    ring
+  rw [h, Real.exp_nat_mul, Real.exp_log (div_pos ht ht')]
 
 /-! ## 5. Concrete Spectral Measure of the NRS³ Open Tight-Binding Cube (Sturm–Liouville) -/
 
@@ -259,5 +221,41 @@ theorem wightman_hamiltonian_mass_gap_bridge_of_measure_null
   constructor
   · exact totalPhysicalGap_pos L hL σ hσ R hR
   · exact h_measure_null
+
+/-! ## 7. The ℤ₂ instance: the tension is the one of the area law
+
+Here `σ` is not a parameter. It is `log (t' / tanh β)`, the decay rate of the Wilson loop of the
+ℤ₂ gauge theory in the box `A × B × C` proved in `Z2Gauge.cube_wilson_area_law`, with the degree
+condition discharged by `AreaBound.adj_degree_le_twelve`. -/
+
+open Classical AreaBound Z2Gauge in
+/-- **The ℤ₂ bridge.** With `σ = log (t' / tanh β)`: the gap `totalPhysicalGap L σ R` is positive,
+the measure `nrs3SpectralMeasure` vanishes on the shell below it, and the Wilson loop of the flat
+rectangle `R × T` decays with that same `σ`:
+`⟨W⟩ ≤ exp (-(σ · R T)) · (1 + a) ^ #seeds`. -/
+theorem z2_hamiltonian_mass_gap_bridge
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    (A B C R T : ℕ) (hRA : R ≤ A) (hTB : T ≤ B) (hR : 0 < R) (k₀ : Fin (C + 1))
+    {β t' a L : ℝ} (hβ : 0 < β) (htt' : Real.tanh β < t') (ha : 0 ≤ a)
+    (hta : t' * (1 + a) ^ 12 ≤ a) (hL : 0 < L)
+    (proj : { s : Set Spacetime //
+      s ⊆ nrs3PhysicalSpectrum L (SurgeryGapClosure.stringTension (Real.tanh β) t') R } →
+        (H →L[ℂ] H)) :
+    HasSpectralMassGap
+        (nrs3SpectralMeasure L (SurgeryGapClosure.stringTension (Real.tanh β) t') R proj)
+        (totalPhysicalGap L (SurgeryGapClosure.stringTension (Real.tanh β) t') R) ∧
+      wilsonExpect (cinc A B C) β (rect A B C R T k₀) ≤
+        Real.exp (-(SurgeryGapClosure.stringTension (Real.tanh β) t' * ((R * T : ℕ) : ℝ))) *
+          (1 + a) ^ (Finset.univ.filter
+            (IsSeed (cinc A B C) (boundary (cinc A B C) (rect A B C R T k₀)))).card := by
+  have ht : 0 < Real.tanh β := tanh_pos_of_pos hβ
+  have ht' : 0 < t' := ht.trans htt'
+  refine ⟨wightman_hamiltonian_mass_gap_bridge L _ hL
+    (SurgeryGapClosure.stringTension_pos ht htt') R hR proj, ?_⟩
+  rw [exp_neg_stringTension_mul ht ht']
+  exact cube_wilson_area_law A B C R T hRA hTB k₀
+    (fun p => adj_degree_le_twelve A B C p) hβ.le htt'.le ht' ha hta
+
+#print axioms z2_hamiltonian_mass_gap_bridge
 
 end HamiltonianBridge
