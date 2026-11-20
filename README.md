@@ -25,7 +25,13 @@
 > ### ⚡ Cadre Fondateur de la Résolution (Clay Mathematics Institute)
 >
 > **Énoncé Officiel :** Existence et gap spectral de masse de la théorie quantique de Yang–Mills en dimension 4 (SU(N) (N ≥ 2)) sur ℝ⁴. *(Arthur Jaffe & Edward Witten, 2000).*  
-> **Statut de Vérification Formelle :** **Démontré et certifié par machine en Lean 4 (0 `sorry`)**, compilé strictement sur la base axiomatique standard `[propext, Classical.choice, Quot.sound]`.
+> **Statut de Vérification Formelle :** les théorèmes Lean ci-dessous sont certifiés par machine (0 `sorry`), sur la base axiomatique standard `[propext, Classical.choice, Quot.sound]` ; leur portée exacte est précisée juste après.
+>
+> **Portée et hypothèses (lues dans le code Lean) :**
+> - Tous les théorèmes certifiés portent sur le réseau, à espacement a > 0 fixé.
+> - Le gap `totalUnifiedGap_pos` est démontré sous couplage fort (champ h_strong_coupling) et tension de corde σ > 0 (Kogut–Susskind) : hypothèses physiques propres à une théorie de jauge non abélienne confinante (singlets de couleur par la loi de Gauss), sans analogue dans Maxwell U(1), dont le photon reste sans masse.
+> - Le défaut de Szegő (`C_M_four_pos`, `C_M_four_eq`) est cinématique : il borne la vitesse de transport et force le défaut d'incertitude, mais ne distingue pas à lui seul SU(N) de U(1).
+> - La compatibilité avec Wightman est énoncée sous l'hypothèse d'échelle finie lim(a→0) Δ_lat(a)/a = Δ_phys > 0, qui n'est pas démontrée ici.
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
 > <div align="center"><img src="docs/assets/triade/pilier_1_kogut_susskind.png" alt="(1) Formalisme Hamiltonien de Kogut–Susskind : plancher spectral électrique" width="900"></div>
@@ -33,7 +39,7 @@
 > Invariance de jauge exacte [H_KS, Gauss_x] = 0. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
 > <div align="center"><img src="docs/assets/triade/pilier_2_temps_quantique_szego.png" alt="(2) Coût Énergétique du Temps Quantique et Limite de Szegő en d ≥ 4" width="900"></div>
 >
-> La théorie n'a plus besoin de l'échafaudage de chirurgie topologique : le mass gap découle directement du défaut de Robertson–Schrödinger / Mandelstam–Tamm certifié dans `D8_Szego.lean` (approuvé par Joseph dans Physlib). En d ≤ 3, la boîte saturante annule le défaut ; en d ≥ 4, le coût énergétique irréductible de l'évolution temporelle quantique est strictement borné par la limite universelle de Szegő.
+> Le défaut de Robertson–Schrödinger certifié dans `D8_Szego.lean` fournit la borne cinématique ; le gap de jauge lui-même provient du plancher de Kogut–Susskind sous couplage fort (pilier 1). En d ≤ 3, la boîte saturante annule le défaut ; en d ≥ 4, le coût énergétique irréductible de l'évolution temporelle quantique est strictement borné par la limite universelle de Szegő.
 > <div align="center"><img src="docs/assets/triade/pilier_3_wightman.png" alt="(3) Annulation Spectrale de Wightman sur ℝ⁴ isolant le vide" width="900"></div>
 >
 > Décompactification continue L → ∞. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille intermédiaire, isolant le vide.
@@ -125,18 +131,6 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 > 5. **Bande de vitesse d'incertitude forcée (chaîne ouverte, N = 4 sites) :**  
 >    Dans PhyslibAlpha, le seuil `threshold` est la plus grande vitesse |⟨J⟩| d'un vecteur d'incertitude minimale ; il est atteint. Pour tout vecteur unitaire dont la vitesse tombe dans la bande (threshold, maxCurrent], le défaut de Gram centré est strictement positif (`defectOf_pos_of_mem_velocityBand`, PR [#1745](https://github.com/leanprover-community/physlib/pull/1745)). Dès N ≥ 4 la bande est non vide (`threshold_lt_maxCurrent`, PR [#1746](https://github.com/leanprover-community/physlib/pull/1746)).  
 >    Pour N = 4 la borne supérieure est la proportion dorée : maxCurrent = 2|a t| cos(π/5) = φ · |a t|, φ = (1+√5)/2 (`maxCurrent_four_eq`). Les vitesses sont en unités de a·|t| (pas du réseau × saut).
-
-```lean
--- Extrait de FormalizationPhysicsTotalUnifiedGap.lean :
-/-- La proporción áurea φ = (1 + √5) / 2. -/
-noncomputable def phi : ℝ := (1 + Real.sqrt 5) / 2
-
-/-- La velocidad máxima de la cadena de cuatro sitios, `φ · |a t|`. -/
-noncomputable def maxCurrentFour (t a : ℝ) : ℝ := phi * |a * t|
-
-/-- En N = 4 la velocidad máxima `2 |a t| cos (π / 5)` es `φ · |a t|`. -/
-theorem maxCurrent_four_eq (t a : ℝ) : maxCurrent t a 4 = maxCurrentFour t a
-```
 
 ```lean
 -- Extraits certifiés du corpus (D56–D57) :

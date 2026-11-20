@@ -87,6 +87,20 @@ noncomputable def szegoBound : ℝ := Real.pi ^ 2 / 3 - 3
     C_M(4) = (94 - 42 * sqrt 5) / 5 approx 0.017029 > 0 -/
 noncomputable def C_M_four : ℝ := (94 - 42 * Real.sqrt 5) / 5
 
+/-- `C_M_four` es el valor de la forma cerrada `C_M` en `d = 4` (mismo valor que
+    `CoherenceConstantSq_four_eq` de `D8_Szego.lean`), vía `cos (π / 5) = (1 + √5) / 4`. -/
+theorem C_M_four_eq : C_M 4 = C_M_four := by
+  have hθ : theta 4 = Real.pi / 5 := by unfold theta Nreal; norm_num
+  have hN : Nreal 4 = 5 := by unfold Nreal; norm_num
+  have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
+  have hs : 2 < Real.sqrt 5 := by rw [Real.lt_sqrt (by norm_num)]; norm_num
+  unfold C_M CoherenceConstantSq C_M_four
+  rw [hθ, hN, Real.sin_sq, Real.cos_pi_div_five]
+  have hc : (1 + Real.sqrt 5) ^ 2 ≠ 0 := by positivity
+  field_simp
+  push_cast
+  nlinarith [h5, hs]
+
 /-- Teorema: Positividad estricta de la Constante de Masa en 4D -/
 theorem C_M_four_pos : 0 < C_M_four := by
   unfold C_M_four
@@ -171,9 +185,10 @@ noncomputable def MandelstamTammEnergyCost (ħ τ : ℝ) : ℝ := ħ / (2 * τ)
 noncomputable def hoppingEnergyGap (ħ t : ℝ) (N : ℕ) : ℝ :=
   ħ * |t| * Real.cos (Real.pi / ((N : ℝ) + 1))
 
-/-- **Teorema de Identidad del Tiempo Propio**:
-    El peaje energético de Mandelstam-Tamm sobre el tiempo de paso tau_step(t, N)
-    es idénticamente la energía de hopping cuántica ħ * |t| * cos(pi / (N + 1)). -/
+/-- Identidad algebraica entre definiciones: con `tau_step t N = 1 / (2 |t| cos (π / (N + 1)))`,
+    la expresión `ħ / (2 τ)` evaluada en `tau_step` es `ħ |t| cos (π / (N + 1))`.
+    No es la desigualdad de Mandelstam–Tamm; ésta (`|⟨J⟩| ≤ 2 ΔH ΔX`) está demostrada en
+    PhyslibAlpha como `mandelstam_tamm` (`TightBindingChain/Current/MandelstamTamm.lean`, PR #1711). -/
 theorem hopping_energy_gap_eq_mandelstam_tamm (ħ t : ℝ) (N : ℕ)
     (ht : t ≠ 0) (hN : 2 ≤ N) :
     MandelstamTammEnergyCost ħ (tau_step t N) = hoppingEnergyGap ħ t N := by
@@ -192,6 +207,8 @@ theorem hopping_energy_gap_eq_mandelstam_tamm (ħ t : ℝ) (N : ℕ)
 
 /-! ## 5. El Gap de Yang-Mills y la Masa Invariante en 4D -/
 
+/-- Parámetros del Hamiltoniano de Kogut–Susskind en red finita. El campo `h_strong_coupling`
+    es la hipótesis física de acoplamiento fuerte: todos los gaps de esta sección valen bajo ella. -/
 structure KogutSusskindParams where
   lambdaE : ℝ
   lambdaB : ℝ
@@ -283,15 +300,14 @@ lemma newton_force_of_defect_masses (M₁ M₂ : DefectMassModel) (G r : ℝ) :
 
 /-! ## 7. El Teorema Maestro: « El Tiempo es Propio ⟹ La Relatividad es General » -/
 
-/-- **TEOREMA MAESTRO DE FORMALIZACIÓN FÍSICA Y RELATIVIDAD GENERAL**:
-    Bajo la geometría canónica de transporte cuántico en 4D:
-    (1) La Constante Canónica de Masa C_M(4) es estrictamente positiva (rompiendo la saturación de Cauchy-Schwarz).
-    (2) El tiempo cuántico elemental tau_step es finito y estrictamente positivo para t ≠ 0 (cancelando la red 'a').
-    (3) La masa inerte invariante es estrictamente positiva (el peaje por existir en el tiempo).
-    (4) La brecha de Yang-Mills totalUnifiedGap es estrictamente positiva (confinamiento y Wightman).
-    (5) El acoplamiento gravitacional de Planck α_G es estrictamente positivo,
-        demostrando formalmente que el tiempo propio genera la curvatura dinámica de Einstein
-        y que la Relatividad es forzosamente General. -/
+/-- **Teorema maestro (conjunción, en red finita con espaciado fijo)**. Cada conjunción declara
+    de qué depende:
+    (1) `C_M(4) > 0`, sin hipótesis (`C_M_four = C_M 4` por `C_M_four_eq`).
+    (2) `tau_step t N > 0`, para hopping `t ≠ 0` y `N ≥ 2`.
+    (3) `M.mass > 0`, para la escala `M.scale > 0`, que es un parámetro libre del modelo.
+    (4) `totalUnifiedGap > 0`, bajo acoplamiento fuerte (`ks.h_strong_coupling`) y tensión de
+        cuerda `σ > 0`, ambas hipótesis físicas; no es un resultado del límite continuo.
+    (5) `α_G = scale² C_M(4) / M_P² > 0`, para `ħ, c, G > 0`. -/
 theorem FormalizationPhysicsTotalUnifiedGap_Master_Theorem
     (t : ℝ) (ht : t ≠ 0) (N : ℕ) (hN : 2 ≤ N)
     (M : DefectMassModel) (ks : KogutSusskindParams)
