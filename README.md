@@ -19,7 +19,7 @@
 ---
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/resolution_clay_millenaire.png" alt="Résolution du Problème du Millénaire de Clay — Yang-Mills Spectral Mass Gap" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/resolution_clay_millenaire.png"><img src="docs/assets/claro/resolution_clay_millenaire.png" alt="Résolution du Problème du Millénaire de Clay — Yang-Mills Spectral Mass Gap" width="960"></picture>
 </div>
 
 > ### ⚡ Cadre Fondateur de la Résolution (Clay Mathematics Institute)
@@ -34,13 +34,13 @@
 > - La compatibilité avec Wightman est énoncée sous l'hypothèse d'échelle finie lim(a→0) Δ_lat(a)/a = Δ_phys > 0, qui n'est pas démontrée ici.
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
-> <div align="center"><img src="docs/assets/triade/pilier_1_kogut_susskind.png" alt="(1) Formalisme Hamiltonien de Kogut–Susskind : plancher spectral électrique" width="900"></div>
+> <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/triade/oscuro/pilier_1_kogut_susskind.png"><img src="docs/assets/triade/claro/pilier_1_kogut_susskind.png" alt="(1) Formalisme Hamiltonien de Kogut–Susskind : plancher spectral électrique" width="900"></picture></div>
 >
 > Invariance de jauge exacte [H_KS, Gauss_x] = 0. Le plancher spectral électrique des cordes non abéliennes interdit tout état intermédiaire sous le gap de plaquette.
-> <div align="center"><img src="docs/assets/triade/pilier_2_temps_quantique_szego.png" alt="(2) Coût Énergétique du Temps Quantique et Limite de Szegő en d ≥ 4" width="900"></div>
+> <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/triade/oscuro/pilier_2_temps_quantique_szego.png"><img src="docs/assets/triade/claro/pilier_2_temps_quantique_szego.png" alt="(2) Coût Énergétique du Temps Quantique et Limite de Szegő en d ≥ 4" width="900"></picture></div>
 >
 > Le défaut de Robertson–Schrödinger certifié dans `D8_Szego.lean` fournit la borne cinématique ; le gap de jauge lui-même provient du plancher de Kogut–Susskind sous couplage fort (pilier 1). En d ≤ 3, la boîte saturante annule le défaut ; en d ≥ 4, le coût énergétique irréductible de l'évolution temporelle quantique est strictement borné par la limite universelle de Szegő.
-> <div align="center"><img src="docs/assets/triade/pilier_3_wightman.png" alt="(3) Annulation Spectrale de Wightman sur ℝ⁴ isolant le vide" width="900"></div>
+> <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/triade/oscuro/pilier_3_wightman.png"><img src="docs/assets/triade/claro/pilier_3_wightman.png" alt="(3) Annulation Spectrale de Wightman sur ℝ⁴ isolant le vide" width="900"></picture></div>
 >
 > Décompactification continue L → ∞. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la coquille intermédiaire, isolant le vide.
 
@@ -51,7 +51,7 @@
 L'ensemble du traité est établi suivant les principes de déduction stricte : les espaces continus sont construits à partir d'approximations finies régulières, sans recours à l'infini actuel non borné. Toutes les constantes sont exprimées en notation latine intrinsèque.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pipeline_etapes_deductives.png" alt="L'Échelle Déductive du Traité — Architecture en 8 Étapes Constructives" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/pipeline_etapes_deductives.png"><img src="docs/assets/claro/pipeline_etapes_deductives.png" alt="L'Échelle Déductive du Traité — Architecture en 8 Étapes Constructives" width="960"></picture>
 </div>
 
 ---
@@ -60,8 +60,8 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 > **Proposition 1.1 (Majoration combinatoire uniforme).** Sur le réseau cubique à degré d'adjacence Degree = 12 et germes de périmètre |Seeds| ≤ 8(R + T) pour toute boucle de Wilson rectangulaire W(R × T) :
 
 <div align="center">
-<img src="docs/assets/eq/eq01.png" alt="Majoration combinatoire uniforme de la boucle de Wilson rectangulaire" width="960">
-<img src="docs/assets/eq/eq02.png" alt="Tension de corde non nulle et confinement de Wilson" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq01.png"><img src="docs/assets/eq/claro/eq01.png" alt="Majoration combinatoire uniforme de la boucle de Wilson rectangulaire" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq02.png"><img src="docs/assets/eq/claro/eq02.png" alt="Tension de corde non nulle et confinement de Wilson" width="960"></picture>
 </div>
 
 *Modules formels :*
@@ -75,8 +75,8 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 > **Lemme 2.1 (Décroissance spectrale du semi-groupe).** La décroissance euclidienne temporelle de la matrice de transfert T = exp(−a H) contraint le quotient des deux plus grandes valeurs propres réelles :
 
 <div align="center">
-<img src="docs/assets/eq/eq03.png" alt="Décroissance spectrale du quotient des valeurs propres de la matrice de transfert" width="960">
-<img src="docs/assets/eq/eq04.png" alt="Gap spectral des glueballs issu du décroissement exponentiel" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq03.png"><img src="docs/assets/eq/claro/eq03.png" alt="Décroissance spectrale du quotient des valeurs propres de la matrice de transfert" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq04.png"><img src="docs/assets/eq/claro/eq04.png" alt="Gap spectral des glueballs issu du décroissement exponentiel" width="960"></picture>
 </div>
 
 *Modules formels :*
@@ -90,8 +90,8 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 > **Proposition 3.1 (Torsion symplectique et blindage transverse).** Sur la variété décomposée M₄ = ℝ³ × S¹, l'inégalité de Robertson–Schrödinger pour les matrices de covariance Cov et symplectique Symp impose une rupture stricte de saturation :
 
 <div align="center">
-<img src="docs/assets/eq/eq05.png" alt="Rupture stricte de saturation sur ℝ³ × S¹ et défaut 5/4" width="960">
-<img src="docs/assets/eq/eq06.png" alt="Blindage transverse et plancher spectral chirurgical" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq05.png"><img src="docs/assets/eq/claro/eq05.png" alt="Rupture stricte de saturation sur ℝ³ × S¹ et défaut 5/4" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq06.png"><img src="docs/assets/eq/claro/eq06.png" alt="Blindage transverse et plancher spectral chirurgical" width="960"></picture>
 </div>
 
 *Modules formels :*
@@ -107,25 +107,25 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 ## 👑 CONDITIONS NÉCESSAIRES ET SUFFISANTES DU GAP DE MASSE
 <p align="center"><b><font color="#58A6FF">152 Déclarations Certifiées en Lean 4 · 0 sorry · Base Axiomatique Standard ZFC</font></b></p>
 
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/pont_de_claude.png" alt="Théorème Fondamental : Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/pont_de_claude.png"><img src="docs/assets/claro/pont_de_claude.png" alt="Théorème Fondamental : Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960"></picture>
 </div>
 
 > ### **Fondements Géométriques et Physiques des Quatre Conditions :**
 >
 > 1. **Nécessité Géométrique Absolue (d ≥ 4) :**  
->    <div align="center"><img src="docs/assets/eq/eq18.png" alt="Saturation en d ≤ 3 et nécessité géométrique absolue de d ≥ 4" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq18.png"><img src="docs/assets/eq/claro/eq18.png" alt="Saturation en d ≤ 3 et nécessité géométrique absolue de d ≥ 4" width="900"></picture></div>
 >    Sur le cube spatial 3D pur, la boîte [−3, 3]³ contenant 343 sites sature rigoureusement la constante de cohérence (C_N = 1). Le défaut s'annule identiquement : absence totale de masse propre (phase luminale invariante, photonique ou chirale).
 >
 > 2. **Isomorphisme Exact du Défaut de Fibre :**  
->    <div align="center"><img src="docs/assets/eq/eq19.png" alt="Isomorphisme exact entre le défaut de fibre et la masse de jauge" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq19.png"><img src="docs/assets/eq/claro/eq19.png" alt="Isomorphisme exact entre le défaut de fibre et la masse de jauge" width="900"></picture></div>
 >    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
 > 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
->    <div align="center"><img src="docs/assets/eq/eq20.png" alt="Condition suffisante pour les états physiques non ponctuels de jauge" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq20.png"><img src="docs/assets/eq/claro/eq20.png" alt="Condition suffisante pour les états physiques non ponctuels de jauge" width="900"></picture></div>
 >    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique d ≥ 4 certifiée dans `D8_Szego.lean` est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul Δ_total > 0.
 >
 > 4. **Encadrement Universel Invariant de Szegő :**  
->    <div align="center"><img src="docs/assets/eq/eq21.png" alt="Encadrement universel de Szegő bornant la suite de masse" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq21.png"><img src="docs/assets/eq/claro/eq21.png" alt="Encadrement universel de Szegő bornant la suite de masse" width="900"></picture></div>
 >    La suite massSq(d) est uniformément bornée par π²/3 − 3 ≈ 0,289868 lorsque d → ∞, excluant tout effondrement ultraviolet ou divergence du spectre.
 >
 > 5. **Bande de vitesse d'incertitude forcée (chaîne ouverte, N = 4 sites) :**  
@@ -187,26 +187,26 @@ theorem massive_four_le
 >    La décomposition par chirurgie ℝ³ × S¹ n'introduit **aucune dimension spatiale exotique supplémentaire** (de type Kaluza–Klein). Elle correspond rigoureusement à l'espace-temps standard de Minkowski (3+1) après rotation de Wick (t → −iτ) sous le formalisme axiomatique d'Osterwalder–Schrader :
 >    - La base ℝ³ (ou réseau discret 3D) héberge les degrés de liberté spatiaux de Yang–Mills (d_espace = 3, 8 octants, autorisant la saturation luminale C_N = 1 pour les photons et fermions de Weyl).
 >    - La fibre fermée S¹ est **l'axe du temps euclidien compactifié** de pas fini a ou de période thermique β, le long duquel opère le semi-groupe de la matrice de transfert :
->    <div align="center"><img src="docs/assets/eq/eq22.png" alt="Semi-groupe de la matrice de transfert le long de la fibre temporelle" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq22.png"><img src="docs/assets/eq/claro/eq22.png" alt="Semi-groupe de la matrice de transfert le long de la fibre temporelle" width="900"></picture></div>
 >    - Le défaut de Gram transversal massSq(4) > 0 le long de la fibre temporelle est **exactement le saut d'énergie minimal** entre le fondamental invariant et le premier état excité :
->    <div align="center"><img src="docs/assets/eq/eq23.png" alt="Saut d'énergie minimal engendré par le défaut de Gram" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq23.png"><img src="docs/assets/eq/claro/eq23.png" alt="Saut d'énergie minimal engendré par le défaut de Gram" width="900"></picture></div>
 >    *Fibrer le temps réconcilie la pureté combinatoire discrète avec l'exigence du continu infini imposée par Jaffe et Witten, fermant définitivement la question sans introduire de dimensions spectrales fantômes.*
 
 ---
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/lagrangien_unifie.png" alt="Le Lagrangien Unifié de l'Espace-Temps Quantique — Minimalisme Géométrique" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/lagrangien_unifie.png"><img src="docs/assets/claro/lagrangien_unifie.png" alt="Le Lagrangien Unifié de l'Espace-Temps Quantique — Minimalisme Géométrique" width="960"></picture>
 </div>
 
 > ### **Le Lagrangien Fondamental Tripartite**
 >
 > Toute la physique de l'interaction forte, de la masse de jauge et de la gravitation s'exprime dans la pureté géométrique d'une action unique sans constante ad hoc :
-> <div align="center"><img src="docs/assets/eq/eq24.png" alt="Action unifiée tripartite combinant jauge, temps quantique et métrique" width="900"></div>
+> <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq24.png"><img src="docs/assets/eq/claro/eq24.png" alt="Action unifiée tripartite combinant jauge, temps quantique et métrique" width="900"></picture></div>
 >
 > 1. **Courbure de Jauge Interne :** −(1/4)Tr(F²) gouverne la dynamique non-abélienne SU(N) sur la base ℝ³.
 > 2. **Courbure du Temps Quantique (Masse du Défaut) :** Λ_YM √(C_{d+1}² − 1) est le **coût énergétique irréductible** requis pour propager l'état le long de la fibre temporelle euclidienne S¹_τ (d ≥ 4 ⟹ 0 < C_{d+1}² − 1 < π²/3 − 3).
 > 3. **Courbure de l'Espace-Temps :** (M_P² / 16π) R ancre la géométrie métrique avec M_P² = ħc / G, fixant directement le couplage gravitationnel sans dimension :
->    <div align="center"><img src="docs/assets/eq/eq25.png" alt="Couplage gravitationnel sans dimension ancré dans la courbure" width="900"></div>
+>    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq25.png"><img src="docs/assets/eq/claro/eq25.png" alt="Couplage gravitationnel sans dimension ancré dans la courbure" width="900"></picture></div>
 
 ---
 
@@ -214,8 +214,8 @@ theorem massive_four_le
 > **Proposition 4.1 (Algèbre de Clifford sur l'espace des formes).** Sur l'algèbre extérieure des gluons Forms(M), l'opérateur de Dirac-Hodge satisfait l'anticommutation chirale :
 
 <div align="center">
-<img src="docs/assets/eq/eq07.png" alt="Anticommutation chirale de Dirac–Kähler sur l'espace des formes" width="960">
-<img src="docs/assets/eq/eq08.png" alt="Décomposition du laplacien de Hodge et absence de modes sans masse" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq07.png"><img src="docs/assets/eq/claro/eq07.png" alt="Anticommutation chirale de Dirac–Kähler sur l'espace des formes" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq08.png"><img src="docs/assets/eq/claro/eq08.png" alt="Décomposition du laplacien de Hodge et absence de modes sans masse" width="960"></picture>
 </div>
 
 *Module formel :* [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) (`fiber_dirac_spectral_floor`).
@@ -226,8 +226,8 @@ theorem massive_four_le
 > **Proposition 5.1 (Absence d'effondrement gaussien).** La suite des constantes de cohérence C_N(d)² − 1 est strictement croissante pour d ≥ 4 et converge vers la borne analytique de Szegő :
 
 <div align="center">
-<img src="docs/assets/eq/eq09.png" alt="Encadrement de cohérence de Szegő pour la constante de masse" width="960">
-<img src="docs/assets/eq/eq10.png" alt="Limite asymptotique de Szegő pour le défaut de cohérence" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq09.png"><img src="docs/assets/eq/claro/eq09.png" alt="Encadrement de cohérence de Szegő pour la constante de masse" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq10.png"><img src="docs/assets/eq/claro/eq10.png" alt="Limite asymptotique de Szegő pour le défaut de cohérence" width="960"></picture>
 </div>
 
 *Module formel :* [`FibreSurgery.lean`](src/FibreSurgery.lean) (`massSq_strictMonoOn`, `massSq_floor`).  
@@ -239,10 +239,10 @@ theorem massive_four_le
 > **Théorème 6.1 (Décompactification et persistance du gap).** Dans la limite de grand volume L → ∞, la condensation des monopôles BPS et calorons de Kraan–van Baal préserve l'infimum spectral non nul :
 
 <div align="center">
-<img src="docs/assets/eq/eq11.png" alt="Infimum de masse total unifié à grand volume" width="960">
-<img src="docs/assets/eq/eq12.png" alt="Limite thermodynamique de décompactification L vers l'infini" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq11.png"><img src="docs/assets/eq/claro/eq11.png" alt="Infimum de masse total unifié à grand volume" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq12.png"><img src="docs/assets/eq/claro/eq12.png" alt="Limite thermodynamique de décompactification L vers l'infini" width="960"></picture>
 
-<img src="docs/assets/eq/eq13.png" alt="Infimum spectral continu de Wightman strictement positif" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq13.png"><img src="docs/assets/eq/claro/eq13.png" alt="Infimum spectral continu de Wightman strictement positif" width="960"></picture>
 </div>
 
 *Modules formels :* [`SurgeryGapClosure.lean`](src/SurgeryGapClosure.lean) (`totalPhysicalGap_pos`), Reconstruction d'Osterwalder–Schrader → Wightman.
@@ -253,10 +253,10 @@ theorem massive_four_le
 > **Théorème 7.1 (Annulation de la mesure spectrale sur la coquille de masse).** Résolution formelle et complète des exigences de jauge spatiale continue (Kogut & Susskind, 1975) et des Questions Ouvertes #3 et #4 de l'évaluation Douglas-YM (`assessment-1.pdf`) sur `PublicTheory.lean` :
 
 <div align="center">
-<img src="docs/assets/eq/eq14.png" alt="Séparation spectrale stricte du vide sur le demi-axe" width="960">
-<img src="docs/assets/eq/eq15.png" alt="Annulation de la mesure spectrale projective sur la coquille de masse" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq14.png"><img src="docs/assets/eq/claro/eq14.png" alt="Séparation spectrale stricte du vide sur le demi-axe" width="960"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq15.png"><img src="docs/assets/eq/claro/eq15.png" alt="Annulation de la mesure spectrale projective sur la coquille de masse" width="960"></picture>
 
-<img src="docs/assets/eq/eq16.png" alt="Gap total unifié combinant Kogut–Susskind, cube 3D et plancher chirurgical" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq16.png"><img src="docs/assets/eq/claro/eq16.png" alt="Gap total unifié combinant Kogut–Susskind, cube 3D et plancher chirurgical" width="960"></picture>
 </div>
 
 La mesure spectrale concrète déduite du réseau cubique 3D tight-binding NRS³ ([PR #1689](https://github.com/leanprover-community/physlib/pull/1689), [PR #1725](https://github.com/leanprover-community/physlib/pull/1725), [PR #1756](https://github.com/leanprover-community/physlib/pull/1756)), le plancher électrique de Kogut–Susskind respectant la loi de Gauss [H_KS, Gauss_x] = 0, et le plancher chirurgical de Perelman en d ≥ 4 annulent identiquement toute projection spectrale intermédiaire **sans aucun paramètre hypothétique libre**.
@@ -273,7 +273,7 @@ La mesure spectrale concrète déduite du réseau cubique 3D tight-binding NRS³
 Sous l'échelle de confinement de jauge Λ_YM > 0 et la masse de Planck M_P² = ħc / G, le couplage gravitationnel de la masse du gap m = Λ_YM √(C_N(d)² − 1) est rigoureusement fixé par le quotient sans dimension :
 
 <div align="center">
-<img src="docs/assets/eq/eq17.png" alt="Couplage gravitationnel algébrique de Planck issu du défaut de cohérence" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq17.png"><img src="docs/assets/eq/claro/eq17.png" alt="Couplage gravitationnel algébrique de Planck issu du défaut de cohérence" width="960"></picture>
 </div>
 
 De plus, la limite en champ faible newtonien F = G M₁ M₂ / r² est formellement démontrée entre masses de défaut. La masse effective de tight-binding m* = ħ² / (2ta²) émerge identiquement de la courbure E''(0) = 2ta².
@@ -285,7 +285,7 @@ De plus, la limite en champ faible newtonien F = G M₁ M₂ / r² est formellem
 ---
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/theoreme_millenaire_clay.png" alt="Théorème Fondateur du Millénaire — Institut Clay" width="960">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/theoreme_millenaire_clay.png"><img src="docs/assets/claro/theoreme_millenaire_clay.png" alt="Théorème Fondateur du Millénaire — Institut Clay" width="960"></picture>
 </div>
 
 ---
