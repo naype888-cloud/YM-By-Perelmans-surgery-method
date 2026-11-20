@@ -10,7 +10,7 @@
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.35.0-blue.svg?style=flat-square)](https://leanprover.github.io/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-verified-2ea44f.svg?style=flat-square)](https://github.com/leanprover-community/mathlib4)
 [![Kernel Status](https://img.shields.io/badge/Kernel-0%20sorry%20%7C%20152%20Declarations%20Certified-brightgreen.svg?style=flat-square)]()
-[![Physlib](https://img.shields.io/badge/Physlib-50%20PRs%20Merged-brightgreen.svg?style=flat-square)](https://github.com/leanprover-community/physlib)
+[![Physlib](https://img.shields.io/badge/Physlib-52%20PRs%20Merged-brightgreen.svg?style=flat-square)](https://github.com/leanprover-community/physlib)
 [![Interactive 3D Portal](https://img.shields.io/badge/Live_Portal-Interactive_3D_Sim_%26_Proof_Explorer-00e5ff.svg?style=for-the-badge&logo=three.js)](https://naype888-cloud.github.io/YM-By-Perelmans-surgery-method/)
 [![Formal Treatise PDF](https://img.shields.io/badge/Treatise-Download_PDF-purple.svg?style=for-the-badge&logo=adobeacrobatreader)](docs/SU2-SU3.pdf?raw=true)
 
@@ -290,9 +290,9 @@ De plus, la limite en champ faible newtonien F = G M₁ M₂ / r² est formellem
 
 ---
 
-## 📚 Fondations dans Physlib (51 PRs Fusionnées)
+## 📚 Fondations dans Physlib (52 PRs Fusionnées)
 
-La totalité de la chaîne déductive repose sur **51 Pull Requests validées et intégrées au dépôt officiel de physique mathématique de Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**.
+La totalité de la chaîne déductive repose sur **52 Pull Requests validées et intégrées au dépôt officiel de physique mathématique de Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**.
 
 | Étape Yang–Mills | Fondement Mathématique | PRs Fusionnées dans Physlib | Modules YM Associés |
 | :---: | :--- | :--- | :--- |
@@ -305,7 +305,7 @@ La totalité de la chaîne déductive repose sur **51 Pull Requests validées et
 | **Étape 7** | Pont Hamiltonien maître, cube ouvert Sturm–Liouville NRS³ et gap inconditionnel | **[#1689](https://github.com/leanprover-community/physlib/pull/1689)** (chaîne avec conditions aux bords ouvertes), **[#1725](https://github.com/leanprover-community/physlib/pull/1725)** & **[#1756](https://github.com/leanprover-community/physlib/pull/1756)** (cube tight-binding ouvert NRS³) | [`HamiltonianBridge.lean`](src/HamiltonianBridge.lean) |
 | **Étape 8** | Pont gravitationnel, masse effective de tight-binding et couplage de Planck | **[#1724](https://github.com/leanprover-community/physlib/pull/1724)**, **[#1734](https://github.com/leanprover-community/physlib/pull/1734)** (courbure E''(0) = 2ta², α_G = Λ²(C²−1)/M_P²) | [`GravitationalBridge.lean`](src/GravitationalBridge.lean) |
 
-*Traité formel complet :* Voir [**Fondations Canoniques dans Physlib (51 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
+*Traité formel complet :* Voir [**Fondations Canoniques dans Physlib (52 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
 
 ---
 
@@ -370,7 +370,7 @@ Pour approfondir les développements analytiques et les démonstrations formelle
 
 - 📄 [**Traité Formel du Pont SU(N) et de la Limite Continue**](docs/SU2-SU3.md) ([Télécharger la version PDF](docs/SU2-SU3.pdf?raw=true)) : Monographie mathématique établissant la correspondance non-abélienne et le formalisme de Wightman.
 - 📄 [**Clôture Définitive du Pont Hamiltonien (OpenAI ↔ Chirurgie de Perelman)**](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md) : Clôture formelle des Questions Ouvertes #3 et #4 du rapport Michael R. Douglas (`assessment-1.pdf`).
-- 📄 [**Fondations dans Physlib (51 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md) : Cartographie complète des 5 piliers et des 50 théorèmes fusionnés dans le dépôt officiel de Lean 4.
+- 📄 [**Fondations dans Physlib (52 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md) : Cartographie complète des 5 piliers et des 50 théorèmes fusionnés dans le dépôt officiel de Lean 4.
 - 📖 [**Audit Intégral du Mass Gap en 5 Parties**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md) : Étude pas à pas de la chaîne déductive, de la maille cubique au lemme spectral inverse.
 - 📄 [**Chirurgie Topologique de Perelman pour Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md) : Décomposition de ℝ³ × S¹, algèbre de Clifford et protection contre l'effondrement gaussien.
 - 📐 [**Reconstruction de Wightman via Osterwalder–Schrader**](docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md) : Matrice de correspondance axiomatique OS0–OS4 → W1–W4 formalisée en Lean 4.
