@@ -130,7 +130,8 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 >
 > 5. **Bande de vitesse d'incertitude forcée (chaîne ouverte, N = 4 sites) :**  
 >    Dans PhyslibAlpha, le seuil `threshold` est la plus grande vitesse |⟨J⟩| d'un vecteur d'incertitude minimale ; il est atteint. Pour tout vecteur unitaire dont la vitesse tombe dans la bande (threshold, maxCurrent], le défaut de Gram centré est strictement positif (`defectOf_pos_of_mem_velocityBand`, PR [#1745](https://github.com/leanprover-community/physlib/pull/1745)). Dès N ≥ 4 la bande est non vide (`threshold_lt_maxCurrent`, PR [#1746](https://github.com/leanprover-community/physlib/pull/1746)).  
->    Pour N = 4 la borne supérieure est la proportion dorée : maxCurrent = 2|a t| cos(π/5) = φ · |a t|, φ = (1+√5)/2 (`maxCurrent_four_eq`). Les vitesses sont en unités de a·|t| (pas du réseau × saut).
+>    Pour N = 4 la borne supérieure est la proportion dorée : maxCurrent = 2|a t| cos(π/5) = φ · |a t|, φ = (1+√5)/2 (`maxCurrent_four_eq`). Les vitesses sont en unités de a·|t| (pas du réseau × saut).  
+>    Le seuil vérifie v* ≥ (3/2)·|a t| (`three_div_two_mul_abs_le_threshold`, [PR 2122, en révision](https://github.com/leanprover-community/physlib/pull/2122)) : le vecteur unitaire ψ = √2/8 · (2i, −(3+i√3), √3−3i, 2) a un défaut nul et un courant ⟨J⟩ = 3at/2. La bande d'incertitude forcée (v*, φ]·|a t| est donc contenue dans (3/2, φ]·|a t|, de largeur au plus φ − 3/2 = (√5 − 2)/2 ≈ 0,118. L'égalité v* = (3/2)·|a t| n'est pas démontrée.
 
 ```lean
 -- Extraits certifiés du corpus (D56–D57) :
