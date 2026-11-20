@@ -22,7 +22,7 @@
 <img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/resolution_clay_millenaire.png" alt="Résolution du Problème du Millénaire de Clay — Yang-Mills Spectral Mass Gap" width="960">
 </div>
 
-> ### 🏛️ Cadre Fondateur de la Résolution (Clay Mathematics Institute)
+> ### ⚡ Cadre Fondateur de la Résolution (Clay Mathematics Institute)
 >
 > **Énoncé Officiel :** Existence et gap spectral de masse de la théorie quantique de Yang–Mills en dimension 4 (SU(N) (N ≥ 2)) sur ℝ⁴. *(Arthur Jaffe & Edward Witten, 2000).*  
 > **Statut de Vérification Formelle :** **Démontré et certifié par machine en Lean 4 (0 `sorry`)**, compilé strictement sur la base axiomatique standard `[propext, Classical.choice, Quot.sound]`.
@@ -40,7 +40,7 @@
 
 ---
 
-## 🏛️ Fascicule des Résultats : Architecture en 8 Étapes Constructives
+## 📐 Chaîne déductive en huit étapes
 
 L'ensemble du traité est établi suivant les principes de déduction stricte : les espaces continus sont construits à partir d'approximations finies régulières, sans recours à l'infini actuel non borné. Toutes les constantes sont exprimées en notation latine intrinsèque.
 
@@ -214,7 +214,7 @@ theorem massive_four_le
 <img src="https://raw.githubusercontent.com/naype888-cloud/YM-By-Perelmans-surgery-method/main/docs/assets/lagrangien_unifie.png" alt="Le Lagrangien Unifié de l'Espace-Temps Quantique — Minimalisme Géométrique" width="960">
 </div>
 
-> ### 🏛️ **Le Lagrangien Fondamental Tripartite : La Trinité des Courbures**
+> ### **Le Lagrangien Fondamental Tripartite**
 >
 > Toute la physique de l'interaction forte, de la masse de jauge et de la gravitation s'exprime dans la pureté géométrique d'une action unique sans constante ad hoc :
 > <div align="center"><img src="docs/assets/eq/eq24.png" alt="Action unifiée tripartite combinant jauge, temps quantique et métrique" width="900"></div>
@@ -265,7 +265,7 @@ theorem massive_four_le
 
 ---
 
-### 🏛️ Étape 7 : Pont Hamiltonien Maître et Unification Kogut–Susskind (Wightman QFT)
+### ⚡ Étape 7 : Pont Hamiltonien Maître et Unification Kogut–Susskind (Wightman QFT)
 > **Théorème 7.1 (Annulation de la mesure spectrale sur la coquille de masse).** Résolution formelle et complète des exigences de jauge spatiale continue (Kogut & Susskind, 1975) et des Questions Ouvertes #3 et #4 de l'évaluation Douglas-YM (`assessment-1.pdf`) sur `PublicTheory.lean` :
 
 <div align="center">
@@ -306,7 +306,7 @@ De plus, la limite en champ faible newtonien F = G M₁ M₂ / r² est formellem
 
 ---
 
-## 🏛️ Fondations Canoniques dans Physlib (51 PRs Approuvées et Fusionnées)
+## 📚 Fondations dans Physlib (51 PRs Fusionnées)
 
 La totalité de la chaîne déductive repose sur **51 Pull Requests validées et intégrées au dépôt officiel de physique mathématique de Lean 4 ([`leanprover-community/physlib`](https://github.com/leanprover-community/physlib))**.
 
@@ -384,11 +384,11 @@ La totalité de la chaîne déductive repose sur **51 Pull Requests validées et
 
 Pour approfondir les développements analytiques et les démonstrations formelles :
 
-- 🏛️ [**Traité Formel du Pont SU(N) et de la Limite Continue**](docs/SU2-SU3.md) ([Télécharger la version PDF](docs/SU2-SU3.pdf?raw=true)) : Monographie mathématique établissant la correspondance non-abélienne et le formalisme de Wightman.
-- 🏛️ [**Clôture Définitive du Pont Hamiltonien (OpenAI ↔ Chirurgie de Perelman)**](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md) : Clôture formelle des Questions Ouvertes #3 et #4 du rapport Michael R. Douglas (`assessment-1.pdf`).
-- 🏛️ [**Fondations Canoniques dans Physlib (51 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md) : Cartographie complète des 5 piliers et des 50 théorèmes fusionnés dans le dépôt officiel de Lean 4.
+- 📄 [**Traité Formel du Pont SU(N) et de la Limite Continue**](docs/SU2-SU3.md) ([Télécharger la version PDF](docs/SU2-SU3.pdf?raw=true)) : Monographie mathématique établissant la correspondance non-abélienne et le formalisme de Wightman.
+- 📄 [**Clôture Définitive du Pont Hamiltonien (OpenAI ↔ Chirurgie de Perelman)**](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md) : Clôture formelle des Questions Ouvertes #3 et #4 du rapport Michael R. Douglas (`assessment-1.pdf`).
+- 📄 [**Fondations dans Physlib (51 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md) : Cartographie complète des 5 piliers et des 50 théorèmes fusionnés dans le dépôt officiel de Lean 4.
 - 📖 [**Audit Intégral du Mass Gap en 5 Parties**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md) : Étude pas à pas de la chaîne déductive, de la maille cubique au lemme spectral inverse.
-- 🏛️ [**Chirurgie Topologique de Perelman pour Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md) : Décomposition de ℝ³ × S¹, algèbre de Clifford et protection contre l'effondrement gaussien.
+- 📄 [**Chirurgie Topologique de Perelman pour Yang–Mills**](docs/CIRUGIA_TOPOLOGICA_PERELMAN_YANG_MILLS.md) : Décomposition de ℝ³ × S¹, algèbre de Clifford et protection contre l'effondrement gaussien.
 - 📐 [**Reconstruction de Wightman via Osterwalder–Schrader**](docs/RECONSTRUCCION_WIGHTMAN_OSTERWALDER_SCHRADER_YANG_MILLS.md) : Matrice de correspondance axiomatique OS0–OS4 → W1–W4 formalisée en Lean 4.
 
 ---
