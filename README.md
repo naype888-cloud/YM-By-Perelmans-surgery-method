@@ -393,3 +393,36 @@ L'ensemble des modules compile sous la base axiomatique standard de Lean 4 et Ma
 [propext, Classical.choice, Quot.sound]
 ```
 **0 `sorry`**, aucun axiome ad hoc ou non standard, vérifié avec le noyau officiel de Lean 4.
+
+---
+
+## 🏛️ La mosaïque des dépôts
+
+| Dépôt | Objet |
+|:---|:---|
+| [`lean4-commits`](https://github.com/naype888-cloud/lean4-commits) | Les PRs Lean 4 fusionnées et ouvertes dans Physlib |
+| [`nava-robertson-schrodinger`](https://github.com/naype888-cloud/nava-robertson-schrodinger) | Le canon : l'incertitude élémentaire dimensionnelle sur le cube ouvert |
+| [`Proper-Time-General-Relativity`](https://github.com/naype888-cloud/Proper-Time-General-Relativity) | Le temps compte les pas à quatre sites |
+| [`nrs3-golab`](https://github.com/naype888-cloud/nrs3-golab) | Gołąb : π = 3 (hexagone), 4 (carré) ; stabilité en d = 3 |
+| [`nrs3-tightbinding`](https://github.com/naype888-cloud/nrs3-tightbinding) | La chaîne de Physlib, le cube ouvert et la table périodique |
+| [`nrs3-cristales`](https://github.com/naype888-cloud/nrs3-cristales) | Cristaux : forme par la symétrie, taille par le spectre |
+| [**YM-By-Perelmans-surgery-method**](https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method) | Yang–Mills Spectral Mass Gap (ce dépôt) |
+| [`nrs3-completude`](https://github.com/naype888-cloud/nrs3-completude) | Complétude constructive par Robertson–Fiedler–Niven–Szegő |
+| [`nrs3-mandelstam-tamm-cramer-rao`](https://github.com/naype888-cloud/nrs3-mandelstam-tamm-cramer-rao) | Vitesse d'évolution et borne d'estimation de phase |
+| [`bacqm-systems`](https://github.com/naype888-cloud/bacqm-systems) | Dynamique de mémoire invariante d'échelle |
+
+---
+
+## 📜 Licence
+
+NRS Noncommercial License 1.0.0, voir [`LICENSE`](LICENSE).
+
+---
+
+<div align="center">
+
+### 🌌 *« Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
+
+**Eduardo Nava Hernández · José Arturo Nava Hernández** · [naype888-cloud](https://github.com/naype888-cloud)
+
+</div>
