@@ -12,7 +12,7 @@
 [![Kernel Status](https://img.shields.io/badge/Kernel-0%20sorry%20%7C%20152%20Declarations%20Certified-brightgreen.svg?style=flat-square)](src/TotalUnifiedGap.lean)
 [![Physlib](https://img.shields.io/badge/Physlib-52%20PRs%20Merged-brightgreen.svg?style=flat-square)](https://github.com/leanprover-community/physlib)
 [![Interactive 3D Portal](https://img.shields.io/badge/Live_Portal-Interactive_3D_Sim_%26_Proof_Explorer-00e5ff.svg?style=for-the-badge&logo=three.js)](https://naype888-cloud.github.io/YM-By-Perelmans-surgery-method/)
-[![Formal Treatise PDF](https://img.shields.io/badge/Treatise-Download_PDF-purple.svg?style=for-the-badge&logo=adobeacrobatreader)](docs/SU2-SU3.pdf?raw=true)
+[![Formal Treatise PDF](https://img.shields.io/badge/Treatise-Download_PDF-purple.svg?style=for-the-badge&logo=adobeacrobatreader)](docs/SU2-SU3.pdf)
 
 </div>
 
@@ -368,7 +368,7 @@ La totalité de la chaîne déductive repose sur **52 Pull Requests validées et
 
 Pour approfondir les développements analytiques et les démonstrations formelles :
 
-- 📄 [**Traité Formel du Pont SU(N) et de la Limite Continue**](docs/SU2-SU3.md) ([Télécharger la version PDF](docs/SU2-SU3.pdf?raw=true)) : Monographie mathématique établissant la correspondance non-abélienne et le formalisme de Wightman.
+- 📄 [**Traité Formel du Pont SU(N) et de la Limite Continue**](docs/SU2-SU3.md) ([Télécharger la version PDF](docs/SU2-SU3.pdf)) : Monographie mathématique établissant la correspondance non-abélienne et le formalisme de Wightman.
 - 📄 [**Clôture Définitive du Pont Hamiltonien (OpenAI ↔ Chirurgie de Perelman)**](docs/CIERRE_DEFINITIVO_HAMILTONIANO_OPENAI_YM.md) : Clôture formelle des Questions Ouvertes #3 et #4 du rapport Michael R. Douglas (`assessment-1.pdf`).
 - 📄 [**Fondations dans Physlib (52 PRs Fusionnées)**](docs/FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md) : Cartographie complète des 5 piliers et des 50 théorèmes fusionnés dans le dépôt officiel de Lean 4.
 - 📖 [**Audit Intégral du Mass Gap en 5 Parties**](docs/AUDITORIA_INTEGRAL_MASS_GAP_5_PARTES.md) : Étude pas à pas de la chaîne déductive, de la maille cubique au lemme spectral inverse.
