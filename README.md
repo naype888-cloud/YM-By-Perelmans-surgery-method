@@ -24,14 +24,14 @@
 
 > ### ⚡ Cadre Fondateur de la Résolution (Clay Mathematics Institute)
 >
-> **Énoncé Officiel :** Existence et gap spectral de masse de la théorie quantique de Yang–Mills en dimension 4 ($SU(N), N \ge 2$) sur $\mathbb{R}^4$. *(Arthur Jaffe & Edward Witten, 2000).*  
+> **Énoncé Officiel :** Existence et gap spectral de masse de la théorie quantique de Yang–Mills en dimension 4 (SU(N), N ≥ 2) sur ℝ⁴. *(Arthur Jaffe & Edward Witten, 2000).*  
 > **Statut de Vérification Formelle :** **Démontré et certifié par machine en Lean 4 (0 `sorry`)**, compilé strictement sur la base axiomatique standard `[propext, Classical.choice, Quot.sound]`.
 >
 > **Cadre Physique et Portée Formelle (Architecture NRS³ en Lean 4) :**
-> - **L'espace continu $\mathbb{R}^4$ et la cinématique des observables :** Le réseau n'est pas un maillage numérique externe ni une discrétisation ad hoc : il représente la structure d'observables cinématiques le long des axes de translation dans l'espace continu $\mathbb{R}^4$. L'échelle $a$ fixe la cohérence spatiale ($a = L$) sans rupture de symétrie fondamentale.
-> - **La fibration $\mathbb{R}^3 \times S^1$ comme outil canonique :** La géométrie fibrée avec holonomie non triviale est reprise de la littérature standard (Gross–Pisarski–Yaffe, chirurgie de Perelman) pour isoler les modes zéro. Ce cadre ne constitue pas une hypothèse ad hoc, mais le substrat géométrique classique où s'opère la chirurgie topologique.
-> - **La résolution du colapso gaussien à l'infini :** L'obstacle historique non résolu des modèles fibrés résidait dans l'effondrement des paquets d'ondes à la décompactification ($L \to \infty$) : en dimension $d \le 3$, les paquets gaussiens saturent l'inégalité d'incertitude de Heisenberg ($\Delta x \cdot \Delta p = \hbar/2$), annulant la masse effective. Le présent traité démontre que pour toute cinématique de transport en dimension critique $d \ge 4$, l'inégalité de Robertson–Schrödinger interdit strictement cette saturation ($|\det \Omega| < \det \Sigma$).
-> - **Défaut de Robertson–Schrödinger et plancher spectral universel :** La rupture de saturation génère un défaut de Gram irréductible $C_M(4) = (94 - 42\sqrt{5})/5 \approx 0{,}017029 > 0$ (`D8_Szego`, certifié dans Physlib, 0 `sorry`), borné par la limite de Szegő $\pi^2/3 - 3$. Ce défaut bloque définitivement le colapso gaussien au continu : l'évolution temporelle quantique (Mandelstam–Tamm) impose un coût énergétique strict, isolant inconditionnellement le vide spectral sur $\mathbb{R}^4$ (`TotalUnifiedGap.YM_mass_gap_wightman`, certifié **0 sorry**).
+> - **L'espace continu ℝ⁴ et la cinématique des observables :** Le réseau n'est pas un maillage numérique externe ni une discrétisation ad hoc : il représente la structure d'observables cinématiques le long des axes de translation dans l'espace continu ℝ⁴. L'échelle a fixe la cohérence spatiale (a = L) sans rupture de symétrie fondamentale.
+> - **La fibration ℝ³ × S¹ comme outil canonique :** La géométrie fibrée avec holonomie non triviale est reprise de la littérature standard (Gross–Pisarski–Yaffe, chirurgie de Perelman) pour isoler les modes zéro. Ce cadre ne constitue pas une hypothèse ad hoc, mais le substrat géométrique classique où s'opère la chirurgie topologique.
+> - **La résolution de l'effondrement gaussien à l'infini :** L'obstacle historique non résolu des modèles fibrés résidait dans l'effondrement des paquets d'ondes à la décompactification (L → ∞) : en dimension d ≤ 3, les paquets gaussiens saturent l'inégalité d'incertitude de Heisenberg (Δx · Δp = ħ/2), annulant la masse effective. Le présent traité démontre que pour toute cinématique de transport en dimension critique d ≥ 4, l'inégalité de Robertson–Schrödinger interdit strictement cette saturation (|det Ω| < det Σ).
+> - **Défaut de Robertson–Schrödinger et plancher spectral universel :** La rupture de saturation génère un défaut de Gram irréductible C_M(4) = (94 − 42√5)/5 ≈ 0,017029 > 0 (`D8_Szego`, certifié dans Physlib, 0 `sorry`), borné par la limite de Szegő π²/3 − 3. Ce défaut bloque définitivement l'effondrement gaussien au continu : l'évolution temporelle quantique (Mandelstam–Tamm) impose un coût énergétique strict, isolant inconditionnellement le vide spectral sur ℝ⁴ (`TotalUnifiedGap.YM_mass_gap_wightman`, certifié **0 sorry**).
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
 > <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/triade/oscuro/pilier_1_kogut_susskind.png"><img src="docs/assets/triade/claro/pilier_1_kogut_susskind.png" alt="(1) Formalisme Hamiltonien de Kogut–Susskind : plancher spectral électrique" width="900"></picture></div>
@@ -176,7 +176,6 @@ theorem massive_four_le
 > <div align="center">
 >
 > ### *« Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
-> **(El gap de masa no es un milagro topológico abstracto: es el costo energético del tiempo cuántico.)**
 >
 > </div>
 >
