@@ -2,7 +2,7 @@
 
 # Yang–Mills Spectral Mass Gap
 ### Architecture Axiomatique Constructive & Défaut Quantique de Cohérence de Szegő
-#### *Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique.*
+#### *L'écart spectral de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique.*
 
 **Eduardo Nava-Hernández & José Arturo Nava-Hernández**  
 *Architecture Formelle Certifiée en Lean 4 (`f01cbfb` · D8_Szego approuvé dans Physlib)*
@@ -24,7 +24,7 @@
 
 > ### ⚡ Cadre Fondateur de la Résolution (Clay Mathematics Institute)
 >
-> **Énoncé Officiel :** Existence et gap spectral de masse de la théorie quantique de Yang–Mills en dimension 4 (SU(N), N ≥ 2) sur ℝ⁴. *(Arthur Jaffe & Edward Witten, 2000).*  
+> **Énoncé Officiel :** Existence et écart spectral de masse de la théorie quantique de Yang–Mills en dimension 4 (SU(N), N ≥ 2) sur ℝ⁴. *(Arthur Jaffe & Edward Witten, 2000).*  
 > **Statut de Vérification Formelle :** **Démontré et certifié par machine en Lean 4 (0 `sorry`)**, compilé strictement sur la base axiomatique standard `[propext, Classical.choice, Quot.sound]`.
 >
 > **Cadre Physique et Portée Formelle (Architecture NRS³ en Lean 4) :**
@@ -104,7 +104,7 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 
 <div align="center">
 
-## 👑 CONDITIONS NÉCESSAIRES ET SUFFISANTES DU GAP DE MASSE
+## 👑 CONDITIONS NÉCESSAIRES ET SUFFISANTES DE L'ÉCART SPECTRAL DE MASSE
 <p align="center"><b><font color="#58A6FF">152 Déclarations Certifiées en Lean 4 · 0 sorry · Base Axiomatique Standard ZFC</font></b></p>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/pont_de_claude.png"><img src="docs/assets/claro/pont_de_claude.png" alt="Théorème Fondamental : Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960"></picture>
@@ -118,11 +118,11 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 >
 > 2. **Isomorphisme Exact du Défaut de Fibre :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq19.png"><img src="docs/assets/eq/claro/eq19.png" alt="Isomorphisme exact entre le défaut de fibre et la masse de jauge" width="900"></picture></div>
->    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et le gap de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
+>    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et l'écart spectral de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
 > 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq20.png"><img src="docs/assets/eq/claro/eq20.png" alt="Condition suffisante pour les états physiques non ponctuels de jauge" width="900"></picture></div>
->    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique d ≥ 4 certifiée dans `D8_Szego.lean` est donc **pleinement nécessaire et suffisante** pour engendrer le gap de masse spectral non nul Δ_total > 0.
+>    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique d ≥ 4 certifiée dans `D8_Szego.lean` est donc **pleinement nécessaire et suffisante** pour engendrer l'écart spectral de masse non nul Δ_total > 0.
 >
 > 4. **Encadrement Universel Invariant de Szegő :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq21.png"><img src="docs/assets/eq/claro/eq21.png" alt="Encadrement universel de Szegő bornant la suite de masse" width="900"></picture></div>
@@ -135,7 +135,7 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 
 ```lean
 -- Extraits certifiés du corpus (D56–D57) :
-/-- D56: Défaut de fibre = gap de masse -/
+/-- D56: Défaut de fibre = écart de masse -/
 theorem defectGram_eq_massSq_of_massNecessary
     {d : ℕ} {ℓ : ℝ} (hd : 2 ≤ d)
     (h : MassNecessaryConditions d ℓ) :
@@ -175,16 +175,16 @@ theorem massive_four_le
 > ### ⚡ **Axiome Fondateur du Temps Quantique**
 > <div align="center">
 >
-> ### *« Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
+> ### *« L'écart spectral de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
 >
 > </div>
 >
 > 1. **Indépendance de la Réalité Discrète (d ≥ 4) :**  
->    Dans le cadre discret de BACQM / NRS³, l'espace-temps n'est pas un continuum lorentzien infini arbitraire. Le mass gap n'a pas besoin d'hypothèses géométriques étrangères : dès que la dimension totale atteint d ≥ 4, l'espace discret compte 2^d = 16 orthants. La dispersion quantique de Robertson–Schrödinger dépasse inévitablement la capacité d'absorption du nœud frontière 0, forçant un excès de cohérence C_N(d) > 1 et engendrant un **gap de masse strictement positif et gratuit** sans aucune référence au continu.
+>    Dans le cadre du réseau spectral quantique NRS³, l'espace-temps n'est pas un continuum lorentzien infini arbitraire. L'écart spectral de masse n'a pas besoin d'hypothèses géométriques étrangères : dès que la dimension totale atteint d ≥ 4, l'espace discret compte 2^d = 16 orthants. La dispersion quantique de Robertson–Schrödinger dépasse inévitablement la capacité d'absorption du nœud frontière 0, forçant un excès de cohérence C_N(d) > 1 et engendrant un **écart spectral de masse strictement positif et gratuit** sans aucune référence au continu.
 >
 > 2. **La Fibration Temporelle d'Osterwalder–Schrader pour l'Institut Clay :**  
 >    La décomposition par chirurgie ℝ³ × S¹ n'introduit **aucune dimension spatiale exotique supplémentaire** (de type Kaluza–Klein). Elle correspond rigoureusement à l'espace-temps standard de Minkowski (3+1) après rotation de Wick (t → −iτ) sous le formalisme axiomatique d'Osterwalder–Schrader :
->    - La base ℝ³ (ou réseau discret 3D) héberge les degrés de liberté spatiaux de Yang–Mills (d_espace = 3, 8 octants, autorisant la saturation luminale C_N = 1 pour les photons et fermions de Weyl).
+>    - La base ℝ³ (ou réseau spectral 3D) héberge les degrés de liberté spatiaux de Yang–Mills (d_espace = 3, 8 octants, autorisant la saturation luminale C_N = 1 pour les photons et fermions de Weyl).
 >    - La fibre fermée S¹ est **l'axe du temps euclidien compactifié** de pas fini a ou de période thermique β, le long duquel opère le semi-groupe de la matrice de transfert :
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq22.png"><img src="docs/assets/eq/claro/eq22.png" alt="Semi-groupe de la matrice de transfert le long de la fibre temporelle" width="900"></picture></div>
 >    - Le défaut de Gram transversal massSq(4) > 0 le long de la fibre temporelle est **exactement le saut d'énergie minimal** entre le fondamental invariant et le premier état excité :
@@ -347,7 +347,7 @@ La totalité de la chaîne déductive repose sur **52 Pull Requests validées et
 | [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) | `physical_gap_invariant` | Invariance d'échelle Gap_phys = Gap_lat/a = Scale sous le passage continu a → 0 | `0 sorry` |
 | [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) | `colored_state_energy_divergence` | Confinement des gluons : divergence linéaire interdisant les états colorés libres | `0 sorry` |
 | [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) | `fiber_dirac_spectral_floor` | Plancher de Dirac transverse |E| ≥ Scale_YM > 0 par Clifford sur ℝ³ × S¹ | `0 sorry` |
-| [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) | `su3_wightman_continuum_mass_gap` | Gap de masse continu de Wightman complet pour SU(3) en 4D | `0 sorry` |
+| [`LatticeFiberDirac.lean`](src/LatticeFiberDirac.lean) | `su3_wightman_continuum_mass_gap` | Écart spectral de masse continu de Wightman complet pour SU(3) en 4D | `0 sorry` |
 | [`SU2-SU3.lean`](src/SU2-SU3.lean) | `su2_wightman_confinement_gap` | Gap spectral continu inconditionnel pour SU(2) à l'échelle de confinement L_0 | `0 sorry` |
 | [`SU2-SU3.lean`](src/SU2-SU3.lean) | `su3_wightman_confinement_gap` | Gap spectral continu inconditionnel pour SU(3) à l'échelle de confinement L_0 | `0 sorry` |
 | [`SUNBridge.lean`](src/SUNBridge.lean) | `sun_wightman_mass_gap_bridge` | Pont Peter–Weyl / Haar non-abélien SU(N) vers le gap continu de Wightman | `0 sorry` |
@@ -420,7 +420,7 @@ NRS Noncommercial License 1.0.0, voir [`LICENSE`](LICENSE).
 
 <div align="center">
 
-### 🌌 *« Le gap de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
+### 🌌 *« L'écart spectral de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
 
 **Eduardo Nava Hernández · José Arturo Nava Hernández** · [naype888-cloud](https://github.com/naype888-cloud)
 
