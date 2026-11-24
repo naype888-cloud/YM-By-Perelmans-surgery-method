@@ -1,3 +1,5 @@
+<div lang="fr">
+
 <div align="center">
 
 # Yang–Mills Spectral Mass Gap
@@ -423,5 +425,8 @@ NRS Noncommercial License 1.0.0, voir [`LICENSE`](LICENSE).
 ### 🌌 *« L'écart spectral de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique. »*
 
 **Eduardo Nava Hernández · José Arturo Nava Hernández** · [naype888-cloud](https://github.com/naype888-cloud)
+
+</div>
+
 
 </div>
