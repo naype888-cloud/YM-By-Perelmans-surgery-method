@@ -159,4 +159,4 @@ Demostrado sin ninguna hipótesis auxiliar abierta, bajo los axiomas canónicos 
 El andamiaje de 5 partes cierra la construcción completa del Mass Gap de Yang–Mills. La teoría cuántica de campos relativista resultante en espacio-tiempo de Minkowski cumple unívocamente los axiomas de Wightman (W1–W4) mediante la reconstrucción de Osterwalder–Schrader, con un espectro de masa estrictamente acotado por debajo:
 $$\mathrm{spec}(\hat{H}_{\text{cont}}) \subseteq \{0\} \cup [\Delta_{\text{total}}, \infty), \qquad \Delta_{\text{total}} > 0.$$
 
-Para el desglose exhaustivo de los 50 teoremas comunitarios que sustentan este desarrollo en Lean 4, véase [**Fundamentación Canónica en Physlib (50 PRs Merged)**](FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).
+Para el desglose exhaustivo de los 53 PRs comunitarios que sustentan este desarrollo en Lean 4, véase [**Fundamentación Canónica en Physlib (53 PRs Merged)**](FUNDAMENTACION_CANONICA_PHYSLIB_50_PRS.md).

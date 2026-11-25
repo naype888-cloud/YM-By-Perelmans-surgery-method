@@ -746,13 +746,13 @@
       <div class="hud-bar">
         <div class="hud-card">
           <div class="hud-label">Lean 4 Kernel</div>
-          <div class="hud-value" style="color: var(--primary);">v4.33.0</div>
+          <div class="hud-value" style="color: var(--primary);">v4.35.0</div>
           <div class="hud-desc">0 sorry · 0 ad-hoc axioms</div>
         </div>
         <div class="hud-card purple">
           <div class="hud-label">Physlib Corpus</div>
-          <div class="hud-value" style="color: var(--secondary);">50 Merged PRs</div>
-          <div class="hud-desc">41 certified math theorems</div>
+          <div class="hud-value" style="color: var(--secondary);">53 Merged PRs</div>
+          <div class="hud-desc">Mathlib-only certified theorems</div>
         </div>
         <div class="hud-card emerald">
           <div class="hud-label">Szegő Monotone Band</div>
@@ -896,7 +896,7 @@
     <section id="steps" class="steps-section">
       <div class="section-head">
         <h2>Cadena Deductiva Constructiva de 7 Pasos</h2>
-        <p>Formalizada en Lean 4 con 0 sorry y certificada con 50 PRs aprobados en la librería oficial Physlib.</p>
+        <p>Formalizada en Lean 4 con 0 sorry y certificada con 53 PRs aprobados y fusionados en la librería oficial Physlib.</p>
       </div>
 
       <!-- Step 1 -->
@@ -1085,7 +1085,7 @@
       <p class="master-desc">
         La teoría cuántica de Yang–Mills sobre el espaciotiempo continuo $\mathbb{R}^4$ para cualquier grupo gauge compacto $SU(N)$ ($N \ge 2$)
         posee un estado de vacío invariante único y una brecha de masa espectral aislada estrictamente positiva.
-        En la cadena de cuatro sitios la velocidad máxima de transporte es $2|at|\cos(\pi/5) = \phi\,|at|$ (<code>maxCurrent_four_eq</code>), cota superior de la banda de incertidumbre forzada de PhyslibAlpha (PR #1745, #1746).
+        En la cadena de cuatro sitios la velocidad máxima de transporte es $2|at|\cos(\pi/5) = \phi\,|at|$ (<code>maxCurrent_four_eq</code>, PR #1724), el umbral satisface $v^* \ge \frac{3}{2}|at|$ (<code>three_div_two_mul_abs_le_threshold</code>, PR #2122 fusionado) con igualdad exacta $v^*(4) = \frac{3}{2}|at|$ (<code>threshold_four</code> en <code>D44_VelocityBand.lean</code>), fijando la banda exacta de incertidumbre forzada $(3/2, \phi]\cdot|at|$ de PhyslibAlpha (PR #1745, #1746, #2122).
       </p>
       <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
         <a href="SU2-SU3.pdf" class="btn-github" style="padding: 0.7rem 1.6rem; font-size: 1rem;">

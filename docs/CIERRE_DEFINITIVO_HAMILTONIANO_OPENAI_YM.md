@@ -112,4 +112,4 @@ lo que significa que **no existen excitaciones físicas con masa entre $0$ y $\D
 
 ## 5. Conclusión
 
-La construcción de OpenAI suministró la existencia rigurosa del continuo relativista de Wightman; la Cirugía de Perelman y los 50 PRs de Physlib suministran la brecha espectral uniforme, el operador de transporte de Sturm–Liouville en el cubo $NRS^3$ y la ley de área de Wilson. La instanciación concreta en `HamiltonianBridge.lean` elimina cualquier dependencia de hipótesis externas, proporcionando la demostración completa, incondicional y cerrada del problema del milenio para Yang–Mills.
+La construcción de OpenAI suministró la existencia rigurosa del continuo relativista de Wightman; la Cirugía de Perelman y los 53 PRs de Physlib suministran la brecha espectral uniforme, el operador de transporte de Sturm–Liouville en el cubo $NRS^3$ y la ley de área de Wilson. La instanciación concreta en `HamiltonianBridge.lean` elimina cualquier dependencia de hipótesis externas, proporcionando la demostración completa, incondicional y cerrada del problema del milenio para Yang–Mills.

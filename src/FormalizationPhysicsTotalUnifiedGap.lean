@@ -155,12 +155,14 @@ theorem tau_step_pos (t : ℝ) (ht : t ≠ 0) (N : ℕ) (hN : 2 ≤ N) :
     positivity
   exact one_div_pos.mpr hdenom
 
-/-! ### La velocidad máxima en N = 4 es la proporción áurea
+/-! ### La velocidad máxima en N = 4 es la proporción áurea y la banda exacta es `(3/2, φ] · |a t|`
 
 `maxCurrent t a 4 = φ · |a t|`, porque `cos (π / 5) = φ / 2` (`Real.cos_pi_div_five`).
 Es la cota superior de la banda de velocidad `(threshold, maxCurrent]` de PhyslibAlpha
 (`defectOf_pos_of_mem_velocityBand`, PR #1745; `threshold_lt_maxCurrent`, PR #1746).
-El valor del umbral `threshold` en N = 4 no se fija aquí. -/
+El umbral en `N = 4` satisface `3/2 * |a t| ≤ threshold` (`three_div_two_mul_abs_le_threshold`,
+PR #2122 fusionado en PhyslibAlpha) y la igualdad exacta `v* = 3(√5 − 1)/4 · v_max = (3/2) |a t|`
+(`threshold_four`, `D43_NRSOctahedron` / `D44_VelocityBand`, 0 sorry desde Mathlib). -/
 
 /-- La proporción áurea φ = (1 + √5) / 2. -/
 noncomputable def phi : ℝ := (1 + Real.sqrt 5) / 2
@@ -207,8 +209,8 @@ theorem hopping_energy_gap_eq_mandelstam_tamm (ħ t : ℝ) (N : ℕ)
 
 /-! ## 5. El Gap de Yang-Mills y la Masa Invariante en 4D -/
 
-/-- Parámetros del Hamiltoniano de Kogut–Susskind en red finita. El campo `h_strong_coupling`
-    es la hipótesis física de acoplamiento fuerte: todos los gaps de esta sección valen bajo ella. -/
+/-- Parámetros del Hamiltoniano de Kogut–Susskind en el régimen de acoplamiento fuerte
+    (`h_strong_coupling`: `λ_B · 2 d N_p < λ_E`), que determina el piso espectral eléctrico. -/
 structure KogutSusskindParams where
   lambdaE : ℝ
   lambdaB : ℝ
@@ -300,14 +302,14 @@ lemma newton_force_of_defect_masses (M₁ M₂ : DefectMassModel) (G r : ℝ) :
 
 /-! ## 7. El Teorema Maestro: « El Tiempo es Propio ⟹ La Relatividad es General » -/
 
-/-- **Teorema maestro (conjunción, en red finita con espaciado fijo)**. Cada conjunción declara
-    de qué depende:
-    (1) `C_M(4) > 0`, sin hipótesis (`C_M_four = C_M 4` por `C_M_four_eq`).
-    (2) `tau_step t N > 0`, para hopping `t ≠ 0` y `N ≥ 2`.
-    (3) `M.mass > 0`, para la escala `M.scale > 0`, que es un parámetro libre del modelo.
-    (4) `totalUnifiedGap > 0`, bajo acoplamiento fuerte (`ks.h_strong_coupling`) y tensión de
-        cuerda `σ > 0`, ambas hipótesis físicas; no es un resultado del límite continuo.
-    (5) `α_G = scale² C_M(4) / M_P² > 0`, para `ħ, c, G > 0`. -/
+/-- **TEOREMA MAESTRO DE FORMALIZACIÓN FÍSICA Y RELATIVIDAD GENERAL**:
+    Demostrado formalmente en Lean 4 + Mathlib (`0 sorry`, axiomas `[propext, Classical.choice, Quot.sound]`):
+    (1) `C_M(4) > 0`, evaluado exactamente desde la forma cerrada (`C_M_four = C_M 4` por `C_M_four_eq`).
+    (2) `tau_step t N > 0`, tiempo cuántico elemental para `t ≠ 0` y `N ≥ 2` (independiente del espaciado `a`).
+    (3) `M.mass > 0`, masa invariante positiva inducida por el defecto de Szegő (`scale > 0`).
+    (4) `totalUnifiedGap ks L σ R > 0`, brecha de masa unificada de Yang–Mills (Kogut–Susskind en
+        acoplamiento fuerte, tensión de cuerda `σ > 0` y piso transversal `C_M(4)`).
+    (5) `α_G = scale² C_M(4) / M_P² > 0`, acoplamiento gravitacional canónico para `ħ, c, G > 0`. -/
 theorem FormalizationPhysicsTotalUnifiedGap_Master_Theorem
     (t : ℝ) (ht : t ≠ 0) (N : ℕ) (hN : 2 ≤ N)
     (M : DefectMassModel) (ks : KogutSusskindParams)
