@@ -210,8 +210,10 @@ theorem massive_four_le
 >    - La base ℝ³ (ou réseau spectral 3D) héberge les degrés de liberté spatiaux de Yang–Mills (d_espace = 3, 8 octants, autorisant la saturation luminale C_N = 1 pour les photons et fermions de Weyl).
 >    - La fibre fermée S¹ est **l'axe du temps euclidien compactifié** de pas fini a ou de période thermique β, le long duquel opère le semi-groupe de la matrice de transfert :
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq22.png"><img src="docs/assets/eq/claro/eq22.png" alt="Semi-groupe de la matrice de transfert le long de la fibre temporelle" width="900"></picture></div>
+>
 >    - Le défaut de Gram transversal massSq(4) > 0 le long de la fibre temporelle est **exactement le saut d'énergie minimal** entre le fondamental invariant et le premier état excité :
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq23.png"><img src="docs/assets/eq/claro/eq23.png" alt="Saut d'énergie minimal engendré par le défaut de Gram" width="900"></picture></div>
+>
 >    *Fibrer le temps réconcilie la pureté combinatoire discrète avec l'exigence du continu infini imposée par Jaffe et Witten, fermant définitivement la question sans introduire de dimensions spectrales fantômes.*
 
 ---
