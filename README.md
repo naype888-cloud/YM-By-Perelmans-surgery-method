@@ -2,9 +2,11 @@
 
 <div align="center">
 
-# Yang–Mills Spectral Mass Gap
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/frontispicio_titre.png"><img src="docs/assets/claro/frontispicio_titre.png" alt="Yang–Mills Spectral Mass Gap" width="900"></picture>
+
 ### Architecture Axiomatique Constructive & Défaut Quantique de Cohérence de Szegő
-#### *L'écart spectral de masse n'est pas un miracle topologique abstrait : c'est le coût énergétique du temps quantique.*
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/frontispicio_lema.png"><img src="docs/assets/claro/frontispicio_lema.png" alt="L’écart spectral de masse n’est pas un miracle topologique abstrait : c’est le coût énergétique du temps quantique." width="900"></picture>
 
 **Eduardo Nava-Hernández & José Arturo Nava-Hernández**  
 *Architecture Formelle Certifiée en Lean 4 (`f01cbfb` · D8_Szego approuvé dans Physlib)*
