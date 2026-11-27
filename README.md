@@ -42,7 +42,7 @@
 > - **L'espace continu ℝ⁴ et la cinématique des observables :** Le réseau n'est pas un réseau numérique externe ni une discrétisation ad hoc : il représente la structure d'observables cinématiques le long des axes de translation dans l'espace continu ℝ⁴. L'échelle a fixe la cohérence spatiale (a = L) sans rupture de symétrie fondamentale.
 > - **La fibration ℝ³ × S¹ comme outil canonique :** La géométrie fibrée avec holonomie non triviale est reprise de la littérature standard (Gross–Pisarski–Yaffe, chirurgie de Perelman) pour isoler les modes zéro. Ce cadre ne constitue pas une hypothèse ad hoc, mais le substrat géométrique classique où s'opère la chirurgie topologique.
 > - **La résolution de l'effondrement gaussien à l'infini :** L'obstacle historique non résolu des modèles fibrés résidait dans l'effondrement des paquets d'ondes à la décompactification (L → ∞) : en dimension d ≤ 3, les paquets gaussiens saturent l'inégalité d'incertitude de Heisenberg (Δx · Δp = ħ/2), annulant la masse effective. Le présent traité démontre que pour toute cinématique de transport en dimension critique d ≥ 4, l'inégalité de Robertson–Schrödinger interdit strictement cette saturation (|det Ω| < det Σ).
-> - **Défaut de Robertson–Schrödinger et plancher spectral universel :** La rupture de saturation génère un défaut de Gram irréductible C_M(4) = (94 − 42√5)/5 ≈ 0,017029 > 0 (`D8_Szego.lean`, certifié dans Physlib, 0 `sorry`), borné par la limite de Szegő π²/3 − 3. Ce défaut bloque définitivement l'effondrement gaussien au continu : l'évolution temporelle quantique (Mandelstam–Tamm) impose un coût énergétique strict, isolant inconditionnellement le vide spectral sur ℝ⁴ (`TotalUnifiedGap.YM_mass_gap_wightman`, certifié **0 sorry**).
+> - **Défaut de Robertson–Schrödinger et plancher spectral universel :** La rupture de saturation génère un défaut de Gram irréductible C_M(4) = (94 − 42√5)/5 ≈ 0,017029 > 0 (`D8_Szego.lean`, certifié dans Physlib, `0 sorry`), borné par la limite de Szegő π²/3 − 3. Ce défaut bloque définitivement l'effondrement gaussien au continu : l'évolution temporelle quantique (Mandelstam–Tamm) impose un coût énergétique strict, isolant inconditionnellement le vide spectral sur ℝ⁴ (`TotalUnifiedGap.YM_mass_gap_wightman`, certifié **`0 sorry`**).
 >
 > #### Les Trois Piliers Unifiés de la Démonstration :
 > <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/triade/oscuro/pilier_1_kogut_susskind.png"><img src="docs/assets/triade/claro/pilier_1_kogut_susskind.png" alt="(1) Formalisme Hamiltonien de Kogut–Susskind : plancher spectral électrique" width="900"></picture></div>
@@ -53,7 +53,7 @@
 > L'incertitude élémentaire dimensionnelle certifiée dans `D8_Szego.lean` (canon NRS³) et Physlib (#1718, #1734, #1735) fournit la borne cinématique universelle C_M(4) > 0 ; le gap de jauge provient du plancher de Kogut–Susskind sous couplage fort (pilier 1). En d ≤ 3, la boîte sature l'incertitude ; en d ≥ 4, le coût énergétique irréductible de l'évolution temporelle quantique est strictement borné par la limite universelle de Szegő.
 > <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/triade/oscuro/pilier_3_wightman.png"><img src="docs/assets/triade/claro/pilier_3_wightman.png" alt="(3) Annulation Spectrale de Wightman sur ℝ⁴ isolant le vide" width="900"></picture></div>
 >
-> Décompactification continue L → ∞. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur la intervalle spectral 0 < p₀ < Δ_total, isolant le vide. *(`TotalUnifiedGap.YM_mass_gap_wightman`)*
+> Décompactification continue L → ∞. La mesure spectrale sur le cône de lumière positif s'annule identiquement sur l'intervalle spectral 0 < p₀ < Δ_total, isolant le vide. *(`TotalUnifiedGap.YM_mass_gap_wightman`)*
 
 ---
 
@@ -125,7 +125,7 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 <div align="center">
 
 ## 👑 CONDITIONS NÉCESSAIRES ET SUFFISANTES DE L'ÉCART SPECTRAL DE MASSE
-<p align="center"><b><font color="#58A6FF">152 Déclarations Certifiées en Lean 4 · 0 sorry · Base Axiomatique Standard ZFC</font></b></p>
+<p align="center"><b><font color="#58A6FF">152 Déclarations Certifiées en Lean 4 · <code>0 sorry</code> · Base Axiomatique Standard ZFC</font></b></p>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/oscuro/pont_de_claude.png"><img src="docs/assets/claro/pont_de_claude.png" alt="Théorème Fondamental : Isomorphisme du Défaut de Fibre et Conditions de Masse" width="960"></picture>
 </div>
@@ -134,18 +134,22 @@ L'ensemble du traité est établi suivant les principes de déduction stricte : 
 >
 > 1. **Nécessité Géométrique Absolue (d ≥ 4) :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq18.png"><img src="docs/assets/eq/claro/eq18.png" alt="Saturation en d ≤ 3 et nécessité géométrique absolue de d ≥ 4" width="900"></picture></div>
+>
 >    Sur le cube spatial 3D pur, la boîte [−3, 3]³ contenant 343 sites sature rigoureusement la constante de cohérence (C_N = 1). Le défaut s'annule identiquement : absence totale de masse propre (phase luminale invariante, photonique ou chirale).
 >
 > 2. **Isomorphisme Exact du Défaut de Fibre :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq19.png"><img src="docs/assets/eq/claro/eq19.png" alt="Isomorphisme exact entre le défaut de fibre et la masse de jauge" width="900"></picture></div>
+>
 >    Le défaut de transport de Robertson–Schrödinger sur l'axe transverse de la fibre et l'écart spectral de masse physique de Yang–Mills constituent **exactement la même quantité mathématique**.
 >
 > 3. **Condition Suffisante pour la Théorie de Jauge (Secteur Physique Yang–Mills) :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq20.png"><img src="docs/assets/eq/claro/eq20.png" alt="Condition suffisante pour les états physiques non ponctuels de jauge" width="900"></picture></div>
+>
 >    Les états de base ponctuels (porteurs / photons libres) saturent trivialement le défaut à zéro. Mais dans la théorie non-abélienne de Yang–Mills, les excitations physiques (boucles de Wilson, glueballs, cordes de flux de Kogut–Susskind) sont des superpositions invariantes de jauge étendues qui **portent nécessairement un défaut strictement positif** (`StateCarriesDefect`). La condition géométrique d ≥ 4 certifiée dans `D8_Szego.lean` est donc **pleinement nécessaire et suffisante** pour engendrer l'écart spectral de masse non nul Δ_total > 0.
 >
 > 4. **Encadrement Universel Invariant de Szegő :**  
 >    <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/eq/oscuro/eq21.png"><img src="docs/assets/eq/claro/eq21.png" alt="Encadrement universel de Szegő bornant la suite de masse" width="900"></picture></div>
+>
 >    La suite massSq(d) est uniformément bornée par π²/3 − 3 ≈ 0,289868 lorsque d → ∞, excluant tout effondrement ultraviolet ou divergence du spectre.
 >
 > 5. **Bande de vitesse d'incertitude forcée, cône relativiste et opérateurs de Dirac (d ≥ 4) :**  
